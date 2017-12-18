@@ -9,22 +9,22 @@ import javax.persistence.Table;
 @Entity
 @Table(name="DESIGNATIONS")
 public class Designation {
-  @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
-  @Column(name="DESIGNATION_ID")
-  Integer designationId;
-  String designationName;
-public Integer getDesignationId() {
-	return designationId;
-}
-public void setDesignationId(Integer designationId) {
-	this.designationId = designationId;
-}
-public String getDesignationName() {
-	return designationName;
-}
-public void setDesignationName(String designationName) {
-	this.designationName = designationName;
-}
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="DESIGNATION_ID")
+	Integer designationId;
+	String designationName;
+	public Integer getDesignationId() {
+		return designationId;
+	}
+	public void setDesignationId(Integer designationId) {
+		this.designationId = designationId;
+	}
+	public String getDesignationName() {
+		return designationName;
+	}
+	public void setDesignationName(String designationName) {
+		this.designationName = designationName;
+	}
 
 }

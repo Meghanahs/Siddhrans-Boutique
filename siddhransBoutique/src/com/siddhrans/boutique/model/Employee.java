@@ -15,31 +15,44 @@ import javax.persistence.Transient;
 public class Employee {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="EMPLOYEE_ID")
+	@Column(name="EMPLOYEE_ID")
 	Integer employeeId;
-	String employeeName;
-	
-    String email;
-    Integer phoneNo;
-    Integer aadhaarNo;
-    String userName;
-    String password;
-	public Integer getEmployeeId() {
-		return employeeId;
-	}
+	String employeeFirstname;
+	String employeeLastname;
+	String email;
+	Integer phoneNo;
+	Integer aadhaarNo;
+	String userName;
+	String password;
+
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
-	public String getEmployeeName() {
-		return employeeName;
+
+	public Integer getEmployeeId() {
+		return employeeId;
 	}
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
+
+
+	public String getEmployeeFirstname() {
+		return employeeFirstname;
 	}
-	public String getEmail() {
+	public void setEmployeeName(String employeeFirstname) {
+		this.employeeFirstname = employeeFirstname;
+	}
+
+	public String getEmployeeLastname() {
+		return employeeLastname;
+	}
+	public void setEmployeeLastname(String employeeLastname) {
+		this.employeeLastname = employeeLastname;
+	}
+
+    public String getEmail() {
 		return email;
 	}
-	public void setEmail(String email) {
+
+    public void setEmail(String email) {
 		this.email = email;
 	}
 	public Integer getPhoneNo() {
@@ -66,6 +79,6 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    
+
 
 }

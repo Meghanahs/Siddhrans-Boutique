@@ -1,12 +1,9 @@
 package com.siddhrans.boutique.model;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -20,10 +17,32 @@ public class Employee {
 	String employeeFirstname;
 	String employeeLastname;
 	String email;
-	Integer phoneNo;
-	Integer aadhaarNo;
+	String phoneNo;
+	String aadhaarNo;
 	String userName;
 	String password;
+	String gender;
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	@Transient
+	String confirmPassword;
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
+	public void setEmployeeFirstname(String employeeFirstname) {
+		this.employeeFirstname = employeeFirstname;
+	}
 
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
@@ -48,25 +67,30 @@ public class Employee {
 		this.employeeLastname = employeeLastname;
 	}
 
-    public String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-    public void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getPhoneNo() {
+
+	public String getPhoneNo() {
 		return phoneNo;
 	}
-	public void setPhoneNo(Integer phoneNo) {
+
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-	public Integer getAadhaarNo() {
+
+	public String getAadhaarNo() {
 		return aadhaarNo;
 	}
-	public void setAadhaarNo(Integer aadhaarNo) {
+
+	public void setAadhaarNo(String aadhaarNo) {
 		this.aadhaarNo = aadhaarNo;
 	}
+
 	public String getUserName() {
 		return userName;
 	}

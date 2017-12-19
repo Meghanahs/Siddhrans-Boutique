@@ -29,7 +29,7 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/views/");
+		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
 		registry.viewResolver(viewResolver);
 	}
@@ -39,7 +39,7 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 	 */
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/webapp/**").addResourceLocations("/webapp/");
+		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
 	
 	/**

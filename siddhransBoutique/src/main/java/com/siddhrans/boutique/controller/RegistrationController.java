@@ -11,7 +11,7 @@ public class RegistrationController {
 	@RequestMapping(value="/helloWorld", method = RequestMethod.GET)
     public String helloWorld(Model model) {
         model.addAttribute("message", "Hello World!");
-        return "helloWorld";
+        return "message";
     }
 
 }

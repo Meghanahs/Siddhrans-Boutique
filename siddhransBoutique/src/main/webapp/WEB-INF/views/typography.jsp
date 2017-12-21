@@ -1,13 +1,10 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Pooled Admin Panel Category Flat Bootstrap Responsive Web Template | Typography :: w3layouts</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -314,67 +311,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6">
 					<nav>
 						<ul class="pagination pagination-lg">
-							<li><a href="#" aria-label="Previous"><span aria-hidden="true">Â«</span></a></li>
+							<li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 							<li><a href="#">1</a></li>
 							<li><a href="#">2</a></li>
 							<li><a href="#">3</a></li>
 							<li><a href="#">4</a></li>
 							<li><a href="#">5</a></li>
-							<li><a href="#" aria-label="Next"><span aria-hidden="true">Â»</span></a></li>
+							<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						</ul>
 					</nav>
 					<nav>
 						<ul class="pagination">
-							<li><a href="#" aria-label="Previous"><span aria-hidden="true">Â«</span></a></li>
+							<li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 							<li><a href="#">1</a></li>
 							<li><a href="#">2</a></li>
 							<li><a href="#">3</a></li>
 							<li><a href="#">4</a></li>
 							<li><a href="#">5</a></li>
-							<li><a href="#" aria-label="Next"><span aria-hidden="true">Â»</span></a></li>
+							<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						</ul>
 					</nav>
 					<nav>
 						<ul class="pagination pagination-sm">
-							<li><a href="#" aria-label="Previous"><span aria-hidden="true">Â«</span></a></li>
+							<li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 							<li><a href="#">1</a></li>
 							<li><a href="#">2</a></li>
 							<li><a href="#">3</a></li>
 							<li><a href="#">4</a></li>
 							<li><a href="#">5</a></li>
-							<li><a href="#" aria-label="Next"><span aria-hidden="true">Â»</span></a></li>
+							<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-md-6">
 					<ul class="pagination pagination-lg">
-						<li class="disabled"><a href="#"><i class="fa fa-angle-left">Â«</i></a></li>
+						<li class="disabled"><a href="#"><i class="fa fa-angle-left">«</i></a></li>
 						<li class="active"><a href="#">1</a></li>
 						<li><a href="#">2</a></li>
 						<li><a href="#">3</a></li>
 						<li><a href="#">4</a></li>
 						<li><a href="#">5</a></li>
-						<li><a href="#"><i class="fa fa-angle-right">Â»</i></a></li>
+						<li><a href="#"><i class="fa fa-angle-right">»</i></a></li>
 					</ul>
 					<nav>
 						<ul class="pagination">
-							<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">Â«</span></a></li>
+							<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 							<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 							<li><a href="#">2</a></li>
 							<li><a href="#">3</a></li>
 							<li><a href="#">4</a></li>
 							<li><a href="#">5</a></li>
-							<li><a href="#" aria-label="Next"><span aria-hidden="true">Â»</span></a></li>
+							<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 						</ul>
 					</nav>
 					<ul class="pagination pagination-sm">
-						<li class="disabled"><a href="#"><i class="fa fa-angle-left">Â«</i></a></li>
+						<li class="disabled"><a href="#"><i class="fa fa-angle-left">«</i></a></li>
 						<li class="active"><a href="#">1</a></li>
 						<li><a href="#">2</a></li>
 						<li><a href="#">3</a></li>
 						<li><a href="#">4</a></li>
 						<li><a href="#">5</a></li>
-						<li><a href="#"><i class="fa fa-angle-right">Â»</i></a></li>
+						<li><a href="#"><i class="fa fa-angle-right">»</i></a></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
@@ -734,7 +731,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--inner block end here-->
 <!--copy rights start here-->
 <div class="copyrights">
-	 <p>Â© 2016 Pooled . All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+	 <p>© 2016 Pooled . All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 </div>	
 <!--COPY rights end here-->
 </div>

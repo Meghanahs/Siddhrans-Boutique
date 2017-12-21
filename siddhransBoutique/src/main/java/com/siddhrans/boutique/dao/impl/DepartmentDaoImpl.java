@@ -4,18 +4,17 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.siddhrans.boutique.dao.AbstractDao;
-import com.siddhrans.boutique.dao.RegistrationDao;
+import com.siddhrans.boutique.dao.DepartmentDao;
+import com.siddhrans.boutique.model.Department;
 import com.siddhrans.boutique.model.Employee;
 
-@Repository("registrationDao")
+@Repository("departmentDao")
 @Transactional
-public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> implements RegistrationDao {
+public class DepartmentDaoImpl extends AbstractDao<Integer, Department> implements DepartmentDao {
 
 	@Override
-	public void saveEmployeeDetails(Employee employee) {
+	public void saveDepartment(Department department) {
 		// TODO Auto-generated method stub
-		persist(employee);
-
+		persist(department);
 	}
-
 }

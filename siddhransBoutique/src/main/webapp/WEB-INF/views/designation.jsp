@@ -1,14 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Pooled Admin Panel Category Flat Bootstrap Responsive Web
-	Template | Home :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<%@include file="includeLibs.jsp"%>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Bootstrap Core CSS -->
 <link href="static/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
@@ -35,7 +26,7 @@
 		<div class="left-content">
 			<div class="mother-grid-inner">
 				<!--header start here-->
-				<div class="header-main">
+			 <div class="header-main">
 					<div class="logo-w3-agile">
 						<h1>
 							<a href="index.html">Boutique</a>
@@ -43,19 +34,19 @@
 					</div>
 					<div class="w3layouts-left">
 
-						<!--search-box-->
+						
 						<div class="w3-search-box">
 							<form action="#" method="post">
 								<input type="text" placeholder="Search..." required="">
 								<input type="submit" value="">
 							</form>
 						</div>
-						<!--//end-search-box-->
+						
 						<div class="clearfix"></div>
 					</div>
 					<div class="w3layouts-right">
 						<div class="profile_details_left">
-							<!--notifications of menu start -->
+						
 							<ul class="nofitications-dropdown">
 								<li class="dropdown head-dpdn"><a href="#"
 									class="dropdown-toggle" data-toggle="dropdown"
@@ -221,7 +212,7 @@
 							</ul>
 							<div class="clearfix"></div>
 						</div>
-						<!--notification menu end -->
+						
 
 						<div class="clearfix"></div>
 					</div>
@@ -254,393 +245,41 @@
 				</div>
 				<!--heder end here-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="home">Home</a> <i
+					<li class="breadcrumb-item"><a href="adddepartment">Designation</a> <i
 						class="fa fa-angle-right"></i></li>
 				</ol>
 				<!--four-grids here-->
 				<div class="four-grids">
-					<div class="col-md-3 four-grid">
-						<div class="four-agileits">
-							<div class="icon">
-								<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>User</h3>
-								<h4>24,420</h4>
-
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-agileinfo">
-							<div class="icon">
-								<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Clients</h3>
-								<h4>15,520</h4>
-
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-w3ls">
-							<div class="icon">
-								<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Projects</h3>
-								<h4>12,430</h4>
-
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-wthree">
-							<div class="icon">
-								<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Old Projects</h3>
-								<h4>14,430</h4>
-
-							</div>
-
-						</div>
-					</div>
-					<div class="clearfix"></div>
+			
+			<div class="clearfix"></div>
 				</div>
-				<!--//four-grids here-->
-				<!--agileinfo-grap-->
-				<div class="agileinfo-grap">
-					<div class="agileits-box">
-						<header class="agileits-box-header clearfix">
-						<h3>Statistics</h3>
-						<div class="toolbar">
-							<div class="pull-left">
-								<div class="btn-group">
-									<a href="#" class="btn btn-default btn-xs">Daily</a> <a
-										href="#" class="btn btn-default btn-xs active">Monthly</a> <a
-										href="#" class="btn btn-default btn-xs">Yearly</a>
-								</div>
-							</div>
-							<div class="pull-right">
-								<div class="btn-group">
-									<a aria-expanded="false"
-										class="btn btn-default btn-xs dropdown-toggle"
-										data-toggle="dropdown"> Export <i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu pull-right" role="menu">
-										<li><a href="#">Export as PDF</a></li>
-										<li><a href="#">Export as CSV</a></li>
-										<li><a href="#">Export as PNG</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-									</ul>
-								</div>
-								<a href="#" class="btn btn-primary btn-xs"><i
-									class="fa fa-cog"></i></a>
-							</div>
+			<div class="col-md-12 agile-info-stat">
+						<div class="stats-info stats-last widget-shadow"  style="height:263px;">
+						<form:form method="POST" modelAttribute="designation"
+					class="form-horizontal">
+					
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="departmentName">Designation
+								Name</label>
+								</div>	
 						</div>
-						</header>
-						<div class="agileits-box-body clearfix">
-							<div id="hero-area"></div>
-						</div>
-					</div>
-				</div>
-				<!--//agileinfo-grap-->
-				<!--photoday-section-->
-
-
-				<div class="col-sm-4 wthree-crd">
-					<div class="card">
-						<div class="card-body">
-							<div class="widget widget-report-table">
-								<header class="widget-header m-b-15"> </header>
-
-								<div class="row m-0 md-bg-grey-100 p-l-20 p-r-20">
-									<div class="col-md-6 col-sm-6 col-xs-6 w3layouts-aug">
-										<h3>August 2016</h3>
-										<p>REPORT</p>
-									</div>
-									<div class="col-md-6 col-sm-6 col-xs-6 ">
-										<h2 class="text-right c-teal f-300 m-t-20">$21,235</h2>
-									</div>
-								</div>
-
-								<div class="widget-body p-15">
-									<table class="table table-bordered">
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>Name</th>
-												<th>Amount</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>2356</td>
-												<td>dummy text</td>
-												<td>6,200.00</td>
-											</tr>
-											<tr>
-												<td>4589</td>
-												<td>Lorem Ipsum</td>
-												<td>6,500.00</td>
-											</tr>
-
-											<tr>
-												<td>3269</td>
-												<td>specimen book</td>
-												<td>6,800.00</td>
-											</tr>
-											<tr>
-												<td>5126</td>
-												<td>Letraset sheets</td>
-												<td>7,200.00</td>
-											</tr>
-											<tr>
-												<td>7425</td>
-												<td>PageMaker</td>
-												<td>5,900.00</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-4 w3-agileits-crd">
-
-					<div class="card card-contact-list">
-						<div class="agileinfo-cdr">
-							<div class="card-header">
-								<h3>Contacts</h3>
-							</div>
-							<div class="card-body p-b-20">
-								<div class="list-group">
-									<a class="list-group-item media" href="">
-										<div class="pull-left">
-											<img class="lg-item-img" src="static/images/in1.jpg" alt="">
-										</div>
-										<div class="media-body">
-											<div class="pull-left">
-												<div class="lg-item-heading">Lorem</div>
-												<small class="lg-item-text">lorem@gmail.com</small>
-											</div>
-											<div class="pull-right">
-												<div class="lg-item-heading">Ceo</div>
-											</div>
-										</div>
-									</a> <a class="list-group-item media" href="">
-										<div class="pull-left">
-											<img class="lg-item-img" src="static/images/in2.jpg" alt="">
-										</div>
-										<div class="media-body">
-											<div class="pull-left">
-												<div class="lg-item-heading">Ipsum</div>
-												<small class="lg-item-text">ipsum@hotmail.com</small>
-											</div>
-											<div class="pull-right">
-												<div class="lg-item-heading">Director</div>
-											</div>
-										</div>
-									</a> <a class="list-group-item media" href="">
-										<div class="pull-left">
-											<img class="lg-item-img" src="static/images/in3.jpg" alt="">
-										</div>
-										<div class="media-body">
-											<div class="pull-left">
-												<div class="lg-item-heading">Unknown</div>
-												<small class="lg-item-text">unknown@gmail.com</small>
-											</div>
-											<div class="pull-right">
-												<div class="lg-item-heading">Manager</div>
-											</div>
-										</div>
-									</a> <a class="list-group-item media" href="">
-										<div class="pull-left">
-											<img class="lg-item-img" src="static/images/in4.jpg" alt="">
-										</div>
-										<div class="media-body">
-											<div class="pull-left">
-												<div class="lg-item-heading">Specimen</div>
-												<small class="lg-item-text">specimen@hotmail.com</small>
-											</div>
-											<div class="pull-right">
-												<div class="lg-item-heading">Assistan</div>
-											</div>
-										</div>
-									</a>
-
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4 w3-agile-crd">
-					<div class="card">
-						<div class="card-body card-padding">
-							<div class="widget">
-								<header class="widget-header">
-								<h4 class="widget-title">Activities</h4>
-								</header>
-								<hr class="widget-separator">
-								<div class="widget-body">
-									<div class="streamline">
-										<div class="sl-item sl-primary">
-											<div class="sl-content">
-												<small class="text-muted">5 mins ago</small>
-												<p>Williams has just joined Project X</p>
-											</div>
-										</div>
-										<div class="sl-item sl-danger">
-											<div class="sl-content">
-												<small class="text-muted">25 mins ago</small>
-												<p>Jane has sent a request for access</p>
-											</div>
-										</div>
-										<div class="sl-item sl-success">
-											<div class="sl-content">
-												<small class="text-muted">40 mins ago</small>
-												<p>Kate added you to her team</p>
-											</div>
-										</div>
-										<div class="sl-item">
-											<div class="sl-content">
-												<small class="text-muted">45 minutes ago</small>
-												<p>John has finished his task</p>
-											</div>
-										</div>
-										<div class="sl-item sl-warning">
-											<div class="sl-content">
-												<small class="text-muted">55 mins ago</small>
-												<p>Jim shared a folder with you</p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-
-				<!--//photoday-section-->
-				<!--w3-agileits-pane-->
-				<div class="w3-agileits-pane">
-					<div class="col-md-4 wthree-pan">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<i class="fa fa-bell fa-fw"></i> Notifications Panel
-							</div>
-							<!-- /.panel-heading -->
-							<div class="panel-body">
-								<div class="list-group">
-									<a href="#" class="list-group-item"> <i
-										class="fa fa-comment fa-fw"></i> New Comment <span
-										class="pull-right text-muted small"><em>4 minutes
-												ago</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-										class="pull-right text-muted small"><em>12 minutes
-												ago</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-envelope fa-fw"></i> Message Sent <span
-										class="pull-right text-muted small"><em>27 minutes
-												ago</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small"><em>43 minutes
-												ago</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small"><em>11:32 AM</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-bolt fa-fw"></i> Server Crashed! <span
-										class="pull-right text-muted small"><em>11:13 AM</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small"><em>43 minutes
-												ago</em> </span>
-									</a>
-								</div>
-								<!-- /.list-group -->
-
-							</div>
-							<!-- /.panel-body -->
-						</div>
-					</div>
-					<div class="col-md-8 agile-info-stat">
-						<div class="stats-info stats-last widget-shadow">
-							<table class="table stats-table ">
-								<thead>
-									<tr>
-										<th>S.NO</th>
-										<th>PRODUCT</th>
-										<th>STATUS</th>
-										<th>PROGRESS</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-success">In progress</span></td>
-										<td><h5>
-												85% <i class="fa fa-level-up"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Aliquam</td>
-										<td><span class="label label-warning">New</span></td>
-										<td><h5>
-												35% <i class="fa fa-level-up"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-danger">Overdue</span></td>
-										<td><h5 class="down">
-												40% <i class="fa fa-level-down"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<th scope="row">4</th>
-										<td>Aliquam</td>
-										<td><span class="label label-info">Out of stock</span></td>
-										<td><h5>
-												100% <i class="fa fa-level-up"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<th scope="row">5</th>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-success">In progress</span></td>
-										<td><h5 class="down">
-												10% <i class="fa fa-level-down"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<th scope="row">6</th>
-										<td>Aliquam</td>
-										<td><span class="label label-warning">New</span></td>
-										<td><h5>
-												38% <i class="fa fa-level-up"></i>
-											</h5></td>
-									</tr>
-								</tbody>
-							</table>
+								
+				<!-- <section> <label class="input"> <i
+					class="icon-append icon-envelope-alt"></i>
+					<form:input type="text" path="departmentName" id="departmentName" placeholder="Department Name"/>
+				</label> </section> -->
+				
+				<div class="col-md-3">
+				<form:input type="text" path="designationName"
+									id="designationName" class="form-control input-sm" placeholder="Designation name" />
+					
+						</div>			
+					<footer>
+			            <button type="submit" class="button">Add</button>
+			    </footer>
+					
+					</form:form>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -666,7 +305,7 @@
 				<div class="inner-block"></div>
 				<!--inner block end here-->
 				<!--copy rights start here-->
-				<div class="copyrights">
+				<div class="copyrights" style="margin-top: 200px;">
 					<p>
 						© 2016 Srushti Boutique . All Rights Reserved | Design by <a
 							href="http://siddhrans.com/Development/" target="_blank">Siddhrans.com</a>
@@ -684,7 +323,7 @@
 			<div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
 			<div class="menu">
 				<ul id="menu">
-					<li><a href="index.html"><a href="home"><i class="fa fa-tachometer"></i>
+					<li><a href="home"><i class="fa fa-tachometer"></i>
 							<span>Home</span>
 						<div class="clearfix"></div></a></li>
 

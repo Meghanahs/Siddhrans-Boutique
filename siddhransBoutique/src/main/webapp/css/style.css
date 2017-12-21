@@ -9,6 +9,7 @@ html, body{
     font-size: 100%;
   	overflow-x: hidden;
 	background-color: #edecec;
+	width:500px;
 }
 body a{
 	transition:0.5s all;
@@ -331,7 +332,7 @@ li#menu-academico{
     float: left;
     width: 24.25%;
     background: #ff9501;
-    padding: 1em;
+    padding: 2em;
 }
 .profile_details {
     float: left;
@@ -345,8 +346,9 @@ li#menu-academico{
     float: left;
     width: 24.25%;
     text-align: center;
-	 padding: 1em;
+	 padding: 2em;
 	 margin-right: 1%;
+	 height: 87px;
 }
 .nav > li > a:hover, .nav > li > a:focus {
     background: none !important;

@@ -27,7 +27,7 @@ public class RegistrationController {
         return "index1";
     }
 	
-	@RequestMapping(value={"/helloWorld"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/home"}, method = RequestMethod.GET)
     public String helloWorld1(Model model) {
         return "index1";
     }

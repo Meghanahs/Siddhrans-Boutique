@@ -203,7 +203,7 @@ label.col-sm-2.control-label {
    border-left: 4px solid #4A4A4A;
 }
 #menu li.active > a {
-  background-color: #2b303a;
+  background-color: #1b93e1;
   color: #ffffff;
 }
 #menu ul li {
@@ -1078,6 +1078,7 @@ caption, th {
 }
 td, th {
     padding: 0;
+    width:400px;
 }
 *, a, button, i, input {
     -webkit-font-smoothing: antialiased;
@@ -4185,6 +4186,7 @@ h4.title, .hightchat-grid1 h3 {
 }
 .agile-info-stat {
     padding-right: 0;
+    height:100%;
 }
 .table.stats-table {
     margin-bottom: 0;
@@ -6426,5 +6428,10 @@ ul.dropdown-menu {
 .main-wthree input.name,.main-wthree input.password {
     padding: 7px 9px 8px 15px;
 }
+.height{
+	height:100%;
+
+	}
+	
 }
 /***responsive***/

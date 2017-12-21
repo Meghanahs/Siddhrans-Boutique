@@ -244,7 +244,7 @@
 				</div>
 				<!--heder end here-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="adddesignation">Designation</a>
+					<li class="breadcrumb-item"><a href="customerdetails">Customers Details</a>
 						<i class="fa fa-angle-right"></i></li>
 				</ol>
 				<!--four-grids here-->
@@ -254,21 +254,86 @@
 				<div class="agileinfo-grap">
 					<div class="agileits-box">
 						<header class="agileits-box-header clearfix">
-							<h3>Designation</h3>
-							<form:form method="POST" modelAttribute="designation"
-								class="form-horizontal">
-
-								<div class="col-md-12">
-									<div class="col-md-6">
-										<form:input type="text" path="designationName"
-														id="designationName" class="form-control input-sm"
-														placeholder="Designation name" />
-												
-													<button type="submit" class="button">Add</button>
-									</div>
-
-								</div>
-							</form:form>
+							<h3>DEPARTMENT</h3>
+									<div class="col-md-12 agile-info-stat height" >
+						<div class="stats-info stats-last widget-shadow">
+						<form:form method="POST" modelAttribute="customerDetails"
+					class="form-horizontal">
+					
+						<div class="row">
+						<div class="form-group col-md-12">
+						
+							<label class="col-md-2 control-lable" for="customerName">Customer Name</label>
+				<div class="col-md-3">
+				<form:input type="text" path="customerName"
+									id="customerName" class="form-control input-sm" placeholder="Customer Name" />
+					</div>	
+						</div>
+						</div>
+					
+					<div class="row">
+						<div class="form-group col-md-12">
+						
+							<label class="col-md-2 control-lable" for="givenDate">Given Date</label>
+				<div class="col-md-3">
+				<form:input type="text" path="givenDate"
+									id="givenDate" class="form-control input-sm" placeholder="Given Date" />
+					</div>	
+						</div>
+						</div>	
+						
+						<div class="row">
+						<div class="form-group col-md-12">
+						
+							<label class="col-md-2 control-lable" for="orderNo">Order Number</label>
+				<div class="col-md-3">
+				<form:input type="text" path="orderNo"
+									id="orderNo" class="form-control input-sm" placeholder="Order No" />
+					</div>	
+						</div>
+						</div>
+						
+						<div class="row">
+						<div class="form-group col-md-12">
+						
+							<label class="col-md-2 control-lable" for="material">Material</label>
+				<div class="col-md-3">
+				<form:input type="text" path="material"
+									id="material" class="form-control input-sm" placeholder="Material" />
+					</div>	
+						</div>
+						</div>
+						
+							<div class="row">
+						<div class="form-group col-md-12">
+						
+							<label class="col-md-2 control-lable" for="Duedate">Due Date</label>
+				<div class="col-md-3">
+				<form:input type="text" path="Duedate"
+									id="Duedate" class="form-control input-sm" placeholder="Due Date" />
+					</div>	
+						</div>
+						</div>
+						
+									<div class="row">
+						<div class="form-group col-md-12">
+						
+							<label class="col-md-2 control-lable" for="phoneno">Phone Number</label>
+				<div class="col-md-3">
+				<form:input type="text" path="phoneno"
+									id="phoneno" class="form-control input-sm" placeholder="Phone No" />
+					</div>	
+						</div>
+						</div>
+						
+							
+					<footer>
+			            <button type="submit" class="button">Add</button>
+			    </footer>
+					
+					</form:form>
+						</div>
+					</div>
 						</header>
 						<div class="agileits-box-body clearfix"></div>
 					</div>
@@ -325,10 +390,10 @@
 					<li><a href="adddepartment"><i class="fa fa-cog"
 							aria-hidden="true"></i><span>Department</span>
 						<div class="clearfix"></div></a></li>
-					<li id="menu-academico"  class="active"><a href="adddesignation"><i
+					<li id="menu-academico"><a href="adddesignation"><i
 							class="fa fa-cogs"></i><span>Designation</span>
 						<div class="clearfix"></div></a></li>
-					<li id="menu-academico"><a href="customerdetails"><i
+					<li id="menu-academico" class="active"><a href="customerdetails"><i
 							class="fa fa-newspaper-o"></i><span>Customers Detail</span>
 							<div class="clearfix"></div></a></li>
 					<li id="menu-academico"><a href="errorpage.html"><i

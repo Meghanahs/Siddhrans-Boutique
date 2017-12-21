@@ -14,7 +14,8 @@ public class CustomerDetails {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="CUSTOMERDETAILS_ID")
 	Integer custemerId;
-	String givenDate;
+	String customerName;
+    String givenDate;
 	Integer orderNo;
 	String material;
 	String Duedate;
@@ -28,6 +29,13 @@ public class CustomerDetails {
 	}
 	public String getGivenDate() {
 		return givenDate;
+	}
+	
+	public String getCustomerName() {
+		return customerName;
+	}
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 	public void setGivenDate(String givenDate) {
 		this.givenDate = givenDate;

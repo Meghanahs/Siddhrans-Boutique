@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.DepartmentDao;
 import com.siddhrans.boutique.model.Department;
-import com.siddhrans.boutique.model.Employee;
+
 
 @Repository("departmentDao")
 @Transactional

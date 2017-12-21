@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.siddhrans.boutique.model.Department;
 import com.siddhrans.boutique.model.Designation;
 import com.siddhrans.boutique.service.DesignationService;
 

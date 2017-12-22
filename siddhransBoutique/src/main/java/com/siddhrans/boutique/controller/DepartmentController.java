@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.siddhrans.boutique.model.Department;
-import com.siddhrans.boutique.model.Employee;
 import com.siddhrans.boutique.service.DepartmentService;
 
 @Controller

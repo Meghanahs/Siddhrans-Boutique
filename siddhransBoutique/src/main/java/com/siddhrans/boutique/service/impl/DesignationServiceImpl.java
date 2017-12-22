@@ -1,5 +1,7 @@
 package com.siddhrans.boutique.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class DesignationServiceImpl implements DesignationService {
 	public void saveDesignation(Designation designation) {
 		// TODO Auto-generated method stub
 		designationDao.saveDesignation(designation);
+	}
+	@Override
+	public List<Designation> findAllDesignations() {
+		return designationDao.findAllDesignations();
 	}
 
 }

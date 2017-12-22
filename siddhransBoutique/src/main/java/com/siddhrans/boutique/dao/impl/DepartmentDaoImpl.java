@@ -23,7 +23,28 @@ public class DepartmentDaoImpl extends AbstractDao<Integer, Department> implemen
 	}
 	
 	@Override
-	public List<Department> fetchAllDepartments() {
+	public Department findById(int id) {
+		Department department = getByKey(id);
+		/*if(user!=null){
+			Hibernate.initialize(user.getUserProfile());
+		}*/
+		return department;
+	}
+	
+	@Override
+	public void updateDepartment(Department department) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteDepartment(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Department> findAllDepartments() {
 		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
 		List<Department> departments = (List<Department>) criteria.list();
@@ -33,13 +54,12 @@ public class DepartmentDaoImpl extends AbstractDao<Integer, Department> implemen
 		}*/
 		return departments;
 	}
-	
+
 	@Override
-	public Department findById(int id) {
-		Department department = getByKey(id);
-		/*if(user!=null){
-			Hibernate.initialize(user.getUserProfile());
-		}*/
-		return department;
+	public boolean isDepartmentNameUnique(Integer id, String departmentName) {
+		// TODO Auto-generated method stub
+		return false;
 	}
+
+
 }

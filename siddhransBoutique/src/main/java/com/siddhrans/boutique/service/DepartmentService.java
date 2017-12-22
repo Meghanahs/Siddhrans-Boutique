@@ -6,9 +6,17 @@ import com.siddhrans.boutique.model.Department;
 
 public interface DepartmentService {
 	
+	 Department findById(int id);
+	 
 	public void saveDepartment(Department department);
 		
-	public List<Department> fetchAllDepartments();
-	public Department findById(int id);
+	void updateDepartment(Department department);
+    
+    void deleteDepartment(int id);
+ 
+    List<Department> findAllDepartments(); 
+     
+    boolean isDepartmentNameUnique(Integer id, String departmentName);
+	
 
 }

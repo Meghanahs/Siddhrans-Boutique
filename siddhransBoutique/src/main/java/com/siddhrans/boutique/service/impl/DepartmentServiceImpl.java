@@ -24,14 +24,31 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
-	public List<Department> fetchAllDepartments() {
-		return departmentDao.fetchAllDepartments();
-	}
-
-	@Override
 	public Department findById(int id) {
 		return departmentDao.findById(id);
 	}
+
+	@Override
+	public void updateDepartment(Department department) {
+		departmentDao.updateDepartment(department);
+	}
+
+	@Override
+	public void deleteDepartment(int id) {
+		departmentDao.deleteDepartment(id);
+	}
+
+	@Override
+	public List<Department> findAllDepartments() {
+		return departmentDao.findAllDepartments();
+	}
+
+	@Override
+	public boolean isDepartmentNameUnique(Integer id, String departmentName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 	
 

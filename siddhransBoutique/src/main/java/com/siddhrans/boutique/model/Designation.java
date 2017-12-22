@@ -34,6 +34,8 @@ public class Designation {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
+	
+
 	public Integer getDesignationId() {
 		return designationId;
 	}

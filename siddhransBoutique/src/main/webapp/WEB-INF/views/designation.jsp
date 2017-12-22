@@ -255,16 +255,22 @@
 					<div class="agileits-box">
 						<header class="agileits-box-header clearfix">
 							<h3>Designation</h3>
+							<h5>${message}</h5>
 							<form:form method="POST" modelAttribute="designation"
-								class="form-horizontal">
+								action="saveDesignation" class="form-horizontal">
 
 								<div class="col-md-12">
 									<div class="col-md-6">
 										<form:input type="text" path="designationName"
-														id="designationName" class="form-control input-sm"
-														placeholder="Designation name" />
-												
-													<button type="submit" class="button">Add</button>
+											id="designationName" class="form-control input-sm"
+											placeholder="Designation name" />
+										<br>
+										<form:select path="department" items="${departmentList}"
+											multiple="false" itemValue="departmentId"
+											itemLabel="departmentName" class="form-control input-sm"
+											id="department" style="margin-left: -97px;" />
+
+										<button type="submit" class="button">Add</button>
 									</div>
 
 								</div>
@@ -316,42 +322,42 @@
 			<div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
 			<div class="menu">
 				<ul id="menu">
-					<li><a href="index.html"><a href="home"><i class="fa fa-home"></i>
-							<span>Home</span>
-						<div class="clearfix"></div></a></li>
-                    <li id="menu-academico"><a href="registerUser"><i
+					<li><a href="index.html"><a href="home"><i
+								class="fa fa-home"></i> <span>Home</span>
+								<div class="clearfix"></div></a></li>
+					<li id="menu-academico"><a href="registerUser"><i
 							class="	fa fa-user-plus"></i><span>Register</span>
-						<div class="clearfix"></div></a></li>
+							<div class="clearfix"></div></a></li>
 					<li><a href="adddepartment"><i class="fa fa-cog"
 							aria-hidden="true"></i><span>Department</span>
-						<div class="clearfix"></div></a></li>
-					<li id="menu-academico"  class="active"><a href="adddesignation"><i
-							class="fa fa-cogs"></i><span>Designation</span>
-						<div class="clearfix"></div></a></li>
+							<div class="clearfix"></div></a></li>
+					<li id="menu-academico" class="active"><a
+						href="adddesignation"><i class="fa fa-cogs"></i><span>Designation</span>
+							<div class="clearfix"></div></a></li>
 					<li id="menu-academico"><a href="customerdetails"><i
 							class="fa fa-newspaper-o"></i><span>Customers Detail</span>
 							<div class="clearfix"></div></a></li>
 					<li id="menu-academico"><a href="errorpage.html"><i
 							class="fa fa-exclamation-triangle" aria-hidden="true"></i><span>Error
 								Page</span>
-						<div class="clearfix"></div></a></li>
+							<div class="clearfix"></div></a></li>
 					<li id="menu-academico"><a href="#"><i class="fa fa-cogs"
 							aria-hidden="true"></i><span> UI Components</span> <span
 							class="fa fa-angle-right" style="float: right"></span>
-						<div class="clearfix"></div></a>
+							<div class="clearfix"></div></a>
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-avaliacoes"><a href="button.html">Buttons</a></li>
 							<li id="menu-academico-avaliacoes"><a href="grid.html">Grids</a></li>
 						</ul></li>
 					<li><a href="tabels.html"><i class="fa fa-table"></i> <span>Tables</span>
-						<div class="clearfix"></div></a></li>
+							<div class="clearfix"></div></a></li>
 					<li><a href="maps.html"><i class="fa fa-map-marker"
 							aria-hidden="true"></i> <span>Maps</span>
-						<div class="clearfix"></div></a></li>
+							<div class="clearfix"></div></a></li>
 					<li id="menu-academico"><a href="#"><i
 							class="fa fa-file-text-o"></i> <span>Pages</span> <span
 							class="fa fa-angle-right" style="float: right"></span>
-						<div class="clearfix"></div></a>
+							<div class="clearfix"></div></a>
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-boletim"><a href="calendar.html">Calendar</a></li>
 							<li id="menu-academico-avaliacoes"><a href="signin.html">Sign
@@ -363,7 +369,7 @@
 						</ul></li>
 					<li><a href="#"><i class="fa fa-check-square-o nav_icon"></i><span>Forms</span>
 							<span class="fa fa-angle-right" style="float: right"></span>
-						<div class="clearfix"></div></a>
+							<div class="clearfix"></div></a>
 						<ul>
 							<li><a href="input.html"> Input</a></li>
 							<li><a href="validation.html">Validation</a></li>

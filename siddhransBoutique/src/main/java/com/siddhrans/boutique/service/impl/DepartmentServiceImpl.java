@@ -1,5 +1,7 @@
 package com.siddhrans.boutique.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,19 @@ public class DepartmentServiceImpl implements DepartmentService {
 	
 	@Override
 	public void saveDepartment(Department department) {
-		// TODO Auto-generated method stub
 		departmentDao.saveDepartment(department);
 	}
+
+	@Override
+	public List<Department> fetchAllDepartments() {
+		return departmentDao.fetchAllDepartments();
+	}
+
+	@Override
+	public Department findById(int id) {
+		return departmentDao.findById(id);
+	}
+	
+	
 
 }

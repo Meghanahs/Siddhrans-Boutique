@@ -1,9 +1,13 @@
 package com.siddhrans.boutique.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -22,6 +26,21 @@ public class Employee {
 	String userName;
 	String password;
 	String gender;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "EMPLOYEE_DESIGNATION", 
+             joinColumns = { @JoinColumn(name = "EMPLOYEE_ID") }, 
+             inverseJoinColumns = { @JoinColumn(name = "DESIGNATION_ID") })
+	Designation designation;
+	
+	public Designation getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(Designation designation) {
+		this.designation = designation;
+	}
+
 	public String getGender() {
 		return gender;
 	}

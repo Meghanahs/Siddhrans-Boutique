@@ -1,4 +1,6 @@
 package com.siddhrans.boutique.service.impl;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,15 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
 
 	@Autowired
 	CustomerDetailsDao customerDetailsDao;
-	
+
 	@Override
 	public void saveCustomerDetails(CustomerDetails cusomerDetails) {
-		// TODO Auto-generated method stub
 		customerDetailsDao.saveCustomerDetails(cusomerDetails);
+	}
+
+	@Override
+	public List<CustomerDetails> fetchAllCustomerDetails() {
+		return customerDetailsDao.fetchAllCustomerDetails();
 	}
 
 }

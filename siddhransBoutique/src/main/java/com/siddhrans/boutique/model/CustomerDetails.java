@@ -15,48 +15,33 @@ public class CustomerDetails {
 	@Column(name="CUSTOMERDETAILS_ID")
 	Integer custemerId;
 	String customerName;
-    String givenDate;
-	Integer orderNo;
-	String material;
-	String Duedate;
+	String email;
+	String dob;
 	String phoneno;
-	
+
 	public Integer getCustemerId() {
 		return custemerId;
 	}
 	public void setCustemerId(Integer custemerId) {
 		this.custemerId = custemerId;
 	}
-	public String getGivenDate() {
-		return givenDate;
-	}
-	
-	public String getCustomerName() {
+    public String getCustomerName() {
 		return customerName;
 	}
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-	public void setGivenDate(String givenDate) {
-		this.givenDate = givenDate;
+	public String getEmail() {
+		return email;
 	}
-	public Integer getOrderNo() {
-		return orderNo;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public void setOrderNo(Integer orderNo) {
-		this.orderNo = orderNo;
+	public String getDob() {
+		return dob;
 	}
-	public String getMaterial() {
-		return material;
-	}
-	public void setMaterial(String material) {
-		this.material = material;
-	}
-	public String getDuedate() {
-		return Duedate;
-	}
-	public void setDuedate(String duedate) {
-		Duedate = duedate;
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 	public String getPhoneno() {
 		return phoneno;
@@ -64,5 +49,4 @@ public class CustomerDetails {
 	public void setPhoneno(String phoneno) {
 		this.phoneno = phoneno;
 	}
-
 }

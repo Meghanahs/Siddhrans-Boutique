@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -23,7 +22,7 @@ public class Designation {
 	String designationName;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "DEPARTMENT_DESIGNATION", 
+    @JoinTable(name = "DESIGNATION_DEPARTMENT", 
              joinColumns = { @JoinColumn(name = "DESIGNATION_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "DEPARTMENT_ID") })
 	Department department;
@@ -34,8 +33,6 @@ public class Designation {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-	
-
 	public Integer getDesignationId() {
 		return designationId;
 	}
@@ -48,5 +45,4 @@ public class Designation {
 	public void setDesignationName(String designationName) {
 		this.designationName = designationName;
 	}
-
 }

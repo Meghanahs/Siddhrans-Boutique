@@ -4,271 +4,141 @@
 <%@include file="header.jsp"%>
 </head>
 <body>
-	<div class="page-container">
-		<!--/content-inner-->
-		<div class="left-content">
-			<div class="mother-grid-inner">
-				<!--header start here-->
-				<div class="header-main">
-					<div class="logo-w3-agile">
-						<h1>Boutique</h1>
+	<%@include file="body.jsp"%>
+	<!--heder end here-->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="customerdetails">Customers
+				Details</a> <i class="fa fa-angle-right"></i></li>
+	</ol>
+	<!--four-grids here-->
+	<div class="agileinfo-grap">
+		<div class="agileits-box">
+			<header class="agileits-box-header clearfix">
+
+				<div class="col-md-12 agile-info-stat height">
+					<div class="tablecontainer">
+						<table class="table table-hover">
+							<thead id="thcolor">
+								<tr>
+									<th>ID.</th>
+									<th>Customer Name</th>
+									<th>DOB</th>
+									<th>Email</th>
+									<th>Phone No</th>
+									<th width="100"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${customerDetailsList}" var="customerDetails">
+									<tr>
+										<td>${customerDetails.custemerId}</td>
+										<td>${customerDetails.customerName}</td>
+										<td>${customerDetails.dob}</td>
+										<td>${customerDetails.email}</td>
+										<td>${customerDetails.phoneno}</td>
+
+										<%-- <td><a
+									href="<c:url value='/delete-designation-${designation.designationId}' />"
+									class="btn btn-danger custom-width">Delete</a></td> --%>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
-					<div class="w3layouts-left">
-
-						<!--search-box-->
-						<div class="w3-search-box">
-							<form action="#" method="post">
-								<input type="text" placeholder="Search..." required="">
-								<input type="submit" value="">
-							</form>
-						</div>
-						<!--//end-search-box-->
-						<div class="clearfix"></div>
-					</div>
-					<div class="w3layouts-right">
-						<div class="profile_details_left">
-							<!--notifications of menu start -->
-							<ul class="nofitications-dropdown">
-								<li class="dropdown head-dpdn"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown"
-									aria-expanded="false"><i class="fa fa-envelope"></i><span
-										class="badge">3</span></a>
-									<ul class="dropdown-menu">
-										<li>
-											<div class="notification_header">
-												<h3>You have 3 new messages</h3>
-											</div>
-										</li>
-										<li><a href="#">
-												<div class="user_img">
-													<img src="images/in11.jpg" alt="">
-												</div>
-												<div class="notification_desc">
-													<p>Lorem ipsum dolor</p>
-													<p>
-														<span>1 hour ago</span>
-													</p>
-												</div>
-												<div class="clearfix"></div>
-										</a></li>
-										<li class="odd"><a href="#">
-												<div class="user_img">
-													<img src="images/in10.jpg" alt="">
-												</div>
-												<div class="notification_desc">
-													<p>Lorem ipsum dolor</p>
-													<p>
-														<span>1 hour ago</span>
-													</p>
-												</div>
-												<div class="clearfix"></div>
-										</a></li>
-										<li><a href="#">
-												<div class="user_img">
-													<img src="images/in9.jpg" alt="">
-												</div>
-												<div class="notification_desc">
-													<p>Lorem ipsum dolor</p>
-													<p>
-														<span>1 hour ago</span>
-													</p>
-												</div>
-												<div class="clearfix"></div>
-										</a></li>
-										<li>
-											<div class="notification_bottom">
-												<a href="#">See all messages</a>
-											</div>
-										</li>
-									</ul></li>
-								<li class="dropdown head-dpdn"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown"
-									aria-expanded="false"><i class="fa fa-bell"></i><span
-										class="badge blue">3</span></a>
-									<ul class="dropdown-menu">
-										<li>
-											<div class="notification_header">
-												<h3>You have 3 new notification</h3>
-											</div>
-										</li>
-										<li><a href="#">
-												<div class="user_img">
-													<img src="images/in8.jpg" alt="">
-												</div>
-												<div class="notification_desc">
-													<p>Lorem ipsum dolor</p>
-													<p>
-														<span>1 hour ago</span>
-													</p>
-												</div>
-												<div class="clearfix"></div>
-										</a></li>
-										<li class="odd"><a href="#">
-												<div class="user_img">
-													<img src="images/in6.jpg" alt="">
-												</div>
-												<div class="notification_desc">
-													<p>Lorem ipsum dolor</p>
-													<p>
-														<span>1 hour ago</span>
-													</p>
-												</div>
-												<div class="clearfix"></div>
-										</a></li>
-										<li><a href="#">
-												<div class="user_img">
-													<img src="images/in7.jpg" alt="">
-												</div>
-												<div class="notification_desc">
-													<p>Lorem ipsum dolor</p>
-													<p>
-														<span>1 hour ago</span>
-													</p>
-												</div>
-												<div class="clearfix"></div>
-										</a></li>
-										<li>
-											<div class="notification_bottom">
-												<a href="#">See all notifications</a>
-											</div>
-										</li>
-									</ul></li>
-								
-								<div class="clearfix"></div>
-							</ul>
-							<div class="clearfix"></div>
-						</div>
-						<!--notification menu end -->
-
-						<div class="clearfix"></div>
-					</div>
-					<div class="profile_details w3l">
-						<ul>
-							<li class="dropdown profile_details_drop"><a href="#"
-								class="dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false">
-									<div class="profile_img">
-										<span class="prfil-img"><img
-											src="static/images/in4.jpg" alt=""> </span>
-										<div class="user-name">
-											<p>Hello User</p>
-
-										</div>
-
-										<div class="clearfix"></div>
-									</div>
-							</a>
-								<ul class="dropdown-menu drp-mnu">
-									<li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-									<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-									<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a>
-									</li>
-								</ul></li>
-						</ul>
-					</div>
-
-					<div class="clearfix"></div>
 				</div>
-				<!--heder end here-->
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="customerdetails">Customers Details</a>
-						<i class="fa fa-angle-right"></i></li>
-				</ol>
-				<!--four-grids here-->
+			</header>
+			<div class="agileits-box-body clearfix"></div>
+		</div>
+	</div>
 
-				<!--//four-grids here-->
-				<!--agileinfo-grap-->
-				<div class="agileinfo-grap">
-					<div class="agileits-box">
-						<header class="agileits-box-header clearfix">
-							<h3>DEPARTMENT</h3>
-									<div class="col-md-12 agile-info-stat height" >
-						<div class="stats-info stats-last widget-shadow">
+	<!--//four-grids here-->
+	<!--agileinfo-grap-->
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="customerdetails">Add New
+				Customer Details</a> <i class="fa fa-angle-right"></i></li>
+	</ol>
+	<div>${message}</div>
+	<div class="agileinfo-grap">
+		<div class="agileits-box">
+			<header class="agileits-box-header clearfix">
+				<h3>Customers Details</h3>
+				<div class="col-md-12 agile-info-stat height">
+					<div class="stats-info stats-last widget-shadow">
 						<form:form method="POST" modelAttribute="customerDetails"
-					class="form-horizontal">
-					
-						<div class="row">
-						<div class="form-group col-md-12">
-						
-							<label class="col-md-2 control-lable" for="customerName">Customer Name</label>
-				<div class="col-md-3">
-				<form:input type="text" path="customerName"
-									id="customerName" class="form-control input-sm" placeholder="Customer Name" />
-					</div>	
-						</div>
-						</div>
-					
-					<div class="row">
-					
-						<div class="form-group col-md-12">
-						
-							<label class="col-md-2 control-lable" for="givenDate">Given Date</label>
-				<div class="col-md-3">
-				<form:input type="text" path="givenDate"
-									id="givenDate" class="form-control input-sm" placeholder="Given Date" />
-					</div>	
-						</div>
-						</div>	
-						
-						<div class="row">
-						<div class="form-group col-md-12">
-						
-							<label class="col-md-2 control-lable" for="orderNo">Order Number</label>
-				<div class="col-md-3">
-				<form:input type="text" path="orderNo"
-									id="orderNo" class="form-control input-sm" placeholder="Order No" />
-					</div>	
-						</div>
-						</div>
-						
-						<div class="row">
-						<div class="form-group col-md-12">
-						
-							<label class="col-md-2 control-lable" for="material">Material</label>
-				<div class="col-md-3">
-				<form:input type="text" path="material"
-									id="material" class="form-control input-sm" placeholder="Material" />
-					</div>	
-						</div>
-						</div>
-						
+							class="form-horizontal">
+
 							<div class="row">
-						<div class="form-group col-md-12">
-						
-							<label class="col-md-2 control-lable" for="Duedate">Due Date</label>
-				<div class="col-md-3">
-				<form:input type="text" path="Duedate"
-									id="Duedate" class="form-control input-sm" placeholder="Due Date" />
-					</div>	
-						</div>
-						</div>
-						
-									<div class="row">
-						<div class="form-group col-md-12">
-						
-							<label class="col-md-2 control-lable" for="phoneno">Phone Number</label>
-				<div class="col-md-3">
-				<form:input type="text" path="phoneno"
-									id="phoneno" class="form-control input-sm" placeholder="Phone No" />
-					</div>	
-						</div>
-						</div>
-						
-							
-					<footer>
-			            <button type="submit" class="button">Add</button>
-			    </footer>
-					
-					</form:form>
-						</div>
-					</div>
-						</header>
-						<div class="agileits-box-body clearfix"></div>
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="customerName">Customer
+										Name</label>
+									<div class="col-md-3">
+										<form:input type="text" path="customerName" id="customerName"
+											class="form-control input-sm" placeholder="Customer Name" />
+									</div>
+									<div class="has-error">
+										<form:errors path="customerName" class="help-inline" />
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="dob">DOB</label>
+									<div class="col-md-3">
+										<form:input type="date" path="dob" id="dob"
+											class="form-control input-sm" placeholder="Date of birth" />
+									</div>
+									<div class="has-error">
+										<form:errors path="dob" class="help-inline" />
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="email">Email</label>
+									<div class="col-md-3">
+										<form:input type="text" path="email" id="email"
+											class="form-control input-sm" placeholder="Email Address" />
+									</div>
+									<div class="has-error">
+										<form:errors path="email" class="help-inline" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="phoneno">Phone
+										Number</label>
+									<div class="col-md-3">
+										<form:input type="text" path="phoneno" id="phoneno"
+											class="form-control input-sm" placeholder="Phone No" />
+									</div>
+									<div class="has-error">
+										<form:errors path="phoneno" class="help-inline" />
+									</div>
+								</div>
+							</div>
+							<footer>
+								<button type="submit" class="button">Add</button>
+							</footer>
+
+						</form:form>
 					</div>
 				</div>
-				<!--//agileinfo-grap-->
-				<!--photoday-section-->
+			</header>
+			<div class="agileits-box-body clearfix"></div>
+		</div>
+	</div>
+	<!--//agileinfo-grap-->
+	<!--photoday-section-->
 
-		<%@include file="footer.jsp"%>
+	<%@include file="footer.jsp"%>
+	</div>
+
 </body>
 </html>

@@ -19,7 +19,6 @@ public class DesignationDaoImpl extends AbstractDao<Integer, Designation> implem
 
 	@Override
 	public void saveDesignation(Designation designation) {
-		// TODO Auto-generated method stub
         persist(designation);
 	}
 	@Override
@@ -32,5 +31,10 @@ public class DesignationDaoImpl extends AbstractDao<Integer, Designation> implem
 			Hibernate.initialize(designation.getDepartment());
 		}
 		return designations;
+	}
+	@Override
+	public Designation findByID(Integer id) {
+		Designation desg= getByKey(id);
+		return desg;
 	}
 }

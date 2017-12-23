@@ -23,9 +23,14 @@ public class DesignationServiceImpl implements DesignationService {
 		// TODO Auto-generated method stub
 		designationDao.saveDesignation(designation);
 	}
+	
 	@Override
 	public List<Designation> findAllDesignations() {
 		return designationDao.findAllDesignations();
 	}
-
+	
+	@Override
+	public Designation findByID(Integer id) {
+		return designationDao.findByID(id);
+	}
 }

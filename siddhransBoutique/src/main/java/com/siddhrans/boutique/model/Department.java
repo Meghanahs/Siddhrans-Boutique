@@ -1,10 +1,12 @@
 package com.siddhrans.boutique.model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name="DEPARTMENTS")
 public class Department {
@@ -12,7 +14,9 @@ public class Department {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="DEPARTMENT_ID")
 	Integer departmentId;
+	
 	String departmentName;
+	
 	public Integer getDepartmentId() {
 		return departmentId;
 	}

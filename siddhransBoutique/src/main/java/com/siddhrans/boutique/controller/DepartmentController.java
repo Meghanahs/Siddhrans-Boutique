@@ -16,16 +16,16 @@ import com.siddhrans.boutique.service.DepartmentService;
 public class DepartmentController {
 	@Autowired
 	DepartmentService departmentService;
-	
+
 	@RequestMapping(value={"/adddepartment"}, method = RequestMethod.GET)
-    public String adddepartment(Model model) {
+	public String adddepartment(Model model) {
 		model.addAttribute("department",new Department());
-        return "department";
-    }
-	
-@RequestMapping(value={"/adddepartment"}, method = RequestMethod.POST)
-    public String adddepartment(@Valid Department department, BindingResult result,Model model) {
+		return "department";
+	}
+
+	@RequestMapping(value={"/adddepartment"}, method = RequestMethod.POST)
+	public String adddepartment(@Valid Department department, BindingResult result,Model model) {
 		departmentService.saveDepartment(department);
-        return "department";
-    }
+		return "department";
+	}
 }

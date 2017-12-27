@@ -27,4 +27,9 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
 		return customerDetailsDao.fetchAllCustomerDetails();
 	}
 
+	@Override
+	public CustomerDetails findByID(Integer id) {
+		return customerDetailsDao.findByID(id);
+	}
+
 }

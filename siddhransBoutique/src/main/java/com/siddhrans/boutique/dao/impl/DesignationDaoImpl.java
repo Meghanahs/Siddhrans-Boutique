@@ -10,7 +10,6 @@ import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.DesignationDao;
-import com.siddhrans.boutique.model.Department;
 import com.siddhrans.boutique.model.Designation;
 
 @Repository("designationDao")

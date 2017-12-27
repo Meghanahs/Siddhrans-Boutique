@@ -1,12 +1,8 @@
 package com.siddhrans.boutique.dao.impl;
-
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.DepartmentDao;
 import com.siddhrans.boutique.model.Department;
@@ -18,7 +14,6 @@ public class DepartmentDaoImpl extends AbstractDao<Integer, Department> implemen
 
 	@Override
 	public void saveDepartment(Department department) {
-		// TODO Auto-generated method stub
 		persist(department);
 	}
 	

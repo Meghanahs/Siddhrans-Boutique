@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.CustomerDetailsDao;
 import com.siddhrans.boutique.model.CustomerDetails;
-import com.siddhrans.boutique.model.Department;
+import com.siddhrans.boutique.model.Designation;
+
 
 @Repository("customerDetails")
 @Transactional
@@ -27,6 +28,12 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
 		List<CustomerDetails> customerDetailsList = (List<CustomerDetails>) criteria.list();		
 		return customerDetailsList;		
+	}
+
+	@Override
+	public CustomerDetails findByID(Integer id) {
+		CustomerDetails cust= getByKey(id);
+		return cust;
 	}
 
 }

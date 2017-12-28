@@ -49,7 +49,14 @@ public class MeasurementDetails {
              joinColumns = { @JoinColumn(name = "MEASUREMENT_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "CUSTOMERDETAILS_ID") })
 	CustomerDetails customerDetails;
+	
     
+	public CustomerDetails getCustomerDetails() {
+		return customerDetails;
+	}
+	public void setCustomerDetails(CustomerDetails customerDetails) {
+		this.customerDetails = customerDetails;
+	}
 	public Integer getMeasurementId() {
 		return measurementId;
 	}

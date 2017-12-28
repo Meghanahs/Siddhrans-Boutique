@@ -21,10 +21,16 @@ public class MeasurementDetailsServiceImpl implements MeasurementDetailsService 
 	public void saveMeasurementDetails(MeasurementDetails measurementDetails) {
 		measurementDetailsDao.saveMeasurementDetails(measurementDetails);
 	}
-
-	@Override
-	public List<MeasurementDetails> fetchAllMeasurementDetails() {		
-		return measurementDetailsDao.fetchAllMeasurementDetails();
+    @Override
+	public MeasurementDetails findByID(Integer id) {
+		// TODO Auto-generated method stub
+		return measurementDetailsDao.findByID(id);
 	}
+	@Override
+	public List<MeasurementDetails> findAllMeasurementDetails() {
+		// TODO Auto-generated method stub
+		return measurementDetailsDao.findAllMeasurementDetails();
+	}
+
 
 }

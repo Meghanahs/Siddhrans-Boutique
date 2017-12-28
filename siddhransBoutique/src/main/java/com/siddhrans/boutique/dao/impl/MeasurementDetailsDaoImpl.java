@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.MeasurementDetailsDao;
+import com.siddhrans.boutique.model.Department;
 import com.siddhrans.boutique.model.Designation;
 import com.siddhrans.boutique.model.MeasurementDetails;
 
@@ -24,18 +25,20 @@ public class MeasurementDetailsDaoImpl extends AbstractDao<Integer, MeasurementD
 
 	}
 
-
+	@Override
+	public MeasurementDetails findByID(Integer id) {
+		MeasurementDetails measure= getByKey(id);
+		return measure;
+	}
 
 	@Override
-	public List<MeasurementDetails> fetchAllMeasurementDetails() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("id"));
+	public List<MeasurementDetails> findAllMeasurementDetails() {
+		Criteria criteria = createEntityCriteria();
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
 		List<MeasurementDetails> measurementDetails = (List<MeasurementDetails>) criteria.list();
-		for(MeasurementDetails measurementDetail:measurementDetails)
-		{
-			Hibernate.initialize(measurementDetail.getMeasurementDetails());
-		}
 		return measurementDetails;
 	}
+
+
 
 }

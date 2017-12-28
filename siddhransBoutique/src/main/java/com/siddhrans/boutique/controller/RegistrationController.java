@@ -50,6 +50,8 @@ public class RegistrationController {
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.POST)
     public String registerUser(@Valid Employee employee, BindingResult result,Model model) {
 		registrationService.saveEmployeeDetails(employee);
-        return "index1";
+		model.addAttribute("employee",new Employee());
+		model.addAttribute("message","Registered user Sucessfully.");
+        return "registration";
     }
 }

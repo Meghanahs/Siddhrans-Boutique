@@ -60,7 +60,7 @@
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 				<h3>Designation</h3>
-				<h5>${message}</h5>
+				<h5 style="color:red;">${message}</h5>
 				<form:form method="POST" modelAttribute="designation"
 					class="form-horizontal">
 
@@ -70,7 +70,7 @@
 								id="designationName" class="form-control input-sm"
 								placeholder="Designation name" />
 							<br>
-							<form:select path="department" items="${departmentList}"
+							<form:select path="department" items="${departmentsList}"
 								multiple="false" itemValue="departmentId"
 								itemLabel="departmentName" class="form-control input-sm"
 								id="department" />

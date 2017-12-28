@@ -5,15 +5,16 @@
 </head>
 <body class="bg-cyan">
 	<%@include file="body.jsp"%>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="registerUser">Registration</a>
-				<i class="fa fa-angle-right"></i></li>
-		</ol>
-		</div>
-		</div>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="registerUser">Registration</a>
+			<i class="fa fa-angle-right"></i></li>
+	</ol>
+		<h5 style="color: red;">${message}</h5>
+	</div>
+	</div>
 
-<div class="body body-s">
-
+	<div class="body body-s">
+	
 		<form:form method="POST" modelAttribute="employee" class="sky-form"
 			style="width:500px;margin-top: 170px;">
 
@@ -98,8 +99,7 @@
 					Designation<label class="select"><form:select
 							path="designation" items="${designations}" multiple="false"
 							itemValue="designationId" itemLabel="designationName"
-							class="form-control input-sm" id="designation"
-							 /></label>
+							class="form-control input-sm" id="designation" /></label>
 					<div class="has-error">
 						<form:errors path="designation" class="help-inline" />
 					</div>

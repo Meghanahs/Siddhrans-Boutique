@@ -5,6 +5,7 @@ import com.siddhrans.boutique.model.MeasurementDetails;
 
 public interface MeasurementDetailsDao {
 	public void saveMeasurementDetails (MeasurementDetails measurementDetails);
-	public List<MeasurementDetails> fetchAllMeasurementDetails();
+	List<MeasurementDetails> findAllMeasurementDetails();
+	public MeasurementDetails findByID(Integer id);
 
 }

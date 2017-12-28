@@ -26,6 +26,8 @@ public class DepartmentController {
 	@RequestMapping(value={"/adddepartment"}, method = RequestMethod.POST)
 	public String adddepartment(@Valid Department department, BindingResult result,Model model) {
 		departmentService.saveDepartment(department);
+		model.addAttribute("department", new Department());
+		model.addAttribute("message","Department added Sucessfully.");
 		return "department";
 	}
 }

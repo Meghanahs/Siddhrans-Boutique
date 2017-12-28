@@ -18,6 +18,7 @@
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 				<h3>DEPARTMENT</h3>
+				<h5 style="color:red;">${message}</h5>
 				<form:form method="POST" modelAttribute="department"
 					class="form-horizontal">
 

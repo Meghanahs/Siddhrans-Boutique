@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import com.siddhrans.boutique.convertor.DeptStrToDeptConverter;
 import com.siddhrans.boutique.convertor.DesgStrToDesgConverter;
+import com.siddhrans.boutique.convertor.StringToCustomerDetails;
 
 
 @Configuration
@@ -30,6 +31,9 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 	@Autowired
 	DesgStrToDesgConverter desgStrToDesgConverter;
 	
+	@Autowired
+	StringToCustomerDetails stringToCustomerDetails;
+	
 	
 	/**
 	 * Configure Converter to be used.
@@ -39,6 +43,7 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addConverter(deptStrToDeptConverter);
 		registry.addConverter(desgStrToDesgConverter);
+		registry.addConverter(stringToCustomerDetails);
 	}
 	
 	@Bean(name="multipartResolver")

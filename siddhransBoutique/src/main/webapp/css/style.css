@@ -6432,6 +6432,9 @@ ul.dropdown-menu {
 	height:100%;
 
 	}
+#tablescroll{
+	overflow-x:auto;
+}
 	
 }
 /***responsive***/

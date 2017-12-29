@@ -24,9 +24,9 @@ public class MesrStrToMesrConverter implements Converter<Object, MeasurementDeta
     public MeasurementDetails convert(Object element) {
     	if(element instanceof String){
     		Integer id = Integer.parseInt((String)element);
-            logger.info("Designation ID is: {}",id);
+            logger.info("MeasurementDetail ID is: {}",id);
             MeasurementDetails measurementDetails= measurementDetailsService.findByID(id);
-            logger.info("Designation : {}",measurementDetails);
+            logger.info("MeasurementDetail : {}",measurementDetails);
             return measurementDetails;
     	} else {
     		return (MeasurementDetails)element;

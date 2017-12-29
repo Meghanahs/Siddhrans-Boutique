@@ -61,7 +61,7 @@
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 				<h3>Measurement Details</h3>
-				<h5 style="color:red;">${message}</h5>
+				<h5 style="color: red;">${message}</h5>
 				<div class="col-md-12 agile-info-stat height">
 					<div class="col-md-6">
 						<div class="stats-info stats-last widget-shadow">
@@ -428,7 +428,8 @@
 							<div class="row">
 								<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_topType">Top Type</label>
+									<label class="col-md-2 control-lable" for="m_topType">Top
+										Type</label>
 									<div class="col-md-3">
 										<form:radiobutton path="m_topType" id="m_topType"
 											value="Slite" label="Slite" />
@@ -440,6 +441,40 @@
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="m_topType">Top
+										Type</label>
+									<div class="col-md-3">
+										<form:radiobutton path="m_topType" id="m_topType"
+											value="Slite" label="Slite" />
+										<form:radiobutton path="m_topType" id="m_topType"
+											value="Flare" label="Flare" />
+									</div>
+									<div class="has-error">
+										<form:errors path="m_topType" class="help-inline" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="m_topType">Top
+										Type</label>
+									<div class="col-md-3">
+										<form:select path="customerDetails" 
+											items="${customerDetailsList}" multiple="false"
+											itemValue="custemerId" itemLabel="customerName"
+											class="form-control input-sm" id="customerDetails" />
+									</div>
+									<div class="has-error">
+										<form:errors path="customerDetails" class="help-inline" />
+									</div>
+								</div>
+							</div>
+
+
 							</br>
 
 							<footer>

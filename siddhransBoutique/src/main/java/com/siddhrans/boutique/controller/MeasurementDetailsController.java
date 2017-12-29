@@ -29,8 +29,6 @@ public class MeasurementDetailsController {
 	
 	@RequestMapping(value={"/addmeasurementDetails"}, method = RequestMethod.GET)
 	public String addmeasurementDetails(Model model) {
-    	List<MeasurementDetails> measurementDetailsList=measurementDetailsService.findAllMeasurementDetails();
-		model.addAttribute("measurementDetailsList",measurementDetailsList);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
 		return "measurementdetails";
 	}
@@ -39,14 +37,11 @@ public class MeasurementDetailsController {
 	public String addmeasurementDetails(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 	
 		if (result.hasErrors()) {
-			logger.debug("ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());
-			List<MeasurementDetails> measurementDetailsList = measurementDetailsService.findAllMeasurementDetails();
-			model.addAttribute("measurementDetailsList",measurementDetailsList);			
+			logger.debug("ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
 			model.addAttribute("measurementDetails", measurementDetails);
-			return "measurementDetails";
+			return "measurementdetails";
 		}
-		List<MeasurementDetails> measurementDetailsList=measurementDetailsService.findAllMeasurementDetails();
-		model.addAttribute("measurementDetailsList",measurementDetailsList);		
+				
 		measurementDetailsService.saveMeasurementDetails(measurementDetails);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
 		model.addAttribute("message","Measurement Details Added Sucessfully.");

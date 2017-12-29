@@ -7,10 +7,12 @@ import javax.transaction.Transactional;
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.MeasurementDetailsDao;
+import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.Department;
 import com.siddhrans.boutique.model.Designation;
 import com.siddhrans.boutique.model.MeasurementDetails;
@@ -39,6 +41,17 @@ public class MeasurementDetailsDaoImpl extends AbstractDao<Integer, MeasurementD
 		return measurementDetails;
 	}
 
-
+	@Override
+	public List<MeasurementDetails> findByCustomer(CustomerDetails customerDetails) {
+		
+		Criteria criteria = createEntityCriteria();
+		criteria.add(Restrictions.eq("customerDetails", customerDetails));
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		List<MeasurementDetails> measurementDetailsList = (List<MeasurementDetails>) criteria.list();
+		for(MeasurementDetails measurementDetails : measurementDetailsList){
+				Hibernate.initialize(measurementDetails.getCustomerDetails());
+        }
+		return measurementDetailsList;
+	}
 
 }

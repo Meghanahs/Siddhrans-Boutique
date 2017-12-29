@@ -17,11 +17,13 @@
 			<header class="agileits-box-header clearfix">
 
 				<div class="col-md-12 agile-info-stat height">
-					<div class="tablecontainer">
+					<div class="tablecontainer"  style="overflow-x:auto;">
 						<form id="submitForm" method="POST">
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>
+										<th>Customer Name</th>
+										<th>Order Id</th>
 										<th>FullLength</th>
 										<th>W/Length</th>
 										<th>Shoulder</th>
@@ -53,6 +55,7 @@
 								<tbody>
 									<c:forEach items="${measurementDetailsList}" var="measurementDetails">
 										<tr>
+											<td>${measurementDetails.customerDetails.customerName}</td>
 											<td>${measurementDetails.measurementId}</td>
 											<td>${measurementDetails.m_fullLength}</td>
 											<td>${measurementDetails.m_wLegngth}</td>

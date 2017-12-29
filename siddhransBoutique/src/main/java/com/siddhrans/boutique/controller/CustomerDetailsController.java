@@ -1,5 +1,6 @@
 package com.siddhrans.boutique.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.MeasurementDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
+import com.siddhrans.boutique.service.MeasurementDetailsService;
 
 
 @Controller
@@ -25,6 +27,9 @@ public class CustomerDetailsController {
 
 	@Autowired
 	CustomerDetailsService customerDetailsService;
+	
+	@Autowired
+	MeasurementDetailsService measurementDetailsService;
 	
 	@Autowired 
 	HttpServletRequest request;
@@ -60,14 +65,22 @@ public class CustomerDetailsController {
 	public String createOrder(Model model) {
 		String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetails= customerDetailsService.findByID(Integer.parseInt(customerId));
+		List<CustomerDetails> customerDetailsList = new ArrayList<CustomerDetails>();
+		customerDetailsList.add(customerDetails);
+		model.addAttribute("customerDetailsList",customerDetailsList );
 		MeasurementDetails measurementDetails = new MeasurementDetails();
+		logger.debug("Customer Details is===>"+customerDetails.getCustomerName());
 		measurementDetails.setCustomerDetails(customerDetails);
 		model.addAttribute("measurementDetails",measurementDetails );
 		return "measurementdetails";
 	}
 	
 	@RequestMapping(value={"/showOrder"}, method = RequestMethod.POST)
-	public String showOrder(HttpServletRequest request) {
+	public String showOrder(Model model) {
+		String customerId = request.getParameter("customerId");
+		CustomerDetails customerDetails= customerDetailsService.findByID(Integer.parseInt(customerId));
+		List<MeasurementDetails> measurementDetailsList = measurementDetailsService.findByCustomer(customerDetails);
+		model.addAttribute("measurementDetailsList", measurementDetailsList);
 		//String customerId = request.
 		return "showOrderHistory";
 	}

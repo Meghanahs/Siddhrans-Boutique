@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.siddhrans.boutique.dao.MeasurementDetailsDao;
+import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.MeasurementDetails;
 import com.siddhrans.boutique.service.MeasurementDetailsService;
 @Service("measurementDetails")
@@ -23,13 +24,15 @@ public class MeasurementDetailsServiceImpl implements MeasurementDetailsService 
 	}
     @Override
 	public MeasurementDetails findByID(Integer id) {
-		// TODO Auto-generated method stub
 		return measurementDetailsDao.findByID(id);
 	}
 	@Override
 	public List<MeasurementDetails> findAllMeasurementDetails() {
-		// TODO Auto-generated method stub
 		return measurementDetailsDao.findAllMeasurementDetails();
+	}
+	@Override
+	public List<MeasurementDetails> findByCustomer(CustomerDetails customerDetails) {
+		return measurementDetailsDao.findByCustomer(customerDetails);
 	}
 
 

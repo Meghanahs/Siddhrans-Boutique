@@ -51,11 +51,11 @@
 			<li id="menu-academico"><a href="customerdetails"><i
 					class="fa fa-newspaper-o"></i><span>Customers Detail</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="addmeasurementDetails"><i
+			<li id="menu-academico"><a href="#"><i
 					class="fa fa-exclamation-triangle" aria-hidden="true"></i><span>Measurement
 						Details</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="showOrder"><i
+			<li id="menu-academico"><a href="#"><i
 					class="fa fa-cogs" aria-hidden="true"></i><span>Show Order
 						Details</span>
 					<div class="clearfix"></div></a></li>

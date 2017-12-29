@@ -60,6 +60,7 @@
 											<td>${measurementDetails.m_fullLength}</td>
 											<td>${measurementDetails.m_wLegngth}</td>
 											<td>${measurementDetails.m_shoulder}</td>
+											<td>${measurementDetails.m_bcross}</td>
 											<td>${measurementDetails.m_chest}</td>
 											<td>${measurementDetails.m_waist}</td>
 											<td>${measurementDetails.m_abd}</td>

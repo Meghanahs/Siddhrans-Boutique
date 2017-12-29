@@ -32,7 +32,7 @@ public class RegistrationController {
 	@RequestMapping(value={"/"}, method = RequestMethod.GET)
     public String helloWorld(Model model) {
 		
-        return "index1";
+        return "login";
     }
 	
 	@RequestMapping(value={"/home"}, method = RequestMethod.GET)

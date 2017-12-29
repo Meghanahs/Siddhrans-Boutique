@@ -299,40 +299,25 @@
 				<!--w3-agileits-pane-->
 				<div class="w3-agileits-pane">
 					<div class="col-md-4 wthree-pan">
-						<div class="panel panel-default">
+						<div class="panel panel-default" style="height: 455px;color:white;">
 							<div class="panel-heading">
-								<i class="fa fa-bell fa-fw"></i> Notifications Panel
+							 Process We Fallowed in Stiching and Designing
 							</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<div class="list-group">
-									<a href="#" class="list-group-item"> <i
-										class="fa fa-comment fa-fw"></i> New Comment <span
-										class="pull-right text-muted small"><em>4 minutes
-												ago</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-										class="pull-right text-muted small"><em>12 minutes
-												ago</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-envelope fa-fw"></i> Message Sent <span
-										class="pull-right text-muted small"><em>27 minutes
-												ago</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small"><em>43 minutes
-												ago</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small"><em>11:32 AM</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-bolt fa-fw"></i> Server Crashed! <span
-										class="pull-right text-muted small"><em>11:13 AM</em> </span>
-									</a> <a href="#" class="list-group-item"> <i
-										class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small"><em>43 minutes
-												ago</em> </span>
-									</a>
+						
+									<ul>
+									<li>Sketching the dress design pattern According to customer requirement</li></br>
+									<li>Measurement of customers</li></br>
+									<li>Cutting</li></br>
+									<li>Stiching as per measurement</li></br>
+									<li>Embroidory if Required</li></br>
+									<li>Trial</li></br>
+									<li>Alteration If Required</li></br>
+									<li>Ironing</li></br>
+									<li>Customer Delivery</li></br>
+									</ul>
 								</div>
 								<!-- /.list-group -->
 

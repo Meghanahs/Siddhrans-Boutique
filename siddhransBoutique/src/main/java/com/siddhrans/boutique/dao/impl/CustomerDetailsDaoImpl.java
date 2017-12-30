@@ -5,19 +5,21 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.CustomerDetailsDao;
+import com.siddhrans.boutique.model.AccessLevels;
 import com.siddhrans.boutique.model.CustomerDetails;
-import com.siddhrans.boutique.model.Designation;
 
 
 @Repository("customerDetails")
 @Transactional
 public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails> implements CustomerDetailsDao {
-
+	
 	@Override
 	public void saveCustomerDetails(CustomerDetails customerDetails) {
+		customerDetails.setAccessLevels(new AccessLevels(3,"CUSTOMER"));
 		persist(customerDetails);
 
 	}

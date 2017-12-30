@@ -9,13 +9,13 @@
 		<li class="breadcrumb-item"><a href="registerUser">Registration</a>
 			<i class="fa fa-angle-right"></i></li>
 	</ol>
-		<h5 style="color: red;">${message}</h5>
+	<h5 style="color: red;">${message}</h5>
 	</div>
 	</div>
 
 	<div class="body body-s">
-	
-		<form:form method="POST" modelAttribute="employee" class="sky-form"
+
+		<form:form method="POST" modelAttribute="user" class="sky-form"
 			style="width:500px;margin-top: 170px;">
 
 			<header style="background-color: #2da5da;">New User
@@ -25,16 +25,16 @@
 
 				<section>
 					<label class="input"><i class="icon-append icon-user"></i>
-						<form:input type="text" path="employeeFirstname"
-							id="employeeFirstname" placeholder="First Name " /> <b
+						<form:input type="text" path="firstName" id="firstName"
+							placeholder="First Name " /> <b
 						class="tooltip tooltip-bottom-right">First name without
 							Special Character</b> </label>
 				</section>
 
 				<section>
 					<label class="input"><i class="icon-append icon-user"></i>
-						<form:input type="text" path="employeeLastname"
-							id="employeeLastname" placeholder="Last Name " /> <b
+						<form:input type="text" path="lastName" id="lastname"
+							placeholder="Last Name " /> <b
 						class="tooltip tooltip-bottom-right">Last name without Special
 							Character</b> </label>
 				</section>
@@ -47,7 +47,13 @@
 							Characters</b>
 					</label>
 				</section>
+				<section>
+					<label class="input"> <i class="icon-append icon-user"></i>
+						<form:input type="date" path="dob" id="dob"
+							class="form-control input-sm" placeholder="Date of birth" />
 
+					</label>
+				</section>
 
 				<section>
 					<label class="input"> <i

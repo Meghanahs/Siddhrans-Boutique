@@ -48,15 +48,19 @@
 		<%@include file="body.jsp"%>
 			<div class="clearfix"></div>
 			<h5 style="color:red;">${message}</h5>
+			<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="adddepartment">New Employee Registration</a>
+			<i class="fa fa-angle-right"></i></li>
+	</ol>
 				</div>
 			</div>
 		</div>		
 		<div class="body body-s">
 			
 			<form:form method="POST" modelAttribute="employee" class="sky-form"
-				style="width:500px;margin-top: 96px;">
+				style="width:500px;margin-top: 153px;">
 
-				<header style="background-color:#2da5da;">New User
+				<header style="background-color:#2da5da;">New Employee
 				Registration</header>
 
 				<fieldset>

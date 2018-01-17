@@ -48,6 +48,11 @@
 		<!--/content-inner-->
 		<%@include file="body.jsp"%>
 			<div class="clearfix"></div>
+				<h5 style="color:red;">${message}</h5>
+			<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="adddepartment">New Customer Registration</a>
+			<i class="fa fa-angle-right"></i></li>
+	</ol>
 				</div>
 			</div>
 		</div>		
@@ -55,9 +60,9 @@
 			
 
 			<form:form method="POST" modelAttribute="user" class="sky-form"
-				style="width:500px;margin-top: 96px;">
+				style="width:500px;margin-top: 153px;">
 
-				<header style="background-color:#2da5da;">New User
+				<header style="background-color:#2da5da;">New Customer
 				Registration</header>
 
 				<fieldset>
@@ -76,7 +81,7 @@
 
 					<section> <label class="input"> <i
 						class="icon-append icon-user"></i> <form:input type="text"
-							path="userName" id="userName" placeholder="userName " /> <b
+							path="userName" id="userName" placeholder="UserName " /> <b
 						class="tooltip tooltip-bottom-right">Username without special
 							Characters</b>
 					</label> </section>

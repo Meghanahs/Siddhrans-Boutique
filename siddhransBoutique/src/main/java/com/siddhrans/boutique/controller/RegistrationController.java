@@ -39,19 +39,19 @@ public class RegistrationController {
     public String helloWorld1(Model model) {
         return "index1";
     }
-	@RequestMapping(value={"/addEmployee"}, method = RequestMethod.GET)
-    public String addEmployee(Model model) {
+	@RequestMapping(value={"/registerUser"}, method = RequestMethod.GET)
+    public String registerUser(Model model) {
 		List<Designation> designations=designationService.findAllDesignations();
 		model.addAttribute("designations",designations);
 		model.addAttribute("employee",new Employee());
-        return "addEmployee";
+        return "registration";
     }
 	
-	@RequestMapping(value={"/addEmployee"}, method = RequestMethod.POST)
-    public String addEmployee(@Valid Employee employee, BindingResult result,Model model) {
+	@RequestMapping(value={"/registerUser"}, method = RequestMethod.POST)
+    public String registerUser(@Valid Employee employee, BindingResult result,Model model) {
 		registrationService.saveEmployeeDetails(employee);
 		model.addAttribute("employee",new Employee());
-		model.addAttribute("message","Added Employee Sucessfully.");
-        return "addEmployee";
+		model.addAttribute("message","Registered user Sucessfully.");
+        return "registration";
     }
 }

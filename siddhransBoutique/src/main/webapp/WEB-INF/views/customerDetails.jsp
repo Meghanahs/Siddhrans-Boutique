@@ -37,13 +37,12 @@ function showOrderAction(){
 									<tr>
 										<th>Select Customer</th>
 										<th>ID.</th>
-										<th>Customer FirstName</th>
-										<th>Customer LastName</th>
-										<th>Phone No</th>
-										<th>Email</th>
-										<th>Gender</th>
+										<th>Customer Name</th>
 										<th>DOB</th>
-									
+										<th>Email</th>
+										<th>Phone No</th>
+
+
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -53,13 +52,10 @@ function showOrderAction(){
 
 											<td><input name="customerId" type="radio"  onclick="enableButtons()" id="customerId" value="${customerDetails.custemerId}"/></td>
 											<td>${customerDetails.custemerId}</td>
-											<td>${customerDetails.firstName}</td>
-											<td>${customerDetails.lastName}</td>
-											<td>${customerDetails.email}</td>
-											<td>${customerDetails.phoneNo}</td>
-											<td>${customerDetails.email}</td>
-											<td>${customerDetails.gender}</td>
+											<td>${customerDetails.customerName}</td>
 											<td>${customerDetails.dob}</td>
+											<td>${customerDetails.email}</td>
+											<td>${customerDetails.phoneno}</td>
 
 											<%-- <td><a
 									href="<c:url value='/delete-designation-${designation.designationId}' />"
@@ -91,134 +87,75 @@ function showOrderAction(){
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-			<h3>CUSTOMER DETAILS</h3>
-							<div class="col-md-12 agile-info-stat height">
-								<div class="stats-info stats-last widget-shadow">
-									<form:form method="POST" modelAttribute="customerDetails"
-										class="form-horizontal">
+				<h3>Customers Details</h3>
+				<div class="col-md-12 agile-info-stat height">
+					<div class="stats-info stats-last widget-shadow">
+						<form:form method="POST" modelAttribute="customerDetails"
+							class="form-horizontal">
 
-										<div class="row">
-											<div class="form-group col-md-12">
+							<div class="row">
+								<div class="form-group col-md-12">
 
-												<label class="col-md-2 control-lable" for="firstName">First
-													Name</label>
-												<div class="col-md-3">
-													<form:input type="text" path="firstName" id="firstName"
-														class="form-control input-sm" placeholder="First Name" />
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="form-group col-md-12">
-
-												<label class="col-md-2 control-lable" for="lastName">Last
-													Name</label>
-												<div class="col-md-3">
-													<form:input type="text" path="lastName" id="lastName"
-														class="form-control input-sm" placeholder="Last Name" />
-												</div>
-											</div>
-										</div>
-										<%-- 	<div class="row">
-+											<div class="form-group col-md-12">
-+
-+												<label class="col-md-2 control-lable" for="givenDate">Given
-+													Date</label>
-+												<div class="col-md-3">
-+													<form:input type="text" path="givenDate" id="givenDate"
-+														class="form-control input-sm" placeholder="Given Date" />
-+												</div>
-+											</div>
-+										</div> --%>
-										<%-- <div class="row">
-+											<div class="form-group col-md-12">
-+
-+												<label class="col-md-2 control-lable" for="orderNo">Order
-+													Number</label>
-+												<div class="col-md-3">
-+													<form:input type="text" path="orderNo" id="orderNo"
-+														class="form-control input-sm" placeholder="Order No" />
-+												</div>
-+											</div>
-+										</div>
-+
-+										<div class="row">
-+											<div class="form-group col-md-12">
-+
-+												<label class="col-md-2 control-lable" for="material">Material</label>
-+												<div class="col-md-3">
-+													<form:input type="text" path="material" id="material"
-+														class="form-control input-sm" placeholder="Material" />
-+												</div>
-+											</div>
-+										</div>
-+
-+										<div class="row">
-+											<div class="form-group col-md-12">
-+
-+												<label class="col-md-2 control-lable" for="Duedate">Due
-+													Date</label>
-+												<div class="col-md-3">
-+													<form:input type="text" path="Duedate" id="Duedate"
-+														class="form-control input-sm" placeholder="Due Date" />
-+												</div>
-+											</div>
-+										</div>
-+
-+ --%>
-
-										<div class="row">
-											<div class="form-group col-md-12">
-
-												<label class="col-md-2 control-lable" for="gender">Gender</label>
-											<div class="col-md-3">
-													<form:radiobutton path="gender" id="gender" value="Male"
-														label="Male" />
-													<form:radiobutton path="gender" id="gender" value="Female"
-														label="Female" />
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="form-group col-md-12">
-
-												<label class="col-md-2 control-lable" for="dob">DOB</label>
-												<div class="col-md-3">
-													<form:input type="date" path="dob" id="dob"
-														class="form-control input-sm" placeholder="Date of birth" />
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="form-group col-md-12">
-
-												<label class="col-md-2 control-lable" for="phoneno">Phone
-													Number</label>
-												<div class="col-md-3">
-													<form:input type="text" path="phoneno" id="phoneno"
-														class="form-control input-sm" placeholder="Phone No" />
-												</div>
-											</div>
-										</div>
-										<div class="row">
-										<div class="form-group col-md-12">
-
-												<label class="col-md-2 control-lable" for="email">E-mail</label>
-												<div class="col-md-3">
-													<form:input type="text" path="email" id="email"
-														class="form-control input-sm" placeholder="email" />
-												</div>
-											</div>
-										</div>
-
-										<footer>
-											<button type="submit" class="button">Add</button>
-										</footer>
-
-									</form:form>
+									<label class="col-md-2 control-lable" for="customerName">Customer
+										Name</label>
+									<div class="col-md-3">
+										<form:input type="text" path="customerName" id="customerName"
+											class="form-control input-sm" placeholder="Customer Name" />
+									</div>
+									<div class="has-error">
+										<form:errors path="customerName" class="help-inline" />
+									</div>
 								</div>
 							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="dob">DOB</label>
+									<div class="col-md-3">
+										<form:input type="date" path="dob" id="dob"
+											class="form-control input-sm" placeholder="Date of birth" />
+									</div>
+									<div class="has-error">
+										<form:errors path="dob" class="help-inline" />
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="email">Email</label>
+									<div class="col-md-3">
+										<form:input type="text" path="email" id="email"
+											class="form-control input-sm" placeholder="Email Address" />
+									</div>
+									<div class="has-error">
+										<form:errors path="email" class="help-inline" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="phoneno">Phone
+										Number</label>
+									<div class="col-md-3">
+										<form:input type="text" path="phoneno" id="phoneno"
+											class="form-control input-sm" placeholder="Phone No" />
+									</div>
+									<div class="has-error">
+										<form:errors path="phoneno" class="help-inline" />
+									</div>
+								</div>
+							</div>
+							<footer>
+								<button type="submit" class="button">Add</button>
+							</footer>
+
+						</form:form>
+					</div>
+				</div>
 			</header>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
@@ -228,6 +165,6 @@ function showOrderAction(){
 
 	<%@include file="footer.jsp"%>
 	</div>
-</div>
+
 </body>
 </html>

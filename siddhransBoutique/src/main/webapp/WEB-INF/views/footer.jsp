@@ -37,13 +37,10 @@
 	<div class="menu">
 		<ul id="menu">
 			<li><a href="index.html"><a href="home"><i
-				    class="fa fa-home"></i> <span>Home</span>
-					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="addEmployee"><i
-					class="	fa fa-user-plus"></i><span>Add Employee</span>
-					<div class="clearfix"></div></a></li>
+						class="fa fa-home"></i> <span>Home</span>
+						<div class="clearfix"></div></a></li>
 			<li id="menu-academico"><a href="registerUser"><i
-					class="	fa fa-user-plus"></i><span>Register User</span>
+					class="	fa fa-user-plus"></i><span>Register</span>
 					<div class="clearfix"></div></a></li>
 			<li><a href="adddepartment"><i class="fa fa-cog"
 					aria-hidden="true"></i><span>Department</span>
@@ -58,8 +55,9 @@
 					class="fa fa-exclamation-triangle" aria-hidden="true"></i><span>Measurement
 						Details</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="#"><i class="fa fa-cogs"
-					aria-hidden="true"></i><span>Show Order Details</span>
+			<li id="menu-academico"><a href="#"><i
+					class="fa fa-cogs" aria-hidden="true"></i><span>Show Order
+						Details</span>
 					<div class="clearfix"></div></a></li>
 			<li><a href="tabels.html"><i class="fa fa-table"></i> <span>Tables</span>
 					<div class="clearfix"></div></a></li>

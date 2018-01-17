@@ -10,13 +10,45 @@
 		<li class="breadcrumb-item"><a href="customerdetails"></a> <i class="fa fa-angle-right"></i></li>
 	</ol> -->
 	<!--four-grids here-->
-<!-- 	<div class="agileinfo-grap">
+	<div class="agileinfo-grap">
 		<div class="agileits-box">
-			<header class="agileits-box-header clearfix">		
+			<header class="agileits-box-header clearfix">
+
+				<%-- <div class="col-md-12 agile-info-stat height">
+					<div class="tablecontainer">
+						<table class="table table-hover">
+							<thead id="thcolor">
+								<tr>
+									<th>ID.</th>
+									<th>Customer Name</th>
+									<th>DOB</th>
+									<th>Email</th>
+									<th>Phone No</th>
+									<th width="100"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${customerDetailsList}" var="customerDetails">
+									<tr>
+										<td>${customerDetails.custemerId}</td>
+										<td>${customerDetails.customerName}</td>
+										<td>${customerDetails.dob}</td>
+										<td>${customerDetails.email}</td>
+										<td>${customerDetails.phoneno}</td>
+
+										<td><a
+									href="<c:url value='/delete-designation-${designation.designationId}' />"
+									class="btn btn-danger custom-width">Delete</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>--%>
 			</header>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
-	</div> -->
+	</div>
 
 	<!--//four-grids here-->
 	<!--agileinfo-grap-->
@@ -442,13 +474,12 @@
 		<div class="agileits-box-body clearfix"></div>
 	</div>
 	</div>
-	
 	<!--//agileinfo-grap-->
 	<!--photoday-section-->
 
 	<%@include file="footer.jsp"%>
 	</div>
-	
+	</div>
 
 </body>
 </html>

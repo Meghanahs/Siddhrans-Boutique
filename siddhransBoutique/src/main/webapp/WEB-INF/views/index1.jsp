@@ -299,7 +299,7 @@
 				<!--w3-agileits-pane-->
 				<div class="w3-agileits-pane">
 					<div class="col-md-4 wthree-pan">
-						<div class="panel panel-default" style="height: 485px;color:white;">
+						<div class="panel panel-default" style="height: 455px;color:white;">
 							<div class="panel-heading">
 							 Process We Fallowed in Stiching and Designing
 							</div>

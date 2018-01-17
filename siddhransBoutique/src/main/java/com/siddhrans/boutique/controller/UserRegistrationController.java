@@ -29,22 +29,12 @@ public class UserRegistrationController {
 	@Autowired
 	DesignationService designationService;
 
-	@RequestMapping(value={"/"}, method = RequestMethod.GET)
-	public String helloWorld(Model model) {
-
-		return "login";
-	}
-
-	@RequestMapping(value={"/home"}, method = RequestMethod.GET)
-	public String helloWorld1(Model model) {
-		return "index1";
-	}
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.GET)
 	public String registerUser(Model model) {
 		List<Designation> designations=designationService.findAllDesignations();
 		model.addAttribute("designations",designations);
 		model.addAttribute("user",new User());
-		return "registration";
+		return "userRegistration";
 	}
 
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.POST)
@@ -52,6 +42,6 @@ public class UserRegistrationController {
 		userRegistrationService.saveUserDetails(employee);
 		model.addAttribute("user",new User());
 		model.addAttribute("message"," User Registered Sucessfully.");
-		return "registration";
+		return "userRegistration";
 	}
 }

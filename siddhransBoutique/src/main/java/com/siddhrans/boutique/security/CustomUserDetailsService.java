@@ -10,15 +10,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.siddhrans.biometric.model.User;
-import com.siddhrans.biometric.model.UserProfile;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.Employee;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.RegistrationService;
 
 public class CustomUserDetailsService implements UserDetailsService {
+
+	@Override
+	public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}/*
 	
 	@Autowired
 	CustomerDetailsService customerDetailsService;
@@ -50,4 +53,4 @@ public class CustomUserDetailsService implements UserDetailsService {
 		logger.info("authorities : {}", authorities);
 		return authorities;
 	}
-}
+*/}

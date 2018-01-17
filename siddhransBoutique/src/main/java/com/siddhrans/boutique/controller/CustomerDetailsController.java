@@ -59,7 +59,7 @@ public class CustomerDetailsController {
 		model.addAttribute("message", "Customer added Successfully");
 		model.addAttribute("customerDetails",new CustomerDetails());
 		return "customerDetails";
-	}
+	} 
 	
 	@RequestMapping(value={"/createOrder"}, method = RequestMethod.POST)
 	public String createOrder(Model model) {
@@ -69,7 +69,7 @@ public class CustomerDetailsController {
 		customerDetailsList.add(customerDetails);
 		model.addAttribute("customerDetailsList",customerDetailsList );
 		MeasurementDetails measurementDetails = new MeasurementDetails();
-		logger.debug("Customer Details is===>"+customerDetails.getCustomerName());
+		logger.debug("Customer Details is===>"+customerDetails.getFirstName());
 		measurementDetails.setCustomerDetails(customerDetails);
 		model.addAttribute("measurementDetails",measurementDetails );
 		return "measurementdetails";

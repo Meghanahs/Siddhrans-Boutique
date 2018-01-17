@@ -22,7 +22,6 @@ public class User {
 	String lastName;
 	String email;
 	String phoneNo;
-	String aadhaarNo;
 	String userName;
 	String password;
 	String gender;
@@ -34,14 +33,10 @@ public class User {
 	inverseJoinColumns = { @JoinColumn(name = "ACCESS_LEVEL_ID") })
 	AccessLevels accessLevels;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinTable(name = "USER_DESIGNATION", 
-	joinColumns = { @JoinColumn(name = "USER_ID") }, 
-	inverseJoinColumns = { @JoinColumn(name = "DESIGNATION_ID") })
-	Designation designation;
-
 	@Transient
 	String confirmPassword;
+
+
 
 	public Integer getUserId() {
 		return userId;
@@ -83,14 +78,6 @@ public class User {
 		this.phoneNo = phoneNo;
 	}
 
-	public String getAadhaarNo() {
-		return aadhaarNo;
-	}
-
-	public void setAadhaarNo(String aadhaarNo) {
-		this.aadhaarNo = aadhaarNo;
-	}
-
 	public String getUserName() {
 		return userName;
 	}
@@ -129,14 +116,6 @@ public class User {
 
 	public void setAccessLevels(AccessLevels accessLevels) {
 		this.accessLevels = accessLevels;
-	}
-
-	public Designation getDesignation() {
-		return designation;
-	}
-
-	public void setDesignation(Designation designation) {
-		this.designation = designation;
 	}
 
 	public String getConfirmPassword() {

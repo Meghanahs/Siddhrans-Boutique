@@ -16,14 +16,15 @@ import javax.persistence.Table;
 public class CustomerDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="CUSTOMERDETAILS_ID")
+	@Column(name="CUSTOMER_ID")
+	
 	Integer custemerId;
 	String firstName;
 	String lastName;
 	String email;
-	String dob;
-	String phoneno;
+	String phoneNo;
 	String gender;
+	String dob;
 
 	public String getFirstName() {
 		return firstName;
@@ -37,6 +38,14 @@ public class CustomerDetails {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
 	public String getGender() {
 		return gender;
 	}
@@ -61,10 +70,5 @@ public class CustomerDetails {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
-	public String getPhoneno() {
-		return phoneno;
-	}
-	public void setPhoneno(String phoneno) {
-		this.phoneno = phoneno;
-	}
+
 }

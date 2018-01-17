@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import com.siddhrans.boutique.convertor.DeptStrToDeptConverter;
 import com.siddhrans.boutique.convertor.DesgStrToDesgConverter;
+import com.siddhrans.boutique.convertor.DressTypeStrToDressTypeConverter;
 import com.siddhrans.boutique.convertor.StringToCustomerDetails;
 
 
@@ -34,6 +35,9 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 	@Autowired
 	StringToCustomerDetails stringToCustomerDetails;
 	
+	@Autowired
+	DressTypeStrToDressTypeConverter dressTypeStrToDressTypeConverter;
+	
 	
 	/**
 	 * Configure Converter to be used.
@@ -44,6 +48,7 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 		registry.addConverter(deptStrToDeptConverter);
 		registry.addConverter(desgStrToDesgConverter);
 		registry.addConverter(stringToCustomerDetails);
+		registry.addConverter(dressTypeStrToDressTypeConverter);
 	}
 	
 	@Bean(name="multipartResolver")

@@ -50,7 +50,18 @@ public class MeasurementDetails {
              inverseJoinColumns = { @JoinColumn(name = "CUSTOMERDETAILS_ID") })
 	CustomerDetails customerDetails;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "MEASUREMENTDETAILS_DRESSTYPE", 
+             joinColumns = { @JoinColumn(name = "MEASUREMENT_ID") }, 
+             inverseJoinColumns = { @JoinColumn(name = "DRESSTYPE_ID") })
+	DressType dressType;
     
+	public DressType getDressType() {
+		return dressType;
+	}
+	public void setDressType(DressType dressType) {
+		this.dressType = dressType;
+	}
 	public CustomerDetails getCustomerDetails() {
 		return customerDetails;
 	}

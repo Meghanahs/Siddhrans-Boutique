@@ -457,6 +457,22 @@
 									</div>
 								</div>
 							</div>
+							
+							<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="dressType">Dress Type</label>
+									<div class="col-md-3">
+										<form:select path="dressType" 
+											items="${dressTypeList}" multiple="false"
+											itemValue="dressId" itemLabel="dressName"
+											class="form-control input-sm" id="dressType" />
+									</div>
+									<div class="has-error">
+										<form:errors path="dressType" class="help-inline" />
+									</div>
+								</div>
+							</div>
 
 
 							</br>

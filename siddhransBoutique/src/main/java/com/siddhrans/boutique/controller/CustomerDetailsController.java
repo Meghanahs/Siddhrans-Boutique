@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.siddhrans.boutique.model.CustomerDetails;
+import com.siddhrans.boutique.model.DressType;
 import com.siddhrans.boutique.model.MeasurementDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
+import com.siddhrans.boutique.service.DressTypeService;
 import com.siddhrans.boutique.service.MeasurementDetailsService;
 
 
@@ -30,6 +32,9 @@ public class CustomerDetailsController {
 	
 	@Autowired
 	MeasurementDetailsService measurementDetailsService;
+	
+	@Autowired
+	DressTypeService dressTypeService;
 	
 	@Autowired 
 	HttpServletRequest request;
@@ -72,6 +77,8 @@ public class CustomerDetailsController {
 		logger.debug("Customer Details is===>"+customerDetails.getCustomerName());
 		measurementDetails.setCustomerDetails(customerDetails);
 		model.addAttribute("measurementDetails",measurementDetails );
+		List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList",dressTypeList);
 		return "measurementdetails";
 	}
 	

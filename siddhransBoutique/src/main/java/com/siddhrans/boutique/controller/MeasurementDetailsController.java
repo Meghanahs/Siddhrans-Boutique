@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.siddhrans.boutique.model.Department;
 import com.siddhrans.boutique.model.Designation;
+import com.siddhrans.boutique.model.DressType;
 import com.siddhrans.boutique.model.MeasurementDetails;
+import com.siddhrans.boutique.service.DressTypeService;
 import com.siddhrans.boutique.service.MeasurementDetailsService;
 
 @Controller
@@ -25,7 +27,8 @@ public class MeasurementDetailsController {
 	
 	@Autowired
 	MeasurementDetailsService measurementDetailsService;
-	
+	@Autowired
+	DressTypeService dressTypeService;
 	
 	@RequestMapping(value={"/addmeasurementDetails"}, method = RequestMethod.GET)
 	public String addmeasurementDetails(Model model) {

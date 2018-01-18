@@ -49,16 +49,16 @@
 					class="fa fa-cogs"></i><span>Designation</span>
 					<div class="clearfix"></div></a></li>
 			<li id="menu-academico"><a href="adddressType"><i
-					class="fa fa-cogs"></i><span>DressType</span>
+					class="fa fa-table"></i><span>DressType</span>
 					<div class="clearfix"></div></a></li>
 			<li id="menu-academico"><a href="customerdetails"><i
 					class="fa fa-newspaper-o"></i><span>Customers Detail</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="#"><i
+	<!--		<li id="menu-academico"><a href="#"><i
 					class="fa fa-exclamation-triangle" aria-hidden="true"></i><span>Measurement
 						Details</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="#"><i class="fa fa-cogs"
+ 			<li id="menu-academico"><a href="#"><i class="fa fa-cogs"
 					aria-hidden="true"></i><span>Show Order Details</span>
 					<div class="clearfix"></div></a></li>
 			<li><a href="tabels.html"><i class="fa fa-table"></i> <span>Tables</span>
@@ -85,7 +85,7 @@
 				<ul>
 					<li><a href="input.html"> Input</a></li>
 					<li><a href="validation.html">Validation</a></li>
-				</ul></li>
+				</ul></li> -->
 		</ul>
 	</div>
 </div>

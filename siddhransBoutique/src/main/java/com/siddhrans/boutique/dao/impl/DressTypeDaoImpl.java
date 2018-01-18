@@ -39,9 +39,6 @@ public class DressTypeDaoImpl extends AbstractDao<Integer, DressType> implements
 		
 	}
 
-
-
-
 	@Override
 	public boolean isDressTypeNameUnique(Integer id, String dressTypeName) {
 		// TODO Auto-generated method stub

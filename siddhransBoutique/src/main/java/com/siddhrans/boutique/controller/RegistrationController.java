@@ -39,6 +39,11 @@ public class RegistrationController {
     public String helloWorld1(Model model) {
         return "index1";
     }
+	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
+    public String hello(Model model) {
+        return "login";
+    }
+	
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.GET)
     public String registerUser(Model model) {
 		List<Designation> designations=designationService.findAllDesignations();

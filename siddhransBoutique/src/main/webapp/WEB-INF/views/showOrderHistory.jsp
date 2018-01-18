@@ -49,6 +49,8 @@
 										<th>Back Length</th>
 										<th>Fitting</th>
 										<th>Top Type</th>
+										<th>Dress Type</th>
+										<th>Amount</th>
                                         <th width="100"></th>
 									</tr>
 								</thead>
@@ -82,6 +84,8 @@
 											<td>${measurementDetails.m_bL}</td>
 											<td>${measurementDetails.m_fitting}</td>
 											<td>${measurementDetails.m_topType}</td>
+											<td>${measurementDetails.dressType.dressName}</td>
+											<td>${measurementDetails.dressType.amount}</td>
                                     <%-- <td><a
 									href="<c:url value='/delete-designation-${designation.designationId}' />"
 									class="btn btn-danger custom-width">Delete</a></td> --%>

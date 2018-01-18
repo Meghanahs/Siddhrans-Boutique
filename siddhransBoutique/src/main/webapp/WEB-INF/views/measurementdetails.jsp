@@ -72,7 +72,7 @@
 									<div class="form-group col-md-12">
 										<label class="col-md-2 control-lable" for="m_fullLength">Full
 											Length</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_fullLength" id="m_fullLength"
 												class="form-control input-sm" placeholder="Full Length" />
 										</div>
@@ -86,7 +86,7 @@
 									<div class="form-group col-md-12">
 
 										<label class="col-md-2 control-lable" for="m_wLegngth">W/Length</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="m_wLegngth" path="m_wLegngth"
 												id="m_wLegngth" class="form-control input-sm"
 												placeholder="W/Length" />
@@ -101,7 +101,7 @@
 									<div class="form-group col-md-12">
 
 										<label class="col-md-2 control-lable" for="m_shoulder">Shoulder</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_shoulder" id="m_shoulder"
 												class="form-control input-sm" placeholder="Shoulder" />
 										</div>
@@ -114,7 +114,7 @@
 									<div class="form-group col-md-12">
 
 										<label class="col-md-2 control-lable" for="m_bcross">B.Cross</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_bcross" id="m_bcross"
 												class="form-control input-sm" placeholder="B.Cross" />
 										</div>
@@ -128,7 +128,7 @@
 									<div class="form-group col-md-12">
 
 										<label class="col-md-2 control-lable" for="m_chest">Chest</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_chest" id="m_chest"
 												class="form-control input-sm" placeholder="Chest" />
 										</div>
@@ -142,7 +142,7 @@
 									<div class="form-group col-md-12">
 
 										<label class="col-md-2 control-lable" for="m_sleeveloose">Waist</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_waist" id="m_waist"
 												class="form-control input-sm" placeholder="Waist" />
 										</div>
@@ -156,7 +156,7 @@
 									<div class="form-group col-md-12">
 
 										<label class="col-md-2 control-lable" for="m_bcross">Abd</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_abd" id="m_abd"
 												class="form-control input-sm" placeholder="Abd" />
 										</div>
@@ -169,7 +169,7 @@
 									<div class="form-group col-md-12">
 
 										<label class="col-md-2 control-lable" for="m_bcross">Hip</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_tHip" id="m_tHip"
 												class="form-control input-sm" placeholder="Hip" />
 										</div>
@@ -184,7 +184,7 @@
 
 										<label class="col-md-2 control-lable" for="m_bcross">Sleeve
 											x Loose</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_sleeveloose"
 												id="m_sleeveloose" class="form-control input-sm"
 												placeholder="Sleeve x Loose" />
@@ -200,7 +200,7 @@
 
 										<label class="col-md-2 control-lable" for="m_armHole">Arm
 											Hole</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_armHole" id="m_armHole"
 												class="form-control input-sm" placeholder="Arm Hole" />
 										</div>
@@ -215,7 +215,7 @@
 
 										<label class="col-md-2 control-lable" for="m_neckLow">Neck
 											Low</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_neckLow" id="m_neckLow"
 												class="form-control input-sm" placeholder="Neck Low" />
 										</div>
@@ -231,7 +231,7 @@
 
 										<label class="col-md-2 control-lable" for="m_neck_width">Neck
 											Width</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_neck_width" id="m_neck_width"
 												class="form-control input-sm" placeholder="Neck Width" />
 										</div>
@@ -246,7 +246,7 @@
 									<div class="form-group col-md-12">
 
 										<label class="col-md-2 control-lable" for="m_bn_Low">B.N.Low</label>
-										<div class="col-md-3">
+										<div class="col-md-5">
 											<form:input type="text" path="m_bn_Low" id="m_bn_Low"
 												class="form-control input-sm" placeholder="B.N.Low" />
 										</div>
@@ -255,17 +255,12 @@
 										</div>
 									</div>
 								</div>
-						</div>
-					</div>
-
-
-					<div class="col-md-6">
-						<div class="stats-info stats-last widget-shadow">
-							<div class="row">
+								
+								<div class="row">
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="m_collar">Collar</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_collar" id="m_collar"
 											class="form-control input-sm" placeholder="Collar" />
 									</div>
@@ -274,13 +269,20 @@
 									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6">
+						<div class="stats-info stats-last widget-shadow">
+							
 
 							<div class="row">
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="m_salwarXbottom">Salwar
 										x Bottom</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_salwarXbottom"
 											id="m_salwarXbottom" class="form-control input-sm"
 											placeholder="Salwar x Bottom" />
@@ -295,7 +297,7 @@
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="m_chudidar">Chudidar</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_chudidar" id="m_chudidar"
 											class="form-control input-sm" placeholder="Chudidar" />
 									</div>
@@ -309,7 +311,7 @@
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="m_pant">Pant</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_pant" id="m_pant"
 											class="form-control input-sm" placeholder="Pant" />
 									</div>
@@ -323,7 +325,7 @@
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="m_pHip">Hip</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_pHip" id="m_pHip"
 											class="form-control input-sm" placeholder="Hip" />
 									</div>
@@ -338,7 +340,7 @@
 
 									<label class="col-md-2 control-lable" for="m_kneeRound">Knee
 										Round</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_kneeRound" id="m_kneeRound"
 											class="form-control input-sm" placeholder="Knee Round" />
 									</div>
@@ -352,7 +354,7 @@
 
 									<label class="col-md-2 control-lable" for="m_thighRound">Thigh
 										Round</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_thighRound" id="m_thighRound"
 											class="form-control input-sm" placeholder="Thigh Round" />
 									</div>
@@ -367,7 +369,7 @@
 
 									<label class="col-md-2 control-lable" for="m_fL">Front
 										length</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_fL" id="m_fL"
 											class="form-control input-sm" placeholder="Front length" />
 									</div>
@@ -381,7 +383,7 @@
 
 									<label class="col-md-2 control-lable" for="m_fW">Front
 										Width</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_fW" id="m_fW"
 											class="form-control input-sm" placeholder="Front Width" />
 									</div>
@@ -395,7 +397,7 @@
 
 									<label class="col-md-2 control-lable" for="m_bL">Back
 										Length</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:input type="text" path="m_bL" id="m_bL"
 											class="form-control input-sm" placeholder="Front Width" />
 									</div>
@@ -409,7 +411,7 @@
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="m_fitting">Fitting</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:radiobutton path="m_fitting" id="m_fitting"
 											value="B.Fit" label="B.Fit" />
 										<form:radiobutton path="m_fitting" id="m_fitting"
@@ -430,7 +432,7 @@
 
 									<label class="col-md-2 control-lable" for="m_topType">Top
 										Type</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:radiobutton path="m_topType" id="m_topType"
 											value="Slite" label="Slite" />
 										<form:radiobutton path="m_topType" id="m_topType"
@@ -446,7 +448,7 @@
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="m_topType">Customer Name</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:select path="customerDetails" 
 											items="${customerDetailsList}" multiple="false"
 											itemValue="custemerId" itemLabel="customerName"
@@ -462,7 +464,7 @@
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="dressType">Dress Type</label>
-									<div class="col-md-3">
+									<div class="col-md-5">
 										<form:select path="dressType" 
 											items="${dressTypeList}" multiple="false"
 											itemValue="dressId" itemLabel="dressName"

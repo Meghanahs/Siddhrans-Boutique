@@ -34,6 +34,10 @@ public class MeasurementDetailsServiceImpl implements MeasurementDetailsService 
 	public List<MeasurementDetails> findByCustomer(CustomerDetails customerDetails) {
 		return measurementDetailsDao.findByCustomer(customerDetails);
 	}
+	@Override
+	public List<MeasurementDetails> findByStatus(String status) {
+		return measurementDetailsDao.findByStatus(status);
+	}
 
 
 }

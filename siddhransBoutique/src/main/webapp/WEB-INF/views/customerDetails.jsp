@@ -62,9 +62,9 @@ function showOrderAction(){
 									class="btn btn-danger custom-width">Delete</a></td> --%>
 										</tr>
 									</c:forEach>
-									<tr><td><input type="button"  id="createOrder" value ="Create Order" onclick="createOrdeAction()"></button></td> 
+									<tr><td><input type="button"  id="createOrder" value ="Create Order" disabled="disabled" onclick="createOrdeAction()"></td> 
 									</tr>
-									<tr><td><input type="button" id="showOrder" value = "Show Order History" onclick="showOrderAction()"></button></td> 
+									<tr><td><input type="button" id="showOrder" value = "Show Order History" disabled="disabled" onclick="showOrderAction()"></td> 
 									</tr>
 								</tbody>
 							</table>

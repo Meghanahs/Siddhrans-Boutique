@@ -10,4 +10,5 @@ public interface MeasurementDetailsDao {
 	List<MeasurementDetails> findAllMeasurementDetails();
 	public MeasurementDetails findByID(Integer id);
 	public List<MeasurementDetails> findByCustomer(CustomerDetails customerDetails);
+	public List<MeasurementDetails> findByStatus(String status);
 }

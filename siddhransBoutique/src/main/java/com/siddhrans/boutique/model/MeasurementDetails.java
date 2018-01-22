@@ -43,7 +43,14 @@ public class MeasurementDetails {
 	Float m_bL;
 	String m_fitting;
     String m_topType;
+    String status;
     
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "MEASUREMENTDETAILS_CUSTOMERDETAILS", 
              joinColumns = { @JoinColumn(name = "MEASUREMENT_ID") }, 

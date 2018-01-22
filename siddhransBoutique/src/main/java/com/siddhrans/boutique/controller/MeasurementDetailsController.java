@@ -44,7 +44,7 @@ public class MeasurementDetailsController {
 			model.addAttribute("measurementDetails", measurementDetails);
 			return "measurementdetails";
 		}
-				
+		measurementDetails.setStatus("PROCESSING");
 		measurementDetailsService.saveMeasurementDetails(measurementDetails);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
 		model.addAttribute("message","Measurement Details Added Sucessfully.");

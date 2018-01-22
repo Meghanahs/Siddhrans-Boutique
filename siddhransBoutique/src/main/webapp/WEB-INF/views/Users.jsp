@@ -9,7 +9,7 @@
 
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="customerdetails">List of
-				Users</a> <i class="fa fa-angle-right"></i></li>
+				Employee's</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
 	<!--four-grids here-->
 	<div class="agileinfo-grap">

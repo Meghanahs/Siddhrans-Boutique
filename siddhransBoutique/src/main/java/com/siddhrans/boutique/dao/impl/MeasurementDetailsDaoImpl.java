@@ -53,4 +53,13 @@ public class MeasurementDetailsDaoImpl extends AbstractDao<Integer, MeasurementD
 		return measurementDetailsList;
 	}
 
+	@Override
+	public List<MeasurementDetails> findByStatus(String status) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		criteria.add(Restrictions.eq("status", status));
+		List<MeasurementDetails> measurementDetails = (List<MeasurementDetails>) criteria.list();
+		return measurementDetails;
+	}
+
 }

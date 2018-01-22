@@ -10,5 +10,6 @@ public interface MeasurementDetailsService {
 	public List<MeasurementDetails> findAllMeasurementDetails();
 	public MeasurementDetails findByID(Integer id);
 	public List<MeasurementDetails> findByCustomer(CustomerDetails customerDetails);
-
+	public List<MeasurementDetails> findByStatus(String status);
+   
 }

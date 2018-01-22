@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -52,6 +53,13 @@ public class RegistrationController {
         return "registration";
     }
 	
+	@RequestMapping(value={"/Users"}, method = RequestMethod.GET)
+    public String User(Model model) {
+		List<Employee> employeeList=registrationService.fetchAllEmployees();
+		model.addAttribute("employeeList",employeeList);
+        return "Users";
+    }
+	
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.POST)
     public String registerUser(@Valid Employee employee, BindingResult result,Model model) {
 		registrationService.saveEmployeeDetails(employee);
@@ -59,4 +67,11 @@ public class RegistrationController {
 		model.addAttribute("message","Registered user Sucessfully.");
         return "registration";
     }
+	@RequestMapping(value = { "/delete-employee-{employeeId}" }, method = RequestMethod.GET)
+	public String deleteEmployee(@PathVariable String employeeId) {
+		
+		registrationService.deleteEmployee(Integer.parseInt(employeeId));
+		
+		return "redirect:/Users";
+	}
 }

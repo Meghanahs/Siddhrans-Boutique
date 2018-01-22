@@ -3867,6 +3867,8 @@ h2.agileits-icons-title,h3.agileits-icons-title {
 .well {
     font-weight: 300;
     font-size: 14px;
+    width: 135px;
+    margin-left: 442px;
 }
 .list-group-item {
     font-weight: 300;

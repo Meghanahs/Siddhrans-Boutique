@@ -1,5 +1,7 @@
 package com.siddhrans.boutique.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +22,25 @@ RegistrationDao registrationDao;
 		// TODO Auto-generated method stub
 		registrationDao.saveEmployeeDetails(employee);
 	}
+	@Override
+	public List<Employee> fetchAllEmployees() {
+		return registrationDao.fetchAllEmployees();
+	}
+	@Override
+	public void updateEmployee(Employee employee) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void deleteEmployee(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public Employee findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

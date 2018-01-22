@@ -40,7 +40,10 @@
 						class="fa fa-home"></i> <span>Home</span>
 						<div class="clearfix"></div></a></li>
 			<li id="menu-academico"><a href="registerUser"><i
-					class="	fa fa-user-plus"></i><span>Register</span>
+					class="	fa fa-user-plus"></i><span>Register User</span>
+					<div class="clearfix"></div></a></li>
+					<li id="menu-academico"><a href="Users"><i
+					class="fa fa-group"></i><span>List Of Users</span>
 					<div class="clearfix"></div></a></li>
 			<li><a href="adddepartment"><i class="fa fa-cog"
 					aria-hidden="true"></i><span>Department</span>
@@ -54,6 +57,20 @@
 			<li id="menu-academico"><a href="customerdetails"><i
 					class="fa fa-newspaper-o"></i><span>Customers Detail</span>
 					<div class="clearfix"></div></a></li>
+					
+		    			<li id="menu-academico"><a href="#"><i
+					class="fa fa-file-text-o"></i> <span>Process</span> <span
+					class="fa fa-angle-right" style="float: right"></span>
+					<div class="clearfix"></div></a>
+				<ul id="menu-academico-sub">
+					<li id="menu-academico-boletim"><a href="calendar.html">Cutting</a></li>
+					<li id="menu-academico-avaliacoes"><a href="signin.html">Stiching</a></li>
+					<li id="menu-academico-avaliacoes"><a href="signup.html">Embroidory</a></li>
+					<li id="menu-academico-avaliacoes"><a href="signup.html">Alteration</a></li>
+					<li id="menu-academico-avaliacoes"><a href="signup.html">Ironing</a></li>
+
+
+				</ul></li>			
 	<!--		<li id="menu-academico"><a href="#"><i
 					class="fa fa-exclamation-triangle" aria-hidden="true"></i><span>Measurement
 						Details</span>

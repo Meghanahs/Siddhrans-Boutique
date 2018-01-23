@@ -18,9 +18,10 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer" style="overflow-x: auto;">
-						<table class="table table-hover">
+						<table class="table table-hover" id="dataTable">
 							<thead id="thcolor">
 								<tr>
+								    <th>Selector</th>
 									<th>ID.</th>
 									<th>First Name</th>
 									<th>Last Name</th>
@@ -37,6 +38,7 @@
 							<tbody>
 								<c:forEach items="${employeeList}" var="employee">
 									<tr>
+									    <td><input name="chk" type="checkbox" id="selector" ></td>
 										<td>${employee.employeeId}</td>
 										<td>${employee.employeeFirstname}</td>
 										<td>${employee.employeeLastname}</td>
@@ -47,12 +49,6 @@
 										<td>${employee.phoneNo}</td>
 										<td>${employee.gender}</td>
 										<td>${employee.designation.designationName}</td>
-										<td><a
-											href="<c:url value='/edit-user-${employee.userName}' />"
-											class="btn btn-success custom-width">edit</a> <a
-											href="<c:url value='/delete-user-${employee.userName}' />"
-											class="btn btn-danger custom-width">delete</a></td>
-
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -60,14 +56,42 @@
 					</div>
 				</div>
 			</header>
-			<div class="well" style="width: 135px; margin-left: 442px;">
-				<a href="<c:url value='/registerUser' />">Add New User</a>
-			</div>
+		<%-- 	<table>
+			<tr><input type="button" id="edit" Value="Edit">
+			<input type="button" value="Add New User" href="<c:url value='/registerUser' />"  >		
+			</tr>			
+			</table> --%>
+			<input type="button" value="Delete" onclick="deleteRow('dataTable')" />
+			<INPUT type="button" value="Edit" onclick="" />
+			<button><a href="<c:url value='/registerUser' />">Add New User</a></button>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>
 
 	<%@include file="footer.jsp"%>
+	<script language="javascript">
+	function deleteRow(tableID) {
+		try {
+		var table = document.getElementById(tableID);
+		var rowCount = table.rows.length;
+
+		for(var i=0; i<rowCount; i++) {
+			var row = table.rows[i];
+			var chkbox = row.cells[0].childNodes[0];
+			if(null != chkbox && true == chkbox.checked) {
+				table.deleteRow(i);
+				rowCount--;
+				i--;
+			}
+
+
+		}
+		}catch(e) {
+			alert(e);
+		}
+	}
+
+	</script>
 	</div>
 </body>
 </html>

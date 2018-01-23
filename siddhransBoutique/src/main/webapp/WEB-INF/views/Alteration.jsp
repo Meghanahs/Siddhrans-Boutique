@@ -4,7 +4,7 @@
 <%@include file="header.jsp"%>
 <script type="text/javascript">
 function enableButtons(){
-	document.getElementById("startStiching").disabled=false;
+	document.getElementById("startAlteration").disabled=false;
 }
 </script>
 </head>
@@ -12,11 +12,11 @@ function enableButtons(){
 	<%@include file="body.jsp"%>
 	<!--heder end here-->
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="adddepartment">Cutting
-				Orders</a> <i class="fa fa-angle-right"></i></li>
+		<li class="breadcrumb-item"><a href="embroidoryUnit">Alteration Orders</a> <i
+			class="fa fa-angle-right"></i></li>
 	</ol>
 	<!--four-grids here-->
-	<h5 style="color: red;">${message}</h5>
+<h5 style="color:red;">${message}</h5>
 	<!--//four-grids here-->
 	<!--agileinfo-grap-->
 	<div class="agileinfo-grap">
@@ -38,77 +38,76 @@ function enableButtons(){
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${processingMeasurementList}"
+									<c:forEach items="${embroidoryMeasurementList}"
 										var="measurement">
 										<tr>
 											<td><input name="measurementId" type="radio"
 												onclick="enableButtons()" id="measurementId"
-												value="${measurement.measurementId}"
-												onkeypress="enableButtons()" /></td>
+												value="${measurement.measurementId}" onkeypress="enableButtons()"/></td>
 											<td>${measurement.measurementId}</td>
 											<td>${measurement.dressType.dressName}</td>
 											<td>${measurement.status}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
-							</table>
-							<input type="submit" id="startStiching" value="Start Cutting"
-								disabled="disabled">
-
+							</table> 
+							<input type="submit" id="startAlteration" value="Start Alteration"  disabled="disabled">
+							
 						</form:form>
 					</div>
-				</div>
-		</div>
-		</header>
-		<div class="agileits-box-body clearfix"></div>
-	</div>
-	</div>
-
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="customerdetails">On-processing
-				Cutting Items</a> <i class="fa fa-angle-right"></i></li>
-	</ol>
-	<div class="agileinfo-grap">
-		<div class="agileits-box">
-			<header class="agileits-box-header clearfix">
-
-				<div class="col-md-12 agile-info-stat height">
-					<div class="tablecontainer">
-
-						<table class="table table-hover">
-							<thead id="thcolor">
-								<tr>
-									<th>Serial No.</th>
-									<th>Order ID</th>
-									<th>Dress Type</th>
-									<th>Order Status</th>
-									<th width="100"></th>
-								</tr>
-							</thead>
-							<tbody>
-							<% int i = 1; %>
-								<c:forEach items="${cuttingMeasurementList}" var="measurement">
-									<tr>
-										<td><%= i %> <% i++; %></td>
-										<td>${measurement.measurementId}</td>
-										<td>${measurement.dressType.dressName}</td>
-										<td>${measurement.status}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
 					</div>
 				</div>
 			</header>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>
+	
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="stichingUnit">On-processing Alteration Items</a> <i
+			class="fa fa-angle-right"></i></li>
+	</ol>
+		<div class="agileinfo-grap">
+		<div class="agileits-box">
+			<header class="agileits-box-header clearfix">
 
-
-
-
-
-
+				<div class="col-md-12 agile-info-stat height">
+						<div class="tablecontainer">
+						
+							<table class="table table-hover">
+								<thead id="thcolor">
+									<tr>
+										<th>Serial No.</th>
+										<th>Order ID</th>
+										<th>Dress Type</th>
+										<th>Order Status</th>
+										<th width="100"></th>
+									</tr>
+								</thead>
+								<tbody>
+								<% int i = 1; %>
+									<c:forEach items="${alterationMeasurementList}"
+										var="measurement">
+										<tr>
+											<td><%= i %> <% i++; %></td>
+											<td>${measurement.measurementId}</td>
+											<td>${measurement.dressType.dressName}</td>
+											<td>${measurement.status}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table> 
+					</div>	
+				</div>
+			</header>
+			<div class="agileits-box-body clearfix"></div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
 	<%@include file="footer.jsp"%>
 	</div>
 </body>

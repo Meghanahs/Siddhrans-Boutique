@@ -64,10 +64,10 @@
 					<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-boletim"><a href="cuttingUnit">Cutting</a></li>
-					<li id="menu-academico-avaliacoes"><a href="signin.html">Stiching</a></li>
-					<li id="menu-academico-avaliacoes"><a href="signup.html">Embroidory</a></li>
-					<li id="menu-academico-avaliacoes"><a href="signup.html">Alteration</a></li>
-					<li id="menu-academico-avaliacoes"><a href="signup.html">Ironing</a></li>
+					<li id="menu-academico-avaliacoes"><a href="stichingUnit">Stiching</a></li>
+					<li id="menu-academico-avaliacoes"><a href="embroidoryUnit">Embroidory</a></li>
+					<li id="menu-academico-avaliacoes"><a href="alterationUnit">Alteration</a></li>
+					<li id="menu-academico-avaliacoes"><a href="ironingUnit">Ironing</a></li>
 
 
 				</ul></li>			

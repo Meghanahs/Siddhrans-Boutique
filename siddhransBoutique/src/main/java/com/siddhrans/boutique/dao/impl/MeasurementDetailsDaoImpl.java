@@ -62,4 +62,10 @@ public class MeasurementDetailsDaoImpl extends AbstractDao<Integer, MeasurementD
 		return measurementDetails;
 	}
 
+	@Override
+	public void saveOrUpdateMeasurementDetails(MeasurementDetails measurementDetails) {
+	  saveOrUpdate(measurementDetails);
+		
+	}
+
 }

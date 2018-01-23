@@ -43,9 +43,9 @@ public class ProcessController {
 			model.addAttribute("measurementDetails", measurementDetails);
 			return "Cutting";
 		}
-
-		measurementDetails.setStatus("CUTTING");
-		measurementDetailsService.saveMeasurementDetails(measurementDetails);
+        MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+        meassurementDetailsbyId.setStatus("CUTTING");
+		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
 		List<MeasurementDetails> processingMeasurementList = measurementDetailsService.findByStatus("PROCESSING");
 		model.addAttribute("processingMeasurementList", processingMeasurementList);
 		List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
@@ -76,9 +76,9 @@ public class ProcessController {
 			model.addAttribute("measurementDetails", measurementDetails);
 			return "Stiching";
 		}
-
-		measurementDetails.setStatus("STICHING");
-		measurementDetailsService.saveMeasurementDetails(measurementDetails);
+		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		meassurementDetailsbyId.setStatus("STICHING");
+		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
 		List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
 		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
 		List<MeasurementDetails> stichingMeasurementList = measurementDetailsService.findByStatus("STICHING");
@@ -109,9 +109,9 @@ public class ProcessController {
 			model.addAttribute("measurementDetails", measurementDetails);
 			return "Embroidory";
 		}
-
-		measurementDetails.setStatus("EMBROIDORY");
-		measurementDetailsService.saveMeasurementDetails(measurementDetails);
+		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		meassurementDetailsbyId.setStatus("EMBROIDORY");
+		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
 		List<MeasurementDetails> stichingMeasurementList = measurementDetailsService.findByStatus("STICHING");
 		model.addAttribute("stichingMeasurementList", stichingMeasurementList);
 		List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
@@ -142,9 +142,9 @@ public class ProcessController {
 			model.addAttribute("measurementDetails", measurementDetails);
 			return "Alteration";
 		}
-
-		measurementDetails.setStatus("ALTERATION");
-		measurementDetailsService.saveMeasurementDetails(measurementDetails);
+		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		meassurementDetailsbyId.setStatus("ALTERATION");
+		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
 		List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
 		model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
 		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
@@ -175,9 +175,9 @@ public class ProcessController {
 			model.addAttribute("measurementDetails", measurementDetails);
 			return "Ironing";
 		}
-
-		measurementDetails.setStatus("IRONING");
-		measurementDetailsService.saveMeasurementDetails(measurementDetails);
+		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		meassurementDetailsbyId.setStatus("IRONING");
+		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
 		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
 		model.addAttribute("alterationMeasurementList", alterationMeasurementList);
 		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");

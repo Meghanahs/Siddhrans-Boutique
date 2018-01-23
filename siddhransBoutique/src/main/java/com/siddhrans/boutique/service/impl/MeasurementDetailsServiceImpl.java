@@ -38,6 +38,11 @@ public class MeasurementDetailsServiceImpl implements MeasurementDetailsService 
 	public List<MeasurementDetails> findByStatus(String status) {
 		return measurementDetailsDao.findByStatus(status);
 	}
+	@Override
+	public void saveOrUpdateMeasurementDetails(MeasurementDetails measurementDetails) {
+		measurementDetailsDao.saveOrUpdateMeasurementDetails(measurementDetails);	
+		
+	}
 
 
 }

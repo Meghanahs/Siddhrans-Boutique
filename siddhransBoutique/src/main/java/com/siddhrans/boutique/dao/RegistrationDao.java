@@ -9,6 +9,8 @@ public interface RegistrationDao {
 	public void saveEmployeeDetails(Employee employee);
 	public List<Employee> fetchAllEmployees();
 	void updateEmployee(Employee employee);    
-	void deleteEmployee(int id);
+	public void deleteEmployeeById(int employeeId);
 	Employee findById(int id);
+	Employee findByUserName(String userName);
+	void updateUser(Employee employee);
 }

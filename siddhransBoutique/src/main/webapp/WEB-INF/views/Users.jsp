@@ -2,6 +2,20 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
+<script type="text/javascript">
+function enableButtons(){
+	document.getElementById("deleteUser").disabled=false;
+	document.getElementById("editUser").disabled=false;
+}
+function deleteEmployee(){
+		document.getElementById("submitForm").action="deleteUser";
+		document.getElementById("submitForm").submit();	
+}
+function editEmployee(){
+	document.getElementById("submitForm").action="edit-{userName}";
+	document.getElementById("submitForm").submit();		
+}
+</script>
 </head>
 <body>
 	<%@include file="body.jsp"%>
@@ -18,7 +32,8 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer" style="overflow-x: auto;">
-						<table class="table table-hover" id="dataTable">
+					<form:form modelAttribute="employee" id="submitForm" method="GET">
+						<table class="table table-hover" >
 							<thead id="thcolor">
 								<tr>
 								    <th>Selector</th>
@@ -38,7 +53,7 @@
 							<tbody>
 								<c:forEach items="${employeeList}" var="employee">
 									<tr>
-									    <td><input name="chk" type="checkbox" id="selector" ></td>
+									    <td><input name="employeeId" type="radio" id="employeeId" value="${employee.employeeId}" onclick="enableButtons()" ></td>
 										<td>${employee.employeeId}</td>
 										<td>${employee.employeeFirstname}</td>
 										<td>${employee.employeeLastname}</td>
@@ -53,6 +68,8 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						<!-- </form> -->
+					</form:form>
 					</div>
 				</div>
 			</header>
@@ -61,15 +78,19 @@
 			<input type="button" value="Add New User" href="<c:url value='/registerUser' />"  >		
 			</tr>			
 			</table> --%>
-			<input type="button" value="Delete" onclick="deleteRow('dataTable')" />
-			<INPUT type="button" value="Edit" onclick="" />
+			<%-- <button onclick="deleteEmployee()"><a href="<c:url value='/deleteUser' />"
+													class="btn btn-success custom-width">Delete</a></button> --%>
+			<input type="button" value="Delete" id="deleteUser" disabled="disabled" onclick="deleteEmployee()"  /> 
+			<input type="button" value="Edit" id="editUser" disabled="disabled" onclick="editEmployee()"  /> 
+			<%-- <button onclick="editEmployee()"><a href="<c:url value='/edit-${employee.userName}' />"
+													class="btn btn-success custom-width">edit</a></button> --%>
 			<button><a href="<c:url value='/registerUser' />">Add New User</a></button>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>
 
 	<%@include file="footer.jsp"%>
-	<script language="javascript">
+<!-- 	<script language="javascript">
 	function deleteRow(tableID) {
 		try {
 		var table = document.getElementById(tableID);
@@ -91,7 +112,7 @@
 		}
 	}
 
-	</script>
+	</script> -->
 	</div>
 </body>
 </html>

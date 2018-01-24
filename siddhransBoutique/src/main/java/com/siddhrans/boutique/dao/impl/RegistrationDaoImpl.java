@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.siddhrans.boutique.dao.AbstractDao;
@@ -41,12 +42,7 @@ public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> impleme
 		
 	}
 
-	@Override
-	public void deleteEmployee(int id) {
-		Employee employee=findById(id);
-	    delete(employee);
-		
-	}
+
 
 	@Override
 	public Employee findById(int id) {
@@ -56,5 +52,27 @@ public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> impleme
 		}*/
 		return employee;
 	}
+
+	@Override
+	public void deleteEmployeeById(int employeeId) {
+      Employee emp=getByKey(employeeId);
+		delete(emp);
+	}
+
+	@Override
+	public Employee findByUserName(String userName) {
+		Criteria crit = createEntityCriteria();
+		crit.add(Restrictions.eq("userName", userName));
+		Employee user = (Employee)crit.uniqueResult();
+		if(user!=null){
+			Hibernate.initialize(user.getDesignation());
+		}
+		return user;
+	}
+
+	@Override
+	public void updateUser(Employee employee) {
+		update(employee);
+			}
 
 }

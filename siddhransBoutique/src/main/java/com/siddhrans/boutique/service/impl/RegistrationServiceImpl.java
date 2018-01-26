@@ -33,8 +33,7 @@ RegistrationDao registrationDao;
 	}
 	@Override
 	public Employee findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return registrationDao.findById(id);
 	}
 	@Override
 	public void deleteEmployeeById(int employeeId) {

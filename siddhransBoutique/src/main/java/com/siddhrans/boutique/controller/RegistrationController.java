@@ -25,75 +25,87 @@ import com.siddhrans.boutique.service.RegistrationService;
 @RequestMapping("/")
 @SessionAttributes("roles")
 public class RegistrationController {
-	
+
 	@Autowired
 	RegistrationService registrationService;
-	
+
 	@Autowired
 	DesignationService designationService;
-	
+
 	@RequestMapping(value={"/"}, method = RequestMethod.GET)
-    public String helloWorld(Model model) {
-		
-        return "login";
-    }
-	
+	public String helloWorld(Model model) {
+
+		return "login";
+	}
+
 	@RequestMapping(value={"/home"}, method = RequestMethod.GET)
-    public String helloWorld1(Model model) {
-        return "index1";
-    }
+	public String helloWorld1(Model model) {
+		return "index1";
+	}
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
-    public String hello(Model model) {
-        return "login";
-    }
-	
+	public String hello(Model model) {
+		return "login";
+	}
+
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.GET)
-    public String registerUser(Model model) {
+	public String registerUser(Model model) {
 		List<Designation> designations=designationService.findAllDesignations();
 		model.addAttribute("designations",designations);
 		model.addAttribute("employee",new Employee());
+		return "registration";
+	}
+	
+	@RequestMapping(value={"/registerUser"}, method = RequestMethod.POST)
+    public String registerUser(@Valid Employee employee, BindingResult result,Model model) {
+		registrationService.saveEmployeeDetails(employee);
+		model.addAttribute("employee",new Employee());
+		model.addAttribute("message","Registered user Sucessfully.");
         return "registration";
     }
-	
+
 	@RequestMapping(value={"/Users"}, method = RequestMethod.GET)
-    public String User(Model model) {
+	public String User(Model model) {
 		List<Employee> employeeList=registrationService.fetchAllEmployees();
 		model.addAttribute("employeeList",employeeList);
-        return "Users";
-    }
-	
-/*	@RequestMapping(value = { "/deleteUser" }, method = RequestMethod.GET)
+		return "Users";
+	}
+
+	/*	@RequestMapping(value = { "/deleteUser" }, method = RequestMethod.GET)
 	public String deleteEmployee(HttpServletRequest request) {
 		int id=Integer.parseInt(request.getParameter("id"));
 		registrationService.deleteEmployeeById(id);
 		return "redirect:/Users";
 	}*/
-	@RequestMapping(value = { "/deleteUser" }, method = RequestMethod.GET)
-	public String deleteEmployee(@PathVariable String employeeId, ModelMap model) {
-		registrationService.deleteEmployeeById(Integer.parseInt(employeeId));
+	@RequestMapping(value = { "/deleteUser" }, method = RequestMethod.POST)
+	public String deleteEmployee(@Valid Employee employee, BindingResult result, ModelMap model) {
+		registrationService.deleteEmployeeById(employee.getEmployeeId());
 		List<Employee> employeeList=registrationService.fetchAllEmployees();
 		model.addAttribute("employeeList",employeeList);
 		return "redirect:/Users";
 	}
-	@RequestMapping(value={"/edit-{userName}"}, method = RequestMethod.GET)
-    public String editUser(@PathVariable String userName, ModelMap model) {
-		Employee employee = registrationService.findByUserName(userName);
+	@RequestMapping(value={"/editUser"}, method = RequestMethod.POST)
+	public String editUser(@Valid Employee employee, BindingResult result,ModelMap model) {
+		/*Employee employee = registrationService.findById();*/
+		Employee employeeData = registrationService.findById(employee.getEmployeeId());
 		List<Designation> designations = designationService.findAllDesignations();
 		model.addAttribute("designations", designations);
-		model.addAttribute("employee", employee);
-		model.addAttribute("edit", true);
+		model.addAttribute("employeeData", employeeData);
+/*		model.addAttribute("edit", true);*/
 		/*Employee emp = registrationService.findByUserName(userName);
 		model.addAttribute("employeeList",emp);*/		
-        return "editUser";
-    }
-	@RequestMapping(value={"/edit-{userName}"}, method = RequestMethod.POST)
-    public String updateUser(@Valid Employee employee, BindingResult result,
-			ModelMap model, @PathVariable String userName) {
-	     registrationService.updateUser(employee);
-	 return "editUser";
-	 
+		return "editUser";
 	}
 	
+	
+	
+	@RequestMapping(value={"/editUserData"}, method = RequestMethod.POST)
+	public String updateUser(@Valid Employee employeeData, BindingResult result,
+			ModelMap model) {
+		registrationService.updateUser(employeeData);
+		return "redirect:/Users";
+
+	}
+
 
 }
 

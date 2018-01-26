@@ -12,7 +12,7 @@ function deleteEmployee(){
 		document.getElementById("submitForm").submit();	
 }
 function editEmployee(){
-	document.getElementById("submitForm").action="edit-{userName}";
+	document.getElementById("submitForm").action="editUser";
 	document.getElementById("submitForm").submit();		
 }
 </script>
@@ -32,7 +32,7 @@ function editEmployee(){
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer" style="overflow-x: auto;">
-					<form:form modelAttribute="employee" id="submitForm" method="GET">
+					<form:form modelAttribute="employee" id="submitForm" method="POST">
 						<table class="table table-hover" >
 							<thead id="thcolor">
 								<tr>

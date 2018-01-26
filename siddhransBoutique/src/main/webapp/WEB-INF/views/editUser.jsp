@@ -15,12 +15,18 @@
 
 	<div class="body body-s">
 	
-		<form:form method="POST" modelAttribute="employee" class="sky-form"
-			style="width:500px;margin-top: 170px;" id="submitForm">
+		<form:form method="POST" modelAttribute="employeeData" class="sky-form"
+			style="width:500px;margin-top: 170px;" id="submitForm" action="editUserData">
 
 			<header style="background-color: #2da5da;">Edit Details</header>
 
 			<fieldset>
+			
+				<section>
+					<label class="input"><i class="icon-append icon-user"></i>
+						<form:input type="text" path="employeeId"
+							id="employeeId" readonly="true"/></label>
+				</section>
 
 				<section>
 					<label class="input"><i class="icon-append icon-user"></i>
@@ -56,9 +62,9 @@
 					</label>
 				</section>
 
-				<section>
+				 <section>
 					<label class="input"> <i class="icon-append icon-lock"></i>
-						<form:input type="password" path="password" id="password"
+						<form:input type="hidden" path="password" id="password"
 							placeholder="password" /> <b
 						class="tooltip tooltip-bottom-right">Enter Password</b>
 					</label>
@@ -66,11 +72,11 @@
 
 				<section>
 					<label class="input"> <i class="icon-append icon-lock"></i>
-						<form:input type="password" path="confirmPassword"
+						<form:input type="hidden" path="confirmPassword"
 							id="confirmPassword" placeholder="Confirm password" /> <b
 						class="tooltip tooltip-bottom-right">Confirm Password</b>
 					</label>
-				</section>
+				</section> 
 
 				<section>
 					<label class="input"> <i class="icon-append icon-lock"></i>

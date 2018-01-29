@@ -19,7 +19,7 @@
 				<h3>Edit Customers Details</h3>
 				<div class="col-md-12 agile-info-stat height">
 					<div class="stats-info stats-last widget-shadow">
-						<form:form method="POST" modelAttribute="customerDetailData"
+						<form:form method="POST" modelAttribute="customerDetailsData"
 						action="updateUserData"	class="form-horizontal" id="submitForm">
 
 	                      <div class="row">
@@ -28,7 +28,7 @@
 									<!-- <label class="col-md-2 control-lable" for="customerName">Customer
 										Name</label> -->
 									<div class="col-md-3">
-										<form:input type="hidden" path="customerId" id="customerId"
+										<form:input type="hidden" path="custemerId" id="custemerId"
 											class="form-control input-sm"  />
 									</div>
 									<div class="has-error">

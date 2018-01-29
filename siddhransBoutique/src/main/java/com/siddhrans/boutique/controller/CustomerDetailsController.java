@@ -85,6 +85,7 @@ public class CustomerDetailsController {
 		return "measurementdetails";
 	}
 	
+	
 	@RequestMapping(value={"/showOrder"}, method = RequestMethod.POST)
 	public String showOrder(Model model) {
 		String customerId = request.getParameter("customerId");
@@ -96,8 +97,9 @@ public class CustomerDetailsController {
 	}
 	
 	@RequestMapping(value={"/editOrder"}, method = RequestMethod.POST)
-	public String editDetails(@Valid CustomerDetails customerDetails, BindingResult result,ModelMap model) {
-		CustomerDetails customerDetailsData = customerDetailsService.findByID(customerDetails.getCustemerId());
+	public String editDetails(ModelMap model) {
+		String customerId = request.getParameter("customerId");
+		CustomerDetails customerDetailsData = customerDetailsService.findByID(Integer.parseInt(customerId));
 		model.addAttribute("customerDetailsData", customerDetailsData);	
 		return "editCustomerDetails";
 	}
@@ -107,6 +109,6 @@ public class CustomerDetailsController {
 			ModelMap model) {
 		customerDetailsService.updateCustomerDetails(customerDetailData);
 		model.addAttribute("message","Updated Employee Sucessfully.");
-		return "redirect:/customerDetails";
+		return "redirect:/customerdetails";
 	}
 }

@@ -49,7 +49,4 @@ public class DressTypeServiceImpl implements DressTypeService {
 		return false;
 	}
 
-	
-	
-
 }

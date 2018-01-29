@@ -2,21 +2,12 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
-<script type="text/javascript">
-function enableButtons(){
-	document.getElementById("editDesignation").disabled=false;
-}
-function editDesignation(){
-		document.getElementById("submitForm").action="editDesignation";
-		document.getElementById("submitForm").submit();	
-}
-</script>
 </head>
 <body>
 	<%@include file="body.jsp"%>
 	<!--heder end here-->
 
-	<ol class="breadcrumb">
+	<%-- <ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="customerdetails">List of
 				Designations and its corresponding department</a> <i
 			class="fa fa-angle-right"></i></li>
@@ -28,12 +19,11 @@ function editDesignation(){
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-					<form:form modelAttribute="designation" id="submitForm" method="POST">
 						<table class="table table-hover">
 							<thead id="thcolor">
 								<tr>
 								    <th>Selector</th>
-									 <th>ID.</th> 
+									<!-- <th>ID.</th> -->
 									<th>Designation Name</th>
 									<th>Department ID</th>
 									<th>Department Name</th>
@@ -44,7 +34,7 @@ function editDesignation(){
 						<c:forEach items="${designations}" var="designation">
 							<tr>
 							    <td><input name="designationId" type="radio" id="designationId" value="${designation.designationId}" onclick="enableButtons()"></td>
-								 <td>${designation.designationId}</td> 
+								<td>${designation.designationId}</td>
 								<td>${designation.designationName}</td>
 								<td>${designation.department.departmentId}</td>
 								<td>${designation.department.departmentName}</td>
@@ -53,18 +43,16 @@ function editDesignation(){
 						</c:forEach>
 					</tbody>
 						</table>
-						</form:form>
 					</div>
 				</div>
 			</header>
-			<input type="button" value="Edit" id="editDesignation" disabled="disabled" onclick="editDesignation()"  /> 
 			<div class="agileits-box-body clearfix"></div>
 		</div>
-	</div>
+	</div> --%>
 
 
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="adddesignation">Department</a>
+		<li class="breadcrumb-item"><a href="adddesignation">Edit Designation</a>
 			<i class="fa fa-angle-right"></i></li>
 	</ol>
 
@@ -75,11 +63,15 @@ function editDesignation(){
 			<header class="agileits-box-header clearfix">
 				<h3>Designation</h3>
 				<h5 style="color:red;">${message}</h5>
-				<form:form method="POST" modelAttribute="designation"
-					class="form-horizontal">
+				<form:form method="POST" modelAttribute="designationData" id="submitForm"
+					class="form-horizontal" action="editdesignationData">
 
 					<div class="col-md-12">
 						<div class="col-md-6">
+						<form:input type="text" path="designationId"
+								id="designationId" class="form-control input-sm"
+								 readonly="true"/>
+							<br>
 							<form:input type="text" path="designationName"
 								id="designationName" class="form-control input-sm"
 								placeholder="Designation name" />
@@ -94,7 +86,7 @@ function editDesignation(){
 
 
 
-							<button type="submit" class="button">Add</button>
+							<button type="submit" class="button">Update</button>
 						</div>
 
 					</div>

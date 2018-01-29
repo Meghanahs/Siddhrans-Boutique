@@ -11,13 +11,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import com.siddhrans.boutique.model.CustomerDetails;
+import com.siddhrans.boutique.model.Designation;
 import com.siddhrans.boutique.model.DressType;
+import com.siddhrans.boutique.model.Employee;
 import com.siddhrans.boutique.model.MeasurementDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
@@ -91,5 +94,19 @@ public class CustomerDetailsController {
 		//String customerId = request.
 		return "showOrderHistory";
 	}
-
+	
+	@RequestMapping(value={"/editOrder"}, method = RequestMethod.POST)
+	public String editDetails(@Valid CustomerDetails customerDetails, BindingResult result,ModelMap model) {
+		CustomerDetails customerDetailsData = customerDetailsService.findByID(customerDetails.getCustemerId());
+		model.addAttribute("customerDetailsData", customerDetailsData);	
+		return "editCustomerDetails";
+	}
+			
+	@RequestMapping(value={"/updateUserData"}, method = RequestMethod.POST)
+	public String updateDetails(@Valid CustomerDetails customerDetailData, BindingResult result,
+			ModelMap model) {
+		customerDetailsService.updateCustomerDetails(customerDetailData);
+		model.addAttribute("message","Updated Employee Sucessfully.");
+		return "redirect:/customerDetails";
+	}
 }

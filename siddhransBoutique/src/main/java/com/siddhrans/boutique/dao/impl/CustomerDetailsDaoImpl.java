@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.CustomerDetailsDao;
 import com.siddhrans.boutique.model.CustomerDetails;
-import com.siddhrans.boutique.model.Designation;
+
 
 
 @Repository("customerDetails")
@@ -34,6 +34,12 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 	public CustomerDetails findByID(Integer id) {
 		CustomerDetails cust= getByKey(id);
 		return cust;
+	}
+
+	@Override
+	public void updateCustomerDetails(CustomerDetails cusomerDetails) {
+	 update(cusomerDetails);
+		
 	}
 
 }

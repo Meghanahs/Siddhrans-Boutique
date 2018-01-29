@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.DressTypeDao;
 import com.siddhrans.boutique.model.DressType;
+import com.siddhrans.boutique.model.Employee;
 
 
 @Repository("dressTypeDao")
@@ -29,15 +30,15 @@ public class DressTypeDaoImpl extends AbstractDao<Integer, DressType> implements
 	
 	@Override
 	public void updateDressType(DressType dressType) {
-		// TODO Auto-generated method stub
+		update(dressType);	
 		
 	}
 
 	@Override
 	public void deleteDressType(int id) {
-		// TODO Auto-generated method stub
-		
-	}
+	      DressType dress=getByKey(id);
+			delete(dress);
+		}
 
 	@Override
 	public boolean isDressTypeNameUnique(Integer id, String dressTypeName) {
@@ -56,6 +57,7 @@ public class DressTypeDaoImpl extends AbstractDao<Integer, DressType> implements
 		}*/
 		return dressTypes;
 	}
+
 
 	
 }

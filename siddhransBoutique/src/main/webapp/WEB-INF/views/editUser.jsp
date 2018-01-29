@@ -22,13 +22,13 @@
 
 			<fieldset>
 			
-				<section>
+				<section>ID :
 					<label class="input"><i class="icon-append icon-user"></i>
 						<form:input type="text" path="employeeId"
 							id="employeeId" readonly="true"/></label>
 				</section>
 
-				<section>
+				<section>First Name :
 					<label class="input"><i class="icon-append icon-user"></i>
 						<form:input type="text" path="employeeFirstname"
 							id="employeeFirstname" placeholder="First Name " /> <b
@@ -36,7 +36,7 @@
 							Special Character</b> </label>
 				</section>
 
-				<section>
+				<section>Last Name :
 					<label class="input"><i class="icon-append icon-user"></i>
 						<form:input type="text" path="employeeLastname"
 							id="employeeLastname" placeholder="Last Name " /> <b
@@ -44,7 +44,7 @@
 							Character</b> </label>
 				</section>
 
-				<section>
+				<section>User Name :
 					<label class="input"> <i class="icon-append icon-user"></i>
 						<form:input type="text" path="userName" id="userName"
 							placeholder="userName " /> <b
@@ -54,7 +54,7 @@
 				</section>
 
 
-				<section>
+				<section>Email Address :
 					<label class="input"> <i
 						class="icon-append icon-envelope-alt"></i> <form:input type="text"
 							path="email" id="email" placeholder="Email Address" /> <b
@@ -63,7 +63,7 @@
 				</section>
 
 				 <section>
-					<label class="input"> <i class="icon-append icon-lock"></i>
+					<label class="hidden"> <i class="icon-append icon-lock"></i>
 						<form:input type="hidden" path="password" id="password"
 							placeholder="password" /> <b
 						class="tooltip tooltip-bottom-right">Enter Password</b>
@@ -71,14 +71,14 @@
 				</section>
 
 				<section>
-					<label class="input"> <i class="icon-append icon-lock"></i>
+					<label class="hidden"> <i class="icon-append icon-lock"></i>
 						<form:input type="hidden" path="confirmPassword"
 							id="confirmPassword" placeholder="Confirm password" /> <b
 						class="tooltip tooltip-bottom-right">Confirm Password</b>
 					</label>
 				</section> 
 
-				<section>
+				<section>Aadhaar Number :
 					<label class="input"> <i class="icon-append icon-lock"></i>
 						<form:input type="number" path="aadhaarNo" id="aadhaarNo"
 							placeholder="aadhaar No " /> <b
@@ -86,7 +86,7 @@
 					</label>
 				</section>
 
-				<section>
+				<section>Phone Number :
 					<label class="input"> <i class="icon-append icon-lock"></i>
 						<form:input type="text" path="phoneNo" id="phoneNo"
 							placeholder="phone No " /> <b
@@ -95,13 +95,13 @@
 				</section>
 
 				<section>
-					Gender <label class="select"> </br> <form:radiobutton
+					Gender : <label class="select"> </br> <form:radiobutton
 							path="gender" id="gender" value="Male" label="Male" /> <form:radiobutton
 							path="gender" id="gender" value="Female" label="Female" />
 					</label>
 				</section>
 				<section>
-					Designation<label class="select"><form:select
+					Designation :<label class="select"><form:select
 							path="designation" items="${designations}" multiple="false"
 							itemValue="designationId" itemLabel="designationName"
 							class="form-control input-sm" id="designation" /></label>

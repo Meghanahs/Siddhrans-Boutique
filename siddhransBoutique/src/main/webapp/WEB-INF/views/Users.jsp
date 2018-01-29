@@ -24,9 +24,10 @@ function editEmployee(){
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="customerdetails">List of
 				Employee's</a> <i class="fa fa-angle-right"></i></li>
-	</ol>
+	</ol>	
 	<!--four-grids here-->
 	<div class="agileinfo-grap">
+	<h5 style="color: red;">${message}</h5>
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 

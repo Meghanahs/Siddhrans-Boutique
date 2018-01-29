@@ -3,18 +3,23 @@
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
 <script type="text/javascript">
-function enableButtons(){
-	document.getElementById("showOrder").disabled=false;
-	document.getElementById("createOrder").disabled=false;
-}
-function createOrdeAction(){
-	document.getElementById("submitForm").action="createOrder";
-	document.getElementById("submitForm").submit();
-}
-function showOrderAction(){
-	document.getElementById("submitForm").action="showOrder";
-	document.getElementById("submitForm").submit();
-}
+	function enableButtons() {
+		document.getElementById("showOrder").disabled = false;
+		document.getElementById("createOrder").disabled = false;
+		document.getElementById("editDetails").disabled = false;
+	}
+	function createOrdeAction() {
+		document.getElementById("submitForm").action = "createOrder";
+		document.getElementById("submitForm").submit();
+	}
+	function showOrderAction() {
+		document.getElementById("submitForm").action = "showOrder";
+		document.getElementById("submitForm").submit();
+	}
+	function editOrdeAction() {
+		document.getElementById("submitForm").action = "editOrder";
+		document.getElementById("submitForm").submit();
+	}
 </script>
 </head>
 <body>
@@ -50,7 +55,9 @@ function showOrderAction(){
 									<c:forEach items="${customerDetailsList}" var="customerDetails">
 										<tr>
 
-											<td><input name="customerId" type="radio"  onclick="enableButtons()" id="customerId" value="${customerDetails.custemerId}"/></td>
+											<td><input name="customerId" type="radio"
+												onclick="enableButtons()" id="customerId"
+												value="${customerDetails.custemerId}" /></td>
 											<td>${customerDetails.custemerId}</td>
 											<td>${customerDetails.customerName}</td>
 											<td>${customerDetails.dob}</td>
@@ -60,14 +67,17 @@ function showOrderAction(){
 											<%-- <td><a
 									href="<c:url value='/delete-designation-${designation.designationId}' />"
 									class="btn btn-danger custom-width">Delete</a></td> --%>
-										</tr>
 									</c:forEach>
-									<tr><td><input type="button"  id="createOrder" value ="Create Order" disabled="disabled" onclick="createOrdeAction()"></td> 
-									</tr>
-									<tr><td><input type="button" id="showOrder" value = "Show Order History" disabled="disabled" onclick="showOrderAction()"></td> 
-									</tr>
 								</tbody>
 							</table>
+							<input type="button" id="createOrder" value="Create Order"
+								disabled="disabled" onclick="createOrdeAction()">
+								 <input
+								type="button" id="showOrder" value="Show Order History"
+								disabled="disabled" onclick="showOrderAction()">
+								 <input
+								type="button" id="editDetails" value="Edit Order"
+								disabled="disabled" onclick="editOrdeAction()">
 						</form>
 					</div>
 

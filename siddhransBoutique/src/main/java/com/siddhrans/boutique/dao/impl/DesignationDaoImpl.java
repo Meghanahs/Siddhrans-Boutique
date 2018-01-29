@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.Order;
+import org.hibernate.sql.Update;
 import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.DesignationDao;
@@ -35,5 +36,9 @@ public class DesignationDaoImpl extends AbstractDao<Integer, Designation> implem
 	public Designation findByID(Integer id) {
 		Designation desg= getByKey(id);
 		return desg;
+	}
+	@Override
+	public void updateDesignation(Designation designation) {
+	 update(designation);
 	}
 }

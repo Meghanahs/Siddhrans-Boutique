@@ -6,17 +6,14 @@ import com.siddhrans.boutique.model.DressType;
 
 public interface DressTypeService {
 	
-	 public DressType findById(int id);
-	 
-	public void saveDressType(DressType dressType);
-		
-	void updateDressType(DressType dressType);
-    
-    void deleteDressType(int id);
- 
-    List<DressType> findAllDressTypes(); 
+	 public DressType findById(int id);	 
+	 public void saveDressType(DressType dressType);		
+	 void updateDressType(DressType dressType);
+     void deleteDressType(int id);
+     List<DressType> findAllDressTypes();      
+     boolean isDressTypeNameUnique(Integer id, String dressTypeName);    
      
-    boolean isDressTypeNameUnique(Integer id, String dressTypeName);
+     
 	
 
 }

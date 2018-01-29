@@ -32,4 +32,10 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
 		return customerDetailsDao.findByID(id);
 	}
 
+	@Override
+	public void updateCustomerDetails(CustomerDetails cusomerDetails) {
+	customerDetailsDao.updateCustomerDetails(cusomerDetails);
+		
+	}
+
 }

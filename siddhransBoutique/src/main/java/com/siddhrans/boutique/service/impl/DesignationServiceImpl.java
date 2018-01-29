@@ -33,4 +33,10 @@ public class DesignationServiceImpl implements DesignationService {
 	public Designation findByID(Integer id) {
 		return designationDao.findByID(id);
 	}
+
+	@Override
+	public void updateDesignation(Designation designation) {
+		designationDao.updateDesignation(designation);
+		
+	}
 }

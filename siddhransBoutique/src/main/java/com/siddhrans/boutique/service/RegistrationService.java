@@ -9,7 +9,7 @@ public interface RegistrationService {
 	public List<Employee> fetchAllEmployees();
     void updateEmployee(Employee employee);    
     public void deleteEmployeeById(int employeeId);
-    Employee findById(int id);
     Employee findByUserName(String userName);
+    Employee findById(int id);
     void updateUser(Employee employee);
 }

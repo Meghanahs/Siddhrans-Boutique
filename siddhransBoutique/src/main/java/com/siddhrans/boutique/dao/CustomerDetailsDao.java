@@ -9,6 +9,7 @@ public interface CustomerDetailsDao {
 	public void saveCustomerDetails(CustomerDetails customerDetails);
 	public List<CustomerDetails> fetchAllCustomerDetails();
 	public CustomerDetails findByID(Integer id);
+	void updateCustomerDetails(CustomerDetails cusomerDetails);
 
 
 }

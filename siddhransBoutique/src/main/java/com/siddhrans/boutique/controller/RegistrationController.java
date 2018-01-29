@@ -81,8 +81,10 @@ public class RegistrationController {
 		registrationService.deleteEmployeeById(employee.getEmployeeId());
 		List<Employee> employeeList=registrationService.fetchAllEmployees();
 		model.addAttribute("employeeList",employeeList);
+		model.addAttribute("message","Deleted Employee Sucessfully.");
 		return "redirect:/Users";
 	}
+	
 	@RequestMapping(value={"/editUser"}, method = RequestMethod.POST)
 	public String editUser(@Valid Employee employee, BindingResult result,ModelMap model) {
 		/*Employee employee = registrationService.findById();*/
@@ -95,15 +97,13 @@ public class RegistrationController {
 		model.addAttribute("employeeList",emp);*/		
 		return "editUser";
 	}
-	
-	
-	
+			
 	@RequestMapping(value={"/editUserData"}, method = RequestMethod.POST)
 	public String updateUser(@Valid Employee employeeData, BindingResult result,
 			ModelMap model) {
 		registrationService.updateUser(employeeData);
+		model.addAttribute("message","Updated Employee Sucessfully.");
 		return "redirect:/Users";
-
 	}
 
 

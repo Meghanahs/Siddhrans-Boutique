@@ -9,4 +9,5 @@ public interface DesignationDao {
 	public void saveDesignation(Designation designation);
 	List<Designation> findAllDesignations();
 	public Designation findByID(Integer ID);
+	void updateDesignation(Designation designation);
 }

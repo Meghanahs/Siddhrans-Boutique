@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,5 +45,28 @@ public class DressTypeController {
 		model.addAttribute("message","Dress Type added Sucessfully.");
 		model.addAttribute("dressType", new DressType());
 		return "dressType";
+	}
+	@RequestMapping(value = { "/deleteDressType" }, method = RequestMethod.POST)
+	public String deleteDressType(@Valid DressType dressType, BindingResult result, ModelMap model) {
+		dressTypeService.deleteDressType(dressType.getDressId());
+		List<DressType>DressTypeList=dressTypeService.findAllDressTypes();
+		model.addAttribute("DressTypeList",DressTypeList);
+		model.addAttribute("message","Deleted Dress Type Sucessfully.");
+		return "redirect:/adddressType";
+	}
+	
+	@RequestMapping(value={"/editDressType"}, method = RequestMethod.POST)
+	public String editDressType(@Valid DressType dressType, BindingResult result,ModelMap model) {
+		DressType dressTypeData = dressTypeService.findById(dressType.getDressId());
+       	model.addAttribute("dressTypeData", dressTypeData);	
+		return "editDressType";
+	}
+			
+	@RequestMapping(value={"/UpdateDressType"}, method = RequestMethod.POST)
+	public String updateDressType(@Valid DressType dressTypeData, BindingResult result,
+			ModelMap model) {
+		dressTypeService.updateDressType(dressTypeData);
+		/*model.addAttribute("message","Updated Employee Sucessfully.");*/
+		return "redirect:/adddressType";
 	}
 }

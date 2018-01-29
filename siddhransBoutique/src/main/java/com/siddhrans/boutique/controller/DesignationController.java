@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,6 +71,25 @@ public class DesignationController {
 		model.addAttribute("designation",new Designation());
 		model.addAttribute("message","Designation Added Sucessfully.");
 		return "designation";
+	}
+	
+	@RequestMapping(value={"/editDesignation"}, method = RequestMethod.POST)
+	public String editdesignationdata(@Valid Designation designation, BindingResult result,ModelMap model) {
+		Designation designationData = designationService.findByID(designation.getDesignationId());
+		List<Department> departmentsList = departmentService.findAllDepartments();
+		model.addAttribute("departmentsList",departmentsList);
+		model.addAttribute("designationData", designationData);	
+		return "editDesignation";
+	}
+	
+	
+	
+	@RequestMapping(value={"/editdesignationData"}, method = RequestMethod.POST)
+	public String updatedesignation(@Valid Designation designationData, BindingResult result,
+			ModelMap model) {
+		designationService.updateDesignation(designationData);
+		model.addAttribute("message","Updated Employee Sucessfully.");
+		return "redirect:/adddesignation";
 	}
 	
 }

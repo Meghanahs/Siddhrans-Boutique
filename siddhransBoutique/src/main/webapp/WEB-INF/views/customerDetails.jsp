@@ -6,7 +6,7 @@
 	function enableButtons() {
 		document.getElementById("showOrder").disabled = false;
 		document.getElementById("createOrder").disabled = false;
-		document.getElementById("editDetails").disabled = false;
+		document.getElementById("editCustomerDetails").disabled = false;
 	}
 	function createOrdeAction() {
 		document.getElementById("submitForm").action = "createOrder";
@@ -17,7 +17,7 @@
 		document.getElementById("submitForm").submit();
 	}
 	function editOrdeAction() {
-		document.getElementById("submitForm").action = "editOrder";
+		document.getElementById("submitForm").action = "editCustomerDetails";
 		document.getElementById("submitForm").submit();
 	}
 </script>
@@ -76,7 +76,7 @@
 								type="button" id="showOrder" value="Show Order History"
 								disabled="disabled" onclick="showOrderAction()">
 								 <input
-								type="button" id="editDetails" value="Edit Order"
+								type="button" id="editCustomerDetails" value="Edit Customer Details"
 								disabled="disabled" onclick="editOrdeAction()">
 						</form>
 					</div>

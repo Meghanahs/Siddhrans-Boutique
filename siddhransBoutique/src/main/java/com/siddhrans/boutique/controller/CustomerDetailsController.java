@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import com.siddhrans.boutique.model.CustomerDetails;
-import com.siddhrans.boutique.model.Designation;
 import com.siddhrans.boutique.model.DressType;
-import com.siddhrans.boutique.model.Employee;
 import com.siddhrans.boutique.model.MeasurementDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
@@ -96,7 +94,7 @@ public class CustomerDetailsController {
 		return "showOrderHistory";
 	}
 	
-	@RequestMapping(value={"/editOrder"}, method = RequestMethod.POST)
+	@RequestMapping(value={"/editCustomerDetails"}, method = RequestMethod.POST)
 	public String editDetails(ModelMap model) {
 		String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetailsData = customerDetailsService.findByID(Integer.parseInt(customerId));
@@ -111,4 +109,21 @@ public class CustomerDetailsController {
 		model.addAttribute("message","Updated Employee Sucessfully.");
 		return "redirect:/customerdetails";
 	}
+	    
+	
+/*	@RequestMapping(value={"/editShowOrder"}, method = RequestMethod.POST)
+	public String editOrder(ModelMap model) {
+		String customerId = request.getParameter("customerId");
+		CustomerDetails customerDetailsData = customerDetailsService.findByID(Integer.parseInt(customerId));
+		model.addAttribute("customerDetailsData", customerDetailsData);	
+		return "editCustomerDetails";
+	}
+			
+	@RequestMapping(value={"/updateUserData"}, method = RequestMethod.POST)
+	public String updateOrder(@Valid CustomerDetails customerDetailData, BindingResult result,
+			ModelMap model) {
+		customerDetailsService.updateCustomerDetails(customerDetailData);
+		model.addAttribute("message","Updated Employee Sucessfully.");
+		return "redirect:/customerdetails";
+	}*/
 }

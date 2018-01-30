@@ -5,23 +5,26 @@
 </head>
 <body>
 	<%@include file="body.jsp"%>
+	<!--heder end here-->
+	<!--//four-grids here-->
 	<!--agileinfo-grap-->
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="addmeasurementDetails">Add
+		<li class="breadcrumb-item"><a href="addmeasurementDetails">Edit
 				Measurement Details</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
 	<%-- <div>${message}</div> --%>
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-				<h3>Measurement Details</h3>
+				<h3>Edit Measurement Details</h3>
 				<h5 style="color: red;">${message}</h5>
-				<form:form method="POST" modelAttribute="measurementDetails"
-								class="form-horizontal" action="addmeasurementDetails">
-				
+				<form:form method="POST" modelAttribute="measurementDetailsdata"
+								class="form-horizontal" action="UpdateMeasurementDetails">
 				<div class="col-md-12 agile-info-stat height">
 					<div class="col-md-6">
-						<div class="stats-info stats-last widget-shadow">							
+						<div class="stats-info stats-last widget-shadow">
+					
+
 								<div class="row">
 									<div class="form-group col-md-12">
 										<label class="col-md-2 control-lable" for="m_fullLength">Full
@@ -429,14 +432,8 @@
 									</div>
 								</div>
 							</div>
-
-
-							</br>
-
-							<footer>
-								<button type="submit" class="button">Add</button>
-							</footer>
-
+							</br>						
+								<button type="submit" class="button">Edit</button>
 							</form:form>
 						</div>
 					</div>

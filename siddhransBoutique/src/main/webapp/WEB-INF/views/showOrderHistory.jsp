@@ -2,6 +2,15 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
+<!-- <script type="text/javascript">
+	function enableButtons() {
+		document.getElementById("editShowOrder").disabled = false;
+	}
+	function editOrdeAction() {
+		document.getElementById("submitForm").action = "editShowOrder";
+		document.getElementById("submitForm").submit();
+	}
+	</script> -->
 
 </head>
 <body>
@@ -88,6 +97,11 @@
 											<td>${measurementDetails.dressType.dressName}</td>
 											<td>${measurementDetails.dressType.amount}</td>
 											<td>${measurementDetails.status}</td>
+											<%-- <td><input name="measurementId" type="Button"
+												onclick="enableButtons()" id="measurementId"
+												value="${measurementDetails.measurementId}"/></td> --%>
+											<td><a href="<c:url value='/editMeasurementDetails' />"
+													class="btn btn-success custom-width">edit</a></td>	
                                     <%-- <td><a
 									href="<c:url value='/delete-designation-${designation.designationId}' />"
 									class="btn btn-danger custom-width">Delete</a></td> --%>
@@ -100,6 +114,8 @@
 
 				</div>
 			</header>
+			<!-- <input type="button" id="editShowOrder" value="Edit"
+								disabled="disabled" onclick="editOrdeAction()"> -->
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>

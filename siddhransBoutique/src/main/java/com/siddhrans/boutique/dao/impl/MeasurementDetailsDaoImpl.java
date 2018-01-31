@@ -40,8 +40,7 @@ public class MeasurementDetailsDaoImpl extends AbstractDao<Integer, MeasurementD
 	}
 
 	@Override
-	public List<MeasurementDetails> findByCustomer(CustomerDetails customerDetails) {
-		
+	public List<MeasurementDetails> findByCustomer(CustomerDetails customerDetails) {		
 		Criteria criteria = createEntityCriteria();
 		criteria.add(Restrictions.eq("customerDetails", customerDetails));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.

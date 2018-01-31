@@ -433,7 +433,7 @@
 								</div>
 							</div>
 							</br>						
-								<button type="submit" class="button">Edit</button>
+								<button type="submit" class="button">Update</button>
 							</form:form>
 						</div>
 					</div>

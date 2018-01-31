@@ -2,16 +2,20 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
-<!-- <script type="text/javascript">
+ <script type="text/javascript">
 	function enableButtons() {
 		document.getElementById("editShowOrder").disabled = false;
+		document.getElementById("GenerateBill").disabled = false;
 	}
 	function editOrdeAction() {
-		document.getElementById("submitForm").action = "editShowOrder";
+		document.getElementById("submitForm").action = "editMeasurementDetails";
 		document.getElementById("submitForm").submit();
 	}
-	</script> -->
-
+	function GenerateBillAction() {
+		document.getElementById("submitForm").action = "generateBill";
+		document.getElementById("submitForm").submit();
+	}
+	</script> 
 </head>
 <body>
 	<%@include file="body.jsp"%>
@@ -27,10 +31,11 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer"  style="overflow-x:auto;">
-						<form id="submitForm" method="POST">
+						<form method="POST" id="submitForm">
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>
+									    <th>Selector</th>
 										<th>Customer Name</th>
 										<th>Order Id</th>
 										<th>FullLength</th>
@@ -67,6 +72,9 @@
 								<tbody>
 									<c:forEach items="${measurementDetailsList}" var="measurementDetails">
 										<tr>
+										      <td><input name="measurementId" type="radio"
+												onclick="enableButtons()" id="measurementId"
+												value="${measurementDetails.measurementId}"/></td> 
 											<td>${measurementDetails.customerDetails.customerName}</td>
 											<td>${measurementDetails.measurementId}</td>
 											<td>${measurementDetails.m_fullLength}</td>
@@ -97,11 +105,9 @@
 											<td>${measurementDetails.dressType.dressName}</td>
 											<td>${measurementDetails.dressType.amount}</td>
 											<td>${measurementDetails.status}</td>
-											<%-- <td><input name="measurementId" type="Button"
-												onclick="enableButtons()" id="measurementId"
-												value="${measurementDetails.measurementId}"/></td> --%>
-											<td><a href="<c:url value='/editMeasurementDetails' />"
-													class="btn btn-success custom-width">edit</a></td>	
+										  
+											<%-- <td><a href="<c:url value='/editMeasurementDetails' />"
+													class="btn btn-success custom-width">edit</a></td>	 --%>
                                     <%-- <td><a
 									href="<c:url value='/delete-designation-${designation.designationId}' />"
 									class="btn btn-danger custom-width">Delete</a></td> --%>
@@ -114,8 +120,10 @@
 
 				</div>
 			</header>
-			<!-- <input type="button" id="editShowOrder" value="Edit"
-								disabled="disabled" onclick="editOrdeAction()"> -->
+			 <input type="button" id="editShowOrder" value="Edit"
+								disabled="disabled" onclick="editOrdeAction()"> 
+			<input type="button" id="generateBill" value="Generate Bill"
+								disabled="disabled" onclick="GenerateBillAction()"> 
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>

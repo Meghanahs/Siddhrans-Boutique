@@ -10,7 +10,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import com.siddhrans.boutique.model.CustomerDetails;
+import com.siddhrans.boutique.model.DressType;
 import com.siddhrans.boutique.model.MeasurementDetails;
+import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
 import com.siddhrans.boutique.service.MeasurementDetailsService;
 
@@ -23,6 +26,10 @@ public class MeasurementDetailsController {
 	MeasurementDetailsService measurementDetailsService;
 	@Autowired
 	DressTypeService dressTypeService;
+	@Autowired
+	CustomerDetailsService CustomerDetailsService;
+
+	
 	
 	@RequestMapping(value={"/addmeasurementDetails"}, method = RequestMethod.GET)
 	public String addmeasurementDetails(Model model) {
@@ -48,7 +55,14 @@ public class MeasurementDetailsController {
 	@RequestMapping(value={"/editMeasurementDetails"}, method = RequestMethod.POST)
 	public String editMeasurements(@Valid MeasurementDetails measurementDetails, BindingResult result,ModelMap model) {
 		MeasurementDetails measurementDetailsdata = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
-       	model.addAttribute("measurementDetailsdata", measurementDetailsdata);	
+       	model.addAttribute("measurementDetailsdata", measurementDetailsdata);
+       	/*List<CustomerDetails>CustomerDetailsByName = CustomerDetailsService.findByName(CustomerName);*/
+      /* 	model.addAttribute("CustomerDetailsByName",CustomerDetailsByName);*/
+       	/*String customerId = request.getParameter("customerId");
+       	CustomerDetails customerDetails= CustomerDetailsService.findByID(Integer.parseInt(customerId));
+       	measurementDetails.setCustomerDetails(customerDetails);*/
+       	List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList",dressTypeList);
 		return "editMeasurementDetails";
 	}
 			

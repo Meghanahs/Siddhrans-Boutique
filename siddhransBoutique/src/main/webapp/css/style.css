@@ -316,7 +316,7 @@ li#menu-academico{
     width: 24.25%;
     background: #e74c3c;
     text-align: center;
-    padding: 1.3em 1em 0.1em;
+    padding: 1em;
     margin: 0 1%;
 }
 .logo-w3-agile h1 {
@@ -367,6 +367,7 @@ span.logo-clr{
     width:100%;
     margin-top: 0em;
 	position: relative;
+    height: 38px;
     z-index: 1;
     display: inline-block;
     border:2px solid #fff;

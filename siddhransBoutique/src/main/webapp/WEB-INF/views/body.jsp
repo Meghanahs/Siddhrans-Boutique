@@ -7,22 +7,11 @@
 					<div class="logo-w3-agile">
 						<h1>Boutique</h1>
 					</div>
-					<div class="w3layouts-left">
-
-						<!--search-box-->
-						<div class="w3-search-box">
-							<form action="#" method="post">
-								<input type="text" placeholder="Search..." required="">
-								<input type="submit" value="">
-							</form>
-						</div>
-						<!--//end-search-box-->
-						<div class="clearfix"></div>
-					</div>
+			
 					<div class="w3layouts-right">
 						<div class="profile_details_left">
 							<!--notifications of menu start -->
-							<ul class="nofitications-dropdown">
+							<!-- <ul class="nofitications-dropdown">
 								<li class="dropdown head-dpdn"><a href="#"
 									class="dropdown-toggle" data-toggle="dropdown"
 									aria-expanded="false"><i class="fa fa-envelope"></i><span
@@ -129,11 +118,24 @@
 									</ul></li>
 								
 								<div class="clearfix"></div>
-							</ul>
+							</ul> -->
+							<h4>Management System</h4>
 							<div class="clearfix"></div>
 						</div>
 						<!--notification menu end -->
 
+						<div class="clearfix"></div>
+					</div>
+							<div class="w3layouts-left">
+
+						<!--search-box-->
+						<div class="w3-search-box">
+							<form action="#" method="post">
+								<input type="text" placeholder="Search..." required="">
+								<input type="submit" value="">
+							</form>
+						</div>
+						<!--//end-search-box-->
 						<div class="clearfix"></div>
 					</div>
 					<div class="profile_details w3l">

@@ -12,4 +12,6 @@ public interface CustomerDetailsService {
     public List<CustomerDetails> fetchAllCustomerDetails();
 	public CustomerDetails findByID(Integer id);
 	void updateCustomerDetails(CustomerDetails cusomerDetails);
+	public CustomerDetails findByName(String CustomerName);
+	
 }

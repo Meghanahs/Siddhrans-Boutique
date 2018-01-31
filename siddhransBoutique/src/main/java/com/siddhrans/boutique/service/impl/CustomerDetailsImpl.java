@@ -38,4 +38,9 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
 		
 	}
 
+	@Override
+	public CustomerDetails findByName(String CustomerName) {
+		return customerDetailsDao.findByName(CustomerName);
+	}
+
 }

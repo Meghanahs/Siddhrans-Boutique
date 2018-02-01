@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="EMPLOYEE_DETAILS")
 public class Employee {
@@ -18,12 +20,22 @@ public class Employee {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="EMPLOYEE_ID")
 	Integer employeeId;
+	@NotEmpty
 	String employeeFirstname;
+	
 	String employeeLastname;
 	String email;
+	
+	@NotEmpty
 	String phoneNo;
+	
+	@NotEmpty
 	String aadhaarNo;
+	
+	@NotEmpty
 	String userName;
+	
+	@NotEmpty
 	String password;
 	String gender;
 

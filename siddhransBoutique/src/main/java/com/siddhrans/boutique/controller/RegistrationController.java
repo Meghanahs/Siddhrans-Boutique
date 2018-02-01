@@ -30,8 +30,8 @@ import com.siddhrans.boutique.service.RegistrationService;
 public class RegistrationController {
 	
 	
-	/*@Autowired
-	MessageSource messageSource;*/
+	@Autowired
+	MessageSource messageSource;
 
 	@Autowired
 	RegistrationService registrationService;
@@ -64,7 +64,13 @@ public class RegistrationController {
 	
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.POST)
     public String registerUser(@Valid Employee employee, BindingResult result,Model model) {
-		/*if(!registrationService.isUserNameUnique(employee.getEmployeeId(), employee.getUserName())){
+		List<Designation> designations=designationService.findAllDesignations();
+		model.addAttribute("designations",designations);
+		model.addAttribute("employee",employee);
+		if (result.hasErrors()) {
+			return "registration";
+		}
+		if(!registrationService.isUserNameUnique(employee.getEmployeeId(), employee.getUserName())){
 			FieldError userNameError =new FieldError("employee","userName",messageSource.getMessage("non.unique.userName", new String[]{employee.getUserName()}, Locale.getDefault()));
 			result.addError(userNameError);
 			return "registration";
@@ -78,7 +84,7 @@ public class RegistrationController {
 			FieldError aadhaarNoError =new FieldError("employee","aadhaarNo",messageSource.getMessage("non.unique.dlNo", new String[]{employee.getAadhaarNo()}, Locale.getDefault()));
 			result.addError(aadhaarNoError);
 			return "registration";
-		}*/
+		}
 		registrationService.saveEmployeeDetails(employee);
 		model.addAttribute("employee",new Employee());
 		model.addAttribute("message","Registered user Sucessfully.");

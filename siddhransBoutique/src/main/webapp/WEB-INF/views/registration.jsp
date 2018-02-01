@@ -9,12 +9,12 @@
 		<li class="breadcrumb-item"><a href="registerUser">Registration</a>
 			<i class="fa fa-angle-right"></i></li>
 	</ol>
-		<h5 style="color: red;">${message}</h5>
+	<h5 style="color: red;">${message}</h5>
 	</div>
 	</div>
 
 	<div class="body body-s">
-	
+
 		<form:form method="POST" modelAttribute="employee" class="sky-form"
 			style="width:500px;margin-top: 170px;">
 
@@ -29,6 +29,9 @@
 							id="employeeFirstname" placeholder="First Name " /> <b
 						class="tooltip tooltip-bottom-right">First name without
 							Special Character</b> </label>
+					<div class="has-error">
+						<form:errors path="employeeFirstname" class="help-inline" />
+					</div>
 				</section>
 
 				<section>
@@ -46,6 +49,9 @@
 						class="tooltip tooltip-bottom-right">Username without special
 							Characters</b>
 					</label>
+					<div class="has-error">
+						<form:errors path="userName" class="help-inline" />
+					</div>
 				</section>
 
 
@@ -63,6 +69,9 @@
 							placeholder="password" /> <b
 						class="tooltip tooltip-bottom-right">Enter Password</b>
 					</label>
+					<div class="has-error">
+						<form:errors path="password" class="help-inline" />
+					</div>
 				</section>
 
 				<section>
@@ -79,6 +88,9 @@
 							placeholder="aadhaar No " /> <b
 						class="tooltip tooltip-bottom-right">Enter Aadhaar Number </b>
 					</label>
+					<div class="has-error">
+						<form:errors path="aadhaarNo" class="help-inline" />
+					</div>
 				</section>
 
 				<section>
@@ -87,6 +99,9 @@
 							placeholder="phone No " /> <b
 						class="tooltip tooltip-bottom-right">Phone Number</b>
 					</label>
+					<div class="has-error">
+						<form:errors path="phoneNo" class="help-inline" />
+					</div>
 				</section>
 
 				<section>

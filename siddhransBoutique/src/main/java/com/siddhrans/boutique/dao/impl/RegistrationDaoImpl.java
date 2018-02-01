@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.siddhrans.boutique.dao.AbstractDao;
@@ -16,12 +18,11 @@ import com.siddhrans.boutique.model.Employee;
 @Repository("registrationDao")
 @Transactional
 public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> implements RegistrationDao {
+	static final Logger logger = LoggerFactory.getLogger(RegistrationDaoImpl.class);
 
 	@Override
 	public void saveEmployeeDetails(Employee employee) {
-		// TODO Auto-generated method stub
 		persist(employee);
-
 	}
 
 	@Override
@@ -74,5 +75,32 @@ public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> impleme
 	public void updateUser(Employee employee) {
 		update(employee);
 			}
+
+	@Override
+	public Employee findByPhoneNo(String phoneNo) {
+		logger.info("PhoneNo : {}", phoneNo);
+		Criteria crit = createEntityCriteria();
+		crit.add(Restrictions.eq("phoneNo", phoneNo));
+		Employee employee = (Employee)crit.uniqueResult();
+	/*	if(employee!=null){
+			logger.info("user Found for Phone Number criteria : {}", employee.getEmployeeId());
+			Hibernate.initialize(employee.getUserProfile());
+		}*/
+		return employee;
+	}
+
+	@Override
+	public Employee findByAadhaarNo(String aadhaarNo) {
+		logger.info("aadhaarNo : {}", aadhaarNo);
+		Criteria crit = createEntityCriteria();
+		crit.add(Restrictions.eq("aadhaarNo", aadhaarNo));
+		Employee employee = (Employee)crit.uniqueResult();
+	/*	if(employee!=null){
+			logger.info("user Found for DL No criteria : {}", employee.getEmployeeId());
+			Hibernate.initialize(employee.getUserProfile());
+		}*/
+		return employee;
+	}
+
 
 }

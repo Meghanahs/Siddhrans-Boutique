@@ -12,4 +12,9 @@ public interface RegistrationService {
     Employee findByUserName(String userName);
     Employee findById(int id);
     void updateUser(Employee employee);
+    boolean isUserNameUnique(Integer id, String userName);   
+    boolean isPhoneNoUnique(Integer id, String phoneNo);    
+    boolean isAadhaarNoUnique(Integer id, String dlNo);   
+    Employee findByPhoneNo(String phoneNo);    
+    Employee findByAadhaarNo(String aadhaarNo);
 }

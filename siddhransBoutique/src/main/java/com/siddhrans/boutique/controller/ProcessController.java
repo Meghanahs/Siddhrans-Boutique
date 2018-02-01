@@ -186,6 +186,38 @@ public class ProcessController {
 		model.addAttribute("message","Order Updated Sucessfully.");
 		return "Ironing";
 	}
+	
+	@RequestMapping(value={"/deliveryUnit"}, method = RequestMethod.GET)
+	public String DeliveryProcess(Model model) {
+		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
+		model.addAttribute("ironingMeasurementList", ironingMeasurementList);
+		List<MeasurementDetails> deliveryMeasurementList = measurementDetailsService.findByStatus("DELIVERED");
+		model.addAttribute("deliveryMeasurementList", deliveryMeasurementList);
+		return "DeliveryUnit";
+	}
+	
+	@RequestMapping(value={"/deliveryUnit"}, method = RequestMethod.POST)
+	public String DeliveryProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 
+		if (result.hasErrors()) {
+			List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
+			model.addAttribute("ironingMeasurementList", ironingMeasurementList);
+			logger.debug(""
+					+ ""
+					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
+			model.addAttribute("measurementDetails", measurementDetails);
+			return "DeliveryUnit";
+		}
+		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		meassurementDetailsbyId.setStatus("DELIVERED");
+		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
+		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
+		model.addAttribute("ironingMeasurementList", ironingMeasurementList);
+		List<MeasurementDetails> deliveryMeasurementList = measurementDetailsService.findByStatus("DELIVERED");
+		model.addAttribute("deliveryMeasurementList", deliveryMeasurementList);
+		model.addAttribute("measurementDetails",new MeasurementDetails());
+		model.addAttribute("message","Order Updated Sucessfully.");
+		return "DeliveryUnit";
+	}
 
 }

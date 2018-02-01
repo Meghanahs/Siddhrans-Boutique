@@ -13,4 +13,7 @@ public interface RegistrationDao {
 	Employee findById(int id);
 	Employee findByUserName(String userName);
 	void updateUser(Employee employee);
+    Employee findByPhoneNo(String phoneNo);    
+    Employee findByAadhaarNo(String aadhaarNo);
+  
 }

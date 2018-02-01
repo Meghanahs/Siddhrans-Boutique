@@ -1,15 +1,18 @@
 package com.siddhrans.boutique.controller;
 
 import java.util.List;
-
+import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +28,10 @@ import com.siddhrans.boutique.service.RegistrationService;
 @RequestMapping("/")
 @SessionAttributes("roles")
 public class RegistrationController {
+	
+	
+	/*@Autowired
+	MessageSource messageSource;*/
 
 	@Autowired
 	RegistrationService registrationService;
@@ -57,6 +64,21 @@ public class RegistrationController {
 	
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.POST)
     public String registerUser(@Valid Employee employee, BindingResult result,Model model) {
+		/*if(!registrationService.isUserNameUnique(employee.getEmployeeId(), employee.getUserName())){
+			FieldError userNameError =new FieldError("employee","userName",messageSource.getMessage("non.unique.userName", new String[]{employee.getUserName()}, Locale.getDefault()));
+			result.addError(userNameError);
+			return "registration";
+		}
+		if(!registrationService.isPhoneNoUnique(employee.getEmployeeId(), employee.getPhoneNo())){
+			FieldError phoneNoError =new FieldError("employee","phoneNo",messageSource.getMessage("non.unique.phoneNo", new String[]{employee.getPhoneNo()}, Locale.getDefault()));
+			result.addError(phoneNoError);
+			return "registration";
+		}
+		if(!registrationService.isAadhaarNoUnique(employee.getEmployeeId(), employee.getAadhaarNo())){
+			FieldError aadhaarNoError =new FieldError("employee","aadhaarNo",messageSource.getMessage("non.unique.dlNo", new String[]{employee.getAadhaarNo()}, Locale.getDefault()));
+			result.addError(aadhaarNoError);
+			return "registration";
+		}*/
 		registrationService.saveEmployeeDetails(employee);
 		model.addAttribute("employee",new Employee());
 		model.addAttribute("message","Registered user Sucessfully.");
@@ -105,6 +127,8 @@ public class RegistrationController {
 		model.addAttribute("message","Updated Employee Sucessfully.");
 		return "redirect:/Users";
 	}
+	
+
 
 
 }

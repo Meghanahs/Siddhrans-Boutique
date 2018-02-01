@@ -5,7 +5,11 @@
 <script type="text/javascript">
 function enableButtons(){
 	document.getElementById("startAlteration").disabled=false;
+	document.getElementById("notRequired").disabled=false;
 }
+/* function skipAction(){
+	
+} */
 </script>
 </head>
 <body>
@@ -52,6 +56,7 @@ function enableButtons(){
 								</tbody>
 							</table> 
 							<input type="submit" id="startAlteration" value="Start Alteration"  disabled="disabled">
+							<input type="submit" id="notRequired" value="Not Required"  disabled="disabled" onkeypress="skipAction()">
 							
 						</form:form>
 					</div>

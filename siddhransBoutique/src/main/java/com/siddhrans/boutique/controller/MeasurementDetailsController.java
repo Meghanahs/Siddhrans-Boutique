@@ -56,8 +56,8 @@ public class MeasurementDetailsController {
 	public String editMeasurements(@Valid MeasurementDetails measurementDetails, BindingResult result,ModelMap model) {
 		MeasurementDetails measurementDetailsdata = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
        	model.addAttribute("measurementDetailsdata", measurementDetailsdata);
-       	/*List<CustomerDetails>CustomerDetailsByName = CustomerDetailsService.findByName(CustomerName);*/
-      /* 	model.addAttribute("CustomerDetailsByName",CustomerDetailsByName);*/
+    	List<MeasurementDetails> MeasurementDetails= measurementDetailsService.findByCustomer(measurementDetails.getCustomerDetails());
+        model.addAttribute("MeasurementDetails",MeasurementDetails);
        	/*String customerId = request.getParameter("customerId");
        	CustomerDetails customerDetails= CustomerDetailsService.findByID(Integer.parseInt(customerId));
        	measurementDetails.setCustomerDetails(customerDetails);*/

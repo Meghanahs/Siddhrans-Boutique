@@ -34,8 +34,7 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
 
 	@Override
 	public void updateCustomerDetails(CustomerDetails cusomerDetails) {
-	customerDetailsDao.updateCustomerDetails(cusomerDetails);
-		
+	customerDetailsDao.updateCustomerDetails(cusomerDetails);		
 	}
 
 	@Override
@@ -43,4 +42,14 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
 		return customerDetailsDao.findByName(CustomerName);
 	}
 
+	@Override
+	public CustomerDetails findByPhoneNo(String phoneNo) {
+		return customerDetailsDao.findByPhoneNo(phoneNo) ;
+	}
+
+	@Override
+	 public boolean isPhoneNoUnique(Integer id, String phoneNo) {
+    	CustomerDetails customerDetails = findByPhoneNo(phoneNo);
+        return ( customerDetails == null || ((id != null) && (customerDetails.getCustemerId() == id)));
+    }
 }

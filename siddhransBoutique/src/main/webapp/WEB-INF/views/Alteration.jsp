@@ -7,9 +7,11 @@ function enableButtons(){
 	document.getElementById("startAlteration").disabled=false;
 	document.getElementById("notRequired").disabled=false;
 }
-/* function skipAction(){
-	
-} */
+function skipAction() {
+	document.getElementById("submitForm").action = "skipAlterationUnit";
+	document.getElementById("submitForm").submit();
+}
+
 </script>
 </head>
 <body>

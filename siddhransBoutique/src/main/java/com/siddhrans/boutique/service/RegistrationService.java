@@ -14,7 +14,7 @@ public interface RegistrationService {
     void updateUser(Employee employee);
     boolean isUserNameUnique(Integer id, String userName);   
     boolean isPhoneNoUnique(Integer id, String phoneNo);    
-    boolean isAadhaarNoUnique(Integer id, String dlNo);   
+    boolean isAadhaarNoUnique(Integer id, String aadhaarNo);   
     Employee findByPhoneNo(String phoneNo);    
     Employee findByAadhaarNo(String aadhaarNo);
 }

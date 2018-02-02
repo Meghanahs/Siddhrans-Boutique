@@ -42,9 +42,6 @@ public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> impleme
 		update(employee);
 		
 	}
-
-
-
 	@Override
 	public Employee findById(int id) {
 		Employee employee = getByKey(id);
@@ -64,11 +61,11 @@ public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> impleme
 	public Employee findByUserName(String userName) {
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("userName", userName));
-		Employee user = (Employee)crit.uniqueResult();
-		if(user!=null){
-			Hibernate.initialize(user.getDesignation());
+		Employee employee = (Employee)crit.uniqueResult();
+		if(employee!=null){
+			Hibernate.initialize(employee.getDesignation());
 		}
-		return user;
+		return employee;
 	}
 
 	@Override
@@ -82,10 +79,10 @@ public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> impleme
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("phoneNo", phoneNo));
 		Employee employee = (Employee)crit.uniqueResult();
-	/*	if(employee!=null){
+		if(employee!=null){
 			logger.info("user Found for Phone Number criteria : {}", employee.getEmployeeId());
-			Hibernate.initialize(employee.getUserProfile());
-		}*/
+			Hibernate.initialize(employee.getDesignation());
+		}
 		return employee;
 	}
 
@@ -95,10 +92,10 @@ public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> impleme
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("aadhaarNo", aadhaarNo));
 		Employee employee = (Employee)crit.uniqueResult();
-	/*	if(employee!=null){
-			logger.info("user Found for DL No criteria : {}", employee.getEmployeeId());
-			Hibernate.initialize(employee.getUserProfile());
-		}*/
+		if(employee!=null){
+			logger.info("user Found for Aadhaar No criteria : {}", employee.getEmployeeId());
+			Hibernate.initialize(employee.getDesignation());
+		}
 		return employee;
 	}
 

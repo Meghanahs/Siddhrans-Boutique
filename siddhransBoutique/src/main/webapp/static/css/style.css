@@ -4396,6 +4396,7 @@ input#disabledTextInput,select#disabledSelect {
 .has-error .form-control1 {
     background-color: #fde0dc;
     border-color: #f69988 !important;
+    color:red;
 }
 .checkbox-inline label,.checkbox-inline1 label,.form-group label{
 	font-weight:400;

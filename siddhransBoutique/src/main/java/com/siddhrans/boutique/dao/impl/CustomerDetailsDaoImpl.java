@@ -5,16 +5,22 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
+import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.CustomerDetailsDao;
 import com.siddhrans.boutique.model.CustomerDetails;
+import com.siddhrans.boutique.model.Employee;
 
 
 
 @Repository("customerDetails")
 @Transactional
 public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails> implements CustomerDetailsDao {
+	static final Logger logger = LoggerFactory.getLogger(CustomerDetailsDaoImpl.class);
 
 	@Override
 	public void saveCustomerDetails(CustomerDetails customerDetails) {
@@ -46,6 +52,20 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 	public CustomerDetails findByName(String CustomerName) {
 		CustomerDetails byName = getByKey(CustomerName);
 		return byName;
+	}
+
+	@Override
+	public CustomerDetails findByPhoneNo(String phoneNo) {
+		
+		logger.info("PhoneNo : {}", phoneNo);
+		Criteria crit = createEntityCriteria();
+		crit.add(Restrictions.eq("phoneNo", phoneNo));
+		CustomerDetails customerDetails = (CustomerDetails)crit.uniqueResult();
+	/*if(customerDetails!=null){
+			logger.info("user Found for Phone Number criteria : {}", CustomerDetails.getCustomerDetailsId());
+			Hibernate.initialize(CustomerDetails.getDesignation());
+		}*/
+		return customerDetails;
 	}
 
 }

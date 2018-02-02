@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="DEPARTMENTS")
 public class Department {
@@ -14,7 +16,7 @@ public class Department {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="DEPARTMENT_ID")
 	Integer departmentId;
-	
+	@NotEmpty
 	String departmentName;
 	
 	public Integer getDepartmentId() {

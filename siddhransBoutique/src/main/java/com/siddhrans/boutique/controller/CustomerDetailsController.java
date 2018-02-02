@@ -2,6 +2,7 @@ package com.siddhrans.boutique.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -9,10 +10,12 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -39,6 +42,9 @@ public class CustomerDetailsController {
 	
 	@Autowired 
 	HttpServletRequest request;
+	
+	@Autowired
+	MessageSource messageSource;
 
 	static final Logger logger = LoggerFactory.getLogger(CustomerDetailsController.class);
 
@@ -58,7 +64,12 @@ public class CustomerDetailsController {
 			logger.debug("ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());		
 			model.addAttribute("customerDetails", customerDetails);
 			return "customerDetails";
-		}		
+		}
+		if(!customerDetailsService.isPhoneNoUnique(customerDetails.getCustemerId(), customerDetails.getPhoneno())){
+			FieldError phoneNoError =new FieldError("employee","phoneNo",messageSource.getMessage("non.unique.phoneNo", new String[]{customerDetails.getPhoneno()}, Locale.getDefault()));
+			result.addError(phoneNoError);
+			return "registration";
+		}
 		
 		customerDetailsService.saveCustomerDetails(customerDetails);
 		customerDetailsList.add(customerDetails);

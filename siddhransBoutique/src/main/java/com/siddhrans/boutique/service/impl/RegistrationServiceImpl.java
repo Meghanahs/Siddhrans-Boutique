@@ -57,17 +57,17 @@ RegistrationDao registrationDao;
     
 	@Override
 	public boolean isAadhaarNoUnique(Integer id, String aadhaarNo) {
-		Employee employee = findByPhoneNo(aadhaarNo);
-		return false;
+		Employee employee = findByAadhaarNo(aadhaarNo);
+		 return ( employee == null || ((id != null) && (employee.getEmployeeId() == id)));
 	}
 	@Override
 	public Employee findByPhoneNo(String phoneNo) {
-		 Employee employee = registrationDao.findByUserName(phoneNo);
+		 Employee employee = registrationDao.findByPhoneNo(phoneNo);
 		return employee;
 	}
 	@Override
 	public Employee findByAadhaarNo(String aadhaarNo) {
-		Employee employee = registrationDao.findByUserName(aadhaarNo);
+		Employee employee = registrationDao.findByAadhaarNo(aadhaarNo);
 		return employee;
 	}  
 

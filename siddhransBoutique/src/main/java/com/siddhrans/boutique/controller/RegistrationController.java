@@ -81,7 +81,7 @@ public class RegistrationController {
 			return "registration";
 		}
 		if(!registrationService.isAadhaarNoUnique(employee.getEmployeeId(), employee.getAadhaarNo())){
-			FieldError aadhaarNoError =new FieldError("employee","aadhaarNo",messageSource.getMessage("non.unique.dlNo", new String[]{employee.getAadhaarNo()}, Locale.getDefault()));
+			FieldError aadhaarNoError =new FieldError("employee","aadhaarNo",messageSource.getMessage("non.unique.aadhaarNo", new String[]{employee.getAadhaarNo()}, Locale.getDefault()));
 			result.addError(aadhaarNoError);
 			return "registration";
 		}

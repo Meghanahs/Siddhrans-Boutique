@@ -81,9 +81,15 @@ function editDressType(){
 
 							<form:input type="text" path="dressName" id="dressName"
 								class="form-control input-sm" placeholder="Dress name" />
+								<div class="has-error" style="color: red;">
+								<form:errors path="dressName" class="help-inline" />
+							</div>
 
 							<form:input type="text" path="amount" id="amount"
 								class="form-control input-sm" placeholder="Amount" />
+								<div class="has-error" style="color: red;">
+								<form:errors path="amount" class="help-inline" />
+							</div>
 
 							<button type="submit" class="button">Add</button>
 						</div>

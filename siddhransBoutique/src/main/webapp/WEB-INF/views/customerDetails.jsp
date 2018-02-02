@@ -111,8 +111,8 @@
 									<div class="col-md-3">
 										<form:input type="text" path="customerName" id="customerName"
 											class="form-control input-sm" placeholder="Customer Name" />
-									</div>
-									<div class="has-error">
+									</div></br>
+									<div class="has-error" style="color:red;">
 										<form:errors path="customerName" class="help-inline" />
 									</div>
 								</div>
@@ -153,8 +153,8 @@
 									<div class="col-md-3">
 										<form:input type="text" path="phoneno" id="phoneno"
 											class="form-control input-sm" placeholder="Phone No" />
-									</div>
-									<div class="has-error">
+									</div></br>
+									<div class="has-error" style="color:red;">
 										<form:errors path="phoneno" class="help-inline" />
 									</div>
 								</div>

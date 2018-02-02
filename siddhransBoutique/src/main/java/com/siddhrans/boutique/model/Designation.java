@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -18,7 +21,7 @@ public class Designation {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="DESIGNATION_ID")
 	Integer designationId;
-	
+	@NotEmpty
 	String designationName;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

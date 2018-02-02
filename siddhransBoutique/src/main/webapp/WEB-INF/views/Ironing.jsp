@@ -25,7 +25,7 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form:form method="POST" modelAttribute="measurementDetails"
+						<form:form method="POST" id="submitForm" modelAttribute="measurementDetails" action="skipAlterationUnit"
 							class="form-horizontal">
 							<table class="table table-hover">
 								<thead id="thcolor">

@@ -2005,6 +2005,9 @@
 .sky-form .note-error {
 	color: #ee9393;
 }
+.has-error{
+	color:red;
+}
 
 /**/
 /* success state */

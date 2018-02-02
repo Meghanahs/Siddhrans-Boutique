@@ -36,7 +36,7 @@ public class DressTypeController {
 		if (result.hasErrors()) {
 			logger.debug("ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());		
 			model.addAttribute("dressType", dressType);
-			return "customerDetails";
+			return "dressType";
 		}	
 		
 		/*DressTypeList.add(dressType);*/

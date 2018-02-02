@@ -154,6 +154,41 @@ public class ProcessController {
 		return "Alteration";
 	}
 	
+
+		@RequestMapping(value={"/skipAlterationUnit"}, method = RequestMethod.GET)
+	    public String skipProcess(Model model) {
+		List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
+		model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
+		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
+		model.addAttribute("skipAlterationList", skipAlterationList);
+		
+		return "ironingUnit";
+	}
+	
+	@RequestMapping(value={"/skipAlterationUnit"}, method = RequestMethod.POST)
+	public String skipProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
+
+		if (result.hasErrors()) {
+			List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
+			model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
+			logger.debug(""
+					+ ""
+					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
+			model.addAttribute("measurementDetails", measurementDetails);
+			return "Ironing";
+		}
+		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		meassurementDetailsbyId.setStatus("Not Required");
+		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
+		List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
+		model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
+		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus(" Not Required");
+		model.addAttribute("skipAlterationList", skipAlterationList);
+		model.addAttribute("measurementDetails",new MeasurementDetails());
+		model.addAttribute("message","Order Updated Sucessfully.");
+		return "ironingUnit";
+	}
+		
 	@RequestMapping(value={"/ironingUnit"}, method = RequestMethod.GET)
 	public String ironingProcess(Model model) {
 		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");

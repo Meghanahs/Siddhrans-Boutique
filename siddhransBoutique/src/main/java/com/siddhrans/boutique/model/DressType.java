@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="DRESS_TYPE")
 public class DressType {
@@ -14,7 +16,9 @@ public class DressType {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="DRESSTYPE_ID")
 	Integer dressId;
+	@NotEmpty
 	String dressName;
+	@NotEmpty
 	Float amount;
 	
 	public Float getAmount() {

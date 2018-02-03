@@ -43,8 +43,8 @@ public class ProcessController {
 			model.addAttribute("measurementDetails", measurementDetails);
 			return "Cutting";
 		}
-        MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
-        meassurementDetailsbyId.setStatus("CUTTING");
+		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		meassurementDetailsbyId.setStatus("CUTTING");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
 		List<MeasurementDetails> processingMeasurementList = measurementDetailsService.findByStatus("PROCESSING");
 		model.addAttribute("processingMeasurementList", processingMeasurementList);
@@ -54,7 +54,7 @@ public class ProcessController {
 		model.addAttribute("message","Order Updated Sucessfully.");
 		return "Cutting";
 	}
-	
+
 	@RequestMapping(value={"/stichingUnit"}, method = RequestMethod.GET)
 	public String stichingProcess(Model model) {
 		List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
@@ -63,7 +63,7 @@ public class ProcessController {
 		model.addAttribute("stichingMeasurementList", stichingMeasurementList);
 		return "Stiching";
 	}
-	
+
 	@RequestMapping(value={"/stichingUnit"}, method = RequestMethod.POST)
 	public String stichingProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 
@@ -87,7 +87,7 @@ public class ProcessController {
 		model.addAttribute("message","Order Updated Sucessfully.");
 		return "Stiching";
 	}
-	
+
 	@RequestMapping(value={"/embroidoryUnit"}, method = RequestMethod.GET)
 	public String embroidoryProcess(Model model) {
 		List<MeasurementDetails> stichingMeasurementList = measurementDetailsService.findByStatus("STICHING");
@@ -96,7 +96,7 @@ public class ProcessController {
 		model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
 		return "Embroidory";
 	}
-	
+
 	@RequestMapping(value={"/embroidoryUnit"}, method = RequestMethod.POST)
 	public String embroidoryProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 
@@ -125,70 +125,67 @@ public class ProcessController {
 	public String alterationProcess(Model model) {
 		List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
 		model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
+		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
+		model.addAttribute("skipAlterationList", skipAlterationList);
 		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
+		alterationMeasurementList.addAll(skipAlterationList);
+		logger.debug("alteration list is"+alterationMeasurementList);
 		model.addAttribute("alterationMeasurementList", alterationMeasurementList);
 		return "Alteration";
 	}
-	
+
 	@RequestMapping(value={"/alterationUnit"}, method = RequestMethod.POST)
 	public String alterationProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 
 		if (result.hasErrors()) {
-			List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
-			model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
+
 			logger.debug(""
 					+ ""
-					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			model.addAttribute("measurementDetails", measurementDetails);
+					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());
+
+			List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
+			model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
+			List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
+			model.addAttribute("skipAlterationList", skipAlterationList);
+			List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
+			alterationMeasurementList.addAll(skipAlterationList);
+			logger.debug("alteration list is"+alterationMeasurementList);
+			model.addAttribute("alterationMeasurementList", alterationMeasurementList);
 			return "Alteration";
 		}
 		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
 		meassurementDetailsbyId.setStatus("ALTERATION");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
-		List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
-		model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
-		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
-		model.addAttribute("alterationMeasurementList", alterationMeasurementList);
-		model.addAttribute("measurementDetails",new MeasurementDetails());
 		model.addAttribute("message","Order Updated Sucessfully.");
-		return "Alteration";
+		return "redirect:alterationUnit";
 	}
-	
 
-		@RequestMapping(value={"/skipAlterationUnit"}, method = RequestMethod.GET)
-	    public String skipProcess(Model model) {
-		List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
-		model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
-		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
-		model.addAttribute("skipAlterationList", skipAlterationList);
-		
-		return "ironingUnit";
-	}
-	
+
 	@RequestMapping(value={"/skipAlterationUnit"}, method = RequestMethod.POST)
 	public String skipProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 
 		if (result.hasErrors()) {
-			List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
-			model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			model.addAttribute("measurementDetails", measurementDetails);
-			return "Ironing";
+			List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
+			model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
+			List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
+			model.addAttribute("skipAlterationList", skipAlterationList);
+			List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
+			alterationMeasurementList.addAll(skipAlterationList);
+			logger.debug("alteration list is"+alterationMeasurementList);
+			model.addAttribute("alterationMeasurementList", alterationMeasurementList);
+			return "Alteration";
 		}
 		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
 		meassurementDetailsbyId.setStatus("Not Required");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
-		List<MeasurementDetails> embroidoryMeasurementList = measurementDetailsService.findByStatus("EMBROIDORY");
-		model.addAttribute("embroidoryMeasurementList", embroidoryMeasurementList);
-		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus(" Not Required");
-		model.addAttribute("skipAlterationList", skipAlterationList);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
 		model.addAttribute("message","Order Updated Sucessfully.");
-		return "ironingUnit";
+		return "redirect:alterationUnit";
 	}
-		
+
 	@RequestMapping(value={"/ironingUnit"}, method = RequestMethod.GET)
 	public String ironingProcess(Model model) {
 		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
@@ -197,7 +194,7 @@ public class ProcessController {
 		model.addAttribute("ironingMeasurementList", ironingMeasurementList);
 		return "Ironing";
 	}
-	
+
 	@RequestMapping(value={"/ironingUnit"}, method = RequestMethod.POST)
 	public String ironingProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 
@@ -221,7 +218,7 @@ public class ProcessController {
 		model.addAttribute("message","Order Updated Sucessfully.");
 		return "Ironing";
 	}
-	
+
 	@RequestMapping(value={"/deliveryUnit"}, method = RequestMethod.GET)
 	public String DeliveryProcess(Model model) {
 		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
@@ -230,7 +227,7 @@ public class ProcessController {
 		model.addAttribute("deliveryMeasurementList", deliveryMeasurementList);
 		return "DeliveryUnit";
 	}
-	
+
 	@RequestMapping(value={"/deliveryUnit"}, method = RequestMethod.POST)
 	public String DeliveryProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 

@@ -82,14 +82,14 @@
 							<div class="row">
 								<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="phoneno">Phone
+									<label class="col-md-2 control-lable" for="customerPhoneNo">Phone
 										Number</label>
 									<div class="col-md-3">
-										<form:input type="text" path="phoneno" id="phoneno"
+										<form:input type="text" path="customerPhoneNo" id="customerPhoneNo"
 											class="form-control input-sm" placeholder="Phone No" />
 									</div>
 									<div class="has-error">
-										<form:errors path="phoneno" class="help-inline" />
+										<form:errors path="customerPhoneNo" class="help-inline" />
 									</div>
 								</div>
 							</div>

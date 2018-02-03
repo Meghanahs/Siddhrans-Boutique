@@ -14,7 +14,7 @@ public interface CustomerDetailsService {
 	public CustomerDetails findByID(Integer id);
 	void updateCustomerDetails(CustomerDetails cusomerDetails);
 	public CustomerDetails findByName(String CustomerName);
-	CustomerDetails findByPhoneNo(String phoneNo); 
-	boolean isPhoneNoUnique(Integer id, String phoneNo);
+	CustomerDetails findByPhoneNo(String customerPhoneNo); 
+	boolean iscustomerPhoneNoUnique(Integer id, String customerPhoneNo);
 	
 }

@@ -62,7 +62,7 @@
 											<td>${customerDetails.customerName}</td>
 											<td>${customerDetails.dob}</td>
 											<td>${customerDetails.email}</td>
-											<td>${customerDetails.phoneno}</td>
+											<td>${customerDetails.customerPhoneNo}</td>
 
 											<%-- <td><a
 									href="<c:url value='/delete-designation-${designation.designationId}' />"
@@ -151,11 +151,11 @@
 									<label class="col-md-2 control-lable" for="phoneno">Phone
 										Number</label>
 									<div class="col-md-3">
-										<form:input type="text" path="phoneno" id="phoneno"
+										<form:input type="text" path="customerPhoneNo" id="customerPhoneNo"
 											class="form-control input-sm" placeholder="Phone No" />
 									</div></br>
 									<div class="has-error" style="color:red;">
-										<form:errors path="phoneno" class="help-inline" />
+										<form:errors path="customerPhoneNo" class="help-inline" />
 									</div>
 								</div>
 							</div>

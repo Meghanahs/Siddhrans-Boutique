@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -18,7 +19,7 @@ public class DressType {
 	Integer dressId;
 	@NotEmpty
 	String dressName;
-	@NotEmpty
+	@NotNull
 	Float amount;
 	
 	public Float getAmount() {

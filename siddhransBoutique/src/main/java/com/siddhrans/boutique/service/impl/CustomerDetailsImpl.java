@@ -43,13 +43,13 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
 	}
 
 	@Override
-	public CustomerDetails findByPhoneNo(String phoneNo) {
-		return customerDetailsDao.findByPhoneNo(phoneNo) ;
+	public CustomerDetails findByPhoneNo(String customerPhoneNo) {
+		return customerDetailsDao.findByPhoneNo(customerPhoneNo) ;
 	}
 
 	@Override
-	 public boolean isPhoneNoUnique(Integer id, String phoneNo) {
-    	CustomerDetails customerDetails = findByPhoneNo(phoneNo);
+	 public boolean iscustomerPhoneNoUnique(Integer id, String customerPhoneNo) {
+    	CustomerDetails customerDetails = findByPhoneNo(customerPhoneNo);
         return ( customerDetails == null || ((id != null) && (customerDetails.getCustemerId() == id)));
     }
 }

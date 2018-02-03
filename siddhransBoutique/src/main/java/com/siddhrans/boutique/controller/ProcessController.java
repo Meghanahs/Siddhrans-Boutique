@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -131,6 +132,7 @@ public class ProcessController {
 		alterationMeasurementList.addAll(skipAlterationList);
 		logger.debug("alteration list is"+alterationMeasurementList);
 		model.addAttribute("alterationMeasurementList", alterationMeasurementList);
+		model.addAttribute("message","Order Updated Successfully");
 		return "Alteration";
 	}
 
@@ -156,7 +158,6 @@ public class ProcessController {
 		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
 		meassurementDetailsbyId.setStatus("ALTERATION");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
-		model.addAttribute("message","Order Updated Sucessfully.");
 		return "redirect:alterationUnit";
 	}
 
@@ -182,13 +183,15 @@ public class ProcessController {
 		meassurementDetailsbyId.setStatus("Not Required");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
-		model.addAttribute("message","Order Updated Sucessfully.");
 		return "redirect:alterationUnit";
 	}
 
 	@RequestMapping(value={"/ironingUnit"}, method = RequestMethod.GET)
 	public String ironingProcess(Model model) {
+		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
+		model.addAttribute("skipAlterationList", skipAlterationList);
 		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
+		alterationMeasurementList.addAll(skipAlterationList);
 		model.addAttribute("alterationMeasurementList", alterationMeasurementList);
 		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
 		model.addAttribute("ironingMeasurementList", ironingMeasurementList);
@@ -199,18 +202,25 @@ public class ProcessController {
 	public String ironingProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 
 		if (result.hasErrors()) {
-			List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
-			model.addAttribute("alterationMeasurementList", alterationMeasurementList);
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			model.addAttribute("measurementDetails", measurementDetails);
-			return "Ironing";
-		}
+			List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
+			model.addAttribute("skipAlterationList", skipAlterationList);
+			List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
+			alterationMeasurementList.addAll(skipAlterationList);
+			model.addAttribute("alterationMeasurementList", alterationMeasurementList);
+			List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
+			model.addAttribute("ironingMeasurementList", ironingMeasurementList);
+			return "Ironing";		}
+
 		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
 		meassurementDetailsbyId.setStatus("IRONING");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
+		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
+		model.addAttribute("skipAlterationList", skipAlterationList);
 		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
+		alterationMeasurementList.addAll(skipAlterationList);
 		model.addAttribute("alterationMeasurementList", alterationMeasurementList);
 		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
 		model.addAttribute("ironingMeasurementList", ironingMeasurementList);

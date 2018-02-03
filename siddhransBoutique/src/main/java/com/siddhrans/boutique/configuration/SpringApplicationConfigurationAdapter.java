@@ -19,6 +19,7 @@ import com.siddhrans.boutique.convertor.DeptStrToDeptConverter;
 import com.siddhrans.boutique.convertor.DesgStrToDesgConverter;
 import com.siddhrans.boutique.convertor.DressTypeStrToDressTypeConverter;
 import com.siddhrans.boutique.convertor.StringToCustomerDetails;
+import com.siddhrans.boutique.convertor.StringToFloatConverter;
 
 
 @Configuration
@@ -38,6 +39,9 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 	@Autowired
 	DressTypeStrToDressTypeConverter dressTypeStrToDressTypeConverter;
 	
+	@Autowired
+	StringToFloatConverter stringToFloatConverter;
+	
 	
 	/**
 	 * Configure Converter to be used.
@@ -49,6 +53,8 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 		registry.addConverter(desgStrToDesgConverter);
 		registry.addConverter(stringToCustomerDetails);
 		registry.addConverter(dressTypeStrToDressTypeConverter);
+		registry.addConverter(stringToFloatConverter);
+		
 	}
 	
 	@Bean(name="multipartResolver")

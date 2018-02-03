@@ -65,9 +65,9 @@ public class CustomerDetailsController {
 			model.addAttribute("customerDetails", customerDetails);
 			return "customerDetails";
 		}
-		if(!customerDetailsService.isPhoneNoUnique(customerDetails.getCustemerId(), customerDetails.getPhoneno())){
-			FieldError phoneNoError =new FieldError("employee","phoneNo",messageSource.getMessage("non.unique.phoneNo", new String[]{customerDetails.getPhoneno()}, Locale.getDefault()));
-			result.addError(phoneNoError);
+		if(!customerDetailsService.iscustomerPhoneNoUnique(customerDetails.getCustemerId(), customerDetails.getCustomerPhoneNo())){
+			FieldError customerPhoneNoError =new FieldError("customerDetails","customerPhoneNo",messageSource.getMessage("non.unique.customerPhoneNo", new String[]{customerDetails.getCustomerPhoneNo()}, Locale.getDefault()));
+			result.addError(customerPhoneNoError);
 			return "registration";
 		}
 		

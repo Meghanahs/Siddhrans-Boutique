@@ -21,7 +21,7 @@ public class CustomerDetails {
 	String email;
 	String dob;
 	@NotEmpty
-	String phoneno;
+	String customerPhoneNo;
 
 	public Integer getCustemerId() {
 		return custemerId;
@@ -47,10 +47,11 @@ public class CustomerDetails {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
-	public String getPhoneno() {
-		return phoneno;
+	public String getCustomerPhoneNo() {
+		return customerPhoneNo;
 	}
-	public void setPhoneno(String phoneno) {
-		this.phoneno = phoneno;
+	public void setCustomerPhoneNo(String customerPhoneNo) {
+		this.customerPhoneNo = customerPhoneNo;
 	}
+
 }

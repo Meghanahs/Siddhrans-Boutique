@@ -13,9 +13,6 @@ import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.CustomerDetailsDao;
 import com.siddhrans.boutique.model.CustomerDetails;
-import com.siddhrans.boutique.model.Employee;
-
-
 
 @Repository("customerDetails")
 @Transactional
@@ -44,8 +41,7 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 
 	@Override
 	public void updateCustomerDetails(CustomerDetails cusomerDetails) {
-	 update(cusomerDetails);
-		
+	 update(cusomerDetails);		
 	}
 
 	@Override
@@ -55,11 +51,11 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 	}
 
 	@Override
-	public CustomerDetails findByPhoneNo(String phoneNo) {
+	public CustomerDetails findByPhoneNo(String customerPhoneNo) {
 		
-		logger.info("PhoneNo : {}", phoneNo);
+		logger.info("customerPhoneNo : {}", customerPhoneNo);
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("phoneNo", phoneNo));
+		crit.add(Restrictions.eq("customerPhoneNo", customerPhoneNo));
 		CustomerDetails customerDetails = (CustomerDetails)crit.uniqueResult();
 	/*if(customerDetails!=null){
 			logger.info("user Found for Phone Number criteria : {}", CustomerDetails.getCustomerDetailsId());

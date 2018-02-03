@@ -68,7 +68,7 @@ public class CustomerDetailsController {
 		if(!customerDetailsService.iscustomerPhoneNoUnique(customerDetails.getCustemerId(), customerDetails.getCustomerPhoneNo())){
 			FieldError customerPhoneNoError =new FieldError("customerDetails","customerPhoneNo",messageSource.getMessage("non.unique.customerPhoneNo", new String[]{customerDetails.getCustomerPhoneNo()}, Locale.getDefault()));
 			result.addError(customerPhoneNoError);
-			return "registration";
+			return "customerDetails";
 		}
 		
 		customerDetailsService.saveCustomerDetails(customerDetails);
@@ -116,6 +116,11 @@ public class CustomerDetailsController {
 	@RequestMapping(value={"/updateUserData"}, method = RequestMethod.POST)
 	public String updateDetails(@Valid CustomerDetails customerDetailData, BindingResult result,
 			ModelMap model) {
+		if(!customerDetailsService.iscustomerPhoneNoUnique(customerDetailData.getCustemerId(), customerDetailData.getCustomerPhoneNo())){
+			FieldError customerPhoneNoError =new FieldError("customerDetails","customerPhoneNo",messageSource.getMessage("non.unique.customerPhoneNo", new String[]{customerDetailData.getCustomerPhoneNo()}, Locale.getDefault()));
+			result.addError(customerPhoneNoError);
+			return "customerDetails";
+		}
 		customerDetailsService.updateCustomerDetails(customerDetailData);
 		model.addAttribute("message","Updated Employee Sucessfully.");
 		return "redirect:/customerdetails";

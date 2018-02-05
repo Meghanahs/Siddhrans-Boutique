@@ -39,6 +39,7 @@ function cuttingFinished() {
 										<th>Order ID</th>
 										<th>Dress Type</th>
 										<th>Order Status</th>
+										<th>Date and Time</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -53,6 +54,7 @@ function cuttingFinished() {
 											<td>${measurement.measurementId}</td>
 											<td>${measurement.dressType.dressName}</td>
 											<td>${measurement.status}</td>
+											<td>${measurement.date}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -90,6 +92,7 @@ function cuttingFinished() {
 									<th>Order ID</th>
 									<th>Dress Type</th>
 									<th>Order Status</th>
+									<th>Date and Time</th>
 									<th width="100"></th>
 								</tr>
 							</thead>
@@ -105,6 +108,7 @@ function cuttingFinished() {
 										<td>${measurement.measurementId}</td>
 										<td>${measurement.dressType.dressName}</td>
 										<td>${measurement.status}</td>
+										<td>${measurement.date}</td>
 									</tr>
 								</c:forEach>
 							</tbody>

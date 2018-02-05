@@ -84,7 +84,7 @@ public class ProcessController {
 			return "Stiching";
 		}
 		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
-		meassurementDetailsbyId.setStatus("CUITTING FINISHED");
+		meassurementDetailsbyId.setStatus("CUTTING FINISHED");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
 		/*List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
 		List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");

@@ -44,15 +44,14 @@ public class MeasurementDetails {
 	String m_fitting;
     String m_topType;
     String status;
-    
-    public String getDate() {
-		return Date;
+    String date;
+	   
+	public String getDate() {
+		return date;
 	}
 	public void setDate(String date) {
-		Date = date;
+		this.date = date;
 	}
-	String Date;
-    
 	public String getStatus() {
 		return status;
 	}

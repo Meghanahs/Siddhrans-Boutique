@@ -1,4 +1,7 @@
 package com.siddhrans.boutique.controller;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
 import org.slf4j.Logger;
@@ -46,6 +49,10 @@ public class MeasurementDetailsController {
 			return "measurementdetails";
 		}
 		measurementDetails.setStatus("PROCESSING");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		measurementDetails.setDate(date.toString());
 		measurementDetailsService.saveMeasurementDetails(measurementDetails);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
 		model.addAttribute("message","Measurement Details Added Sucessfully.");

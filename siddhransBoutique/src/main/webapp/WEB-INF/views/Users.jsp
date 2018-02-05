@@ -42,11 +42,11 @@ function editEmployee(){
 									<th>First Name</th>
 									<th>Last Name</th>
 									<th>User Name</th>
-									<th>Password</th>
+									<!-- <th>Password</th> -->
 									<th>Email</th>
 									<th>Aadhaar No</th>
 									<th>Phone No</th>
-									<th>Gender</th>
+									<!-- <th>Gender</th> -->
 									<th>Designation</th>
 									<th width="100"></th>
 								</tr>
@@ -59,11 +59,11 @@ function editEmployee(){
 										<td>${employee.employeeFirstname}</td>
 										<td>${employee.employeeLastname}</td>
 										<td>${employee.userName}</td>
-										<td>${employee.password}</td>
+										<%-- <td>${employee.password}</td> --%>
 										<td>${employee.email}</td>
 										<td>${employee.aadhaarNo}</td>
 										<td>${employee.phoneNo}</td>
-										<td>${employee.gender}</td>
+										<%-- <td>${employee.gender}</td> --%>
 										<td>${employee.designation.designationName}</td>
 									</tr>
 								</c:forEach>

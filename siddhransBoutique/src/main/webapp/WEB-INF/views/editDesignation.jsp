@@ -68,7 +68,7 @@
 
 					<div class="col-md-12">
 						<div class="col-md-6">
-						<form:input type="text" path="designationId"
+						<form:input type="hidden" path="designationId"
 								id="designationId" class="form-control input-sm"
 								 readonly="true"/>
 							<br>

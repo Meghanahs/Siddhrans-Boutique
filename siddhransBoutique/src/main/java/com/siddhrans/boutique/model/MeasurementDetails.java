@@ -45,6 +45,14 @@ public class MeasurementDetails {
     String m_topType;
     String status;
     
+    public String getDate() {
+		return Date;
+	}
+	public void setDate(String date) {
+		Date = date;
+	}
+	String Date;
+    
 	public String getStatus() {
 		return status;
 	}

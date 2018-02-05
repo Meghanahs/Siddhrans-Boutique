@@ -26,7 +26,7 @@ function enableButtons(){
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
 						<form:form method="POST" modelAttribute="measurementDetails"
-							class="form-horizontal">
+						id="submitForm"	class="form-horizontal">
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>
@@ -38,7 +38,7 @@ function enableButtons(){
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${cuttingMeasurementList}"
+									<c:forEach items="${cuttingFinishedMeasurementList}"
 										var="measurement">
 										<tr>
 											<td><input name="measurementId" type="radio"

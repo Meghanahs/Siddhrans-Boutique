@@ -5,6 +5,11 @@
 <script type="text/javascript">
 function enableButtons(){
 	document.getElementById("startStiching").disabled=false;
+	document.getElementById("cuttingFinish").disabled=false;
+}
+function cuttingFinished() {
+	document.getElementById("submitForm").action = "cuttingFinishedUnit";
+	document.getElementById("submitForm").submit();
 }
 </script>
 </head>
@@ -73,11 +78,14 @@ function enableButtons(){
 			<header class="agileits-box-header clearfix">
 
 				<div class="col-md-12 agile-info-stat height">
+				<form:form method="POST" modelAttribute="measurementDetails"
+							class="form-horizontal" action="cuttingUnit" id="submitForm">
 					<div class="tablecontainer">
-
 						<table class="table table-hover">
 							<thead id="thcolor">
 								<tr>
+								    
+								    <th>Select Order</th>
 									<th>Serial No.</th>
 									<th>Order ID</th>
 									<th>Dress Type</th>
@@ -89,7 +97,11 @@ function enableButtons(){
 							<% int i = 1; %>
 								<c:forEach items="${cuttingMeasurementList}" var="measurement">
 									<tr>
-										<td><%= i %> <% i++; %></td>
+									    <td><input name="measurementId" type="radio"
+												onclick="enableButtons()" id="measurementId"
+												value="${measurement.measurementId}"
+												onkeypress="enableButtons()" /></td>
+										<td><%= i %> <% i++; %></td>										
 										<td>${measurement.measurementId}</td>
 										<td>${measurement.dressType.dressName}</td>
 										<td>${measurement.status}</td>
@@ -97,19 +109,17 @@ function enableButtons(){
 								</c:forEach>
 							</tbody>
 						</table>
+						<input type="button" id="cuttingFinish" value="Finished"
+								disabled="disabled" onclick="cuttingFinished()">
 					</div>
+					</form:form>
 				</div>
 			</header>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>
 
-
-
-
-
-
-	<%@include file="footer.jsp"%>
+<%@include file="footer.jsp"%>
 	</div>
 </body>
 </html>

@@ -27,40 +27,81 @@ public class ProcessController {
 	public String cuttingProcess(Model model) {
 		List<MeasurementDetails> processingMeasurementList = measurementDetailsService.findByStatus("PROCESSING");
 		model.addAttribute("processingMeasurementList", processingMeasurementList);
+		List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");
+		model.addAttribute("cuttingFinishedMeasurementList", cuttingFinishedMeasurementList);
 		List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
-		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
+		/*cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);*/
+		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);	
+		model.addAttribute("message","Order Updated Sucessfully.");
 		return "Cutting";
 	}
 
 	@RequestMapping(value={"/cuttingUnit"}, method = RequestMethod.POST)
 	public String cuttingProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
-
 		if (result.hasErrors()) {
-			List<MeasurementDetails> processingMeasurementList = measurementDetailsService.findByStatus("PROCESSING");
-			model.addAttribute("processingMeasurementList", processingMeasurementList);
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			model.addAttribute("measurementDetails", measurementDetails);
+			List<MeasurementDetails> processingMeasurementList = measurementDetailsService.findByStatus("PROCESSING");
+			model.addAttribute("processingMeasurementList", processingMeasurementList);
+			List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");
+			model.addAttribute("cuttingFinishedMeasurementList", cuttingFinishedMeasurementList);
+			List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
+			/*cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);*/
+			model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
 			return "Cutting";
 		}
 		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
 		meassurementDetailsbyId.setStatus("CUTTING");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
-		List<MeasurementDetails> processingMeasurementList = measurementDetailsService.findByStatus("PROCESSING");
+		/*List<MeasurementDetails> processingMeasurementList = measurementDetailsService.findByStatus("PROCESSING");
 		model.addAttribute("processingMeasurementList", processingMeasurementList);
+		List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");
+		model.addAttribute("cuttingFinishedMeasurementList", cuttingFinishedMeasurementList);
 		List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
 		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
-		model.addAttribute("measurementDetails",new MeasurementDetails());
+		cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);
 		model.addAttribute("message","Order Updated Sucessfully.");
-		return "Cutting";
+		model.addAttribute("measurementDetails",new MeasurementDetails());*/
+		return "redirect:cuttingUnit";
+	}
+	
+	
+	@RequestMapping(value={"/cuttingFinishedUnit"}, method = RequestMethod.POST)
+	public String stichingProcessFinished(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
+		if (result.hasErrors()) {
+			logger.debug(""
+					+ ""
+					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
+			model.addAttribute("measurementDetails", measurementDetails);
+			List<MeasurementDetails> processingMeasurementList = measurementDetailsService.findByStatus("PROCESSING");
+			model.addAttribute("processingMeasurementList", processingMeasurementList);
+			List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");
+			model.addAttribute("cuttingFinishedMeasurementList", cuttingFinishedMeasurementList);
+			List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
+			cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);
+			model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
+			return "Stiching";
+		}
+		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		meassurementDetailsbyId.setStatus("CUITTING FINISHED");
+		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
+		/*List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
+		List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");
+		cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);
+		model.addAttribute("cuttingFinishedMeasurementList", cuttingFinishedMeasurementList);*/
+		model.addAttribute("measurementDetails",new MeasurementDetails());
+		return "redirect:cuttingUnit";
 	}
 
 	@RequestMapping(value={"/stichingUnit"}, method = RequestMethod.GET)
 	public String stichingProcess(Model model) {
+		List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");
+		model.addAttribute("cuttingFinishedMeasurementList", cuttingFinishedMeasurementList);
 		List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
+		/*cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);*/
 		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
-		List<MeasurementDetails> stichingMeasurementList = measurementDetailsService.findByStatus("STICHING");
+		List<MeasurementDetails> stichingMeasurementList = measurementDetailsService.findByStatus("STICHING");		
 		model.addAttribute("stichingMeasurementList", stichingMeasurementList);
 		return "Stiching";
 	}
@@ -69,25 +110,33 @@ public class ProcessController {
 	public String stichingProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
 
 		if (result.hasErrors()) {
-			List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
-			model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
 			model.addAttribute("measurementDetails", measurementDetails);
+			List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");
+			model.addAttribute("cuttingFinishedMeasurementList", cuttingFinishedMeasurementList);
+			List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
+			model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
+			List<MeasurementDetails> stichingMeasurementList = measurementDetailsService.findByStatus("STICHING");		
+			model.addAttribute("stichingMeasurementList", stichingMeasurementList);
 			return "Stiching";
 		}
 		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
 		meassurementDetailsbyId.setStatus("STICHING");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
+		List<MeasurementDetails> cuttingFinishedMeasurementList = measurementDetailsService.findByStatus("CUTTING FINISHED");
+		model.addAttribute("cuttingFinishedMeasurementList", cuttingFinishedMeasurementList);
 		List<MeasurementDetails> cuttingMeasurementList = measurementDetailsService.findByStatus("CUTTING");
-		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);
-		List<MeasurementDetails> stichingMeasurementList = measurementDetailsService.findByStatus("STICHING");
+		cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);
+		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);		
+		List<MeasurementDetails> stichingMeasurementList = measurementDetailsService.findByStatus("STICHING");		
 		model.addAttribute("stichingMeasurementList", stichingMeasurementList);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
 		model.addAttribute("message","Order Updated Sucessfully.");
 		return "Stiching";
 	}
+
 
 	@RequestMapping(value={"/embroidoryUnit"}, method = RequestMethod.GET)
 	public String embroidoryProcess(Model model) {
@@ -138,7 +187,6 @@ public class ProcessController {
 
 	@RequestMapping(value={"/alterationUnit"}, method = RequestMethod.POST)
 	public String alterationProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
-
 		if (result.hasErrors()) {
 
 			logger.debug(""
@@ -200,7 +248,6 @@ public class ProcessController {
 
 	@RequestMapping(value={"/ironingUnit"}, method = RequestMethod.POST)
 	public String ironingProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
-
 		if (result.hasErrors()) {
 			logger.debug(""
 					+ ""
@@ -213,7 +260,6 @@ public class ProcessController {
 			List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
 			model.addAttribute("ironingMeasurementList", ironingMeasurementList);
 			return "Ironing";		}
-
 		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
 		meassurementDetailsbyId.setStatus("IRONING");
 		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
@@ -261,5 +307,4 @@ public class ProcessController {
 		model.addAttribute("message","Order Updated Sucessfully.");
 		return "DeliveryUnit";
 	}
-
 }

@@ -58,9 +58,8 @@ public class MeasurementDetailsController {
        	model.addAttribute("measurementDetailsdata", measurementDetailsdata);
     	List<CustomerDetails> customerDetails= CustomerDetailsService.fetchAllCustomerDetails();
         model.addAttribute("customerDetails",customerDetails);
-       	/*String customerId = request.getParameter("customerId");
-       	CustomerDetails customerDetails= CustomerDetailsService.findByID(Integer.parseInt(customerId));
-       	measurementDetails.setCustomerDetails(customerDetails);*/
+/*      String customerId = request.getParameter("customerId");
+       	CustomerDetails customerDetails= CustomerDetailsService.findByID(Integer.parseInt(customerId));*/
        	List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList",dressTypeList);
 		return "editMeasurementDetails";

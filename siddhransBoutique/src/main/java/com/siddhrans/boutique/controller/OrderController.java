@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -26,39 +27,41 @@ public class OrderController {
 	OrderDetailsService orderDetailsService;
 	@Autowired
 	DressTypeService dressTypeService;
+	@Autowired 
+	HttpServletRequest request;
 
 	static final Logger logger = LoggerFactory.getLogger(OrderController.class);
-	@RequestMapping(value={"/orderDetails"}, method = RequestMethod.GET)
-	public String orderDetails(Model model) {
+	
+	@RequestMapping(value={"/orderDetails"}, method = RequestMethod.POST)
+	public String orderDetails(Model model) throws Exception {
+		
 		model.addAttribute("orderDetails",new OrderDetails());
+		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList", dressTypeList);
+		logger.debug("DressType List is"+dressTypeList);
+/*		throw new Exception("DressType List is"+dressTypeList);*/
 		return "orderDetails";
 	}
 
-	@RequestMapping(value={"/orderDetails"}, method = RequestMethod.POST)
-	public String orderDetails(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
-		if (result.hasErrors()) {
-			model.addAttribute("orderDetails",new OrderDetails());
-			logger.debug(""
-					+ ""
-					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			return "orderDetails";
-		}
+	@RequestMapping(value={"/saveOrderDetails"}, method = RequestMethod.POST)
+	public String saveOrderDetails(Model model) {
+		String [] dressTypes=request.getParameterValues("dressTypes");
 	/*	OrderDetails orders = orderDetailsService.findById(orderDetails.getOrderId());
-		model.addAttribute("orders", orders);*/
-	
-		OrderDetails orderByStatus=orderDetailsService.findById(orderDetails.getOrderId());
+		model.addAttribute("orders", orders);*/	
+		
+		/*OrderDetails orderByStatus=orderDetailsService.findById(orderDetails.getOrderId());
 		orderByStatus.setStatus("PROCESSING");
 		OrderDetails orderByCount=orderDetailsService.findById(orderDetails.getOrderAmount());
 		OrderDetails orderBycount=orderDetailsService.findById(orderDetails.getCount());
-		/*orderByCount.setOrderAmount(orderBycount);*/
+		orderByCount.setOrderAmount(orderBycount);
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
 		orderDetails.setOrderDate(date.toString());
-		/*String[] dressTypeLists = request.getParameterValues("selected");*/
+		String[] dressTypeLists = request.getParameterValues("selected");
 		List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList",dressTypeList);
-		orderDetailsService.saveOrder(orderDetails);
+		orderDetailsService.saveOrder(orderDetails);*/
 		return "orderDetails";
 	}
 }

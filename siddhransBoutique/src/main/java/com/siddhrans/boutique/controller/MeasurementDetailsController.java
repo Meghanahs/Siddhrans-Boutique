@@ -48,11 +48,11 @@ public class MeasurementDetailsController {
 			model.addAttribute("measurementDetails", measurementDetails);
 			return "measurementdetails";
 		}
-		measurementDetails.setStatus("PROCESSING");
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		/*measurementDetails.setStatus("PROCESSING");*/
+		/*DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
-		measurementDetails.setDate(date.toString());
+		measurementDetails.setDate(date.toString());*/
 		measurementDetailsService.saveMeasurementDetails(measurementDetails);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
 		model.addAttribute("message","Measurement Details Added Sucessfully.");
@@ -67,8 +67,8 @@ public class MeasurementDetailsController {
         model.addAttribute("customerDetails",customerDetails);
 /*      String customerId = request.getParameter("customerId");
        	CustomerDetails customerDetails= CustomerDetailsService.findByID(Integer.parseInt(customerId));*/
-       	List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
-		model.addAttribute("dressTypeList",dressTypeList);
+       /*	List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList",dressTypeList);*/
 		return "editMeasurementDetails";
 	}
 			

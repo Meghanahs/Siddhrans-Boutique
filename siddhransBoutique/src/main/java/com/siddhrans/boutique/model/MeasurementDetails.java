@@ -43,10 +43,10 @@ public class MeasurementDetails {
 	Float m_bL;
 	String m_fitting;
     String m_topType;
-    String status;
-    String date;
+  /*String status;
+    String date;*/
 	   
-	public String getDate() {
+	/*public String getDate() {
 		return date;
 	}
 	public void setDate(String date) {
@@ -57,14 +57,14 @@ public class MeasurementDetails {
 	}
 	public void setStatus(String status) {
 		this.status = status;
-	}
+	}*/
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "MEASUREMENTDETAILS_CUSTOMERDETAILS", 
              joinColumns = { @JoinColumn(name = "MEASUREMENT_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "CUSTOMERDETAILS_ID") })
 	CustomerDetails customerDetails;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	/*@ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "MEASUREMENTDETAILS_DRESSTYPE", 
              joinColumns = { @JoinColumn(name = "MEASUREMENT_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "DRESSTYPE_ID") })
@@ -75,7 +75,7 @@ public class MeasurementDetails {
 	}
 	public void setDressType(DressType dressType) {
 		this.dressType = dressType;
-	}
+	}*/
 	public CustomerDetails getCustomerDetails() {
 		return customerDetails;
 	}

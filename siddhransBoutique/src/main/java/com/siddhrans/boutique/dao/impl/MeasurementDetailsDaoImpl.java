@@ -47,7 +47,7 @@ public class MeasurementDetailsDaoImpl extends AbstractDao<Integer, MeasurementD
 		List<MeasurementDetails> measurementDetailsList = (List<MeasurementDetails>) criteria.list();
 		for(MeasurementDetails measurementDetails : measurementDetailsList){
 				Hibernate.initialize(measurementDetails.getCustomerDetails());
-				Hibernate.initialize(measurementDetails.getDressType());
+				/*Hibernate.initialize(measurementDetails.getDressType());*/
         }
 		return measurementDetailsList;
 	}

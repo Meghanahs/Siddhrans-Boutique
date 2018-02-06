@@ -417,7 +417,7 @@
 								</div>
 							</div>
 							
-							<div class="row">
+					<%-- 		<div class="row">
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="dressType">Dress Type</label>
@@ -431,7 +431,7 @@
 										<form:errors path="dressType" class="help-inline" />
 									</div>
 								</div>
-							</div>
+							</div> --%>
 							</br>						
 								<button type="submit" class="button">Update</button>
 							</form:form>

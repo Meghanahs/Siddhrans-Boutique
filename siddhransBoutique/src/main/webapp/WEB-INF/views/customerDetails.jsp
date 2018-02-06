@@ -4,20 +4,25 @@
 <%@include file="header.jsp"%>
 <script type="text/javascript">
 	function enableButtons() {
-		document.getElementById("showOrder").disabled = false;
-		document.getElementById("createOrder").disabled = false;
+		document.getElementById("showMeasurement").disabled = false;
+		document.getElementById("takeMeasurement").disabled = false;
 		document.getElementById("editCustomerDetails").disabled = false;
+		document.getElementById("createOrder").disabled = false;
 	}
-	function createOrdeAction() {
-		document.getElementById("submitForm").action = "createOrder";
+	function createMeasurementAction() {
+		document.getElementById("submitForm").action = "createMeasurement";
 		document.getElementById("submitForm").submit();
 	}
-	function showOrderAction() {
-		document.getElementById("submitForm").action = "showOrder";
+	function showMeasurementAction() {
+		document.getElementById("submitForm").action = "showMeasurementDetails";
 		document.getElementById("submitForm").submit();
 	}
 	function editOrdeAction() {
 		document.getElementById("submitForm").action = "editCustomerDetails";
+		document.getElementById("submitForm").submit();
+	}
+	function createOrderAction() {
+		document.getElementById("submitForm").action = "orderDetails";
 		document.getElementById("submitForm").submit();
 	}
 </script>
@@ -70,14 +75,14 @@
 									</c:forEach>
 								</tbody>
 							</table>
-							<input type="button" id="createOrder" value="Create Order"
-								disabled="disabled" onclick="createOrdeAction()">
-								 <input
-								type="button" id="showOrder" value="Show Order History"
-								disabled="disabled" onclick="showOrderAction()">
-								 <input
-								type="button" id="editCustomerDetails" value="Edit Customer Details"
-								disabled="disabled" onclick="editOrdeAction()">
+							<input type="button" id="takeMeasurement"value="Take Measurement" disabled="disabled"
+								onclick="createMeasurementAction()"> 
+								<input type="button" id="showMeasurement" value="Show Measurement Details" disabled="disabled"
+								onclick="showMeasurementAction()"> 
+								<input type="button" id="editCustomerDetails" value="Edit Customer Details"
+								disabled="disabled" onclick="editOrdeAction()"> 
+								<input type="button" id="createOrder" value="Create Order"
+								disabled="disabled" onclick="createOrderAction()">
 						</form>
 					</div>
 
@@ -111,8 +116,9 @@
 									<div class="col-md-3">
 										<form:input type="text" path="customerName" id="customerName"
 											class="form-control input-sm" placeholder="Customer Name" />
-									</div></br>
-									<div class="has-error" style="color:red;">
+									</div>
+									</br>
+									<div class="has-error" style="color: red;">
 										<form:errors path="customerName" class="help-inline" />
 									</div>
 								</div>
@@ -151,10 +157,12 @@
 									<label class="col-md-2 control-lable" for="phoneno">Phone
 										Number</label>
 									<div class="col-md-3">
-										<form:input type="text" path="customerPhoneNo" id="customerPhoneNo"
-											class="form-control input-sm" placeholder="Phone No" />
-									</div></br>
-									<div class="has-error" style="color:red;">
+										<form:input type="text" path="customerPhoneNo"
+											id="customerPhoneNo" class="form-control input-sm"
+											placeholder="Phone No" />
+									</div>
+									</br>
+									<div class="has-error" style="color: red;">
 										<form:errors path="customerPhoneNo" class="help-inline" />
 									</div>
 								</div>

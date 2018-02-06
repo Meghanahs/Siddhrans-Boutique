@@ -35,10 +35,10 @@ public class CustomerDetailsController {
 	CustomerDetailsService customerDetailsService;
 	
 	@Autowired
-	MeasurementDetailsService measurementDetailsService;
+	DressTypeService dressTypeService;
 	
 	@Autowired
-	DressTypeService dressTypeService;
+	MeasurementDetailsService measurementDetailsService;
 	
 	@Autowired 
 	HttpServletRequest request;
@@ -78,7 +78,7 @@ public class CustomerDetailsController {
 		return "customerDetails";
 	}
 	
-	@RequestMapping(value={"/createOrder"}, method = RequestMethod.POST)
+	@RequestMapping(value={"/createMeasurement"}, method = RequestMethod.POST)
 	public String createOrder(Model model) {
 		String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetails= customerDetailsService.findByID(Integer.parseInt(customerId));
@@ -95,7 +95,7 @@ public class CustomerDetailsController {
 	}
 	
 	
-	@RequestMapping(value={"/showOrder"}, method = RequestMethod.POST)
+	@RequestMapping(value={"/showMeasurementDetails"}, method = RequestMethod.POST)
 	public String showOrder(Model model) {
 		String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetails= customerDetailsService.findByID(Integer.parseInt(customerId));

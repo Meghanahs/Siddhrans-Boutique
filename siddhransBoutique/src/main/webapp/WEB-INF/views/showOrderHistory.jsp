@@ -63,9 +63,9 @@
 										<th>Back Length</th>
 										<th>Fitting</th>
 										<th>Top Type</th>
-										<th>Dress Type</th>
-										<th>Amount</th>
-										<th>Status</th>
+										<!-- <th>Dress Type</th> -->
+										<!-- <th>Amount</th> -->
+										<!-- <th>Status</th> -->
                                         <th width="100"></th>
 									</tr>
 								</thead>
@@ -102,9 +102,9 @@
 											<td>${measurementDetails.m_bL}</td>
 											<td>${measurementDetails.m_fitting}</td>
 											<td>${measurementDetails.m_topType}</td>
-											<td>${measurementDetails.dressType.dressName}</td>
+											<%-- <td>${measurementDetails.dressType.dressName}</td>
 											<td>${measurementDetails.dressType.amount}</td>
-											<td>${measurementDetails.status}</td>
+											<td>${measurementDetails.status}</td> --%>
 										  
 											<%-- <td><a href="<c:url value='/editMeasurementDetails' />"
 													class="btn btn-success custom-width">edit</a></td>	 --%>

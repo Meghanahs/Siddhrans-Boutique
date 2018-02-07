@@ -49,7 +49,7 @@ function cuttingFinished() {
 										<tr>
 											<td><input name="orderId" type="radio"
 												onclick="enableButtons()" id="orderId"
-												value="${OrderDetails.orderId}"
+												value="${orderDetails.orderId}"
 												onkeypress="enableButtons()" /></td>
 											<td>${orderDetails.orderId}</td>
 											<td>${orderDetails.dressType.dressName}</td>

@@ -37,7 +37,7 @@ public class OrderController {
 	public String orderDetails(Model model) throws Exception {
 		
 		/*model.addAttribute("orderDetails",new OrderDetails());*/
-		String customerId=request.getParameter("dressTypes");
+		String customerId=request.getParameter("customerId");
 		model.addAttribute("customerId", customerId);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);
@@ -48,8 +48,8 @@ public class OrderController {
 
 	@RequestMapping(value={"/saveOrderDetails"}, method = RequestMethod.POST)
 	public String saveOrderDetails(Model model) {
-		Integer custemerId = Integer.parseInt(request.getParameter("custemerId"));
-		CustomerDetails customerDetails = customerDetailsService.findByID(custemerId);
+		Integer customerId = Integer.parseInt(request.getParameter("customerId"));
+		CustomerDetails customerDetails = customerDetailsService.findByID(customerId);
 		String [] dressTypes=request.getParameterValues("dressTypes");
 		for(int i=0;i<dressTypes.length;i++){
 			Integer dressTypeId=Integer.parseInt(dressTypes[i]);
@@ -67,6 +67,7 @@ public class OrderController {
 		    orderDetails.setOrderAmount(amount);
 		    orderDetails.setStatus("PROCESSING");
 		    orderDetails.setCount(count);
+		    orderDetailsService.saveOrder(orderDetails);
 		}
 		return "orderDetails";
 	}

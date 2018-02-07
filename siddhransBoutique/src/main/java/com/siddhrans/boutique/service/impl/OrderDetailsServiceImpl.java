@@ -33,4 +33,9 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 		return orderDetailsdao.findByStatus(status);
 	}
 
+	@Override
+	public void saveOrUpdateOrderDetails(OrderDetails orderDetails) {
+	 orderDetailsdao.saveOrder(orderDetails);		
+	}
+
 }

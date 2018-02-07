@@ -30,7 +30,7 @@ function cuttingFinished() {
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form:form method="POST" modelAttribute="measurementDetails"
+						<form:form method="POST" modelAttribute="orderDetails"
 							class="form-horizontal">
 							<table class="table table-hover">
 								<thead id="thcolor">
@@ -39,22 +39,22 @@ function cuttingFinished() {
 										<th>Order ID</th>
 										<th>Dress Type</th>
 										<th>Order Status</th>
-										<th>Date and Time</th>
+										<!-- <th>Date and Time</th> -->
 										<th width="100"></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${processingMeasurementList}"
-										var="measurement">
+									<c:forEach items="${processingOrderList}"
+										var="orderDetails">
 										<tr>
-											<td><input name="measurementId" type="radio"
-												onclick="enableButtons()" id="measurementId"
-												value="${measurement.measurementId}"
+											<td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${OrderDetails.orderId}"
 												onkeypress="enableButtons()" /></td>
-											<td>${measurement.measurementId}</td>
-											<td>${measurement.dressType.dressName}</td>
-											<td>${measurement.status}</td>
-											<td>${measurement.date}</td>
+											<td>${orderDetails.orderId}</td>
+											<td>${orderDetails.dressType.dressName}</td>
+											<td>${orderDetails.status}</td>
+											<%-- <td>${orderDetails.date}</td> --%>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -80,7 +80,7 @@ function cuttingFinished() {
 			<header class="agileits-box-header clearfix">
 
 				<div class="col-md-12 agile-info-stat height">
-				<form:form method="POST" modelAttribute="measurementDetails"
+				<form:form method="POST" modelAttribute="orderDetails"
 							class="form-horizontal" action="cuttingUnit" id="submitForm">
 					<div class="tablecontainer">
 						<table class="table table-hover">
@@ -92,23 +92,23 @@ function cuttingFinished() {
 									<th>Order ID</th>
 									<th>Dress Type</th>
 									<th>Order Status</th>
-									<th>Date and Time</th>
+									<!-- <th>Date and Time</th> -->
 									<th width="100"></th>
 								</tr>
 							</thead>
 							<tbody>
 							<% int i = 1; %>
-								<c:forEach items="${cuttingMeasurementList}" var="measurement">
+								<c:forEach items="${cuttingOrderList}" var="orderDetails">
 									<tr>
-									    <td><input name="measurementId" type="radio"
-												onclick="enableButtons()" id="measurementId"
-												value="${measurement.measurementId}"
+									    <td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${orderDetails.orderId}"
 												onkeypress="enableButtons()" /></td>
 										<td><%= i %> <% i++; %></td>										
-										<td>${measurement.measurementId}</td>
-										<td>${measurement.dressType.dressName}</td>
-										<td>${measurement.status}</td>
-										<td>${measurement.date}</td>
+										<td>${orderDetails.orderId}</td>
+										<td>${orderDetails.dressType.dressName}</td>
+										<td>${orderDetails.status}</td>
+										<%-- <td>${orderDetails.date}</td> --%>
 									</tr>
 								</c:forEach>
 							</tbody>

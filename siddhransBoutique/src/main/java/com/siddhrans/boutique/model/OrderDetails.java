@@ -18,8 +18,8 @@ public class OrderDetails {
 	@Column(name="ORDER_ID")
 	Integer orderId;
 	String orderDate;
-	Integer count;
-	Integer orderAmount;
+	Float count;
+	Float orderAmount;
 	String status;
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "ORDERDETAILS_CUSTOMERDETAILS", 
@@ -45,17 +45,16 @@ public class OrderDetails {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public Integer getCount() {
+	public Float getCount() {
 		return count;
 	}
-	public void setCount(Integer count) {
+	public void setCount(Float count) {
 		this.count = count;
 	}
-
-	public Integer getOrderAmount() {
+	public Float getOrderAmount() {
 		return orderAmount;
 	}
-	public void setOrderAmount(Integer orderAmount) {
+	public void setOrderAmount(Float orderAmount) {
 		this.orderAmount = orderAmount;
 	}
 	public CustomerDetails getCustomerDetails() {

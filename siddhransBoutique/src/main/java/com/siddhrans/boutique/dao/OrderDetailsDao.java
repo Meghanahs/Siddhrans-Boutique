@@ -8,4 +8,5 @@ public interface OrderDetailsDao {
 	 public void saveOrder(OrderDetails order);
 	 public List<OrderDetails> findAllOrders();
 	 public List<OrderDetails> findByStatus(String status);
+	 public void saveOrUpdateOrderDetails(OrderDetails orderDetails);
 }

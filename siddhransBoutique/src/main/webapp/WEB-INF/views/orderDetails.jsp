@@ -23,7 +23,7 @@
 						<form method="POST" action="saveOrderDetails">
 							<table class="table table-hover">
 								<thead id="thcolor">
-									<tr>
+									<tr><th width="100"></th>
 										<th>Select Dress</th>
 										<th>Dress Name</th>
 										<th>Number Of Dress</th>
@@ -32,7 +32,7 @@
 								</thead>
 								<tbody>
 									<c:forEach items="${dressTypeList}" var="dressType">
-										<tr>
+										<tr><td><input type="hidden" id="custemerId" name="custemerId" value=${custemerId}></td>
 											<td><input type="checkbox" name="dressTypes"
 												value="${dressType.dressId}"></td>
 											<td>${dressType.dressName}</td>

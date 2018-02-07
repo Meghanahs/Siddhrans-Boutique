@@ -43,5 +43,11 @@ public class OrderDetailsDaoImpl extends AbstractDao<Integer, OrderDetails> impl
 		return orders;
 	}
 
+	@Override
+	public void saveOrUpdateOrderDetails(OrderDetails orderDetails) {
+		 saveOrUpdate(orderDetails);
+		
+	}
+
 
 }

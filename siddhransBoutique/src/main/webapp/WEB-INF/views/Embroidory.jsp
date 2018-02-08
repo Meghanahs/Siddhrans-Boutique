@@ -5,6 +5,11 @@
 <script type="text/javascript">
 function enableButtons(){
 	document.getElementById("startEmbroidory").disabled=false;
+	document.getElementById("embroidoryFinish").disabled=false;
+}
+function embroidoryFinished() {
+	document.getElementById("submitForm").action = "embroidoryFinishedUnit";
+	document.getElementById("submitForm").submit();
 }
 </script>
 </head>
@@ -25,7 +30,7 @@ function enableButtons(){
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form:form method="POST" modelAttribute="measurementDetails"
+						<form:form method="POST" modelAttribute="orderDetails"
 							class="form-horizontal">
 							<table class="table table-hover">
 								<thead id="thcolor">
@@ -38,16 +43,16 @@ function enableButtons(){
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${stichingMeasurementList}"
-										var="measurement">
+									<c:forEach items="${stichingFinishedOrderList}"
+										var="order">
 										<tr>
-											<td><input name="measurementId" type="radio"
-												onclick="enableButtons()" id="measurementId"
-												value="${measurement.measurementId}"
+											<td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${order.orderId}"
 												onkeypress="enableButtons()" /></td>
-											<td>${measurement.measurementId}</td>
-											<td>${measurement.dressType.dressName}</td>
-											<td>${measurement.status}</td>
+											<td>${order.orderId}</td>
+											<td>${order.dressType.dressName}</td>
+											<td>${order.status}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -73,11 +78,14 @@ function enableButtons(){
 			<header class="agileits-box-header clearfix">
 
 				<div class="col-md-12 agile-info-stat height">
+				<form:form method="POST" modelAttribute="orderDetails"
+							class="form-horizontal" action="stichingUnit" id="submitForm">
 					<div class="tablecontainer">
 
 						<table class="table table-hover">
 							<thead id="thcolor">
 								<tr>
+								    <th>Select Order</th>
 									<th>Serial No.</th>
 									<th>Order ID</th>
 									<th>Dress Type</th>
@@ -87,17 +95,23 @@ function enableButtons(){
 							</thead>
 							<tbody>
 							<% int i = 1; %>
-								<c:forEach items="${embroidoryMeasurementList}" var="measurement">
-									<tr>
+								<c:forEach items="${embroidoryOrderList}" var="order">
+									<tr><td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${order.orderId}"
+												onkeypress="enableButtons()" /></td>
 										<td><%= i %> <% i++; %></td>
-										<td>${measurement.measurementId}</td>
-										<td>${measurement.dressType.dressName}</td>
-										<td>${measurement.status}</td>
+										<td>${order.orderId}</td>
+										<td>${order.dressType.dressName}</td>
+										<td>${order.status}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
+						<input type="button" id="embroidoryFinish" value="Finished"
+								disabled="disabled" onclick="embroidoryFinished()">
 					</div>
+					</form:form>
 				</div>
 			</header>
 			<div class="agileits-box-body clearfix"></div>

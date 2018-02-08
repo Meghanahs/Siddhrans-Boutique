@@ -7,12 +7,16 @@
 function enableButtons(){
 	document.getElementById("startAlteration").disabled=false;
 	document.getElementById("notRequired").disabled=false;
+	document.getElementById("alterationFinish").disabled=false;
 }
 function skipAction() {
 	document.getElementById("submitForm").action = "skipAlterationUnit";
 	document.getElementById("submitForm").submit();
 }
-
+function alterationFinished() {
+	document.getElementById("submitForm").action = "alterationFinished";
+	document.getElementById("submitForm").submit();
+}
 </script>
 </head>
 <body>
@@ -32,7 +36,7 @@ function skipAction() {
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form:form method="POST" modelAttribute="measurementDetails"
+						<form:form method="POST" modelAttribute="orderDetails"
 							id="submitForm" class="form-horizontal" action="alterationUnit">
 							<table class="table table-hover">
 								<thead id="thcolor">
@@ -45,16 +49,17 @@ function skipAction() {
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${embroidoryMeasurementList}"
-										var="measurement">
+									<c:forEach items="${embroidoryFinishedOrderList}"
+										var="order">
 										<tr>
-											<td><input name="measurementId" type="radio"
-												onclick="enableButtons()" id="measurementId"
-												value="${measurement.measurementId}"
+											<td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${order.orderId}"
 												onkeypress="enableButtons()" /></td>
-											<td>${measurement.measurementId}</td>
-											<td>${measurement.dressType.dressName}</td>
-											<td>${measurement.status}</td>
+											<td>${order.orderId}</td>
+											<td>${order.dressType.dressName}</td>
+											<td>${order.status}</td>
+											<%-- <td>${orderDetails.orderDetails.orderDate}</td>  --%>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -63,7 +68,6 @@ function skipAction() {
 								value="Start Alteration" disabled="disabled">
 							<input type="button" id="notRequired" value="Not Required"
 								disabled="disabled" onclick="skipAction()">
-
 						</form:form>
 					</div>
 				</div>
@@ -80,45 +84,49 @@ function skipAction() {
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-
-				<div class="col-md-12 agile-info-stat height">
+		<div class="col-md-12 agile-info-stat height">
+				<form:form method="POST" modelAttribute="orderDetails"
+							class="form-horizontal" action="alterationUnit" id="submitForm">
 					<div class="tablecontainer">
-
 						<table class="table table-hover">
 							<thead id="thcolor">
 								<tr>
+								    
+								    <th>Select Order</th>
 									<th>Serial No.</th>
 									<th>Order ID</th>
 									<th>Dress Type</th>
 									<th>Order Status</th>
+									<!-- <th>Date and Time</th> -->
 									<th width="100"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<% int i = 1; %>
-								<c:forEach items="${alterationMeasurementList}"
-									var="measurement">
+							<% int i = 1; %>
+								<c:forEach items="${alterationOrderList}" var="orderDetails">
 									<tr>
-										<td><%= i %> <% i++; %></td>
-										<td>${measurement.measurementId}</td>
-										<td>${measurement.dressType.dressName}</td>
-										<td>${measurement.status}</td>
+									    <td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${orderDetails.orderId}"
+												onkeypress="enableButtons()" /></td>
+										<td><%= i %> <% i++; %></td>										
+										<td>${orderDetails.orderId}</td>
+										<td>${orderDetails.dressType.dressName}</td>
+										<td>${orderDetails.status}</td>
+										<%-- <td>${orderDetails.date}</td> --%>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
+						<input type="button" id="alterationFinish" value="Finished"
+								disabled="disabled" onclick="alterationFinished()">
 					</div>
+					</form:form>
 				</div>
 			</header>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>
-
-
-
-
-
-
 	<%@include file="footer.jsp"%>
 	</div>
 </body>

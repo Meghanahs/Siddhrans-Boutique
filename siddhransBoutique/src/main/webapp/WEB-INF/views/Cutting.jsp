@@ -4,7 +4,7 @@
 <%@include file="header.jsp"%>
 <script type="text/javascript">
 function enableButtons(){
-	document.getElementById("startStiching").disabled=false;
+	document.getElementById("startCutting").disabled=false;
 	document.getElementById("cuttingFinish").disabled=false;
 }
 function cuttingFinished() {
@@ -39,7 +39,7 @@ function cuttingFinished() {
 										<th>Order ID</th>
 										<th>Dress Type</th>
 										<th>Order Status</th>
-										<!-- <th>Date and Time</th> -->
+									<!--  <th>Date and Time</th>  -->
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -54,12 +54,12 @@ function cuttingFinished() {
 											<td>${orderDetails.orderId}</td>
 											<td>${orderDetails.dressType.dressName}</td>
 											<td>${orderDetails.status}</td>
-											<%-- <td>${orderDetails.date}</td> --%>
+											<%-- <td>${orderDetails.orderDetails.orderDate}</td>  --%>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
-							<input type="submit" id="startStiching" value="Start Cutting"
+							<input type="submit" id="startCutting" value="Start Cutting"
 								disabled="disabled">
 
 						</form:form>
@@ -78,7 +78,6 @@ function cuttingFinished() {
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-
 				<div class="col-md-12 agile-info-stat height">
 				<form:form method="POST" modelAttribute="orderDetails"
 							class="form-horizontal" action="cuttingUnit" id="submitForm">

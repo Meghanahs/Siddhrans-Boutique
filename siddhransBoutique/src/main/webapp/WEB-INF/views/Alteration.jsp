@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <%@include file="includeLibs.jsp"%>
@@ -11,10 +10,6 @@ function enableButtons(){
 }
 function skipAction() {
 	document.getElementById("submitForm").action = "skipAlterationUnit";
-	document.getElementById("submitForm").submit();
-}
-function alterationFinished() {
-	document.getElementById("submitForm").action = "alterationFinished";
 	document.getElementById("submitForm").submit();
 }
 </script>
@@ -45,17 +40,17 @@ function alterationFinished() {
 										<th>Order ID</th>
 										<th>Dress Type</th>
 										<th>Order Status</th>
+										<th>Created On</th>
+										<th>Modified On</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${embroidoryFinishedOrderList}"
-										var="order">
+									<c:forEach items="${embroidoryFinishedOrderList}" var="order">
 										<tr>
 											<td><input name="orderId" type="radio"
 												onclick="enableButtons()" id="orderId"
-												value="${order.orderId}"
-												onkeypress="enableButtons()" /></td>
+												value="${order.orderId}" onkeypress="enableButtons()" /></td>
 											<td>${order.orderId}</td>
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
@@ -84,43 +79,44 @@ function alterationFinished() {
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-		<div class="col-md-12 agile-info-stat height">
-				<form:form method="POST" modelAttribute="orderDetails"
-							class="form-horizontal" action="alterationUnit" id="submitForm">
-					<div class="tablecontainer">
-						<table class="table table-hover">
-							<thead id="thcolor">
-								<tr>
-								    
-								    <th>Select Order</th>
-									<th>Serial No.</th>
-									<th>Order ID</th>
-									<th>Dress Type</th>
-									<th>Order Status</th>
-									<!-- <th>Date and Time</th> -->
-									<th width="100"></th>
-								</tr>
-							</thead>
-							<tbody>
-							<% int i = 1; %>
-								<c:forEach items="${alterationOrderList}" var="orderDetails">
+				<div class="col-md-12 agile-info-stat height">
+					<form:form method="POST" modelAttribute="orderDetails"
+						class="form-horizontal" action="alterationFinished"
+						id="submitForm">
+						<div class="tablecontainer">
+							<table class="table table-hover">
+								<thead id="thcolor">
 									<tr>
-									    <td><input name="orderId" type="radio"
-												onclick="enableButtons()" id="orderId"
-												value="${orderDetails.orderId}"
-												onkeypress="enableButtons()" /></td>
-										<td><%= i %> <% i++; %></td>										
-										<td>${orderDetails.orderId}</td>
-										<td>${orderDetails.dressType.dressName}</td>
-										<td>${orderDetails.status}</td>
-										<%-- <td>${orderDetails.date}</td> --%>
+
+										<th>Select Order</th>
+										<th>Serial No.</th>
+										<th>Order ID</th>
+										<th>Dress Type</th>
+										<th>Order Status</th>
+										<th>Created On</th>
+										<th>Modified On</th>
+										<th width="100"></th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<input type="button" id="alterationFinish" value="Finished"
-								disabled="disabled" onclick="alterationFinished()">
-					</div>
+								</thead>
+								<tbody>
+									<% int i = 1; %>
+									<c:forEach items="${alterationOrderList}" var="order">
+										<tr>
+											<td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${order.orderId}" onkeypress="enableButtons()" /></td>
+											<td><%= i %> <% i++; %></td>
+											<td>${order.orderId}</td>
+											<td>${order.dressType.dressName}</td>
+											<td>${order.status}</td>
+											<td>${order.orderDate}</td>
+											<td>${order.modifiedDate}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<input type="submit" id="alterationFinish" value="Finished">
+						</div>
 					</form:form>
 				</div>
 			</header>

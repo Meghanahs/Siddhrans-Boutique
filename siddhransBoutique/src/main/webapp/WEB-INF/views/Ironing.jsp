@@ -5,6 +5,11 @@
 <script type="text/javascript">
 	function enableButtons() {
 		document.getElementById("startIroning").disabled = false;
+		document.getElementById("ironingFinish").disabled = false;
+	}
+	function ironingFinished() {
+		document.getElementById("submitForm").action = "ironingFinished";
+		document.getElementById("submitForm").submit();
 	}
 </script>
 </head>
@@ -25,7 +30,7 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form:form method="POST" id="submitForm" modelAttribute="measurementDetails" 
+						<form:form method="POST" modelAttribute="orderDetails"
 							class="form-horizontal">
 							<table class="table table-hover">
 								<thead id="thcolor">
@@ -34,20 +39,22 @@
 										<th>Order ID</th>
 										<th>Dress Type</th>
 										<th>Order Status</th>
+										<th>Created On</th>
+										<th>Modified On</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${alterationMeasurementList}"
-										var="measurement">
+									<c:forEach items="${alterationFinishedOrderList}" var="order">
 										<tr>
-											<td><input name="measurementId" type="radio"
-												onclick="enableButtons()" id="measurementId"
-												value="${measurement.measurementId}"
-												onkeypress="enableButtons()" /></td>
-											<td>${measurement.measurementId}</td>
-											<td>${measurement.dressType.dressName}</td>
-											<td>${measurement.status}</td>
+											<td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${order.orderId}" onkeypress="enableButtons()" /></td>
+											<td>${order.orderId}</td>
+											<td>${order.dressType.dressName}</td>
+											<td>${order.status}</td>
+											<td>${order.orderDate}</td>
+											<td>${order.modifiedDate}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -71,44 +78,53 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-
 				<div class="col-md-12 agile-info-stat height">
-					<div class="tablecontainer">
-
-						<table class="table table-hover">
-							<thead id="thcolor">
-								<tr>
-									<th>Serial No.</th>
-									<th>Order ID</th>
-									<th>Dress Type</th>
-									<th>Order Status</th>
-									<th width="100"></th>
-								</tr>
-							</thead>
-							<tbody>
-							<% int i = 1; %>
-								<c:forEach items="${ironingMeasurementList}" var="measurement">
+					<form:form method="POST" modelAttribute="orderDetails"
+						class="form-horizontal" action="ironingUnit" id="submitForm">
+						<div class="tablecontainer">
+							<table class="table table-hover">
+								<thead id="thcolor">
 									<tr>
-										<td><%= i %> <% i++; %></td>
-										<td>${measurement.measurementId}</td>
-										<td>${measurement.dressType.dressName}</td>
-										<td>${measurement.status}</td>
+										<th>Select Order</th>
+										<th>Serial No.</th>
+										<th>Order ID</th>
+										<th>Dress Type</th>
+										<th>Order Status</th>
+										<th>Created On</th>
+										<th>Modified On</th>
+										<th width="100"></th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
+								</thead>
+								<tbody>
+									<%
+										int i = 1;
+									%>
+									<c:forEach items="${ironingOrderList}" var="orderDetails">
+										<tr>
+											<td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${orderDetails.orderId}" onkeypress="enableButtons()" /></td>
+											<td><%=i%> <%
+ 	i++;
+ %></td>
+											<td>${orderDetails.orderId}</td>
+											<td>${orderDetails.dressType.dressName}</td>
+											<td>${orderDetails.status}</td>
+											<td>${order.orderDate}</td>
+											<td>${order.modifiedDate}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<input type="button" id="ironingFinish" value="Finished"
+								disabled="disabled" onclick="ironingFinished()">
+						</div>
+					</form:form>
 				</div>
 			</header>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>
-
-
-
-
-
-
 	<%@include file="footer.jsp"%>
 	</div>
 </body>

@@ -1,6 +1,7 @@
 package com.siddhrans.boutique.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,17 @@ public class OrderController {
 	
 	static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 	
+	@RequestMapping(value={"/orderDetails"}, method = RequestMethod.GET)
+	public String viewOrderDetails(Model model) throws Exception {
+		/*String customerId=request.getParameter("customerId");
+		model.addAttribute("customerId", customerId);*/
+		List<OrderDetails> orders=orderDetailsService.findAllOrders();
+		model.addAttribute("orders", orders);
+		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList", dressTypeList);		
+		return "orderDetails";
+	}
+	
 	@RequestMapping(value={"/orderDetails"}, method = RequestMethod.POST)
 	public String orderDetails(Model model) throws Exception {
 		
@@ -51,6 +63,9 @@ public class OrderController {
 		Integer customerId = Integer.parseInt(request.getParameter("customerId"));
 		CustomerDetails customerDetails = customerDetailsService.findByID(customerId);
 		String [] dressTypes=request.getParameterValues("dressTypes");
+		List<OrderDetails> orders=new ArrayList<OrderDetails>();
+		float totalAmount=0.0f;
+		
 		for(int i=0;i<dressTypes.length;i++){
 			Integer dressTypeId=Integer.parseInt(dressTypes[i]);
 			DressType dressType = dressTypeService.findById(dressTypeId);
@@ -64,11 +79,20 @@ public class OrderController {
 		    orderDetails.setCustomerDetails(customerDetails);
 		    orderDetails.setDressType(dressType);
 		    orderDetails.setOrderDate(date.toString());
+		    orderDetails.setModifiedDate("");
 		    orderDetails.setOrderAmount(amount);
+		    totalAmount=totalAmount+amount;
 		    orderDetails.setStatus("PROCESSING");
 		    orderDetails.setCount(count);
 		    orderDetailsService.saveOrder(orderDetails);
+		    orders.add(orderDetails);
 		}
+		model.addAttribute("customerId", customerId);
+		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList", dressTypeList);
+		
+		model.addAttribute("totalAmount", totalAmount);
+		model.addAttribute("orders", orders);
 		return "orderDetails";
 	}
 }

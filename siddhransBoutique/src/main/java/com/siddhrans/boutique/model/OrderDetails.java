@@ -18,6 +18,7 @@ public class OrderDetails {
 	@Column(name="ORDER_ID")
 	Integer orderId;
 	String orderDate;
+	String modifiedDate;
 	Float count;
 	Float orderAmount;
 	String status;
@@ -33,6 +34,12 @@ public class OrderDetails {
              inverseJoinColumns = { @JoinColumn(name = "DRESSTYPE_ID") })
 	DressType dressType;
 	
+	public String getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(String modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
 	public Integer getOrderId() {
 		return orderId;
 	}

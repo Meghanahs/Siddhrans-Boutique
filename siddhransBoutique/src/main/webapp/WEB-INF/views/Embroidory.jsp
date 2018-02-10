@@ -39,6 +39,8 @@ function embroidoryFinished() {
 										<th>Order ID</th>
 										<th>Dress Type</th>
 										<th>Order Status</th>
+										<th>Created On</th>
+										<th>Modified On</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -53,6 +55,8 @@ function embroidoryFinished() {
 											<td>${order.orderId}</td>
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
+											<td>${order.orderDate}</td>
+											<td>${order.modifiedDate}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -90,6 +94,8 @@ function embroidoryFinished() {
 									<th>Order ID</th>
 									<th>Dress Type</th>
 									<th>Order Status</th>
+									<th>Created On</th>
+								    <th>Modified On</th>
 									<th width="100"></th>
 								</tr>
 							</thead>
@@ -104,6 +110,8 @@ function embroidoryFinished() {
 										<td>${order.orderId}</td>
 										<td>${order.dressType.dressName}</td>
 										<td>${order.status}</td>
+										<td>${order.orderDate}</td>
+											<td>${order.modifiedDate}</td>
 									</tr>
 								</c:forEach>
 							</tbody>

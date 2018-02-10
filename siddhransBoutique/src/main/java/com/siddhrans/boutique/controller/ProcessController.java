@@ -1,4 +1,7 @@
 package com.siddhrans.boutique.controller;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
 import org.slf4j.Logger;
@@ -7,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.siddhrans.boutique.model.OrderDetails;
@@ -32,7 +34,6 @@ public class ProcessController {
 		List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
 		/*cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);*/
 		model.addAttribute("cuttingOrderList", cuttingOrderList);	
-		model.addAttribute("message","Order Updated Sucessfully.");
 		return "Cutting";
 	}
 
@@ -53,10 +54,14 @@ public class ProcessController {
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("CUTTING");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		return "redirect:cuttingUnit";
 	}
-		
+
 	@RequestMapping(value={"/cuttingFinishedUnit"}, method = RequestMethod.POST)
 	public String cuttingProcessFinished(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
 		if (result.hasErrors()) {
@@ -69,10 +74,15 @@ public class ProcessController {
 			model.addAttribute("cuttingFinishedOrderList", cuttingFinishedOrderList);
 			List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
 			model.addAttribute("cuttingOrderList", cuttingOrderList);
+
 			return "Stiching";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("CUTTING FINISHED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
 		return "redirect:cuttingUnit";
@@ -107,10 +117,14 @@ public class ProcessController {
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("STICHING");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		return "redirect:stichingUnit";
 	}
-	
+
 	@RequestMapping(value={"/stichingFinishedUnit"}, method = RequestMethod.POST)
 	public String stichingProcessFinished(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
 		if (result.hasErrors()) {
@@ -126,6 +140,10 @@ public class ProcessController {
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("STICHING FINISHED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
 		return "redirect:stichingUnit";
@@ -153,14 +171,18 @@ public class ProcessController {
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("EMBROIDORY");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("message","Order Updated Sucessfully.");
 		return "redirect:embroidoryUnit";
 	}
-	
+
 	@RequestMapping(value={"/embroidoryFinishedUnit"}, method = RequestMethod.POST)
 	public String embroidoryFinished(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
-	if (result.hasErrors()) {
+		if (result.hasErrors()) {
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
@@ -172,6 +194,10 @@ public class ProcessController {
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("EMBROIDORY FINISHED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
 		return "redirect:embroidoryUnit";
@@ -185,7 +211,8 @@ public class ProcessController {
 		model.addAttribute("alterationNotrequiredList", alterationNotrequiredList);	
 		List<OrderDetails> alterationOrderList = orderDetailsService.findByStatus("ALTERATION");
 		alterationOrderList.addAll(alterationNotrequiredList);
-		model.addAttribute("alterationOrderList", alterationOrderList);
+		model.addAttribute("alterationOrderList", alterationOrderList);	
+
 		return "Alteration";
 	}
 
@@ -203,12 +230,20 @@ public class ProcessController {
 			model.addAttribute("alterationNotrequiredList", alterationNotrequiredList);	
 			List<OrderDetails> alterationOrderList = orderDetailsService.findByStatus("ALTERATION");
 			alterationOrderList.addAll(alterationNotrequiredList);
+			List<OrderDetails> alterationFinishedList = orderDetailsService.findByStatus("ALTERATION FINISHED");
+			alterationOrderList.addAll(alterationNotrequiredList);
+			model.addAttribute("alterationFinishedList", alterationFinishedList);	
+
 			model.addAttribute("alterationOrderList", alterationOrderList);
-			
+
 			return "Alteration";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("ALTERATION");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("message","Order Updated Sucessfully.");
 		return "redirect:alterationUnit";
@@ -217,7 +252,7 @@ public class ProcessController {
 
 	@RequestMapping(value={"/skipAlterationUnit"}, method = RequestMethod.POST)
 	public String skipProcess(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
-
+		logger.debug("skip Action Unit");
 		if (result.hasErrors()) {
 			logger.debug(""
 					+ ""
@@ -235,13 +270,18 @@ public class ProcessController {
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("NOT REQUIRED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
+		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
 		return "redirect:alterationUnit";
 	}
-	
+
 	@RequestMapping(value={"/alterationFinished"}, method = RequestMethod.POST)
 	public String alterationFinished(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
-	if (result.hasErrors()) {
+		if (result.hasErrors()) {
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
@@ -253,82 +293,118 @@ public class ProcessController {
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("ALTERATION FINISHED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
 		return "redirect:alterationUnit";
 	}
 
-/*	@RequestMapping(value={"/ironingUnit"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/ironingUnit"}, method = RequestMethod.GET)
 	public String ironingProcess(Model model) {
-		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
-		model.addAttribute("skipAlterationList", skipAlterationList);
-		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
-		alterationMeasurementList.addAll(skipAlterationList);
-		model.addAttribute("alterationMeasurementList", alterationMeasurementList);
-		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
-		model.addAttribute("ironingMeasurementList", ironingMeasurementList);
+		List<OrderDetails> alterationFinishedOrderList = orderDetailsService.findByStatus("ALTERATION FINISHED");
+		model.addAttribute("alterationFinishedOrderList", alterationFinishedOrderList);
+		List<OrderDetails> ironingOrderList = orderDetailsService.findByStatus("IRONING");
+		model.addAttribute("ironingOrderList", ironingOrderList);
 		return "Ironing";
 	}
 
 	@RequestMapping(value={"/ironingUnit"}, method = RequestMethod.POST)
-	public String ironingProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
+	public String ironingProcess(@Valid  OrderDetails orderDetails, BindingResult result,Model model) {
 		if (result.hasErrors()) {
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
-			model.addAttribute("skipAlterationList", skipAlterationList);
-			List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
-			alterationMeasurementList.addAll(skipAlterationList);
-			model.addAttribute("alterationMeasurementList", alterationMeasurementList);
-			List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
-			model.addAttribute("ironingMeasurementList", ironingMeasurementList);
-			return "Ironing";		}
-		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
-		meassurementDetailsbyId.setStatus("IRONING");
-		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
-		List<MeasurementDetails> skipAlterationList = measurementDetailsService.findByStatus("Not Required");
-		model.addAttribute("skipAlterationList", skipAlterationList);
-		List<MeasurementDetails> alterationMeasurementList = measurementDetailsService.findByStatus("ALTERATION");
-		alterationMeasurementList.addAll(skipAlterationList);
-		model.addAttribute("alterationMeasurementList", alterationMeasurementList);
-		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
-		model.addAttribute("ironingMeasurementList", ironingMeasurementList);
-		model.addAttribute("measurementDetails",new MeasurementDetails());
+			List<OrderDetails> alterationFinishedOrderList = orderDetailsService.findByStatus("ALTERATION FINISHED");
+			model.addAttribute("alterationFinishedOrderList", alterationFinishedOrderList);
+			List<OrderDetails> ironingOrderList = orderDetailsService.findByStatus("IRONING");
+			model.addAttribute("ironingOrderList", ironingOrderList);
+			return "Ironing";		
+		}
+		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
+		orderDetailsbyId.setStatus("IRONING");
+		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("message","Order Updated Sucessfully.");
-		return "Ironing";
+		return "redirect:ironingUnit";
 	}
 
+	@RequestMapping(value={"/ironingFinished"}, method = RequestMethod.POST)
+	public String ironingFinished(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
+		if (result.hasErrors()) {
+			logger.debug(""
+					+ ""
+					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
+			List<OrderDetails> embroidoryFinishedOrderList = orderDetailsService.findByStatus("EMBROIDORY FINISHED");
+			model.addAttribute("embroidoryFinishedOrderList", embroidoryFinishedOrderList);
+			List<OrderDetails> alterationNotrequiredList = orderDetailsService.findByStatus("NOT REQUIRED");
+			alterationNotrequiredList.addAll(embroidoryFinishedOrderList);
+			model.addAttribute("alterationNotrequiredList", alterationNotrequiredList);
+			List<OrderDetails> ironingOrderList = orderDetailsService.findByStatus("IRONING");
+			model.addAttribute("ironingOrderList", ironingOrderList);
+			return "Ironing";
+		}
+		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
+		orderDetailsbyId.setStatus("IRONING FINISHED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
+		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
+		model.addAttribute("orderDetails",new OrderDetails());
+		return "redirect:ironingUnit";
+	}
 	@RequestMapping(value={"/deliveryUnit"}, method = RequestMethod.GET)
 	public String DeliveryProcess(Model model) {
-		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
-		model.addAttribute("ironingMeasurementList", ironingMeasurementList);
-		List<MeasurementDetails> deliveryMeasurementList = measurementDetailsService.findByStatus("DELIVERED");
-		model.addAttribute("deliveryMeasurementList", deliveryMeasurementList);
+		List<OrderDetails> ironingFinishedList = orderDetailsService.findByStatus("IRONING FINISHED");
+		model.addAttribute("ironingFinishedList", ironingFinishedList);
+		List<OrderDetails> deliveryOrderList = orderDetailsService.findByStatus("READY");
+		model.addAttribute("deliveryOrderList", deliveryOrderList);
 		return "DeliveryUnit";
 	}
 
 	@RequestMapping(value={"/deliveryUnit"}, method = RequestMethod.POST)
-	public String DeliveryProcess(@Valid MeasurementDetails measurementDetails, BindingResult result,Model model) {
-
+	public String deliveryProcess(@Valid  OrderDetails orderDetails, BindingResult result,Model model) {
 		if (result.hasErrors()) {
-			List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
-			model.addAttribute("ironingMeasurementList", ironingMeasurementList);
+			List<OrderDetails> ironingFinishedList = orderDetailsService.findByStatus("IRONING FINISHED");
+			model.addAttribute("ironingOrderList", ironingFinishedList);
+			List<OrderDetails> deliveryOrderList = orderDetailsService.findByStatus("READY");
+			model.addAttribute("deliveryOrderList", deliveryOrderList);
+			return "DeliveryUnit";
+		}
+		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
+		orderDetailsbyId.setStatus("READY");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
+		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
+		model.addAttribute("message","Order Updated Sucessfully.");
+		return "redirect:deliveryUnit";
+	}
+
+	@RequestMapping(value={"/deliveryFinished"}, method = RequestMethod.POST)
+	public String deliveryFinished(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
+		if (result.hasErrors()) {
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			model.addAttribute("measurementDetails", measurementDetails);
-			return "DeliveryUnit";
-		}
-		MeasurementDetails meassurementDetailsbyId = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
-		meassurementDetailsbyId.setStatus("DELIVERED");
-		measurementDetailsService.saveOrUpdateMeasurementDetails(meassurementDetailsbyId);
-		List<MeasurementDetails> ironingMeasurementList = measurementDetailsService.findByStatus("IRONING");
-		model.addAttribute("ironingMeasurementList", ironingMeasurementList);
-		List<MeasurementDetails> deliveryMeasurementList = measurementDetailsService.findByStatus("DELIVERED");
-		model.addAttribute("deliveryMeasurementList", deliveryMeasurementList);
-		model.addAttribute("measurementDetails",new MeasurementDetails());
-		model.addAttribute("message","Order Updated Sucessfully.");
-		return "DeliveryUnit";
-	}*/
+			List<OrderDetails> ironingFinishedList = orderDetailsService.findByStatus("IRONING FINISHED");
+			model.addAttribute("ironingOrderList", ironingFinishedList);
+			List<OrderDetails> deliveryOrderList = orderDetailsService.findByStatus("READY");
+			model.addAttribute("deliveryOrderList", deliveryOrderList);
+			List<OrderDetails> deliveryFinishedList = orderDetailsService.findByStatus("DELIVERED");
+			model.addAttribute("deliveryFinishedList", deliveryFinishedList);
+			return "DeliveryUnit";}
+		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
+		orderDetailsbyId.setStatus("DELIVERED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
+		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
+		model.addAttribute("orderDetails",new OrderDetails());
+		return "redirect:deliveryUnit";
+	}
 }

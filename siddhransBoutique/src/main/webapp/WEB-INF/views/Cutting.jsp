@@ -3,14 +3,14 @@
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
 <script type="text/javascript">
-function enableButtons(){
-	document.getElementById("startCutting").disabled=false;
-	document.getElementById("cuttingFinish").disabled=false;
-}
-function cuttingFinished() {
-	document.getElementById("submitForm").action = "cuttingFinishedUnit";
-	document.getElementById("submitForm").submit();
-}
+	function enableButtons() {
+		document.getElementById("startCutting").disabled = false;
+		document.getElementById("cuttingFinish").disabled = false;
+	}
+	function cuttingFinished() {
+		document.getElementById("submitForm").action = "cuttingFinishedUnit";
+		document.getElementById("submitForm").submit();
+	}
 </script>
 </head>
 <body>
@@ -39,22 +39,22 @@ function cuttingFinished() {
 										<th>Order ID</th>
 										<th>Dress Type</th>
 										<th>Order Status</th>
-									<!--  <th>Date and Time</th>  -->
+										<th>Created On</th>
+										<th>Modified On</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${processingOrderList}"
-										var="orderDetails">
+									<c:forEach items="${processingOrderList}" var="orderDetails">
 										<tr>
 											<td><input name="orderId" type="radio"
 												onclick="enableButtons()" id="orderId"
-												value="${orderDetails.orderId}"
-												onkeypress="enableButtons()" /></td>
+												value="${orderDetails.orderId}" onkeypress="enableButtons()" /></td>
 											<td>${orderDetails.orderId}</td>
 											<td>${orderDetails.dressType.dressName}</td>
 											<td>${orderDetails.status}</td>
-											<%-- <td>${orderDetails.orderDetails.orderDate}</td>  --%>
+											<td>${orderDetails.orderDate}</td>
+											<td>${orderDetails.modifiedDate}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -79,42 +79,47 @@ function cuttingFinished() {
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 				<div class="col-md-12 agile-info-stat height">
-				<form:form method="POST" modelAttribute="orderDetails"
-							class="form-horizontal" action="cuttingUnit" id="submitForm">
-					<div class="tablecontainer">
-						<table class="table table-hover">
-							<thead id="thcolor">
-								<tr>
-								    
-								    <th>Select Order</th>
-									<th>Serial No.</th>
-									<th>Order ID</th>
-									<th>Dress Type</th>
-									<th>Order Status</th>
-									<!-- <th>Date and Time</th> -->
-									<th width="100"></th>
-								</tr>
-							</thead>
-							<tbody>
-							<% int i = 1; %>
-								<c:forEach items="${cuttingOrderList}" var="orderDetails">
+					<form:form method="POST" modelAttribute="orderDetails"
+						class="form-horizontal" action="cuttingUnit" id="submitForm">
+						<div class="tablecontainer">
+							<table class="table table-hover">
+								<thead id="thcolor">
 									<tr>
-									    <td><input name="orderId" type="radio"
-												onclick="enableButtons()" id="orderId"
-												value="${orderDetails.orderId}"
-												onkeypress="enableButtons()" /></td>
-										<td><%= i %> <% i++; %></td>										
-										<td>${orderDetails.orderId}</td>
-										<td>${orderDetails.dressType.dressName}</td>
-										<td>${orderDetails.status}</td>
-										<%-- <td>${orderDetails.date}</td> --%>
+
+										<th>Select Order</th>
+										<th>Serial No.</th>
+										<th>Order ID</th>
+										<th>Dress Type</th>
+										<th>Order Status</th>
+										<th>Created On</th>
+										<th>Modified On</th>
+										<th width="100"></th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<input type="button" id="cuttingFinish" value="Finished"
+								</thead>
+								<tbody>
+									<%
+										int i = 1;
+									%>
+									<c:forEach items="${cuttingOrderList}" var="orderDetails">
+										<tr>
+											<td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${orderDetails.orderId}" onkeypress="enableButtons()" /></td>
+											<td><%=i%> <%
+ 	i++;
+ %></td>
+											<td>${orderDetails.orderId}</td>
+											<td>${orderDetails.dressType.dressName}</td>
+											<td>${orderDetails.status}</td>
+											<td>${orderDetails.orderDate}</td>
+											<td>${orderDetails.modifiedDate}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<input type="button" id="cuttingFinish" value="Finished"
 								disabled="disabled" onclick="cuttingFinished()">
-					</div>
+						</div>
 					</form:form>
 				</div>
 			</header>
@@ -122,7 +127,7 @@ function cuttingFinished() {
 		</div>
 	</div>
 
-<%@include file="footer.jsp"%>
+	<%@include file="footer.jsp"%>
 	</div>
 </body>
 </html>

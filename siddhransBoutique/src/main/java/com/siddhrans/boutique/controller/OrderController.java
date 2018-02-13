@@ -95,4 +95,18 @@ public class OrderController {
 		model.addAttribute("orders", orders);
 		return "orderDetails";
 	}
-}
+	@RequestMapping(value={"/viewOrderDetails"}, method = RequestMethod.POST)
+	public String viewOrdersList(Model model) {
+		List<OrderDetails> orders=orderDetailsService.findAllOrders();
+		model.addAttribute("orders", orders);
+		List<CustomerDetails> customerDetails = customerDetailsService.fetchAllCustomerDetails();
+		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList", dressTypeList);		
+		return "listOfOrders";
+	}
+	
+	
+	
+	}
+	
+

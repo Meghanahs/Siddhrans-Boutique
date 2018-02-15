@@ -89,8 +89,7 @@ public class OrderController {
 		}
 		model.addAttribute("customerId", customerId);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
-		model.addAttribute("dressTypeList", dressTypeList);
-		
+		model.addAttribute("dressTypeList", dressTypeList);		
 		model.addAttribute("totalAmount", totalAmount);
 		model.addAttribute("orders", orders);
 		return "orderDetails";
@@ -99,7 +98,8 @@ public class OrderController {
 	public String viewOrdersList(Model model) {
 		List<OrderDetails> orders=orderDetailsService.findAllOrders();
 		model.addAttribute("orders", orders);
-		List<CustomerDetails> customerDetails = customerDetailsService.fetchAllCustomerDetails();
+		String customerId=request.getParameter("customerId");
+		/*List<CustomerDetails> customerDetails = customerDetailsService.findByID(customerId);*/
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);		
 		return "listOfOrders";

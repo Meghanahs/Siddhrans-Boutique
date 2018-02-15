@@ -25,6 +25,7 @@
 										<th>Ordered Date</th>
 										<th>Dress Type</th>
 										<th>Amount</th>
+										<td>Total Amount To be Paid</td>
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -36,6 +37,7 @@
 											<td>${order.orderDate}</td>
 											<td>${order.dressType.dressName}</td>
 											<td>${order.orderAmount}</td>
+											<td>${totalAmount}</td>
                                         </tr>
 									</c:forEach>
 								</tbody>

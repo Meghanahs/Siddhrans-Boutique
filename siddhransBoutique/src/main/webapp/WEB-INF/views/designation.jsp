@@ -11,7 +11,7 @@
 		document.getElementById("submitForm").submit();
 	}
 </script>
-</head>
+</head style="overflow: auto;">
 <body>
 	<%@include file="body.jsp"%>
 	<!--heder end here-->

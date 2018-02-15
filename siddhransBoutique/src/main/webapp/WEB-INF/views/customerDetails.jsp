@@ -8,7 +8,7 @@
 		document.getElementById("takeMeasurement").disabled = false;
 		document.getElementById("editCustomerDetails").disabled = false;
 		document.getElementById("createOrder").disabled = false;
-		document.getElementById("listOfOrders").disabled = false;
+		
 	}
 	function createMeasurementAction() {
 		document.getElementById("submitForm").action = "createMeasurement";
@@ -89,7 +89,7 @@
 								<input type="button" id="createOrder" value="Create Order"
 								disabled="disabled" onclick="createOrderAction()">
 								<input type="button" id="listOfOrders" value="Orders List"
-								disabled="disabled" onclick="orderListAction()">
+								 onclick="orderListAction()">
 						</form>
 					</div>
 

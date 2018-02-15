@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;
-  	overflow-x: hidden;
+  	overflow-x: auto;
 	background-color: #edecec;
 	width:500px;
 }

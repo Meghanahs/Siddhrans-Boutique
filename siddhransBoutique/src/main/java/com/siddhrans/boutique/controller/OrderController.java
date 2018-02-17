@@ -94,19 +94,19 @@ public class OrderController {
 		model.addAttribute("orders", orders);
 		return "orderDetails";
 	}
+	
 	@RequestMapping(value={"/viewOrderDetails"}, method = RequestMethod.POST)
 	public String viewOrdersList(Model model) {
 		List<OrderDetails> orders=orderDetailsService.findAllOrders();
 		model.addAttribute("orders", orders);
-		String customerId=request.getParameter("customerId");
+		/*Integer customerId = Integer.parseInt(request.getParameter("customerId"));*/
+		List<CustomerDetails> customerDetails = customerDetailsService.fetchAllCustomerDetails();
+		model.addAttribute("customerDetails", customerDetails);	
 		/*List<CustomerDetails> customerDetails = customerDetailsService.findByID(customerId);*/
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);		
 		return "listOfOrders";
-	}
-	
-	
-	
+	}	
 	}
 	
 

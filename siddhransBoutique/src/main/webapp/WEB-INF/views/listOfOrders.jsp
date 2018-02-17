@@ -2,6 +2,15 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
+<script type="text/javascript">
+	function enableButtons() {
+		document.getElementById("bill").disabled = false;
+}
+function billing() {
+	document.getElementById("submitForm").action = "generateBill";
+	document.getElementById("submitForm").submit();
+}
+</script>
 </head>
 <body>
 	<%@include file="body.jsp"%>
@@ -20,28 +29,37 @@
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>
-										<th>Order ID</th>
-										 <!-- <th>Customer Name</th>  -->
+									    <th>Selector</th>
+										<th>Order ID</th>									   
+									    <th>Customer Name</th> 
+									    <th>Customer Phone No</th>  
 										<th>Ordered Date</th>
 										<th>Dress Type</th>
+										<th>Status</th>
 										<th>Amount</th>
-										<td>Total Amount To be Paid</td>
 										<th width="100"></th>
 									</tr>
 								</thead>
 								<tbody>
 								<c:forEach items="${orders}" var="order">
 										<tr>
+										    <td><input name="orderId" type="radio"
+												onclick="enableButtons()" id="orderId"
+												value="${order.orderId}" /></td>
 											<td>${order.orderId}</td>
-											<%-- <td>${order.CustomerDetails.customerName}</td>  --%>
+											<td>${order.customerDetails.customerName}</td> 
+											<td>${order.customerDetails.customerPhoneNo}</td> 
 											<td>${order.orderDate}</td>
 											<td>${order.dressType.dressName}</td>
+											<td>${order.status}</td>
 											<td>${order.orderAmount}</td>
-											<td>${totalAmount}</td>
+											
                                         </tr>
 									</c:forEach>
 								</tbody>
 							</table>
+							<input type="submit" id="bill"value="Billing" disabled="disabled"
+								onclick="billing()"> 
 							</form>
 					</div>
 
@@ -50,9 +68,7 @@
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>
-
 	<%@include file="footer.jsp"%>
 	</div>
-
 </body>
 </html>

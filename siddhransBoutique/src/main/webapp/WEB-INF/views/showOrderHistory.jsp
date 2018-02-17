@@ -11,10 +11,10 @@
 		document.getElementById("submitForm").action = "editMeasurementDetails";
 		document.getElementById("submitForm").submit();
 	}
-	function GenerateBillAction() {
+	/* function GenerateBillAction() {
 		document.getElementById("submitForm").action = "generateBill";
 		document.getElementById("submitForm").submit();
-	}
+	} */
 	</script> 
 </head>
 <body>
@@ -122,8 +122,8 @@
 			</header>
 			 <input type="button" id="editShowOrder" value="Edit"
 								disabled="disabled" onclick="editOrdeAction()"> 
-			<input type="button" id="generateBill" value="Generate Bill"
-								disabled="disabled" onclick="GenerateBillAction()"> 
+			<!-- <input type="button" id="generateBill" value="Generate Bill"
+								disabled="disabled" onclick="GenerateBillAction()"> --> 
 			<div class="agileits-box-body clearfix"></div>
 		</div>
 	</div>

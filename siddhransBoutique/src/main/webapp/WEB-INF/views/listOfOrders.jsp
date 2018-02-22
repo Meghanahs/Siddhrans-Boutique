@@ -30,7 +30,8 @@ function billing() {
 								<thead id="thcolor">
 									<tr>
 									    <th>Selector</th>
-										<th>Order ID</th>									   
+										<th>Order ID</th>
+										<th>Customer ID</th>									   
 									    <th>Customer Name</th> 
 									    <th>Customer Phone No</th>  
 										<th>Ordered Date</th>
@@ -43,10 +44,11 @@ function billing() {
 								<tbody>
 								<c:forEach items="${orders}" var="order">
 										<tr>
-										    <td><input name="orderId" type="radio"
+										    <td><input name="orderId" type="checkbox"
 												onclick="enableButtons()" id="orderId"
 												value="${order.orderId}" /></td>
 											<td>${order.orderId}</td>
+											<td>${order.customerDetails.custemerId}</td>
 											<td>${order.customerDetails.customerName}</td> 
 											<td>${order.customerDetails.customerPhoneNo}</td> 
 											<td>${order.orderDate}</td>

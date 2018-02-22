@@ -4,7 +4,7 @@
 			<div class="mother-grid-inner">
 				<!--header start here-->
 				<div class="header-main">
-					<div class="logo-w3-agile">
+					<div class="logo-w3-agile" style="height:86px;">
 						<h1>Boutique</h1>
 					</div>
 			
@@ -138,7 +138,7 @@
 						<!--//end-search-box-->
 						<div class="clearfix"></div>
 					</div>
-					<div class="profile_details w3l">
+					<div class="profile_details w3l" style=" margin-left: 10px;">
 						<ul>
 							<li class="dropdown profile_details_drop"><a href="#"
 								class="dropdown-toggle" data-toggle="dropdown"

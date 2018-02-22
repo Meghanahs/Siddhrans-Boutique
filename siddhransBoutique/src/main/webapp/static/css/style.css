@@ -311,12 +311,19 @@ li#menu-academico{
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .w3layouts-right {
-    float: left;
+    /* float: left;
     width: 24.25%;
     background: #e74c3c;
     text-align: center;
     padding: 1.3em 1em 0.1em;
-    margin: 0 1%;
+    margin: 0 1%; */
+    background: #e74c3c;
+    float: left;
+    width: 24.25%;
+    text-align: center;
+    padding: 1em;
+    margin-right: 1%;
+     height: 86px;
 }
 .logo-w3-agile h1 {
     margin: 0;
@@ -339,6 +346,7 @@ li#menu-academico{
     background: #1b93e1;
     text-align: center;
     padding: 0.3em 1em;
+        height: 86px;
 }
 .logo-w3-agile {
     background: #a2d200;

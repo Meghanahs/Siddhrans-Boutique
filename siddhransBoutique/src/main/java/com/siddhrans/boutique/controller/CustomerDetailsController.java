@@ -102,7 +102,7 @@ public class CustomerDetailsController {
 		List<MeasurementDetails> measurementDetailsList = measurementDetailsService.findByCustomer(customerDetails);
 		model.addAttribute("measurementDetailsList", measurementDetailsList);
 		//String customerId = request.
-		return "showOrderHistory";
+		return "showMeasurementHistory";
 	}
 	
 	@RequestMapping(value={"/editCustomerDetails"}, method = RequestMethod.POST)

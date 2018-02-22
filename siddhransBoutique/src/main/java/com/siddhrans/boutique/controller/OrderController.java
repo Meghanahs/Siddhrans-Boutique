@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.DressType;
+import com.siddhrans.boutique.model.MeasurementDetails;
 import com.siddhrans.boutique.model.OrderDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
@@ -31,9 +32,9 @@ public class OrderController {
 	HttpServletRequest request;
 	@Autowired 
 	CustomerDetailsService customerDetailsService;
-	
+
 	static final Logger logger = LoggerFactory.getLogger(OrderController.class);
-	
+
 	@RequestMapping(value={"/orderDetails"}, method = RequestMethod.GET)
 	public String viewOrderDetails(Model model) throws Exception {
 		/*String customerId=request.getParameter("customerId");
@@ -44,17 +45,17 @@ public class OrderController {
 		model.addAttribute("dressTypeList", dressTypeList);		
 		return "orderDetails";
 	}
-	
+
 	@RequestMapping(value={"/orderDetails"}, method = RequestMethod.POST)
 	public String orderDetails(Model model) throws Exception {
-		
+
 		/*model.addAttribute("orderDetails",new OrderDetails());*/
 		String customerId=request.getParameter("customerId");
 		model.addAttribute("customerId", customerId);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);
 		logger.debug("DressType List is"+dressTypeList);
-/*		throw new Exception("DressType List is"+dressTypeList);*/
+		/*		throw new Exception("DressType List is"+dressTypeList);*/
 		return "orderDetails";
 	}
 
@@ -65,27 +66,27 @@ public class OrderController {
 		String [] dressTypes=request.getParameterValues("dressTypes");
 		List<OrderDetails> orders=new ArrayList<OrderDetails>();
 		float totalAmount=0.0f;
-		
+
 		for(int i=0;i<dressTypes.length;i++){
 			Integer dressTypeId=Integer.parseInt(dressTypes[i]);
 			DressType dressType = dressTypeService.findById(dressTypeId);
 			float count=Float.parseFloat(request.getParameter("count_"+dressTypeId));
 			/*System.out.println("count_"+dressTypeId);*/
-		    float amount=count*dressType.getAmount();
-		    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			float amount=count*dressType.getAmount();
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			Date date = new Date();
 			System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
-		    OrderDetails orderDetails=new OrderDetails();
-		    orderDetails.setCustomerDetails(customerDetails);
-		    orderDetails.setDressType(dressType);
-		    orderDetails.setOrderDate(date.toString());
-		    orderDetails.setModifiedDate("");
-		    orderDetails.setOrderAmount(amount);
-		    totalAmount=totalAmount+amount;
-		    orderDetails.setStatus("PROCESSING");
-		    orderDetails.setCount(count);
-		    orderDetailsService.saveOrder(orderDetails);
-		    orders.add(orderDetails);
+			OrderDetails orderDetails=new OrderDetails();
+			orderDetails.setCustomerDetails(customerDetails);
+			orderDetails.setDressType(dressType);
+			orderDetails.setOrderDate(date.toString());
+			orderDetails.setModifiedDate("");
+			orderDetails.setOrderAmount(amount);
+			totalAmount=totalAmount+amount;
+			orderDetails.setStatus("PROCESSING");
+			orderDetails.setCount(count);
+			orderDetailsService.saveOrder(orderDetails);
+			orders.add(orderDetails);
 		}
 		model.addAttribute("customerId", customerId);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
@@ -94,7 +95,7 @@ public class OrderController {
 		model.addAttribute("orders", orders);
 		return "orderDetails";
 	}
-	
+
 	@RequestMapping(value={"/viewOrderDetails"}, method = RequestMethod.POST)
 	public String viewOrdersList(Model model) {
 		List<OrderDetails> orders=orderDetailsService.findAllOrders();
@@ -106,7 +107,22 @@ public class OrderController {
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);		
 		return "listOfOrders";
-	}	
 	}
 	
+	/*@RequestMapping(value={"/viewOrder"}, method = RequestMethod.POST)
+	public String OrdersList(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
+		
+		OrderDetails order=orderDetailsService.findById(orderDetails);
+		model.addAttribute("order", order);
+		Integer customerId = Integer.parseInt(request.getParameter("customerId"));
+		CustomerDetails customerDetails = customerDetailsService.findByID(custemerId);
+		model.addAttribute("customerDetails", customerDetails);	
+		List<CustomerDetails> customerDetails = customerDetailsService.findByID(customerId);
+		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList", dressTypeList);		
+		return "orderDetails";
+	}*/
+
+}
+
 

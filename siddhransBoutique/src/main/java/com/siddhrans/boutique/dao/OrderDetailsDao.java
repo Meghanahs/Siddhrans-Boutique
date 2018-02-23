@@ -9,4 +9,5 @@ public interface OrderDetailsDao {
 	 public List<OrderDetails> findAllOrders();
 	 public List<OrderDetails> findByStatus(String status);
 	 public void saveOrUpdateOrderDetails(OrderDetails orderDetails);
+	 public List<OrderDetails> findByCustomer(OrderDetails orderDetails);
 }

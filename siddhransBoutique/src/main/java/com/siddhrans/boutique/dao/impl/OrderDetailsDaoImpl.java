@@ -1,7 +1,6 @@
 package com.siddhrans.boutique.dao.impl;
 import java.util.List;
 import javax.transaction.Transactional;
-
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -45,9 +44,20 @@ public class OrderDetailsDaoImpl extends AbstractDao<Integer, OrderDetails> impl
 
 	@Override
 	public void saveOrUpdateOrderDetails(OrderDetails orderDetails) {
-		 saveOrUpdate(orderDetails);
-		
+		 saveOrUpdate(orderDetails);		
 	}
 
-
+	@Override
+	public List<OrderDetails> findByCustomer(OrderDetails orderDetails) {
+		Criteria criteria = createEntityCriteria();
+		criteria.add(Restrictions.eq("orderDetails", orderDetails));
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		List<OrderDetails> orderDetails1 = (List<OrderDetails>) criteria.list();
+	/*	for(MeasurementDetails measurementDetails : measurementDetailsList){
+				Hibernate.initialize(measurementDetails.getCustomerDetails());
+				Hibernate.initialize(measurementDetails.getDressType());
+        }*/
+		return orderDetails1;
+	}
+	
 }

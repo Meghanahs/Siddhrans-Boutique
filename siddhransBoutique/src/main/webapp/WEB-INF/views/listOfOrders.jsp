@@ -2,7 +2,7 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function enableButtons() {
 		document.getElementById("bill").disabled = false;
 }
@@ -10,7 +10,7 @@ function billing() {
 	document.getElementById("submitForm").action = "generateBill";
 	document.getElementById("submitForm").submit();
 }
-</script>
+</script> -->
 </head>
 <body>
 	<%@include file="body.jsp"%>
@@ -25,11 +25,11 @@ function billing() {
 			<header class="agileits-box-header clearfix">
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-					<form method="POST" id="submitForm">
+					<form method="GET">
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>
-									    <th>Selector</th>
+									  
 										<th>Order ID</th>
 										<th>Customer ID</th>									   
 									    <th>Customer Name</th> 
@@ -44,9 +44,7 @@ function billing() {
 								<tbody>
 								<c:forEach items="${orders}" var="order">
 										<tr>
-										    <td><input name="orderId" type="checkbox"
-												onclick="enableButtons()" id="orderId"
-												value="${order.orderId}" /></td>
+								
 											<td>${order.orderId}</td>
 											<td>${order.customerDetails.custemerId}</td>
 											<td>${order.customerDetails.customerName}</td> 
@@ -59,9 +57,7 @@ function billing() {
                                         </tr>
 									</c:forEach>
 								</tbody>
-							</table>
-							<input type="submit" id="bill"value="Billing" disabled="disabled"
-								onclick="billing()"> 
+							</table> 
 							</form>
 					</div>
 

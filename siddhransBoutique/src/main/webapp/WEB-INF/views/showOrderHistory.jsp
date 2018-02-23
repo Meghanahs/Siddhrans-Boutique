@@ -44,8 +44,8 @@ function billing() {
 								<tbody>
 								<c:forEach items="${orders}" var="order">
 										<tr>
-										    <td><input name="orderId" type="checkbox"
-												onclick="enableButtons()" id="orderId"
+										    <td><input name="custemerId" type="checkbox"
+												onclick="enableButtons()" id="custemerId"
 												value="${order.orderId}" /></td>
 											<td>${order.orderId}</td>
 											<td>${order.customerDetails.custemerId}</td>

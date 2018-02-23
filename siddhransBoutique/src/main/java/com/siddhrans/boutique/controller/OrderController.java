@@ -96,7 +96,7 @@ public class OrderController {
 		return "orderDetails";
 	}
 
-	@RequestMapping(value={"/viewOrderDetails"}, method = RequestMethod.POST)
+	@RequestMapping(value={"/OrdersHistory"}, method = RequestMethod.GET)
 	public String viewOrdersList(Model model) {
 		List<OrderDetails> orders=orderDetailsService.findAllOrders();
 		model.addAttribute("orders", orders);
@@ -109,19 +109,21 @@ public class OrderController {
 		return "listOfOrders";
 	}
 	
-	/*@RequestMapping(value={"/viewOrder"}, method = RequestMethod.POST)
-	public String OrdersList(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
-		
-		OrderDetails order=orderDetailsService.findById(orderDetails);
-		model.addAttribute("order", order);
-		Integer customerId = Integer.parseInt(request.getParameter("customerId"));
-		CustomerDetails customerDetails = customerDetailsService.findByID(custemerId);
+@RequestMapping(value={"/viewOrder"}, method = RequestMethod.POST)
+	public String OrdersList(Model model) {	  
+		/*OrderDetails order=orderDetailsService.findById(orderDetails);
+		model.addAttribute("order", order);*/
+	    String customerId = request.getParameter("customerId");
+		CustomerDetails customerDetails = customerDetailsService.findByID(Integer.parseInt(customerId));
 		model.addAttribute("customerDetails", customerDetails);	
-		List<CustomerDetails> customerDetails = customerDetailsService.findByID(customerId);
+		String orderId = request.getParameter("orderId");
+		OrderDetails orders = orderDetailsService.findById(Integer.parseInt(orderId));		
+		/*List<OrderDetails> orders=orderDetailsService.findAllOrders();*/
+		model.addAttribute("orders", orders);	
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);		
-		return "orderDetails";
-	}*/
+		return "showOrderHistory";
+       }
 
 }
 

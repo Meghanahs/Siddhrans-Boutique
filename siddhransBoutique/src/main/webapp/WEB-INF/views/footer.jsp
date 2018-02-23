@@ -79,6 +79,9 @@
 					<li id="menu-academico-avaliacoes"><a href="deliveryUnit"
 						style="padding: 9px 20px;">Delivery</a></li>
 				</ul></li>
+				<li id="menu-academico"><a href="OrdersHistory"><i class="fa fa-cogs"
+					aria-hidden="true"></i><span>Orders History</span>
+					<div class="clearfix"></div></a></li>
 
 
 

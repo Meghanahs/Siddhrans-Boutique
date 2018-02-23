@@ -8,6 +8,7 @@
 		document.getElementById("takeMeasurement").disabled = false;
 		document.getElementById("editCustomerDetails").disabled = false;
 		document.getElementById("createOrder").disabled = false;
+		document.getElementById("Orders").disabled = false;
 		
 	}
 	function createMeasurementAction() {
@@ -23,11 +24,11 @@
 		document.getElementById("submitForm").submit();
 	}
 	function createOrderAction() {
-		document.getElementById("submitForm").action = "orderDetails";
+		document.getElementById("submitForm").action = "OrdersHistory";
 		document.getElementById("submitForm").submit();
 	}
 	function orderListAction() {
-		document.getElementById("submitForm").action = "viewOrderDetails";
+		document.getElementById("submitForm").action = "viewOrder";
 		document.getElementById("submitForm").submit();
 	}
 </script>
@@ -88,8 +89,8 @@
 								disabled="disabled" onclick="editOrdeAction()"> 
 								<input type="button" id="createOrder" value="Create Order"
 								disabled="disabled" onclick="createOrderAction()">
-								<input type="button" id="listOfOrders" value="Orders List"
-								 onclick="orderListAction()">
+								<input type="button" id="Orders" value="Orders List"
+								disabled="disabled" onclick="orderListAction()">
 						</form>
 					</div>
 

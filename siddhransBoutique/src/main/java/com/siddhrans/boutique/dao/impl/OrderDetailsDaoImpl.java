@@ -6,6 +6,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.OrderDetailsDao;
+import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.Designation;
 import com.siddhrans.boutique.model.MeasurementDetails;
 import com.siddhrans.boutique.model.OrderDetails;
@@ -47,17 +48,27 @@ public class OrderDetailsDaoImpl extends AbstractDao<Integer, OrderDetails> impl
 		 saveOrUpdate(orderDetails);		
 	}
 
-	@Override
+/*	@Override
 	public List<OrderDetails> findByCustomer(OrderDetails orderDetails) {
 		Criteria criteria = createEntityCriteria();
 		criteria.add(Restrictions.eq("orderDetails", orderDetails));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
 		List<OrderDetails> orderDetails1 = (List<OrderDetails>) criteria.list();
-	/*	for(MeasurementDetails measurementDetails : measurementDetailsList){
+		for(MeasurementDetails measurementDetails : measurementDetailsList){
 				Hibernate.initialize(measurementDetails.getCustomerDetails());
 				Hibernate.initialize(measurementDetails.getDressType());
-        }*/
+        }
+		return orderDetails1;
+	}*/
+
+	@Override
+	public List<OrderDetails> findByCustomer(CustomerDetails customerDetails) {
+		Criteria criteria = createEntityCriteria();
+		criteria.add(Restrictions.eq("customerDetails", customerDetails));
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		List<OrderDetails> orderDetails1 = (List<OrderDetails>) criteria.list();
 		return orderDetails1;
 	}
+
 	
 }

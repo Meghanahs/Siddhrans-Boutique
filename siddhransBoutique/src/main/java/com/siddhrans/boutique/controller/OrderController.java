@@ -115,16 +115,15 @@ public class OrderController {
 		model.addAttribute("order", order);*/
 	    String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetails = customerDetailsService.findByID(Integer.parseInt(customerId));
-		model.addAttribute("customerDetails", customerDetails);	
+		/*model.addAttribute("customerDetails", customerDetails);	
 		String orderId = request.getParameter("orderId");
-		OrderDetails orders = orderDetailsService.findById(Integer.parseInt(orderId));		
-		/*List<OrderDetails> orders=orderDetailsService.findAllOrders();*/
-		model.addAttribute("orders", orders);	
+		OrderDetails orders = orderDetailsService.findById(Integer.parseInt(orderId));*/
+		List<OrderDetails> orders=orderDetailsService.findByCustomer(customerDetails);	   
+		model.addAttribute("orders", orders);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);		
 		return "showOrderHistory";
        }
-
 }
 
 

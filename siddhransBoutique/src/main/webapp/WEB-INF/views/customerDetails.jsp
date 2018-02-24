@@ -24,7 +24,7 @@
 		document.getElementById("submitForm").submit();
 	}
 	function createOrderAction() {
-		document.getElementById("submitForm").action = "OrdersHistory";
+		document.getElementById("submitForm").action = "orderDetails";
 		document.getElementById("submitForm").submit();
 	}
 	function orderListAction() {

@@ -12,6 +12,7 @@ import com.siddhrans.boutique.dao.OrderDetailsDao;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.OrderDetails;
 import com.siddhrans.boutique.service.OrderDetailsService;
+
 @Service("orderService")
 @Transactional
 public class OrderDetailsServiceImpl implements OrderDetailsService {
@@ -44,8 +45,8 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 	}
 
 	@Override
-	public List<OrderDetails> findByCustomer(OrderDetails orderDetails) {
-		return orderDetailsdao.findByCustomer(orderDetails) ;
+	public List<OrderDetails> findByCustomer(CustomerDetails customerDetails) {
+		return orderDetailsdao.findByCustomer(customerDetails) ;
 	}
 
 }

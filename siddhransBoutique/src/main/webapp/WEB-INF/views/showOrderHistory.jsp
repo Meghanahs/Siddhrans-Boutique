@@ -25,15 +25,15 @@ function billing() {
 			<header class="agileits-box-header clearfix">
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-					<form method="POST" id="submitForm">
+						<form method="POST" id="submitForm">
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>
-									    <th>Selector</th>
+										<th>Selector</th>
 										<th>Order ID</th>
-										<th>Customer ID</th>									   
-									    <th>Customer Name</th> 
-									    <th>Customer Phone No</th>  
+										<th>Customer ID</th>
+										<th>Customer Name</th>
+										<th>Customer Phone No</th>
 										<th>Ordered Date</th>
 										<th>Dress Type</th>
 										<th>Status</th>
@@ -42,27 +42,28 @@ function billing() {
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach items="${orders}" var="order">
+
+									<c:forEach items="${orders}" var="order">
 										<tr>
-										    <td><input name="custemerId" type="checkbox"
-												onclick="enableButtons()" id="custemerId"
+											<td><input name="orderId" type="checkbox"
+												onclick="enableButtons()" id="orderId"
 												value="${order.orderId}" /></td>
+
 											<td>${order.orderId}</td>
 											<td>${order.customerDetails.custemerId}</td>
-											<td>${order.customerDetails.customerName}</td> 
-											<td>${order.customerDetails.customerPhoneNo}</td> 
+											<td>${order.customerDetails.customerName}</td>
+											<td>${order.customerDetails.customerPhoneNo}</td>
 											<td>${order.orderDate}</td>
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
 											<td>${order.orderAmount}</td>
-											
-                                        </tr>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
-							<input type="submit" id="bill"value="Billing" disabled="disabled"
-								onclick="billing()"> 
-							</form>
+							<input type="submit" id="bill" value="Billing"
+								disabled="disabled" onclick="billing()">
+						</form>
 					</div>
 
 				</div>

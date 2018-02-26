@@ -13,6 +13,7 @@
 <link href="static/css/font-awesome.css" rel="stylesheet">
 <!-- jQuery -->
 <script src="static/js/jquery-2.1.4.min.js"></script>
+<script src="static/js/jquery.tablesorter.min.js"></script>
 <!-- //jQuery -->
 <link
 	href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400'
@@ -22,4 +23,6 @@
 <!-- lined-icons -->
 <link rel="stylesheet" href="static/css/icon-font.min.css"
 	type='text/css' />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>  
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 <!-- //lined-icons -->

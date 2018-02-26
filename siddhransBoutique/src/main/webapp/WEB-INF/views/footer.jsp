@@ -20,7 +20,7 @@
 <div class="copyrights">
 	<p>
 		© 2016 <a href="#">Srushti Boutique</a> . All Rights Reserved | Design
-		by <a href="http://siddhrans.com/Development/" target="_blank">Siddhrans.com</a>
+		by <a href="http://siddhrans.com" target="_blank">Siddhrans.com</a>
 	</p>
 </div>
 <!--COPY rights end here-->

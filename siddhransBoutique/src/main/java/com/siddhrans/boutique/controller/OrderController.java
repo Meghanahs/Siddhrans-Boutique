@@ -111,13 +111,8 @@ public class OrderController {
 	
 @RequestMapping(value={"/viewOrder"}, method = RequestMethod.POST)
 	public String OrdersList(Model model) {	  
-		/*OrderDetails order=orderDetailsService.findById(orderDetails);
-		model.addAttribute("order", order);*/
 	    String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetails = customerDetailsService.findByID(Integer.parseInt(customerId));
-		/*model.addAttribute("customerDetails", customerDetails);	
-		String orderId = request.getParameter("orderId");
-		OrderDetails orders = orderDetailsService.findById(Integer.parseInt(orderId));*/
 		List<OrderDetails> orders=orderDetailsService.findByCustomer(customerDetails);	   
 		model.addAttribute("orders", orders);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();

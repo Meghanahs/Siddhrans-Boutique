@@ -34,7 +34,8 @@ function editEmployee(){
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer" style="overflow-x: auto;">
 					<form:form modelAttribute="employee" id="submitForm" method="POST">
-						<table class="table table-hover" >
+					<input type="search" id="search" class="light-table-filter" data-table="order-table" placeholder="Search here">						
+							<table class="table table-hover order-table table">
 							<thead id="thcolor">
 								<tr>
 								    <th>Selector</th>
@@ -91,29 +92,47 @@ function editEmployee(){
 	</div>
 
 	<%@include file="footer.jsp"%>
-<!-- 	<script language="javascript">
-	function deleteRow(tableID) {
-		try {
-		var table = document.getElementById(tableID);
-		var rowCount = table.rows.length;
+<script>
+	(function(document) {
+		'use strict';
 
-		for(var i=0; i<rowCount; i++) {
-			var row = table.rows[i];
-			var chkbox = row.cells[0].childNodes[0];
-			if(null != chkbox && true == chkbox.checked) {
-				table.deleteRow(i);
-				rowCount--;
-				i--;
+		var LightTableFilter = (function(Arr) {
+
+			var _input;
+
+			function _onInputEvent(e) {
+				_input = e.target;
+				var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+				Arr.forEach.call(tables, function(table) {
+					Arr.forEach.call(table.tBodies, function(tbody) {
+						Arr.forEach.call(tbody.rows, _filter);
+					});
+				});
 			}
 
+			function _filter(row) {
+				var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+				row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+			}
 
-		}
-		}catch(e) {
-			alert(e);
-		}
-	}
+			return {
+				init: function() {
+					var inputs = document.getElementsByClassName('light-table-filter');
+					Arr.forEach.call(inputs, function(input) {
+						input.oninput = _onInputEvent;
+					});
+				}
+			};
+		})(Array.prototype);
 
-	</script> -->
+		document.addEventListener('readystatechange', function() {
+			if (document.readyState === 'complete') {
+				LightTableFilter.init();
+			}
+		});
+
+	})(document);
+	</script>
 	</div>
 </body>
 </html>

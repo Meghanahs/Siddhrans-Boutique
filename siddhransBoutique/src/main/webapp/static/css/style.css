@@ -4318,6 +4318,7 @@ canvas#bar,canvas#line,canvas#pie {
     box-shadow: none;
     outline: none;
     border-radius: 0px;
+        width: auto;
 }
 .form-control:focus {
     border-color: #ccc;
@@ -6436,8 +6437,21 @@ ul.dropdown-menu {
     padding: 7px 9px 8px 15px;
 }
 }
-.pagination li {
-  display:inline-block;
-  padding:5px;
+#data tr {
+  display: none;
 }
+#search{
+ background-image: url(../images/save.png);
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 20%;
+    height: 51px;
+    margin-left: 8px;
+    font-size: 16px;
+    padding: 7px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 14px;
+    margin-top: 10px;
+}
+
 /***responsive***/

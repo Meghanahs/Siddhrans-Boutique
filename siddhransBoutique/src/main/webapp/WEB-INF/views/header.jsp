@@ -23,6 +23,6 @@
 <!-- lined-icons -->
 <link rel="stylesheet" href="static/css/icon-font.min.css"
 	type='text/css' />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>  
 <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 <!-- //lined-icons -->

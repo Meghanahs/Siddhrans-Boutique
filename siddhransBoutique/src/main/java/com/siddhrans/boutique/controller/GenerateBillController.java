@@ -11,16 +11,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.siddhrans.boutique.model.CustomerDetails;
-import com.siddhrans.boutique.model.DressType;
 import com.siddhrans.boutique.model.OrderDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
 import com.siddhrans.boutique.service.OrderDetailsService;
+
 
 @Controller
 public class GenerateBillController {
@@ -58,8 +63,7 @@ public class GenerateBillController {
 			document.addCreationDate();
 			document.addCreator("Shrushti Boutique");
 			document.addTitle("Bill");
-			
-		
+					
 			String filePath="C:/Srushti/reportPdf/"+fileName;
 			request.getSession().setAttribute("filePath", filePath);
 		    PdfWriter.getInstance(document,new FileOutputStream(filePath));
@@ -78,7 +82,7 @@ public class GenerateBillController {
 	       // t.setPadding(4);
 	       // t.setSpacing(4);
 	       // t.setBorderWidth(1);
-	        Font headerFont = new Font(Font.NORMAL, 10,Font.BOLD );
+	        Font headerFont = new Font();
 	        
 	       PdfPCell c1 = new PdfPCell(new Phrase("Customer ID",headerFont));
 	       c1.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -123,9 +127,7 @@ public class GenerateBillController {
 	       table.addCell(c1);
 	       
 	       table.setHeaderRows(1);
-	       Font normalFont = new Font(Font.NORMAL, 8 );
-		
-		
+	       Font normalFont = new Font( );
 		
 		for(int i=0; i<orders.length;i++) {
 			Integer order = Integer.parseInt(orders[i]);
@@ -140,10 +142,14 @@ public class GenerateBillController {
 		model.addAttribute("orders", orders);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);		*/
-		return "generateBill";
+		
 	}
-	
-	
+		catch(Exception e)
+		{
+			System.out.println(e);
+			e.printStackTrace();
+		}
+		return "generateBill";
 }
-
+}
 

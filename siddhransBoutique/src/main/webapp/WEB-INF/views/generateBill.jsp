@@ -24,16 +24,7 @@
 
 					<div class="col-md-12">
 						<div class="col-md-6">
-
-							<form:input type="text" path="customerName" id="customerName"
-								class="form-control input-sm" placeholder="Customer Name" />
-								
-							<form:select path="department" items="${departmentsList}"
-								multiple="false" itemValue="departmentId"
-								itemLabel="departmentName" class="form-control input-sm"
-								id="department" />
-
-							<button type="submit" class="button">Add</button>
+							<a href=${filePath}> Download </a>
 						</div>
 
 					</div>

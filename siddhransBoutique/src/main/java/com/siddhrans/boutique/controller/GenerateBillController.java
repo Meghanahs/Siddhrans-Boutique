@@ -1,5 +1,6 @@
 package com.siddhrans.boutique.controller;
 
+import java.awt.Color;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,12 +16,14 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.siddhrans.boutique.model.CustomerDetails;
+import com.siddhrans.boutique.model.DressType;
 import com.siddhrans.boutique.model.OrderDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
@@ -58,6 +61,7 @@ public class GenerateBillController {
 				ordersString = ordersString +"_"+ orders[k];
 			}
 			String fileName=customerDetails.getCustemerId()+"[orders="+ ordersString +"]"+dateFormat.format(date)+".pdf";
+			
 			document.addAuthor("Siddhrans ");
 			String date1=(String)dateFormat.format(date);
 			document.addCreationDate();
@@ -65,16 +69,17 @@ public class GenerateBillController {
 			document.addTitle("Bill");
 					
 			String filePath="C:/Srushti/reportPdf/"+fileName;
+			model.addAttribute("filePath", filePath);
 			request.getSession().setAttribute("filePath", filePath);
-		    PdfWriter.getInstance(document,new FileOutputStream(filePath));
+			PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(filePath));
 	        document.open();
 	        
-	        PdfPTable table = new PdfPTable(8);
+	        PdfPTable table = new PdfPTable(9);
 	       
 	        table.setSpacingBefore(5);
 	        table.setSpacingAfter(1);
 	       // table.setWidthPercentage(888 / 5.23f);
-	        table.setWidths(new float[]{ (float) 1.5, (float) 2.0, (float) 1.0, (float) 1.0, (float) 1.5, (float) 1.6, (float) 1.3, (float) 2.0} );
+	        table.setWidths(new float[]{ (float) 1.5, (float) 2.0, (float) 2.0, (float) 1.0, (float) 1.0, (float) 1.5, (float) 1.6, (float) 1.3, (float) 2.0} );
 	        
 	        table.setTotalWidth(PageSize.A4.getWidth()-10);
 	        table.setLockedWidth(true);
@@ -82,7 +87,8 @@ public class GenerateBillController {
 	       // t.setPadding(4);
 	       // t.setSpacing(4);
 	       // t.setBorderWidth(1);
-	        Font headerFont = new Font();
+	        Font headerFont =FontFactory.getFont(FontFactory.COURIER, 12.0f , Font.BOLD, new BaseColor(255, 0, 0)  ); //new Font(Font.FontFamily.TIMES_ROMAN, Font.NORMAL, 24 );
+	     
 	        
 	       PdfPCell c1 = new PdfPCell(new Phrase("Customer ID",headerFont));
 	       c1.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -121,18 +127,53 @@ public class GenerateBillController {
 	       c1.setBackgroundColor( new BaseColor (90, 137, 9));
 	       table.addCell(c1);
 	       
+	       c1 = new PdfPCell(new Phrase("Per Item Amount",headerFont));
+	       c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	       c1.setBackgroundColor( new BaseColor (90, 137, 9));
+	       table.addCell(c1);
+	       
 	       c1 = new PdfPCell(new Phrase("Total Amount",headerFont));
 	       c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 	       c1.setBackgroundColor( new BaseColor (90, 137, 9));
 	       table.addCell(c1);
 	       
 	       table.setHeaderRows(1);
-	       Font normalFont = new Font( );
+	       Font normalFont = new Font(Font.FontFamily.TIMES_ROMAN, Font.NORMAL, 8 );
 		
 		for(int i=0; i<orders.length;i++) {
 			Integer order = Integer.parseInt(orders[i]);
 			ordersDetails = orderDetailsService.findById(order);
+			DressType dressType = ordersDetails.getDressType();
+			CustomerDetails customer = ordersDetails.getCustomerDetails();
+		
+			  c1 = new PdfPCell(new Phrase( customer.getCustemerId().toString(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
+		       
+		       c1 = new PdfPCell(new Phrase(ordersDetails.getOrderId().toString(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
+		       
+		       c1 = new PdfPCell(new Phrase(customer.getCustomerName(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
+		       
+		       c1 = new PdfPCell(new Phrase(customer.getCustomerPhoneNo(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
 			
+		       c1 = new PdfPCell(new Phrase(ordersDetails.getOrderDate(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
+		       
+		       c1 = new PdfPCell(new Phrase(dressType.getDressName(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
+		       
+		       c1 = new PdfPCell(new Phrase(ordersDetails.getCount().toString(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
+
+		       c1 = new PdfPCell(new Phrase(dressType.getAmount().toString(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
+		       
+		       c1 = new PdfPCell(new Phrase(ordersDetails.getOrderAmount().toString(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.NORMAL, new BaseColor(255, 0, 0))  ));
+		       table.addCell(c1);
+		       
+		       
 		}
 		 document.add(table);
 	       document.close();
@@ -149,6 +190,7 @@ public class GenerateBillController {
 			System.out.println(e);
 			e.printStackTrace();
 		}
+		
 		return "generateBill";
 }
 }

@@ -19,7 +19,7 @@ public class OrderDetails {
 	Integer orderId;
 	String orderDate;
 	String modifiedDate;
-	Float count;
+	Integer count;
 	Float orderAmount;
 	String status;
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -52,10 +52,10 @@ public class OrderDetails {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public Float getCount() {
+	public Integer getCount() {
 		return count;
 	}
-	public void setCount(Float count) {
+	public void setCount(Integer count) {
 		this.count = count;
 	}
 	public Float getOrderAmount() {

@@ -7,7 +7,7 @@
 	<%@include file="body.jsp"%>
 	<!--heder end here-->
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="adddepartment">BIll</a>
+		<li class="breadcrumb-item"><a href="adddepartment">Bill Generarion</a>
 			<i class="fa fa-angle-right"></i></li>
 	</ol>
 	<!--four-grids here-->
@@ -17,8 +17,7 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-				<h3>DEPARTMENT</h3>
-				<h5 style="color:red;">${message}</h5>
+				<h3 style="text-align:center;">Generate Bill</h3>
 				<form:form method="POST" modelAttribute="department"
 					class="form-horizontal">
 

@@ -3976,7 +3976,7 @@ section#tables  p {
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 	font-size: 0.9em;
-	color: #999;
+	color: #000000;
 	border-top: none !important;
 }
 .tab-content > .active {
@@ -6453,5 +6453,65 @@ ul.dropdown-menu {
     margin-bottom: 14px;
     margin-top: 10px;
 }
+
+/* for pagination  */
+
+table {
+  color: #333;
+  font-size: .9em;
+  font-weight: 300;
+  line-height: 40px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid #ed1c40;
+  width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.16);
+  border-radius: 2px;
+}
+
+th {
+  background: #ed1c40;
+  color: #fff;
+  border: none;
+}
+
+tr:hover:not(th) {background-color: rgba(237,28,64,.1);}
+
+
+input[type="button"] {
+    transition: all .3s;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+input[type="button"]:not(.active) {
+    background-color:transparent;
+}
+
+.active {
+    background-color: #ff4d4d;
+    color :#fff;
+}
+
+input[type="button"]:hover:not(.active) {
+    background-color: #ddd;
+}
+#thcolor{
+	background-color:#1b93e1;
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-align:center;
+}
+
+body {
+  background-color: #fafafa;
+}
+
 
 /***responsive***/

@@ -67,7 +67,7 @@ public class OrderController {
 		for(int i=0;i<dressTypes.length;i++){
 			Integer dressTypeId=Integer.parseInt(dressTypes[i]);
 			DressType dressType = dressTypeService.findById(dressTypeId);
-			float count=Float.parseFloat(request.getParameter("count_"+dressTypeId));
+			Integer count=Integer.parseInt(request.getParameter("count_"+dressTypeId));
 			/*System.out.println("count_"+dressTypeId);*/
 			float amount=count*dressType.getAmount();
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

@@ -24,7 +24,7 @@
 							<div class="col-md-6">
 								<input type="search" id="search" class="light-table-filter"
 									data-table="order-table" placeholder="Search here"
-									style="width: 52%; margin-top: 60px;">
+									style="width: 52%; margin-top: 0px;">
 							</div>
 							<table class="table table-hover order-table table" id="myTable">
 								<!-- <table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover"> -->

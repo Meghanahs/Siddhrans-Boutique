@@ -6503,15 +6503,15 @@ input[type="button"]:hover:not(.active) {
 #thcolor{
 	background-color:#1b93e1;
 }
-* {
+/* * {
   margin: 0;
   padding: 0;
   text-align:center;
-}
+} */
 
-body {
+/* body {
   background-color: #fafafa;
-}
+} */
 
 
 /***responsive***/

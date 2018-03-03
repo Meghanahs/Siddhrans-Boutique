@@ -14,6 +14,8 @@
 <!-- jQuery -->
 <script src="static/js/jquery-2.1.4.min.js"></script>
 <script src="static/js/jquery.tablesorter.min.js"></script>
+<script src="static/js/search.js"></script>
+
 <!-- //jQuery -->
 <link
 	href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400'

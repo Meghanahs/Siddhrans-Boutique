@@ -178,7 +178,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<th scope="row">1</th>
+										<td scope="row">1</td>
 										<td>Lorem ipsum</td>
 										<td><span class="label label-success">In progress</span></td>
 										<td><h5>
@@ -186,7 +186,7 @@
 											</h5></td>
 									</tr>
 									<tr>
-										<th scope="row">2</th>
+										<td scope="row">2</td>
 										<td>Aliquam</td>
 										<td><span class="label label-warning">New</span></td>
 										<td><h5>
@@ -194,7 +194,7 @@
 											</h5></td>
 									</tr>
 									<tr>
-										<th scope="row">3</th>
+										<td scope="row">3</td>
 										<td>Lorem ipsum</td>
 										<td><span class="label label-danger">Overdue</span></td>
 										<td><h5 class="down">
@@ -202,7 +202,7 @@
 											</h5></td>
 									</tr>
 									<tr>
-										<th scope="row">4</th>
+										<td scope="row">4</td>
 										<td>Aliquam</td>
 										<td><span class="label label-info">Out of stock</span></td>
 										<td><h5>
@@ -210,7 +210,7 @@
 											</h5></td>
 									</tr>
 									<tr>
-										<th scope="row">5</th>
+										<td scope="row">5</td>
 										<td>Lorem ipsum</td>
 										<td><span class="label label-success">In progress</span></td>
 										<td><h5 class="down">
@@ -218,7 +218,7 @@
 											</h5></td>
 									</tr>
 									<tr>
-										<th scope="row">6</th>
+										<td scope="row">6</td>
 										<td>Aliquam</td>
 										<td><span class="label label-warning">New</span></td>
 										<td><h5>

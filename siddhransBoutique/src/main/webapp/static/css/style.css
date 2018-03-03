@@ -304,7 +304,7 @@ li#menu-academico{
 /*--header --*/
 .header-main {
     padding:1em;
-	background:#fff;
+  	background:#fff; 
 	 box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -4154,7 +4154,7 @@ h4.title, .hightchat-grid1 h3 {
 }
 /*--//charts--*/
 .widget-shadow {
-    background-color: #fff;
+   /*  background-color: #fff; */
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);

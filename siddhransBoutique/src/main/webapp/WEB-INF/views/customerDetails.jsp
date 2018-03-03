@@ -48,13 +48,13 @@
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
 						<form id="submitForm" method="POST">
-							<div class="col-md-6"></div>
-							<div class="col-md-6">
+							<div class="col-md-8"></div>
+							<div class="col-md-4">
 								<input type="search" id="search" class="light-table-filter"
 									data-table="order-table" placeholder="Search here"
 									style="width: 52%; margin-top: 0px;">
 							</div>
-							<input type="button" id="takeMeasurement"
+									<input type="button" id="takeMeasurement"
 								value="Take Measurement" disabled="disabled"
 								onclick="createMeasurementAction()"> <input
 								type="button" id="showMeasurement"
@@ -66,6 +66,7 @@
 								disabled="disabled" onclick="createOrderAction()"> <input
 								type="button" id="Orders" value="Orders List"
 								disabled="disabled" onclick="orderListAction()">
+							
 							<table class="table table-hover order-table table" id="myTable" style="margin-top: 10px;">
 								<thead id="thcolor1">
 									<tr>

@@ -3,6 +3,9 @@ package com.siddhrans.boutique.controller;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +39,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.VerticalPositionMark;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.DressType;
+import com.siddhrans.boutique.model.Invoice;
 import com.siddhrans.boutique.model.OrderDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
@@ -281,10 +285,27 @@ public class GenerateBillController {
 			  headers.add("Pragma", "no-cache");
 			  
 			  headers.add("Expires", "0");
-
+			  
+			  
 			  headers.setContentLength(res.contentLength());
 			  response = new ResponseEntity<InputStreamResource>(
 			    new InputStreamResource(res.getInputStream()), headers, HttpStatus.OK);
+			  
+			  
+			
+
+			  byte[] bFile = Files.readAllBytes(new File(filePath).toPath());
+			  
+			  for(int i=0; i<orders.length;i++) {
+				  Invoice invoice = new Invoice();
+				  invoice.setInvoicePdf(bFile);
+				  Integer order = Integer.parseInt(orders[i]);
+				  OrderDetails	orderDetails = orderDetailsService.findById(order);
+				  invoice.setOrder(orderDetails);
+				  
+			  }
+			  
+			  
 			  
 			 // return response;
 		}

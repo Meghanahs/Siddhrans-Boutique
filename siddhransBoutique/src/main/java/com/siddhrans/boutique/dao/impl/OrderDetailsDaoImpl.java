@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.OrderDetailsDao;
 import com.siddhrans.boutique.model.CustomerDetails;
-import com.siddhrans.boutique.model.Designation;
-import com.siddhrans.boutique.model.MeasurementDetails;
 import com.siddhrans.boutique.model.OrderDetails;
 
 @Repository("orderDao")

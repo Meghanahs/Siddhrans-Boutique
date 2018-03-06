@@ -43,6 +43,7 @@ import com.siddhrans.boutique.model.Invoice;
 import com.siddhrans.boutique.model.OrderDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
+import com.siddhrans.boutique.service.InvoiceService;
 import com.siddhrans.boutique.service.OrderDetailsService;
 
 
@@ -57,6 +58,8 @@ public class GenerateBillController {
 	DressTypeService dressTypeService;
 	@Autowired 
 	HttpServletRequest request;
+	@Autowired
+	InvoiceService invoiceService;
 
 	@RequestMapping(value={"/generateBill"}, method = RequestMethod.POST, produces = "application/pdf")
 	public ResponseEntity<InputStreamResource> orderDetails(Model model) throws Exception {	
@@ -302,7 +305,7 @@ public class GenerateBillController {
 				  Integer order = Integer.parseInt(orders[i]);
 				  OrderDetails	orderDetails = orderDetailsService.findById(order);
 				  invoice.setOrder(orderDetails);
-				  
+				  invoiceService.saveInvoice(invoice);
 			  }
 			  
 			  

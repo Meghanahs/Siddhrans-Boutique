@@ -9,7 +9,7 @@ import com.siddhrans.boutique.dao.InvoiceDao;
 import com.siddhrans.boutique.model.OrderDetails;
 import com.siddhrans.boutique.model.Invoice;
 
-@Repository("orderDao")
+@Repository("invoiceDao")
 @Transactional
 public class InvoiceDaoImpl extends AbstractDao<Integer, Invoice> implements InvoiceDao  {
 

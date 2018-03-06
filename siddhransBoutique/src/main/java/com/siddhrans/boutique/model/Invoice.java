@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,21 +25,19 @@ public class Invoice {
 	@Column(name="INVOICE_ID")
 	Integer invoiceId;
 	
+	@Column(name="PDF_FILE_NAME")
+	String fileName;
+	
+	@Lob
 	@Column(name="INVOICE_PDF")
 	byte[] invoicePdf;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "INVOICE_ORDER", 
-             joinColumns = { @JoinColumn(name = "INVOICE_ID") }, 
-             inverseJoinColumns = { @JoinColumn(name = "ORDER_ID") })
-	OrderDetails order;
 
-	public OrderDetails getOrder() {
-		return order;
+	public String getFileName() {
+		return fileName;
 	}
 
-	public void setOrder(OrderDetails order) {
-		this.order = order;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public Integer getInvoiceId() {

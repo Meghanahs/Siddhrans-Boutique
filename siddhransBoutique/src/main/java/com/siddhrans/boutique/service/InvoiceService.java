@@ -9,4 +9,5 @@ public interface InvoiceService {
 	 public void saveInvoice(Invoice invoice);
 	 public List<Invoice> findAllInvoice();
 	 public List<Invoice> findByOrder(OrderDetails orderDetails);
+	 public void saveOrUpdateInvoice(Invoice invoice);
 }

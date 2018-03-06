@@ -2,14 +2,15 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
+<%@ page import="java.util.List"%>
 <script type="text/javascript">
 	function enableButtons() {
 		document.getElementById("bill").disabled = false;
-}
-function billing() {
-	document.getElementById("submitForm").action = "generateBill";
-	document.getElementById("submitForm").submit();
-}
+	}
+	function billing() {
+		document.getElementById("submitForm").action = "generateBill";
+		document.getElementById("submitForm").submit();
+	}
 </script>
 </head>
 <body>
@@ -38,6 +39,7 @@ function billing() {
 										<th>Dress Type</th>
 										<th>Status</th>
 										<th>Amount</th>
+										<th>Invoice</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -45,9 +47,14 @@ function billing() {
 
 									<c:forEach items="${orders}" var="order">
 										<tr>
-											<td><input name="orderId" type="checkbox"
+										<td>
+										<%-- <c:if test="${order.invoiceId == null || order.invoiceId == 0 || order.invoiceId == ''} "> --%>
+											<input name="orderId" type="checkbox"
 												onclick="enableButtons()" id="orderId"
-												value="${order.orderId}" /></td>
+												value="${order.orderId}" />
+												<%-- </c:if> --%>
+
+											</td>
 
 											<td>${order.orderId}</td>
 											<td>${order.customerDetails.custemerId}</td>
@@ -57,12 +64,24 @@ function billing() {
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
 											<td>${order.orderAmount}</td>
+											<td>${order.invoiceId == null || order.invoiceId == 0 }
+												-${order.invoiceId ==0}-${order.invoiceId ==''}-${order.invoiceId ==null}
+											<%-- <c:if test="${order.invoiceId != null && (order.invoiceId != 0 || order.invoiceId == '')} "> --%>	
+													<a
+														href="<c:url value='/download-Invoice-${order.invoiceId}' />"
+														class="btn btn-success custom-width">Download Invoice</a>
+											<%-- </c:if> --%>
+											</td>
+
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
-							<input type="submit" id="bill" value="Billing"
-								disabled="disabled" onclick="billing()">
+
+							
+								<input type="submit" id="bill" value="Billing"
+									disabled="disabled" onclick="billing()">
+						
 						</form>
 					</div>
 

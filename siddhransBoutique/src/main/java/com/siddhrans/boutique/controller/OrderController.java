@@ -114,6 +114,8 @@ public class OrderController {
 		model.addAttribute("orders", orders);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);		
+		ArrayList invoiceIdList = new ArrayList();
+		model.addAttribute("invoiceIdList", invoiceIdList);		
 		return "showOrderHistory";
        }
 }

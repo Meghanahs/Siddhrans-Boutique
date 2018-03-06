@@ -39,4 +39,10 @@ public class InvoiceServiceImpl implements InvoiceService {
 		return invoiceDao.findByOrder(orderDetails);
 	}
 
+	@Override
+	public void saveOrUpdateInvoice(Invoice invoice) {
+		invoiceDao.saveOrUpdateInvoice(invoice);
+		
+	}
+
 }

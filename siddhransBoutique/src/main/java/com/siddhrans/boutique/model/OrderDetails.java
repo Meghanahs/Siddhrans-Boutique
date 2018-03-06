@@ -22,6 +22,15 @@ public class OrderDetails {
 	Integer count;
 	Float orderAmount;
 	String status;
+	Integer invoiceId;
+	
+	
+	public Integer getInvoiceId() {
+		return invoiceId;
+	}
+	public void setInvoiceId(Integer invoiceId) {
+		this.invoiceId = invoiceId;
+	}
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "ORDERDETAILS_CUSTOMERDETAILS", 
              joinColumns = { @JoinColumn(name = "ORDER_ID") }, 

@@ -31,6 +31,34 @@ public class Invoice {
 	@Lob
 	@Column(name="INVOICE_PDF")
 	byte[] invoicePdf;
+	
+	String discount;
+	String cgst;
+	String sgst;
+
+	public String getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(String discount) {
+		this.discount = discount;
+	}
+
+	public String getCgst() {
+		return cgst;
+	}
+
+	public void setCgst(String cgst) {
+		this.cgst = cgst;
+	}
+
+	public String getSgst() {
+		return sgst;
+	}
+
+	public void setSgst(String sgst) {
+		this.sgst = sgst;
+	}
 
 	public String getFileName() {
 		return fileName;

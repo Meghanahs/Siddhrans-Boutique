@@ -47,12 +47,11 @@
 
 									<c:forEach items="${orders}" var="order">
 										<tr>
-										<td>
-										<%-- <c:if test="${order.invoiceId == null || order.invoiceId == 0 || order.invoiceId == ''} "> --%>
-											<input name="orderId" type="checkbox"
+											<td>
+												<%-- <c:if test="${order.invoiceId == null || order.invoiceId == 0 || order.invoiceId == ''} "> --%>
+												<input name="orderId" type="checkbox"
 												onclick="enableButtons()" id="orderId"
-												value="${order.orderId}" />
-												<%-- </c:if> --%>
+												value="${order.orderId}" /> <%-- </c:if> --%>
 
 											</td>
 
@@ -64,24 +63,26 @@
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
 											<td>${order.orderAmount}</td>
-											<td>${order.invoiceId == null || order.invoiceId == 0 }
-												-${order.invoiceId ==0}-${order.invoiceId ==''}-${order.invoiceId ==null}
-											<%--  <c:if test="${order.invoiceId != null && (order.invoiceId != 0 || order.invoiceId == '')} ">   --%>
-													<a
-														href="<c:url value='/download-Invoice-${order.invoiceId}' />"
-														class="btn btn-success custom-width">Download</a>
-											<%--   </c:if>  --%> 
+											<td>
+												<%--  <c:if test="${order.invoiceId != null && (order.invoiceId != 0 || order.invoiceId == '')} ">   --%>
+												<a
+												href="<c:url value='/download-Invoice-${order.invoiceId}' />"
+												class="btn btn-success custom-width">Download</a> <%--   </c:if>  --%>
 											</td>
 
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
+							CGST:<input name="cgst" type="text" onclick="enableButtons()"
+								id="cgst" /> 
+							SGST:<input name="sgst" type="text" onclick="enableButtons()"
+								id="sgst" />
+							DISCOUNT %:<input name="discount" type="text" onclick="enableButtons()"
+								id="CGST" />  
+								<input type="submit" id="bill"
+								value="Billing" disabled="disabled" onclick="billing()">
 
-							
-								<input type="submit" id="bill" value="Billing"
-									disabled="disabled" onclick="billing()">
-						
 						</form>
 					</div>
 

@@ -26,8 +26,10 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.DressType;
@@ -56,12 +58,19 @@ public class GenerateBillController {
 	@RequestMapping(value={"/generateBill"}, method = RequestMethod.POST, produces = "application/pdf")
 	public String orderDetails(Model model, HttpServletResponse response) throws Exception {	
 		String[] orders = request.getParameterValues("orderId");
+		Integer discount = new Integer(0);
+		if(request.getParameter("discount") != "" || request.getParameter("discount") != null || request.getParameter("discount") != "0") {
+			discount = Integer.parseInt(request.getParameter("discount"));
+		}
+		String cgst = request.getParameter("cgst");
+		String sgst = request.getParameter("sgst");
 
 		try{
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
 			Date date = new Date();
 			System.out.println(dateFormat.format(date));
-			Document document=new Document();
+			Rectangle pageSize = new Rectangle(0,0,2382,3369);
+			Document document=new Document(pageSize);
 
 			//Document Attributes
 			OrderDetails ordersDetails = orderDetailsService.findById(Integer.parseInt(orders[0]));
@@ -87,6 +96,10 @@ public class GenerateBillController {
 			Font headerFont =FontFactory.getFont(FontFactory.TIMES_ROMAN, 14.0f , Font.BOLD, new BaseColor(0,0,255)  ); //new Font(Font.FontFamily.TIMES_ROMAN, Font.NORMAL, 24 );
 			Font normalFont = FontFactory.getFont(FontFactory.COURIER, 10.0f , Font.NORMAL, new BaseColor(0, 0, 0));
 			document.open();
+			
+			//GenerateBillController.HeaderTable event = new GenerateBillController.HeaderTable();
+			//writer.setPageEvent(event);
+			
 			Paragraph p =new Paragraph("INVOICE\n\n", headerFont );
 			p.setAlignment(Element.ALIGN_CENTER);
 			document.add(p);
@@ -266,7 +279,20 @@ public class GenerateBillController {
 			}
 
 			document.add(table);
-			p  = new Paragraph("Net Amount = "+ netAmount, headerFont);
+			p  = new Paragraph("Total Amount = "+ netAmount, headerFont);
+			p.setAlignment(Element.ALIGN_RIGHT);
+			document.add(p);
+			p  = new Paragraph("CGST = "+ cgst, normalFont);
+			p.setAlignment(Element.ALIGN_RIGHT);
+			document.add(p);
+			p  = new Paragraph("SGST = "+ sgst, normalFont);
+			p.setAlignment(Element.ALIGN_RIGHT);
+			document.add(p);
+			p  = new Paragraph("Discount% = "+ discount, normalFont);
+			p.setAlignment(Element.ALIGN_RIGHT);
+			document.add(p);
+						
+			p  = new Paragraph("Net Amount = "+(netAmount - (netAmount*(discount/100.0f))), headerFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
 
@@ -300,7 +326,12 @@ public class GenerateBillController {
 	}
 
 	@RequestMapping(value = { "/download-Invoice-{invoiceId}" }, method = RequestMethod.GET)
-	public String deleteBiometricData(@PathVariable String invoiceId, ModelMap model, HttpServletResponse response) throws IOException {
+	public String downloadInvoice(@PathVariable String invoiceId, ModelMap model, HttpServletResponse response) throws IOException {
+		if(invoiceId == null || invoiceId.equals("")) {
+			model.addAttribute("url", "customerdetails");
+			model.addAttribute("message", "No Invoices Found. Please Genarate Invoice and then try.");
+			return "result";
+		}
 		Invoice invoice = invoiceService.findById(Integer.parseInt(invoiceId));
 		response.setContentType("application/pdf");
 		response.setContentLength(invoice.getInvoicePdf().length);

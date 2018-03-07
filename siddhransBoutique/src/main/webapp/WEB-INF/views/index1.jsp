@@ -10,12 +10,12 @@
 			<div class="mother-grid-inner">
 				<!--header start here-->
 				<div class="header-main">
-					<div class="logo-w3-agile" style="height:86px;">
+					<div class="logo-w3-agile" style="height: 86px;">
 						<h1>Boutique</h1>
 					</div>
 					<div class="w3layouts-right">
 						<div class="profile_details_left">
-							
+
 							<h4>Management System</h4>
 							<div class="clearfix"></div>
 						</div>
@@ -23,7 +23,7 @@
 
 						<div class="clearfix"></div>
 					</div>
-					
+
 					<div class="w3layouts-left">
 
 						<!--search-box-->
@@ -36,8 +36,8 @@
 						<!--//end-search-box-->
 						<div class="clearfix"></div>
 					</div>
-					
-							<div class="profile_details w3l" style=" margin-left: 10px;">
+
+					<div class="profile_details w3l" style="margin-left: 10px;">
 						<ul>
 							<li class="dropdown profile_details_drop"><a href="#"
 								class="dropdown-toggle" data-toggle="dropdown"
@@ -61,179 +61,171 @@
 								</ul></li>
 						</ul>
 					</div>
-					</div>
-			
-
-					<div class="clearfix"></div>
 				</div>
-				<!--heder end here-->
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="home">Home</a> <i
-						class="fa fa-angle-right"></i></li>
-				</ol>
-				<!--four-grids here-->
-				<div class="four-grids">
-					<div class="col-md-3 four-grid">
-						<div class="four-agileits">
-							<div class="icon">
-								<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>User</h3>
-								<h4>24,420</h4>
-
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-agileinfo">
-							<div class="icon">
-								<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Clients</h3>
-								<h4>15,520</h4>
-
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-w3ls">
-							<div class="icon">
-								<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Projects</h3>
-								<h4>12,430</h4>
-
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-wthree">
-							<div class="icon">
-								<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Old Projects</h3>
-								<h4>14,430</h4>
-
-							</div>
-
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<!--//four-grids here-->
-
-				<!--//agileinfo-grap-->
-				<!--photoday-section-->
 
 
 				<div class="clearfix"></div>
-
-				<!--//photoday-section-->
-				<!--w3-agileits-pane-->
-				<div class="w3-agileits-pane">
-					<div class="col-md-4 wthree-pan">
-						<div class="panel panel-default" style="height: 455px;color:white;">
-							<div class="panel-heading">
-							 Process We Fallowed in Stiching and Designing
-							</div>
-							<!-- /.panel-heading -->
-							<div class="panel-body">
-								<div class="list-group">
-						
-									<ul>
-									<li>Sketching the dress design pattern According to customer requirement</li></br>
-									<li>Measurement of customers</li></br>
-									<li>Cutting</li></br>
-									<li>Stiching as per measurement</li></br>
-									<li>Embroidory if Required</li></br>
-									<li>Trial</li></br>
-									<li>Alteration If Required</li></br>
-									<li>Ironing</li></br>
-									<li>Customer Delivery</li></br>
-									</ul>
-								</div>
-								<!-- /.list-group -->
-
-							</div>
-							<!-- /.panel-body -->
+			</div>
+			<!--heder end here-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="home">Home</a> <i
+					class="fa fa-angle-right"></i></li>
+			</ol>
+			<!--four-grids here-->
+			<div class="four-grids">
+				<div class="col-md-3 four-grid">
+					<div class="four-agileits">
+						<div class="icon">
+							<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
 						</div>
+						<div class="four-text">
+							<h3>User</h3>
+							<h4>24,420</h4>
+
+						</div>
+
 					</div>
-					<div class="col-md-8 agile-info-stat">
-						<div class="stats-info stats-last widget-shadow">
-							<table class="table stats-table ">
-								<thead>
+				</div>
+				<div class="col-md-3 four-grid">
+					<div class="four-agileinfo">
+						<div class="icon">
+							<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+						</div>
+						<div class="four-text">
+							<h3>Clients</h3>
+							<h4>15,520</h4>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="col-md-3 four-grid">
+					<div class="four-w3ls">
+						<div class="icon">
+							<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
+						</div>
+						<div class="four-text">
+							<h3>Projects</h3>
+							<h4>12,430</h4>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="col-md-3 four-grid">
+					<div class="four-wthree">
+						<div class="icon">
+							<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
+						</div>
+						<div class="four-text">
+							<h3>Old Projects</h3>
+							<h4>14,430</h4>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<!--//four-grids here-->
+
+			<!--//agileinfo-grap-->
+			<!--photoday-section-->
+<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="home">List of Orders History</a> <i
+					class="fa fa-angle-right"></i></li>
+			</ol>
+			<!--//photoday-section-->
+			<!--w3-agileits-pane-->
+			<div class="w3-agileits-pane">
+				<div class="col-md-4 wthree-pan">
+					<div class="panel panel-default"
+						style="height: 455px; color: white;">
+						<div class="panel-heading">Process We Fallowed in Stiching
+							and Designing</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="list-group">
+
+								<ul>
+									<li>Sketching the dress design pattern According to
+										customer requirement</li>
+									</br>
+									<li>Measurement of customers</li>
+									</br>
+									<li>Cutting</li>
+									</br>
+									<li>Stiching as per measurement</li>
+									</br>
+									<li>Embroidory if Required</li>
+									</br>
+									<li>Trial</li>
+									</br>
+									<li>Alteration If Required</li>
+									</br>
+									<li>Ironing</li>
+									</br>
+									<li>Customer Delivery</li>
+									</br>
+								</ul>
+							</div>
+							<!-- /.list-group -->
+
+						</div>
+						<!-- /.panel-body -->
+					</div>
+				</div>
+				<div class="col-md-6 wthree-pan">
+						<div class="agileinfo-grap">
+		<div class="agileits-box" style="width: 699px;height:372px;;">
+		<!-- 	<header class="agileits-box-header clearfix">
+				<div class="col-md-12 agile-info-stat height"> -->
+					<div class="tablecontainer">
+						<form method="GET">
+							<table class="table table-hover order-table table" id="myTable">
+								<thead id="thcolor1">
 									<tr>
-										<th>S.NO</th>
-										<th>PRODUCT</th>
-										<th>STATUS</th>
-										<th>PROGRESS</th>
+										<th>Order ID</th>
+										<th>Customer ID</th>
+										<th>Customer Name</th>
+										<th>Customer Phone No</th>
+										<th>Ordered Date</th>
+										<th>Dress Type</th>
+										<th>Status</th>
+										<th>Amount</th>
+										<th width="100"></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td scope="row">1</td>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-success">In progress</span></td>
-										<td><h5>
-												85% <i class="fa fa-level-up"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<td scope="row">2</td>
-										<td>Aliquam</td>
-										<td><span class="label label-warning">New</span></td>
-										<td><h5>
-												35% <i class="fa fa-level-up"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<td scope="row">3</td>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-danger">Overdue</span></td>
-										<td><h5 class="down">
-												40% <i class="fa fa-level-down"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<td scope="row">4</td>
-										<td>Aliquam</td>
-										<td><span class="label label-info">Out of stock</span></td>
-										<td><h5>
-												100% <i class="fa fa-level-up"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<td scope="row">5</td>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-success">In progress</span></td>
-										<td><h5 class="down">
-												10% <i class="fa fa-level-down"></i>
-											</h5></td>
-									</tr>
-									<tr>
-										<td scope="row">6</td>
-										<td>Aliquam</td>
-										<td><span class="label label-warning">New</span></td>
-										<td><h5>
-												38% <i class="fa fa-level-up"></i>
-											</h5></td>
-									</tr>
+									<c:forEach items="${orders}" var="order">
+										<tr>
+											<td>${order.orderId}</td>
+											<td>${order.customerDetails.custemerId}</td>
+											<td>${order.customerDetails.customerName}</td>
+											<td>${order.customerDetails.customerPhoneNo}</td>
+											<td>${order.orderDate}</td>
+											<td>${order.dressType.dressName}</td>
+											<td>${order.status}</td>
+											<td>${order.orderAmount}</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
-						</div>
+						</form>
 					</div>
-					<div class="clearfix"></div>
+
+				<!-- </div>
+			</header> -->
+			<div class="agileits-box-body clearfix"></div>
+		</div>
+	</div>
+					<script src="static/js/pagination.js"></script>
 				</div>
-				<!--//w3-agileits-pane-->
-				<!-- script-for sticky-nav -->
-				<%@include file="footer.jsp"%>
+				<div class="clearfix"></div>
+			</div>
+			<!--//w3-agileits-pane-->
+			<!-- script-for sticky-nav -->
+			<%@include file="footer.jsp"%>
 </body>
 
 </html>

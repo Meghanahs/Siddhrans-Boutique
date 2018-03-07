@@ -4190,6 +4190,7 @@ h4.title, .hightchat-grid1 h3 {
 }
 .stats-info.stats-last {
     padding: 1.15em 1em 0.4em;
+        margin-top: -72px;
 }
 .agile-info-stat {
     padding-right: 0;

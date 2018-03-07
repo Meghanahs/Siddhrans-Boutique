@@ -2,6 +2,12 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
+<script type="text/javascript">
+	function billing() {
+		document.getElementById("submitForm").action = "generateQuotation";
+		document.getElementById("submitForm").submit();
+	}
+</script>
 </head>
 <body>
 	<%@include file="body.jsp"%>
@@ -15,6 +21,7 @@
 			<header class="agileits-box-header clearfix">
 
 				<div class="col-md-12 agile-info-stat height">
+				<form method="post" id="submitForm">
 					<div class="tablecontainer">
 							<table class="table table-hover">
 								<thead id="thcolor">
@@ -43,6 +50,8 @@
 								</tbody>
 							</table>
 					</div>
+					<input type="submit" value="Quotation Billing">
+					</form>
 				</div>
 			</header>
 			<div class="agileits-box-body clearfix"></div>
@@ -86,7 +95,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
-							<input type="submit" value="Submit">
+							<input type="submit" value="Create Order">
 						</form>
 					</div>
 				</div>

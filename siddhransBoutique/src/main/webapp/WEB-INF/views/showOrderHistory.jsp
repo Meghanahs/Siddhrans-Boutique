@@ -66,11 +66,11 @@
 											<td>${order.orderAmount}</td>
 											<td>${order.invoiceId == null || order.invoiceId == 0 }
 												-${order.invoiceId ==0}-${order.invoiceId ==''}-${order.invoiceId ==null}
-											<%-- <c:if test="${order.invoiceId != null && (order.invoiceId != 0 || order.invoiceId == '')} "> --%>	
+											<%--  <c:if test="${order.invoiceId != null && (order.invoiceId != 0 || order.invoiceId == '')} ">   --%>
 													<a
 														href="<c:url value='/download-Invoice-${order.invoiceId}' />"
-														class="btn btn-success custom-width">Download Invoice</a>
-											<%-- </c:if> --%>
+														class="btn btn-success custom-width">Download</a>
+											<%--   </c:if>  --%> 
 											</td>
 
 										</tr>

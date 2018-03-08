@@ -99,5 +99,13 @@ public class RegistrationDaoImpl  extends AbstractDao<Integer, Employee> impleme
 		return employee;
 	}
 
+	@Override
+	public Integer employeesCount() {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		List<Employee> employeeList = (List<Employee>) criteria.list();	
+		return employeeList.size();
+	}
+
 
 }

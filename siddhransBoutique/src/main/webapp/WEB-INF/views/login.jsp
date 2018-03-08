@@ -36,9 +36,9 @@
 						<p>You have been logged out successfully.</p>
 					</div>
 				</c:if>
-				<input type="text" placeholder="Username" /><br>
+				<input type="text" id="userName" name="userName" placeholder="Username" /><br>
 				<h3>Password:</h3>
-				<input type="password" placeholder="Password" /> <br>
+				<input  type="password" id="password" name="password" placeholder="Password" /> <br>
 				<div class="checkbox">
 					<label><input type="checkbox" id="rememberme"
 						name="remember-me"> Remember Me</label>

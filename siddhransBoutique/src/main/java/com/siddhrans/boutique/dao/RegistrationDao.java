@@ -15,5 +15,6 @@ public interface RegistrationDao {
 	void updateUser(Employee employee);
     Employee findByPhoneNo(String phoneNo);    
     Employee findByAadhaarNo(String aadhaarNo);
+    Integer employeesCount();
   
 }

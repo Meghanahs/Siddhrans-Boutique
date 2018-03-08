@@ -51,7 +51,7 @@ function noOfEmployess(){
 										<span class="prfil-img"><img
 											src="static/images/in4.jpg" alt=""> </span>
 										<div class="user-name">
-											<p>Hello User</p>
+											<p>Hello ${userName}</p>
 
 										</div>
 
@@ -85,7 +85,7 @@ function noOfEmployess(){
 						</div>
 						<div class="four-text">
 							<h3>EMPLOYEES</h3>
-							<h4>24,420</h4>
+							<h4>${employeesCount}</h4>
 
 						</div>
 

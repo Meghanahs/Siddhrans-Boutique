@@ -17,4 +17,5 @@ public interface RegistrationService {
     boolean isAadhaarNoUnique(Integer id, String aadhaarNo);   
     Employee findByPhoneNo(String phoneNo);    
     Employee findByAadhaarNo(String aadhaarNo);
-}
+    Integer employeesCount();
+} 

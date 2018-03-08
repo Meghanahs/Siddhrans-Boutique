@@ -69,7 +69,7 @@ public class GenerateBillController {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
 			Date date = new Date();
 			System.out.println(dateFormat.format(date));
-			/*Rectangle pageSize = new Rectangle(0,0,2382,3369);*/
+			//Rectangle pageSize = new Rectangle(0,0,2382,3369);
 			Document document=new Document();
 
 			//Document Attributes

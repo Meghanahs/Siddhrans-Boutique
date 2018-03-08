@@ -69,6 +69,10 @@ RegistrationDao registrationDao;
 	public Employee findByAadhaarNo(String aadhaarNo) {
 		Employee employee = registrationDao.findByAadhaarNo(aadhaarNo);
 		return employee;
+	}
+	@Override
+	public Integer employeesCount() {	
+		return registrationDao.employeesCount();
 	}  
 
 

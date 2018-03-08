@@ -45,6 +45,20 @@ public class Employee {
              inverseJoinColumns = { @JoinColumn(name = "DESIGNATION_ID") })
 	Designation designation;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "APP_USER_USER_PROFILE", 
+             joinColumns = { @JoinColumn(name = "USER_ID") }, 
+             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
+    private UserProfile userProfile;
+	
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}
+
 	public Designation getDesignation() {
 		return designation;
 	}

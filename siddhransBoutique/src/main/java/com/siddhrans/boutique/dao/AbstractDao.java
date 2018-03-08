@@ -31,10 +31,10 @@ public abstract class AbstractDao<PK extends Serializable, T> {
         return (T) getSession().get(persistentClass, key);
     }
     
-    @SuppressWarnings("unchecked")
+    /*@SuppressWarnings("unchecked")
     public T getByKey(String name) {
         return (T) getSession().get(persistentClass, name);
-    }
+    }*/
  
  
     public void persist(T entity) {

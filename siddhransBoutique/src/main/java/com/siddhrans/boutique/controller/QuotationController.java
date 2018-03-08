@@ -174,7 +174,7 @@ public class QuotationController {
 			table1.setLockedWidth(true);
 			String invioiceData = new String();
 			invioiceData = "\n"
-						  +"Quotation Date";
+						  +"Date";
 			p =new Paragraph(invioiceData, normalFont );
 			p.setAlignment(Element.ALIGN_CENTER);
 			c1 = new PdfPCell(p);
@@ -182,8 +182,8 @@ public class QuotationController {
 			c1.setVerticalAlignment(Element.ALIGN_BOTTOM);
 			table1.addCell(c1);
 			
-			invioiceData =  ":\n"+
-							":";
+			invioiceData =  ":\n";
+							
 			p =new Paragraph(invioiceData, normalFont );
 			p.setAlignment(Element.ALIGN_LEFT);
 			c1 = new PdfPCell(p);

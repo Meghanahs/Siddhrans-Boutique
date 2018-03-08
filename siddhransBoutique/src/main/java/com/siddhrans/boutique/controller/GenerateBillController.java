@@ -69,8 +69,8 @@ public class GenerateBillController {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
 			Date date = new Date();
 			System.out.println(dateFormat.format(date));
-			Rectangle pageSize = new Rectangle(0,0,2382,3369);
-			Document document=new Document(pageSize);
+			/*Rectangle pageSize = new Rectangle(0,0,2382,3369);*/
+			Document document=new Document();
 
 			//Document Attributes
 			OrderDetails ordersDetails = orderDetailsService.findById(Integer.parseInt(orders[0]));
@@ -128,7 +128,8 @@ public class GenerateBillController {
 			customerData = "Customer Id\n"
 					+"Name\n"
 					+"Phone Number\n"
-					+"Email ID";
+					+"Email ID\n"
+					+"GST No";
 			p =new Paragraph(customerData, normalFont );
 			p.setAlignment(Element.ALIGN_CENTER);
 			PdfPCell c1 = new PdfPCell(p);
@@ -137,6 +138,7 @@ public class GenerateBillController {
 			table1.addCell(c1);
 
 			customerData =  ":\n"+
+					":\n"+
 					":\n"+
 					":\n"+
 					":\n";
@@ -150,7 +152,8 @@ public class GenerateBillController {
 			customerData = customerDetails.getCustemerId().toString()+"\n"
 					+ customerDetails.getCustomerName()+"\n"
 					+ customerDetails.getCustomerPhoneNo()+"\n"
-					+ customerDetails.getEmail();
+					+ customerDetails.getEmail()+"\n"
+					+ customerDetails.getGstNo();
 			p =new Paragraph(customerData, normalFont );
 			p.setAlignment(Element.ALIGN_LEFT);
 			c1 = new PdfPCell(p);
@@ -173,6 +176,7 @@ public class GenerateBillController {
 			table1.addCell(c1);
 
 			invioiceData =  ":\n"+
+					":\n"+
 					":";
 			p =new Paragraph(invioiceData, normalFont );
 			p.setAlignment(Element.ALIGN_LEFT);

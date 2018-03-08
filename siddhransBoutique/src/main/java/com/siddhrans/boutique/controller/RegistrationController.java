@@ -45,10 +45,10 @@ public class RegistrationController {
 		return "login";
 	}
 
-	@RequestMapping(value={"/home"}, method = RequestMethod.GET)
+	/*@RequestMapping(value={"/home"}, method = RequestMethod.GET)
 	public String helloWorld1(Model model) {
 		return "index1";
-	}
+	}*/
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public String hello(Model model) {
 		return "login";

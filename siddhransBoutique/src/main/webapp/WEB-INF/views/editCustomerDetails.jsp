@@ -16,7 +16,7 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-				<h3>Edit Customers Details</h3>
+				<h3 style="margin-bottom: 71px;">Edit Customers Details</h3>
 				<div class="col-md-12 agile-info-stat height">
 					<div class="stats-info stats-last widget-shadow">
 						<form:form method="POST" modelAttribute="customerDetailsData"

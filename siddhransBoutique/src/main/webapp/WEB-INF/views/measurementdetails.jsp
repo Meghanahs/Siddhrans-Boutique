@@ -14,14 +14,14 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-				<h3>Measurement Details</h3>
-				<h5 style="color: red;">${message}</h5>
+				<h3 style="margin-bottom: 71px;">Measurement Details</h3>
+				<h5 style="color: red;margin-bottom: 59px;">${message}</h5>
 				<form:form method="POST" modelAttribute="measurementDetails"
-								class="form-horizontal" action="addmeasurementDetails">
-				
-				<div class="col-md-12 agile-info-stat height">
-					<div class="col-md-6">
-						<div class="stats-info stats-last widget-shadow">							
+					class="form-horizontal" action="addmeasurementDetails">
+
+					<div class="col-md-12 agile-info-stat height">
+						<div class="col-md-6">
+							<div class="stats-info stats-last widget-shadow">
 								<div class="row">
 									<div class="form-group col-md-12">
 										<label class="col-md-2 control-lable" for="m_fullLength">Full
@@ -209,212 +209,212 @@
 										</div>
 									</div>
 								</div>
-								
-								<div class="row">
-								<div class="form-group col-md-12">
-
-									<label class="col-md-2 control-lable" for="m_collar">Collar</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_collar" id="m_collar"
-											class="form-control input-sm" placeholder="Collar" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_collar" class="help-inline" />
-									</div>
-								</div>
 							</div>
 						</div>
-					</div>
 
 
-					<div class="col-md-6">
-						<div class="stats-info stats-last widget-shadow">
-							
+						<div class="col-md-6">
+							<div class="stats-info stats-last widget-shadow">
 
-							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="row">
+									<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_salwarXbottom">Salwar
-										x Bottom</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_salwarXbottom"
-											id="m_salwarXbottom" class="form-control input-sm"
-											placeholder="Salwar x Bottom" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_salwarXbottom" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_collar">Collar</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_collar" id="m_collar"
+												class="form-control input-sm" placeholder="Collar" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_collar" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="row">
+									<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_chudidar">Chudidar</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_chudidar" id="m_chudidar"
-											class="form-control input-sm" placeholder="Chudidar" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_chudidar" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_salwarXbottom">Salwar
+											x Bottom</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_salwarXbottom"
+												id="m_salwarXbottom" class="form-control input-sm"
+												placeholder="Salwar x Bottom" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_salwarXbottom" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="row">
+									<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_pant">Pant</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_pant" id="m_pant"
-											class="form-control input-sm" placeholder="Pant" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_pant" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_chudidar">Chudidar</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_chudidar" id="m_chudidar"
+												class="form-control input-sm" placeholder="Chudidar" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_chudidar" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="row">
+									<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_pHip">Hip</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_pHip" id="m_pHip"
-											class="form-control input-sm" placeholder="Hip" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_pHip" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_pant">Pant</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_pant" id="m_pant"
+												class="form-control input-sm" placeholder="Pant" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_pant" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="row">
+									<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_kneeRound">Knee
-										Round</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_kneeRound" id="m_kneeRound"
-											class="form-control input-sm" placeholder="Knee Round" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_kneeRound" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_pHip">Hip</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_pHip" id="m_pHip"
+												class="form-control input-sm" placeholder="Hip" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_pHip" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_thighRound">Thigh
-										Round</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_thighRound" id="m_thighRound"
-											class="form-control input-sm" placeholder="Thigh Round" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_thighRound" class="help-inline" />
+								<div class="row">
+									<div class="form-group col-md-12">
+
+										<label class="col-md-2 control-lable" for="m_kneeRound">Knee
+											Round</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_kneeRound" id="m_kneeRound"
+												class="form-control input-sm" placeholder="Knee Round" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_kneeRound" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
+								<div class="row">
+									<div class="form-group col-md-12">
 
-							<div class="row">
-								<div class="form-group col-md-12">
-
-									<label class="col-md-2 control-lable" for="m_fL">Front
-										length</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_fL" id="m_fL"
-											class="form-control input-sm" placeholder="Front length" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_fL" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_thighRound">Thigh
+											Round</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_thighRound" id="m_thighRound"
+												class="form-control input-sm" placeholder="Thigh Round" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_thighRound" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_fW">Front
-										Width</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_fW" id="m_fW"
-											class="form-control input-sm" placeholder="Front Width" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_fW" class="help-inline" />
+								<div class="row">
+									<div class="form-group col-md-12">
+
+										<label class="col-md-2 control-lable" for="m_fL">Front
+											length</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_fL" id="m_fL"
+												class="form-control input-sm" placeholder="Front length" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_fL" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="row">
+									<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_bL">Back
-										Length</label>
-									<div class="col-md-5">
-										<form:input type="text" path="m_bL" id="m_bL"
-											class="form-control input-sm" placeholder="Front Width" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_bL" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_fW">Front
+											Width</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_fW" id="m_fW"
+												class="form-control input-sm" placeholder="Front Width" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_fW" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
+								<div class="row">
+									<div class="form-group col-md-12">
 
-							<div class="row">
-								<div class="form-group col-md-12">
-
-									<label class="col-md-2 control-lable" for="m_fitting">Fitting</label>
-									<div class="col-md-5">
-										<form:radiobutton path="m_fitting" id="m_fitting"
-											value="B.Fit" label="B.Fit" />
-										<form:radiobutton path="m_fitting" id="m_fitting"
-											value="M.Fit" label="M.Fit" />
-										<form:radiobutton path="m_fitting" id="m_fitting"
-											value="M.Loose" label="M.Loose" />
-										<form:radiobutton path="m_fitting" id="m_fitting"
-											value="Loose Fit" label="Loose Fit" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_fitting" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_bL">Back
+											Length</label>
+										<div class="col-md-5">
+											<form:input type="text" path="m_bL" id="m_bL"
+												class="form-control input-sm" placeholder="Front Width" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_bL" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="row">
+									<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_topType">Top
-										Type</label>
-									<div class="col-md-5">
-										<form:radiobutton path="m_topType" id="m_topType"
-											value="Slite" label="Slite" />
-										<form:radiobutton path="m_topType" id="m_topType"
-											value="Flare" label="Flare" />
-									</div>
-									<div class="has-error">
-										<form:errors path="m_topType" class="help-inline" />
+										<label class="col-md-2 control-lable" for="m_fitting">Fitting</label>
+										<div class="col-md-5">
+											<form:radiobutton path="m_fitting" id="m_fitting"
+												value="B.Fit" label="B.Fit" />
+											<form:radiobutton path="m_fitting" id="m_fitting"
+												value="M.Fit" label="M.Fit" />
+											<form:radiobutton path="m_fitting" id="m_fitting"
+												value="M.Loose" label="M.Loose" />
+											<form:radiobutton path="m_fitting" id="m_fitting"
+												value="Loose Fit" label="Loose Fit" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_fitting" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
-						
-							<div class="row">
-								<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="m_topType">Customer Name</label>
-									<div class="col-md-5">
-										<form:select path="customerDetails" 
-											items="${customerDetailsList}" multiple="false"
-											itemValue="custemerId" itemLabel="customerName"
-											class="form-control input-sm" id="customerDetails" />
-									</div>
-									<div class="has-error">
-										<form:errors path="customerDetails" class="help-inline" />
+								<div class="row">
+									<div class="form-group col-md-12">
+
+										<label class="col-md-2 control-lable" for="m_topType">Top
+											Type</label>
+										<div class="col-md-5">
+											<form:radiobutton path="m_topType" id="m_topType"
+												value="Slite" label="Slite" />
+											<form:radiobutton path="m_topType" id="m_topType"
+												value="Flare" label="Flare" />
+										</div>
+										<div class="has-error">
+											<form:errors path="m_topType" class="help-inline" />
+										</div>
 									</div>
 								</div>
-							</div>
-							
-				<%-- 			<div class="row">
+
+								<div class="row">
+									<div class="form-group col-md-12">
+
+										<label class="col-md-2 control-lable" for="m_topType">Customer
+											Name</label>
+										<div class="col-md-5">
+											<form:select path="customerDetails"
+												items="${customerDetailsList}" multiple="false"
+												itemValue="custemerId" itemLabel="customerName"
+												class="form-control input-sm" id="customerDetails" />
+										</div>
+										<div class="has-error">
+											<form:errors path="customerDetails" class="help-inline" />
+										</div>
+									</div>
+								</div>
+
+								<%-- 			<div class="row">
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="dressType">Dress Type</label>
@@ -431,19 +431,18 @@
 							</div> --%>
 
 
-							</br>
+								</br>
 
-							<footer>
-								<button type="submit" class="button">Add</button>
-							</footer>
-
-							</form:form>
-						</div>
-					</div>
-				</div>
+								<footer>
+									<button type="submit" class="button">Add</button>
+								</footer>
+				</form:form>
 		</div>
-		</header>
-		<div class="agileits-box-body clearfix"></div>
+	</div>
+	</div>
+	</div>
+	</header>
+	<div class="agileits-box-body clearfix"></div>
 	</div>
 	</div>
 	<!--//agileinfo-grap-->

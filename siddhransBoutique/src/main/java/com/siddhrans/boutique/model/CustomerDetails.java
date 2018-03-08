@@ -20,6 +20,7 @@ public class CustomerDetails {
 	String customerName;
 	String email;
 	String dob;
+	String gstNo;
 	@NotEmpty
 	String customerPhoneNo;
 
@@ -53,5 +54,12 @@ public class CustomerDetails {
 	public void setCustomerPhoneNo(String customerPhoneNo) {
 		this.customerPhoneNo = customerPhoneNo;
 	}
+	public String getGstNo() {
+		return gstNo;
+	}
+	public void setGstNo(String gstNo) {
+		this.gstNo = gstNo;
+	}
+	
 
 }

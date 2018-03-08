@@ -105,10 +105,10 @@ public class OrderController {
 		model.addAttribute("dressTypeList", dressTypeList);		
 		return "listOfOrders";
 	}
-	
-@RequestMapping(value={"/viewOrder"}, method = RequestMethod.POST)
+
+	@RequestMapping(value={"/viewOrder"}, method = RequestMethod.POST)
 	public String OrdersList(Model model) {	  
-	    String customerId = request.getParameter("customerId");
+		String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetails = customerDetailsService.findByID(Integer.parseInt(customerId));
 		List<OrderDetails> orders=orderDetailsService.findByCustomer(customerDetails);	   
 		model.addAttribute("orders", orders);
@@ -117,7 +117,20 @@ public class OrderController {
 		ArrayList invoiceIdList = new ArrayList();
 		model.addAttribute("invoiceIdList", invoiceIdList);		
 		return "showOrderHistory";
-       }
+	}
+
+	@RequestMapping(value={"/home"}, method = RequestMethod.GET)
+	public String viewOrdersList1(Model model) {
+		List<OrderDetails> orders=orderDetailsService.findAllOrders();
+		model.addAttribute("orders", orders);
+		/*Integer customerId = Integer.parseInt(request.getParameter("customerId"));*/
+		List<CustomerDetails> customerDetails = customerDetailsService.fetchAllCustomerDetails();
+		model.addAttribute("customerDetails", customerDetails);	
+		/*List<CustomerDetails> customerDetails = customerDetailsService.findByID(customerId);*/
+		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
+		model.addAttribute("dressTypeList", dressTypeList);		
+		return "index1";
+	}
 }
 
 

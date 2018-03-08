@@ -76,6 +76,7 @@
 										<th>DOB</th>
 										<th>Email</th>
 										<th>Phone No</th>
+										<th>GST NO</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -91,6 +92,7 @@
 											<td>${customerDetails.dob}</td>
 											<td>${customerDetails.email}</td>
 											<td>${customerDetails.customerPhoneNo}</td>
+											<td>${customerDetails.gstNo}</td>
 
 											<%-- <td><a
 									href="<c:url value='/delete-designation-${designation.designationId}' />"
@@ -124,11 +126,11 @@
 		<li class="breadcrumb-item"><a href="customerdetails">Add New
 				Customer Details</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
-	<div>${message}</div>
+	<div style="color:red;">${message}</div>
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-				<h3>Customers Details</h3>
+				<h3 style="margin-bottom: 71px;">Customers Details</h3>
 				<div class="col-md-12 agile-info-stat height">
 					<div class="stats-info stats-last widget-shadow">
 						<form:form method="POST" modelAttribute="customerDetails"
@@ -190,6 +192,21 @@
 									</br>
 									<div class="has-error" style="color: red;">
 										<form:errors path="customerPhoneNo" class="help-inline" />
+									</div>
+								</div>
+							</div>
+								<div class="row">
+								<div class="form-group col-md-12">
+
+									<label class="col-md-2 control-lable" for="phoneno">Customer GST No</label>
+									<div class="col-md-3">
+										<form:input type="text" path="gstNo"
+											id="gstNo" class="form-control input-sm"
+											placeholder="Customer GST NO" />
+									</div>
+									</br>
+									<div class="has-error" style="color: red;">
+										<form:errors path="gstNo" class="help-inline" />
 									</div>
 								</div>
 							</div>

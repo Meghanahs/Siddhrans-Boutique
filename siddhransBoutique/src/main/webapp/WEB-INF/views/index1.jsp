@@ -2,6 +2,11 @@
 <head>
 <%@include file="includeLibs.jsp"%>
 <%@include file="header.jsp"%>
+<script>
+function noOfEmployess(){
+	document.getElementById("#myTable");
+}
+</script>
 </head>
 <body>
 	<div class="page-container">
@@ -79,7 +84,7 @@
 							<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
 						</div>
 						<div class="four-text">
-							<h3>User</h3>
+							<h3>EMPLOYEES</h3>
 							<h4>24,420</h4>
 
 						</div>
@@ -92,7 +97,7 @@
 							<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
 						</div>
 						<div class="four-text">
-							<h3>Clients</h3>
+							<h3>CUSTOMERS</h3>
 							<h4>15,520</h4>
 
 						</div>
@@ -105,7 +110,7 @@
 							<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
 						</div>
 						<div class="four-text">
-							<h3>Projects</h3>
+							<h3>ORDERS</h3>
 							<h4>12,430</h4>
 
 						</div>
@@ -131,14 +136,14 @@
 
 			<!--//agileinfo-grap-->
 			<!--photoday-section-->
-<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="home">List of Orders History</a> <i
-					class="fa fa-angle-right"></i></li>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="home">List of Orders
+						History</a> <i class="fa fa-angle-right"></i></li>
 			</ol>
 			<!--//photoday-section-->
 			<!--w3-agileits-pane-->
 			<div class="w3-agileits-pane">
-				<div class="col-md-4 wthree-pan">
+				<div class="col-md-3 wthree-pan">
 					<div class="panel panel-default"
 						style="height: 455px; color: white;">
 						<div class="panel-heading">Process We Fallowed in Stiching
@@ -150,23 +155,23 @@
 								<ul>
 									<li>Sketching the dress design pattern According to
 										customer requirement</li>
-									</br>
+									
 									<li>Measurement of customers</li>
-									</br>
+									
 									<li>Cutting</li>
-									</br>
+									
 									<li>Stiching as per measurement</li>
-									</br>
+									
 									<li>Embroidory if Required</li>
-									</br>
+									
 									<li>Trial</li>
-									</br>
+								
 									<li>Alteration If Required</li>
-									</br>
+								
 									<li>Ironing</li>
-									</br>
+								
 									<li>Customer Delivery</li>
-									</br>
+								
 								</ul>
 							</div>
 							<!-- /.list-group -->
@@ -175,57 +180,51 @@
 						<!-- /.panel-body -->
 					</div>
 				</div>
-				<div class="col-md-6 wthree-pan">
-						<div class="agileinfo-grap">
-		<div class="agileits-box" style="width: 699px;height:372px;;">
-		<!-- 	<header class="agileits-box-header clearfix">
-				<div class="col-md-12 agile-info-stat height"> -->
-					<div class="tablecontainer">
-						<form method="GET">
-							<table class="table table-hover order-table table" id="myTable">
-								<thead id="thcolor1">
-									<tr>
-										<th>Order ID</th>
-										<th>Customer ID</th>
-										<th>Customer Name</th>
-										<th>Customer Phone No</th>
-										<th>Ordered Date</th>
-										<th>Dress Type</th>
-										<th>Status</th>
-										<th>Amount</th>
-										<th width="100"></th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${orders}" var="order">
-										<tr>
-											<td>${order.orderId}</td>
-											<td>${order.customerDetails.custemerId}</td>
-											<td>${order.customerDetails.customerName}</td>
-											<td>${order.customerDetails.customerPhoneNo}</td>
-											<td>${order.orderDate}</td>
-											<td>${order.dressType.dressName}</td>
-											<td>${order.status}</td>
-											<td>${order.orderAmount}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</form>
+				<div class="col-md-9 agile-info-stat">
+					<div class="stats-info stats-last widget-shadow">
+						<div class="col-md-12 agile-info-stat height">
+							<div class="tablecontainer">
+								<form method="GET">
+									<table class="table table-hover order-table table" id="myTable">
+										<thead style="color:#ff9501;">
+											<tr>
+												<th>Order ID</th>
+												<th>Customer ID</th>
+												<th>Customer Name</th>
+												<th>Customer Phone No</th>
+												<th>Ordered Date</th>
+												<th>Dress Type</th>
+												<th>Status</th>
+												<th>Amount</th>
+												<th width="100"></th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${orders}" var="order">
+												<tr>
+													<td>${order.orderId}</td>
+													<td>${order.customerDetails.custemerId}</td>
+													<td>${order.customerDetails.customerName}</td>
+													<td>${order.customerDetails.customerPhoneNo}</td>
+													<td>${order.orderDate}</td>
+													<td>${order.dressType.dressName}</td>
+													<td>${order.status}</td>
+													<td>${order.orderAmount}</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</form>
+							</div>
+						</div>
 					</div>
-
-				<!-- </div>
-			</header> -->
-			<div class="agileits-box-body clearfix"></div>
-		</div>
-	</div>
-					<script src="static/js/pagination.js"></script>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 			<!--//w3-agileits-pane-->
 			<!-- script-for sticky-nav -->
 			<%@include file="footer.jsp"%>
+			<script src="static/js/pagination1.js"></script>
 </body>
 
 </html>

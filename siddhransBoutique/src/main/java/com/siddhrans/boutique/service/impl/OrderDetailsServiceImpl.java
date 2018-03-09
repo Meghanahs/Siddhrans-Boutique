@@ -49,4 +49,9 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 		return orderDetailsdao.findByCustomer(customerDetails) ;
 	}
 
+	@Override
+	public Integer ordersCount() {
+		return orderDetailsdao.ordersCount();
+	}
+
 }

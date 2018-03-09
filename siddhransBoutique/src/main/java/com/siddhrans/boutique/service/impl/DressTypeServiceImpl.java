@@ -49,4 +49,9 @@ public class DressTypeServiceImpl implements DressTypeService {
 		return false;
 	}
 
+	@Override
+	public Integer dressCount() {
+		return dressTypeDao.dressCount();
+	}
+
 }

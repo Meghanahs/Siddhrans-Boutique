@@ -1,11 +1,7 @@
 package com.siddhrans.boutique.service;
 
 import java.util.List;
-
 import com.siddhrans.boutique.model.CustomerDetails;
-import com.siddhrans.boutique.model.Employee;
-
-
 
 public interface CustomerDetailsService {
 	
@@ -16,5 +12,6 @@ public interface CustomerDetailsService {
 	public CustomerDetails findByName(String CustomerName);
 	CustomerDetails findByPhoneNo(String customerPhoneNo); 
 	boolean iscustomerPhoneNoUnique(Integer id, String customerPhoneNo);
+	Integer customersCount();
 	
 }

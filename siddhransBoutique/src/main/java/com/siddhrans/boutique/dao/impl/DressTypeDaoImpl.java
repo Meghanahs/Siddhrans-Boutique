@@ -58,6 +58,14 @@ public class DressTypeDaoImpl extends AbstractDao<Integer, DressType> implements
 		return dressTypes;
 	}
 
+	@Override
+	public Integer dressCount() {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		List<DressType> dressTypesCount = (List<DressType>) criteria.list();
+		return dressTypesCount.size();
+	}
+
 
 	
 }

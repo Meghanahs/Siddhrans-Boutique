@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Responsive Login Form</title>
+<title>Login</title>
 <%@include file="includeLibs.jsp"%>
 
 <link rel='stylesheet prefetch'
@@ -40,7 +40,7 @@
 				<h3>Password:</h3>
 				<input  type="password" id="password" name="password" placeholder="Password" /> <br>
 				<div class="checkbox">
-					<label><input type="checkbox" id="rememberme"
+					<label style="color:#ffffff;"><input type="checkbox" id="rememberme"
 						name="remember-me"> Remember Me</label>
 				</div>
 				</br>

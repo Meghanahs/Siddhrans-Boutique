@@ -69,6 +69,12 @@ public class LoginController {
 		Integer employeesCount = registrationService.employeesCount();
 		model.addAttribute("employeesCount", employeesCount);
 		model.addAttribute("userName", getPrincipal());
+		Integer  customersCount = customerDetailsService.customersCount();
+		model.addAttribute("customersCount", customersCount);
+		Integer ordersCount = orderDetailsService.ordersCount();
+		model.addAttribute("ordersCount", ordersCount);
+		Integer dressCount = dressTypeService.dressCount();
+		model.addAttribute("dressCount", dressCount);
 		return "index1";
 	}
 	/**

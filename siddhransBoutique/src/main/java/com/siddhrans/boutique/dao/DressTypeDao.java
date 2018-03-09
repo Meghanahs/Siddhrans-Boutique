@@ -17,6 +17,8 @@ public interface DressTypeDao {
     List<DressType> findAllDressTypes(); 
      
     boolean isDressTypeNameUnique(Integer id, String dressTypeName);
+    
+    Integer dressCount();
    
 	
 }

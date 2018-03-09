@@ -12,6 +12,5 @@ public interface CustomerDetailsDao {
 	void updateCustomerDetails(CustomerDetails cusomerDetails);
 	public CustomerDetails findByName(String CustomerName);
 	CustomerDetails findByPhoneNo(String customerPhoneNo);
-
-
+	Integer customersCount();
 }

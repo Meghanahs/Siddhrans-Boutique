@@ -2,9 +2,6 @@ package com.siddhrans.boutique.dao.impl;
 
 
 import java.util.Date;
- 
-
-
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;

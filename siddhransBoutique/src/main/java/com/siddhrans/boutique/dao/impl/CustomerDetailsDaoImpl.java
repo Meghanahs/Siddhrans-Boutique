@@ -48,6 +48,7 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 	public CustomerDetails findByName(String CustomerName) {
 		CustomerDetails byName = getByKey(CustomerName);
 		return byName;
+		
 	}
 
 	@Override
@@ -62,6 +63,14 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 			Hibernate.initialize(CustomerDetails.getDesignation());
 		}*/
 		return customerDetails;
+	}
+
+	@Override
+	public Integer customersCount() {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		List<CustomerDetails> customerDetailsList = (List<CustomerDetails>) criteria.list();
+		return customerDetailsList.size();
 	}
 
 }

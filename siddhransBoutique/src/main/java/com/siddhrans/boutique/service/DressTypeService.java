@@ -11,7 +11,8 @@ public interface DressTypeService {
 	 void updateDressType(DressType dressType);
      void deleteDressType(int id);
      List<DressType> findAllDressTypes();      
-     boolean isDressTypeNameUnique(Integer id, String dressTypeName);    
+     boolean isDressTypeNameUnique(Integer id, String dressTypeName); 
+     Integer dressCount();
      
      
 	

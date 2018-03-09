@@ -51,7 +51,7 @@ function noOfEmployess(){
 										<span class="prfil-img"><img
 											src="static/images/in4.jpg" alt=""> </span>
 										<div class="user-name">
-											<p>Hello ${userName}</p>
+											<p style="margin-top: -46px;margin-left:54px;">Hello ${userName}</p>
 
 										</div>
 
@@ -98,7 +98,7 @@ function noOfEmployess(){
 						</div>
 						<div class="four-text">
 							<h3>CUSTOMERS</h3>
-							<h4>15,520</h4>
+							<h4>${customersCount}</h4>
 
 						</div>
 
@@ -111,7 +111,7 @@ function noOfEmployess(){
 						</div>
 						<div class="four-text">
 							<h3>ORDERS</h3>
-							<h4>12,430</h4>
+							<h4>${ordersCount}</h4>
 
 						</div>
 
@@ -120,12 +120,12 @@ function noOfEmployess(){
 				<div class="col-md-3 four-grid">
 					<div class="four-wthree">
 						<div class="icon">
-							<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-picture" aria-hidden="true"></i>
 						</div>
 						<div class="four-text">
-							<h3>Old Projects</h3>
-							<h4>14,430</h4>
-
+							<h3>DESIGNS</h3>
+							<h4>${dressCount}</h4>
+							
 						</div>
 
 					</div>

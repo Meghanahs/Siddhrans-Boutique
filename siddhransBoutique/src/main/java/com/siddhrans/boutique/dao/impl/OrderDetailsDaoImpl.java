@@ -68,5 +68,13 @@ public class OrderDetailsDaoImpl extends AbstractDao<Integer, OrderDetails> impl
 		return orderDetails1;
 	}
 
+	@Override
+	public Integer ordersCount() {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		List<OrderDetails> orders = (List<OrderDetails>) criteria.list();
+		return orders.size();
+	}
+
 	
 }

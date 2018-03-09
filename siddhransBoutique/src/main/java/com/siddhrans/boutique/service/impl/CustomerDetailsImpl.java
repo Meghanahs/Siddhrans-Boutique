@@ -52,4 +52,9 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
     	CustomerDetails customerDetails = findByPhoneNo(customerPhoneNo);
         return ( customerDetails == null || ((id != null) && (customerDetails.getCustemerId() == id)));
     }
+
+	@Override
+	public Integer customersCount() {
+		return customerDetailsDao.customersCount();
+	}
 }

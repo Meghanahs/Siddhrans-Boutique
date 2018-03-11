@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +44,8 @@ public class OrderController {
 		List<OrderDetails> orders=orderDetailsService.findAllOrders();
 		model.addAttribute("orders", orders);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
-		model.addAttribute("dressTypeList", dressTypeList);		
+		model.addAttribute("dressTypeList", dressTypeList);	
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "orderDetails";
 	}
 
@@ -55,6 +58,7 @@ public class OrderController {
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);
 		logger.debug("DressType List is"+dressTypeList);
+		model.addAttribute("loggedinuser", getPrincipal());
 		/*		throw new Exception("DressType List is"+dressTypeList);*/
 		return "orderDetails";
 	}
@@ -93,6 +97,7 @@ public class OrderController {
 		model.addAttribute("dressTypeList", dressTypeList);		
 		model.addAttribute("totalAmount", totalAmount);
 		model.addAttribute("orders", orders);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "orderDetails";
 	}
 
@@ -105,7 +110,8 @@ public class OrderController {
 		model.addAttribute("customerDetails", customerDetails);	
 		/*List<CustomerDetails> customerDetails = customerDetailsService.findByID(customerId);*/
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
-		model.addAttribute("dressTypeList", dressTypeList);		
+		model.addAttribute("dressTypeList", dressTypeList);	
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "listOfOrders";
 	}
 
@@ -118,8 +124,24 @@ public class OrderController {
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList", dressTypeList);		
 		ArrayList invoiceIdList = new ArrayList();
-		model.addAttribute("invoiceIdList", invoiceIdList);		
+		model.addAttribute("invoiceIdList", invoiceIdList);	
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "showOrderHistory";
+	}
+	
+	/**
+	 * This method returns the principal[user-name] of logged-in user.
+	 */
+	private String getPrincipal(){
+		String loggedinUser = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			loggedinUser = ((UserDetails)principal).getUsername();
+		} else {
+			loggedinUser = principal.toString();
+		}
+		return loggedinUser;
 	}
 
 

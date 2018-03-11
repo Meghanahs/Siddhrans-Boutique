@@ -10,14 +10,12 @@
 	href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
 
 <link rel="stylesheet" href="static/css/login.css">
-
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
+		rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-
-	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
-		rel='stylesheet' type='text/css'>
 
 	<div class="login">
 		<div class="login-header">
@@ -48,6 +46,7 @@
 					<input type="submit" class="btn btn-block btn-primary btn-default"
 						value="Log in">
 				</div>
+				<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
 			</form>
 		</div>
 	</div>

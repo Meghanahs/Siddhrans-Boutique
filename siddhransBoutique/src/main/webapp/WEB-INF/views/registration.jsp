@@ -119,11 +119,16 @@
 						<form:errors path="designation" class="help-inline" />
 					</div>
 				</section>
-				<!-- <section> <label class="checkbox"><input
-					type="checkbox" name="checkbox"><i></i>I agree to the Terms
-					of Service</label> <label class="checkbox"><input type="checkbox"
-					name="checkbox"><i></i>I want to receive news and special
-					offers</label> </section> -->
+				<section>
+					UserProfile<label class="select"><form:select
+							path="userProfile" items="${userProfiles}" multiple="false"
+							itemValue="id" itemLabel="type"
+							class="form-control input-sm" id="userProfile" /></label>
+					<div class="has-error">
+						<form:errors path="userProfile" class="help-inline" />
+					</div>
+				</section>
+				
 			</fieldset>
 			<footer>
 				<button type="submit" class="button">Submit</button>

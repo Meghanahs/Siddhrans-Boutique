@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -53,6 +55,7 @@ public class CustomerDetailsController {
 		List<CustomerDetails> customerDetailsList=customerDetailsService.fetchAllCustomerDetails();
 		model.addAttribute("customerDetailsList",customerDetailsList);
 		model.addAttribute("customerDetails",new CustomerDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "customerDetails";
 	}
 
@@ -75,6 +78,7 @@ public class CustomerDetailsController {
 		customerDetailsList.add(customerDetails);
 		model.addAttribute("message", "Customer added Successfully");
 		model.addAttribute("customerDetails",new CustomerDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "customerDetails";
 	}
 	
@@ -91,6 +95,7 @@ public class CustomerDetailsController {
 		model.addAttribute("measurementDetails",measurementDetails );
 		List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList",dressTypeList);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "measurementdetails";
 	}
 	
@@ -101,6 +106,7 @@ public class CustomerDetailsController {
 		CustomerDetails customerDetails= customerDetailsService.findByID(Integer.parseInt(customerId));
 		List<MeasurementDetails> measurementDetailsList = measurementDetailsService.findByCustomer(customerDetails);
 		model.addAttribute("measurementDetailsList", measurementDetailsList);
+		model.addAttribute("loggedinuser", getPrincipal());
 		//String customerId = request.
 		return "showMeasurementHistory";
 	}
@@ -110,6 +116,7 @@ public class CustomerDetailsController {
 		String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetailsData = customerDetailsService.findByID(Integer.parseInt(customerId));
 		model.addAttribute("customerDetailsData", customerDetailsData);	
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "editCustomerDetails";
 	}
 			
@@ -123,6 +130,7 @@ public class CustomerDetailsController {
 		}
 		customerDetailsService.updateCustomerDetails(customerDetailData);
 		model.addAttribute("message","Updated Employee Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:/customerdetails";
 	}
 	    
@@ -142,4 +150,19 @@ public class CustomerDetailsController {
 		model.addAttribute("message","Updated Employee Sucessfully.");
 		return "redirect:/customerdetails";
 	}*/
+	
+	/**
+	 * This method returns the principal[user-name] of logged-in user.
+	 */
+	private String getPrincipal(){
+		String userName = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			userName = ((UserDetails)principal).getUsername();
+		} else {
+			userName = principal.toString();
+		}
+		return userName;
+	}
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.Authentication;
@@ -45,13 +47,19 @@ public class LoginController {
 
 	@Autowired
 	AuthenticationTrustResolver authenticationTrustResolver;
+	
+	static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage(ModelMap model) {
+		
+		logger.debug("loginController : loginPage - I'm here");
 		model.addAttribute("loggedinuser", "Guest");
 		if (isCurrentAuthenticationAnonymous()) {
+			logger.debug("loginController : loginPage2" +isCurrentAuthenticationAnonymous());
 			return "login";
 		} else {
+			logger.debug("loginController : loginPage3");
 			return "redirect:/home";  
 		}
 	}
@@ -68,7 +76,7 @@ public class LoginController {
 		model.addAttribute("dressTypeList", dressTypeList);	
 		Integer employeesCount = registrationService.employeesCount();
 		model.addAttribute("employeesCount", employeesCount);
-		model.addAttribute("userName", getPrincipal());
+		model.addAttribute("loggedinuser", getPrincipal());
 		Integer  customersCount = customerDetailsService.customersCount();
 		model.addAttribute("customersCount", customersCount);
 		Integer ordersCount = orderDetailsService.ordersCount();
@@ -93,18 +101,27 @@ public class LoginController {
 	}
 	
 	/**
+	 * This method handles Access-Denied redirect.
+	 */
+	@RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
+	public String accessDeniedPage(ModelMap model) {
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "accessdenied";
+	}
+	
+	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */
 	private String getPrincipal(){
-		String userName = null;
+		String loggedinUser = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		if (principal instanceof UserDetails) {
-			userName = ((UserDetails)principal).getUsername();
+			loggedinUser = ((UserDetails)principal).getUsername();
 		} else {
-			userName = principal.toString();
+			loggedinUser = principal.toString();
 		}
-		return userName;
+		return loggedinUser;
 	}
 	
 	/**
@@ -112,6 +129,8 @@ public class LoginController {
 	 */
 	private boolean isCurrentAuthenticationAnonymous() {
 		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		logger.debug("loginController : isCurrentAuthenticationAnonymous credential="+authentication.getCredentials());
+		
 		return authenticationTrustResolver.isAnonymous(authentication);
 	}
 }

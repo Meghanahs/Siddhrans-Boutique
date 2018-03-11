@@ -39,6 +39,7 @@ public class Employee {
 	String password;
 	String gender;
 
+
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "EMPLOYEE_DESIGNATION", 
              joinColumns = { @JoinColumn(name = "EMPLOYEE_ID") }, 
@@ -47,7 +48,7 @@ public class Employee {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "APP_USER_USER_PROFILE", 
-             joinColumns = { @JoinColumn(name = "USER_ID") }, 
+             joinColumns = { @JoinColumn(name = "EMPLOYEE_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
     private UserProfile userProfile;
 	
@@ -74,6 +75,7 @@ public class Employee {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
 	@Transient
 	String confirmPassword;
 
@@ -148,6 +150,5 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 }

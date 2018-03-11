@@ -18,8 +18,10 @@ import org.springframework.web.servlet.view.JstlView;
 import com.siddhrans.boutique.convertor.DeptStrToDeptConverter;
 import com.siddhrans.boutique.convertor.DesgStrToDesgConverter;
 import com.siddhrans.boutique.convertor.DressTypeStrToDressTypeConverter;
+import com.siddhrans.boutique.convertor.RoleToUserProfileConverter;
 import com.siddhrans.boutique.convertor.StringToCustomerDetails;
 import com.siddhrans.boutique.convertor.StringToFloatConverter;
+import com.siddhrans.boutique.convertor.UserStrToUserConverter;
 
 
 @Configuration
@@ -42,6 +44,12 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 	@Autowired
 	StringToFloatConverter stringToFloatConverter;
 	
+	@Autowired
+	UserStrToUserConverter userStrToUserConverter;
+	
+	@Autowired
+	RoleToUserProfileConverter roleToUserProfileConverter;
+	
 	
 	/**
 	 * Configure Converter to be used.
@@ -54,6 +62,8 @@ public class SpringApplicationConfigurationAdapter extends WebMvcConfigurerAdapt
 		registry.addConverter(stringToCustomerDetails);
 		registry.addConverter(dressTypeStrToDressTypeConverter);
 		registry.addConverter(stringToFloatConverter);
+		registry.addConverter(userStrToUserConverter);
+		registry.addConverter(roleToUserProfileConverter);
 		
 	}
 	

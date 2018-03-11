@@ -4,6 +4,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -42,6 +44,7 @@ public class DesignationController {
 		List<Department> departmentsList = departmentService.findAllDepartments();
 		model.addAttribute("departmentsList",departmentsList);
 		model.addAttribute("designation",new Designation());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "designation";
 	}
 
@@ -61,6 +64,7 @@ public class DesignationController {
 			List<Designation> designations = designationService.findAllDesignations();
 			model.addAttribute("designations", designations);
 			model.addAttribute("designation", designation);
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "designation";
 		}
 		designationService.saveDesignation(designation);
@@ -70,6 +74,7 @@ public class DesignationController {
 		model.addAttribute("departmentsList",departmentsList);
 		model.addAttribute("designation",new Designation());
 		model.addAttribute("message","Designation Added Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "designation";
 	}
 	
@@ -79,6 +84,7 @@ public class DesignationController {
 		List<Department> departmentsList = departmentService.findAllDepartments();
 		model.addAttribute("departmentsList",departmentsList);
 		model.addAttribute("designationData", designationData);	
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "editDesignation";
 	}
 	
@@ -89,7 +95,23 @@ public class DesignationController {
 			ModelMap model) {
 		designationService.updateDesignation(designationData);
 		model.addAttribute("message","Updated Employee Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:/adddesignation";
+	}
+	
+	/**
+	 * This method returns the principal[user-name] of logged-in user.
+	 */
+	private String getPrincipal(){
+		String loggedinUser = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			loggedinUser = ((UserDetails)principal).getUsername();
+		} else {
+			loggedinUser = principal.toString();
+		}
+		return loggedinUser;
 	}
 	
 }

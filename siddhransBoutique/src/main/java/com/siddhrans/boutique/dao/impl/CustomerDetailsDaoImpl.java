@@ -45,8 +45,8 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 	}
 
 	@Override
-	public CustomerDetails findByName(String CustomerName) {
-		CustomerDetails byName = getByKey(CustomerName);
+	public CustomerDetails findByName(String customerName) {
+		CustomerDetails byName = getByKey(Integer.parseInt(customerName));
 		return byName;
 		
 	}

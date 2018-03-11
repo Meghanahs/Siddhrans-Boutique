@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -37,6 +39,7 @@ public class MeasurementDetailsController {
 	@RequestMapping(value={"/addmeasurementDetails"}, method = RequestMethod.GET)
 	public String addmeasurementDetails(Model model) {
 		model.addAttribute("measurementDetails",new MeasurementDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "measurementdetails";
 	}
 
@@ -51,6 +54,7 @@ public class MeasurementDetailsController {
 		measurementDetailsService.saveMeasurementDetails(measurementDetails);
 		model.addAttribute("measurementDetails",new MeasurementDetails());
 		model.addAttribute("message","Measurement Details Added Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "measurementdetails";
 	}
 	
@@ -64,6 +68,7 @@ public class MeasurementDetailsController {
        	CustomerDetails customerDetails= CustomerDetailsService.findByID(Integer.parseInt(customerId));*/
        /*	List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
 		model.addAttribute("dressTypeList",dressTypeList);*/
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "editMeasurementDetails";
 	}
 			
@@ -72,7 +77,23 @@ public class MeasurementDetailsController {
 			ModelMap model) {
 		measurementDetailsService.saveOrUpdateMeasurementDetails(measurementDetails);
 		/*model.addAttribute("message","Updated Employee Sucessfully.");*/
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:/showOrder";
+	}
+	
+	/**
+	 * This method returns the principal[user-name] of logged-in user.
+	 */
+	private String getPrincipal(){
+		String loggedinUser = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			loggedinUser = ((UserDetails)principal).getUsername();
+		} else {
+			loggedinUser = principal.toString();
+		}
+		return loggedinUser;
 	}
 
 }

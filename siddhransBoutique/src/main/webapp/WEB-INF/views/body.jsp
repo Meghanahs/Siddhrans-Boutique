@@ -147,7 +147,8 @@
 										<span class="prfil-img"><img
 											src="static/images/in4.jpg" alt=""> </span>
 										<div class="user-name">
-											<p>Hello User</p>
+											<p style="margin-top: -46px;margin-left:54px;">Hello ${loggedinuser}</p>
+											<p><a href="logout"><i class="fa fa-sign-out"></i> Logout</a></p>
 
 										</div>
 

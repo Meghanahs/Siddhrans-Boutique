@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -343,6 +345,21 @@ public class GenerateBillController {
 		
 		FileCopyUtils.copy(invoice.getInvoicePdf(), response.getOutputStream());
 		return "result";
+	}
+	
+	/**
+	 * This method returns the principal[user-name] of logged-in user.
+	 */
+	private String getPrincipal(){
+		String loggedinUser = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			loggedinUser = ((UserDetails)principal).getUsername();
+		} else {
+			loggedinUser = principal.toString();
+		}
+		return loggedinUser;
 	}
 }
 

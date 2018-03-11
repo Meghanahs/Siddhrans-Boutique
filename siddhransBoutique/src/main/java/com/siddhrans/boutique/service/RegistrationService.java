@@ -18,4 +18,5 @@ public interface RegistrationService {
     Employee findByPhoneNo(String phoneNo);    
     Employee findByAadhaarNo(String aadhaarNo);
     Integer employeesCount();
+    
 } 

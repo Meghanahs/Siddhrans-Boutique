@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.siddhrans.boutique.model.Designation;
 import com.siddhrans.boutique.model.Employee;
+import com.siddhrans.boutique.model.UserProfile;
 import com.siddhrans.boutique.service.DesignationService;
 import com.siddhrans.boutique.service.RegistrationService;
+import com.siddhrans.boutique.service.UserProfileService;
 
 
 @Controller
@@ -38,12 +43,18 @@ public class RegistrationController {
 
 	@Autowired
 	DesignationService designationService;
+	
+	@Autowired
+	UserProfileService userProfileService;
 
 	@RequestMapping(value={"/registerUser"}, method = RequestMethod.GET)
 	public String registerUser(Model model) {
 		List<Designation> designations=designationService.findAllDesignations();
 		model.addAttribute("designations",designations);
+		List<UserProfile> userProfiles = userProfileService.findAll();
+		model.addAttribute("userProfiles",userProfiles);
 		model.addAttribute("employee",new Employee());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "registration";
 	}
 	
@@ -73,6 +84,7 @@ public class RegistrationController {
 		registrationService.saveEmployeeDetails(employee);
 		model.addAttribute("employee",new Employee());
 		model.addAttribute("message","Registered user Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
         return "registration";
     }
 
@@ -80,6 +92,7 @@ public class RegistrationController {
 	public String User(Model model) {
 		List<Employee> employeeList=registrationService.fetchAllEmployees();
 		model.addAttribute("employeeList",employeeList);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "Users";
 	}
 
@@ -95,6 +108,7 @@ public class RegistrationController {
 		List<Employee> employeeList=registrationService.fetchAllEmployees();
 		model.addAttribute("employeeList",employeeList);
 		model.addAttribute("message","Deleted Employee Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:/Users";
 	}
 	
@@ -105,6 +119,7 @@ public class RegistrationController {
 		List<Designation> designations = designationService.findAllDesignations();
 		model.addAttribute("designations", designations);
 		model.addAttribute("employeeData", employeeData);
+		model.addAttribute("loggedinuser", getPrincipal());
 /*		model.addAttribute("edit", true);*/
 		/*Employee emp = registrationService.findByUserName(userName);
 		model.addAttribute("employeeList",emp);*/		
@@ -116,11 +131,24 @@ public class RegistrationController {
 			ModelMap model) {
 		registrationService.updateUser(employeeData);
 		model.addAttribute("message","Updated Employee Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:/Users";
 	}
 	
+	/**
+	 * This method returns the principal[user-name] of logged-in user.
+	 */
+	private String getPrincipal(){
+		String loggedinUser = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-
+		if (principal instanceof UserDetails) {
+			loggedinUser = ((UserDetails)principal).getUsername();
+		} else {
+			loggedinUser = principal.toString();
+		}
+		return loggedinUser;
+	}
 
 }
 

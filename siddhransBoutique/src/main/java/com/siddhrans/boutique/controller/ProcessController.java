@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,6 +36,7 @@ public class ProcessController {
 		List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
 		/*cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);*/
 		model.addAttribute("cuttingOrderList", cuttingOrderList);	
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "Cutting";
 	}
 
@@ -50,6 +53,7 @@ public class ProcessController {
 			List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
 			/*cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);*/
 			model.addAttribute("cuttingOrderList", cuttingOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "Cutting";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -59,6 +63,7 @@ public class ProcessController {
 		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:cuttingUnit";
 	}
 
@@ -74,7 +79,7 @@ public class ProcessController {
 			model.addAttribute("cuttingFinishedOrderList", cuttingFinishedOrderList);
 			List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
 			model.addAttribute("cuttingOrderList", cuttingOrderList);
-
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "Stiching";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -85,6 +90,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:cuttingUnit";
 	}
 
@@ -97,6 +103,7 @@ public class ProcessController {
 		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);*/
 		List<OrderDetails> stichingOrderList = orderDetailsService.findByStatus("STICHING");		
 		model.addAttribute("stichingOrderList", stichingOrderList);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "Stiching";
 	}
 
@@ -112,7 +119,8 @@ public class ProcessController {
 			List<OrderDetails> stichingOrderList = orderDetailsService.findByStatus("STICHING");
 			model.addAttribute("stichingOrderList", stichingOrderList);
 			List<OrderDetails> stichingFinishedOrderList = orderDetailsService.findByStatus("STICHING FINISHED");		
-			model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);		
+			model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "Stiching";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -122,6 +130,7 @@ public class ProcessController {
 		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:stichingUnit";
 	}
 
@@ -136,7 +145,8 @@ public class ProcessController {
 			List<OrderDetails> stichingOrderList = orderDetailsService.findByStatus("STICHING");
 			model.addAttribute("stichingOrderList", stichingOrderList);
 			List<OrderDetails> stichingFinishedOrderList = orderDetailsService.findByStatus("STICHING FINISHED");		
-			model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);		
+			model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
+			model.addAttribute("loggedinuser", getPrincipal());
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("STICHING FINISHED");
@@ -146,6 +156,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:stichingUnit";
 	}
 
@@ -156,6 +167,7 @@ public class ProcessController {
 		model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
 		List<OrderDetails> embroidoryOrderList = orderDetailsService.findByStatus("EMBROIDORY");
 		model.addAttribute("embroidoryOrderList", embroidoryOrderList);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "Embroidory";
 	}
 
@@ -167,6 +179,7 @@ public class ProcessController {
 			model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
 			List<OrderDetails> embroidoryOrderList = orderDetailsService.findByStatus("EMBROIDORY");
 			model.addAttribute("embroidoryOrderList", embroidoryOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "redirect:embroidoryUnit";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -177,6 +190,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("message","Order Updated Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:embroidoryUnit";
 	}
 
@@ -190,6 +204,7 @@ public class ProcessController {
 			model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
 			List<OrderDetails> embroidoryOrderList = orderDetailsService.findByStatus("EMBROIDORY");
 			model.addAttribute("embroidoryOrderList", embroidoryOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "Embroidory";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -200,6 +215,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:embroidoryUnit";
 	}
 
@@ -212,7 +228,7 @@ public class ProcessController {
 		List<OrderDetails> alterationOrderList = orderDetailsService.findByStatus("ALTERATION");
 		alterationOrderList.addAll(alterationNotrequiredList);
 		model.addAttribute("alterationOrderList", alterationOrderList);	
-
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "Alteration";
 	}
 
@@ -233,8 +249,9 @@ public class ProcessController {
 			List<OrderDetails> alterationFinishedList = orderDetailsService.findByStatus("ALTERATION FINISHED");
 			alterationOrderList.addAll(alterationNotrequiredList);
 			model.addAttribute("alterationFinishedList", alterationFinishedList);	
-
+			
 			model.addAttribute("alterationOrderList", alterationOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
 
 			return "Alteration";
 		}
@@ -246,6 +263,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("message","Order Updated Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:alterationUnit";
 	}
 
@@ -265,7 +283,8 @@ public class ProcessController {
 			alterationOrderList.addAll(alterationNotrequiredList);
 			model.addAttribute("alterationOrderList", alterationOrderList);
 			List<OrderDetails> alterationFinishedList = orderDetailsService.findByStatus("ALTERATION FINISHED");
-			model.addAttribute("alterationFinishedList", alterationFinishedList);					
+			model.addAttribute("alterationFinishedList", alterationFinishedList);	
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "Alteration";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -276,6 +295,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:alterationUnit";
 	}
 
@@ -289,6 +309,7 @@ public class ProcessController {
 			model.addAttribute("embroidoryFinishedOrderList", embroidoryFinishedOrderList);	
 			List<OrderDetails> alterationOrderList = orderDetailsService.findByStatus("ALTERATION");
 			model.addAttribute("alterationOrderList", alterationOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "Alteration";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -299,6 +320,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:alterationUnit";
 	}
 
@@ -308,6 +330,7 @@ public class ProcessController {
 		model.addAttribute("alterationFinishedOrderList", alterationFinishedOrderList);
 		List<OrderDetails> ironingOrderList = orderDetailsService.findByStatus("IRONING");
 		model.addAttribute("ironingOrderList", ironingOrderList);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "Ironing";
 	}
 
@@ -321,12 +344,14 @@ public class ProcessController {
 			model.addAttribute("alterationFinishedOrderList", alterationFinishedOrderList);
 			List<OrderDetails> ironingOrderList = orderDetailsService.findByStatus("IRONING");
 			model.addAttribute("ironingOrderList", ironingOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "Ironing";		
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("IRONING");
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("message","Order Updated Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:ironingUnit";
 	}
 
@@ -343,6 +368,7 @@ public class ProcessController {
 			model.addAttribute("alterationNotrequiredList", alterationNotrequiredList);
 			List<OrderDetails> ironingOrderList = orderDetailsService.findByStatus("IRONING");
 			model.addAttribute("ironingOrderList", ironingOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "Ironing";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -353,6 +379,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:ironingUnit";
 	}
 	@RequestMapping(value={"/deliveryUnit"}, method = RequestMethod.GET)
@@ -361,6 +388,7 @@ public class ProcessController {
 		model.addAttribute("ironingFinishedList", ironingFinishedList);
 		List<OrderDetails> deliveryOrderList = orderDetailsService.findByStatus("READY");
 		model.addAttribute("deliveryOrderList", deliveryOrderList);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "DeliveryUnit";
 	}
 
@@ -371,6 +399,8 @@ public class ProcessController {
 			model.addAttribute("ironingOrderList", ironingFinishedList);
 			List<OrderDetails> deliveryOrderList = orderDetailsService.findByStatus("READY");
 			model.addAttribute("deliveryOrderList", deliveryOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "DeliveryUnit";
 		}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
@@ -381,6 +411,7 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("message","Order Updated Sucessfully.");
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:deliveryUnit";
 	}
 
@@ -396,6 +427,7 @@ public class ProcessController {
 			model.addAttribute("deliveryOrderList", deliveryOrderList);
 			List<OrderDetails> deliveryFinishedList = orderDetailsService.findByStatus("DELIVERED");
 			model.addAttribute("deliveryFinishedList", deliveryFinishedList);
+			model.addAttribute("loggedinuser", getPrincipal());
 			return "DeliveryUnit";}
 		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
 		orderDetailsbyId.setStatus("DELIVERED");
@@ -405,6 +437,22 @@ public class ProcessController {
 		orderDetailsbyId.setModifiedDate(date.toString());
 		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
 		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:deliveryUnit";
+	}
+	
+	/**
+	 * This method returns the principal[user-name] of logged-in user.
+	 */
+	private String getPrincipal(){
+		String loggedinUser = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			loggedinUser = ((UserDetails)principal).getUsername();
+		} else {
+			loggedinUser = principal.toString();
+		}
+		return loggedinUser;
 	}
 }

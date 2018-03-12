@@ -37,7 +37,7 @@ public class DesignationController {
         return "designation";
     }*/
 
-	@RequestMapping(value={"/adddesignation"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/listDesignation"}, method = RequestMethod.GET)
 	public String addDesignation(Model model) {
 		List<Designation> designations = designationService.findAllDesignations();
 		model.addAttribute("designations", designations);

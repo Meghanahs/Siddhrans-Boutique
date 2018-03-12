@@ -50,10 +50,10 @@
 			<li><a href="adddepartment" style="padding: 9px 20px;"><i
 					class="fa fa-cog" aria-hidden="true"></i><span>Department</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="adddesignation"
+			<li id="menu-academico"><a href="listDesignation"
 				style="padding: 9px 20px;"><i class="fa fa-cogs"></i><span>Designation</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="adddressType"
+			<li id="menu-academico"><a href="dressTypeList"
 				style="padding: 9px 20px;"><i class="fa fa-table"></i><span>DressType</span>
 					<div class="clearfix"></div></a></li>
 

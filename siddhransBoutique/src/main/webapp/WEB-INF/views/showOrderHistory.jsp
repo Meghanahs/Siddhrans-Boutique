@@ -26,7 +26,7 @@
 			<header class="agileits-box-header clearfix">
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form method="POST" id="submitForm">
+						<form:form method="POST" id="submitForm">
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>
@@ -83,7 +83,7 @@
 								<input type="submit" id="bill"
 								value="Billing" disabled="disabled" onclick="billing()">
 
-						</form>
+						</form:form>
 					</div>
 
 				</div>

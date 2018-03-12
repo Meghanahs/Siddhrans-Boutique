@@ -1,7 +1,5 @@
 package com.siddhrans.boutique.security;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -22,34 +20,39 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-	
-/*	static final Logger logger = LoggerFactory.getLogger(SecurityConfiguration.class);*/
  
     @Autowired
     @Qualifier("customUserDetailsService")
-    UserDetailsService userDetailsService;
+    UserDetailsService customUserDetailsService;
  
     @Autowired
     PersistentTokenRepository tokenRepository;
  
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(customUserDetailsService);
         auth.authenticationProvider(authenticationProvider());
     }
  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        	.antMatchers("/","/home").access("hasRole('USER') or hasRole('ADMIN') or hasRole('EMPLOYEE')")
-            /*.antMatchers("/newuser/**", "/delete-user-*").access("hasRole('ADMIN')")
-            .antMatchers("/edit-user-*").access("hasRole('ADMIN') or hasRole('USER') ")*/
+        	.antMatchers("/","/home").access("hasRole('EMPLOYEE') or hasRole('ADMIN')")
+        	.antMatchers("/registerUser").access("hasRole('ADMIN')")
+        	.antMatchers("/editUser","/deleteUser").access("hasRole('ADMIN')")
+        	.antMatchers("/Users").access("hasRole('ADMIN') or hasRole('EMPLOYEE')")
+        	.antMatchers("/adddepartment").access("hasRole('ADMIN')")
+        	.antMatchers("/adddesignation","/editDesignation").access("hasRole('ADMIN')")
+        	.antMatchers("/listDesignation").access("hasRole('ADMIN') or hasRole('EMPLOYEE')")
+        	.antMatchers("/adddressType","/editDressType").access("hasRole('ADMIN')")
+        	.antMatchers("/dressTypeList").access("hasRole('ADMIN') or hasRole('EMPLOYEE')")
+        	.antMatchers("/createMeasurement","/showMeasurementDetails","/editMeasurementDetails","/editCustomerDetails","/orderDetails","/viewOrder","/generateBill","/OrdersHistory").access("hasRole('ADMIN') or hasRole('EMPLOYEE')")
+        	.antMatchers("/cuttingUnit","/stichingUnit","/embroidoryUnit","/alterationUnit","/ironingUnit","/deliveryUnit").access("hasRole('ADMIN') or hasRole('EMPLOYEE')")
             .and()
             	.formLogin().loginPage("/login")
                 .loginProcessingUrl("/login").usernameParameter("userName").passwordParameter("password").and()
                 .rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository)
                 .tokenValiditySeconds(86400).and().csrf().and().exceptionHandling().accessDeniedPage("/accessdenied");
-        
     }
  
     @Bean
@@ -59,9 +62,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
  
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-    	/*logger.debug("securityConfiguration : authenticationProvider"+authenticationProvider());*/
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setUserDetailsService(customUserDetailsService);
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
@@ -69,7 +71,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public PersistentTokenBasedRememberMeServices getPersistentTokenBasedRememberMeServices() {
         PersistentTokenBasedRememberMeServices tokenBasedservice = new PersistentTokenBasedRememberMeServices(
-                "remember-me", userDetailsService, tokenRepository);
+                "remember-me", customUserDetailsService, tokenRepository);
         return tokenBasedservice;
     }
  

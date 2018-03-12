@@ -11,8 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -47,6 +49,12 @@ public class CustomerDetailsController {
 	
 	@Autowired
 	MessageSource messageSource;
+	
+	@Autowired
+	PersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices;
+	
+	@Autowired
+	AuthenticationTrustResolver authenticationTrustResolver;
 
 	static final Logger logger = LoggerFactory.getLogger(CustomerDetailsController.class);
 
@@ -83,7 +91,7 @@ public class CustomerDetailsController {
 	}
 	
 	@RequestMapping(value={"/createMeasurement"}, method = RequestMethod.POST)
-	public String createOrder(Model model) {
+	public String createMeasurement(Model model, HttpServletRequest request) {
 		String customerId = request.getParameter("customerId");
 		CustomerDetails customerDetails= customerDetailsService.findByID(Integer.parseInt(customerId));
 		List<CustomerDetails> customerDetailsList = new ArrayList<CustomerDetails>();

@@ -47,27 +47,32 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form id="submitForm" method="POST">
+						<form:form id="submitForm" modelAttribute="customerDetails" method="POST">
 							<div class="col-md-8"></div>
 							<div class="col-md-4">
 								<input type="search" id="search" class="light-table-filter"
 									data-table="order-table" placeholder="Search here"
 									style="width: 52%; margin-top: 0px;">
 							</div>
-									<input type="button" id="takeMeasurement"
+							<input type="button" id="takeMeasurement"
 								value="Take Measurement" disabled="disabled"
-								onclick="createMeasurementAction()"> <input
+								onclick="createMeasurementAction()"> 
+							<input
 								type="button" id="showMeasurement"
 								value="Show Measurement Details" disabled="disabled"
-								onclick="showMeasurementAction()"> <input type="button"
+								onclick="showMeasurementAction()"> 
+							<input type="button"
 								id="editCustomerDetails" value="Edit Customer Details"
-								disabled="disabled" onclick="editOrdeAction()"> <input
+								disabled="disabled" onclick="editOrdeAction()"> 
+							<input
 								type="button" id="createOrder" value="Create Order"
-								disabled="disabled" onclick="createOrderAction()"> <input
+								disabled="disabled" onclick="createOrderAction()"> 
+							<input
 								type="button" id="Orders" value="Orders List"
 								disabled="disabled" onclick="orderListAction()">
-							
-							<table class="table table-hover order-table table" id="myTable" style="margin-top: 10px;">
+
+							<table class="table table-hover order-table table" id="myTable"
+								style="margin-top: 10px;">
 								<thead id="thcolor1">
 									<tr>
 										<th>Select Customer</th>
@@ -111,7 +116,7 @@
 								</nav>
 							</div>
 
-						</form>
+						</form:form>
 					</div>
 
 				</div>
@@ -126,7 +131,7 @@
 		<li class="breadcrumb-item"><a href="customerdetails">Add New
 				Customer Details</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
-	<div style="color:red;">${message}</div>
+	<div style="color: red;">${message}</div>
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
@@ -195,14 +200,14 @@
 									</div>
 								</div>
 							</div>
-								<div class="row">
+							<div class="row">
 								<div class="form-group col-md-12">
 
-									<label class="col-md-2 control-lable" for="phoneno">Customer GST No</label>
+									<label class="col-md-2 control-lable" for="phoneno">Customer
+										GST No</label>
 									<div class="col-md-3">
-										<form:input type="text" path="gstNo"
-											id="gstNo" class="form-control input-sm"
-											placeholder="Customer GST NO" />
+										<form:input type="text" path="gstNo" id="gstNo"
+											class="form-control input-sm" placeholder="Customer GST NO" />
 									</div>
 									</br>
 									<div class="has-error" style="color: red;">
@@ -213,7 +218,8 @@
 							<footer>
 								<button type="submit" class="button">Add</button>
 							</footer>
-
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 						</form:form>
 					</div>
 				</div>
@@ -223,6 +229,7 @@
 	</div>
 	<!--//agileinfo-grap-->
 	<!--photoday-section-->
+
 
 	<%@include file="footer.jsp"%>
 	<script src="static/js/pagination.js"></script>

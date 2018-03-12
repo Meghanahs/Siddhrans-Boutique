@@ -28,8 +28,8 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form:form modelAttribute="designation" id="submitForm"
-							method="POST">
+						<form:form modelAttribute="adddesignation" id="submitForm"
+							method="POST" >
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>
@@ -80,7 +80,7 @@
 				<h3>Designation</h3>
 				<h5 style="color: red;">${message}</h5>
 				<form:form method="POST" modelAttribute="designation"
-					class="form-horizontal">
+					class="form-horizontal" action="adddesignation">
 
 					<div class="col-md-12">
 						<div class="col-md-6">

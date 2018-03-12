@@ -19,7 +19,7 @@
 			<header class="agileits-box-header clearfix">
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form method="GET">
+						<form:form method="GET">
                         <div class="col-md-6"></div>
 							<div class="col-md-6">
 								<input type="search" id="search" class="light-table-filter"
@@ -62,7 +62,7 @@
 									</ul>
 								</nav>
 							</div> -->
-						</form>
+						</form:form>
 					</div>
 
 				</div>

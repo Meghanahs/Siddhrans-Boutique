@@ -24,7 +24,7 @@ public class DressTypeController {
 	static final Logger logger = LoggerFactory.getLogger(DressTypeController.class);
 
 
-	@RequestMapping(value={"/adddressType"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/dressTypeList"}, method = RequestMethod.GET)
 	public String adddepartment(Model model) {
 		List<DressType>DressTypeList=dressTypeService.findAllDressTypes();
 		model.addAttribute("DressTypeList",DressTypeList);

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,13 +17,16 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.siddhrans.boutique.service.UserProfileService;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.DressType;
 import com.siddhrans.boutique.model.OrderDetails;
+import com.siddhrans.boutique.model.UserProfile;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
 import com.siddhrans.boutique.service.OrderDetailsService;
@@ -35,13 +39,22 @@ public class LoginController {
 	
 	@Autowired
 	OrderDetailsService orderDetailsService;
+	
+	@Autowired
+	UserProfileService userProfileService;
+	
 	@Autowired
 	DressTypeService dressTypeService;
+	
 	@Autowired 
 	CustomerDetailsService customerDetailsService;
+	
 	@Autowired
 	RegistrationService registrationService;
 	
+	@Autowired
+	MessageSource messageSource;
+
 	@Autowired
 	PersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices;
 
@@ -49,22 +62,8 @@ public class LoginController {
 	AuthenticationTrustResolver authenticationTrustResolver;
 	
 	static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage(ModelMap model) {
-		
-		logger.debug("loginController : loginPage - I'm here");
-		model.addAttribute("loggedinuser", "Guest");
-		if (isCurrentAuthenticationAnonymous()) {
-			logger.debug("loginController : loginPage2" +isCurrentAuthenticationAnonymous());
-			return "login";
-		} else {
-			logger.debug("loginController : loginPage3");
-			return "redirect:/home";  
-		}
-	}
 	
-	@RequestMapping(value={"/home"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/" , "/home"}, method = RequestMethod.GET)
 	public String viewOrdersList1(Model model) {
 		List<OrderDetails> orders=orderDetailsService.findAllOrders();
 		model.addAttribute("orders", orders);
@@ -85,6 +84,29 @@ public class LoginController {
 		model.addAttribute("dressCount", dressCount);
 		return "index1";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginPage(ModelMap model) {
+		
+		logger.debug("loginController : loginPage - I'm here");
+		model.addAttribute("loggedinuser", "Guest");
+		if (isCurrentAuthenticationAnonymous()) {
+			logger.debug("loginController : loginPage2" +isCurrentAuthenticationAnonymous());
+			return "login";
+		} else {
+			logger.debug("loginController : loginPage3");
+			return "redirect:/home";  
+		}
+	}
+	
+	/**
+	 * This method will provide UserProfile list to views
+	 */
+	@ModelAttribute("roles")
+	public List<UserProfile> initializeProfiles() {
+		return userProfileService.findAll();
+	}
+	
 	/**
 	 * This method handles logout requests.
 	 * Toggle the handlers if you are RememberMe functionality is useless in your app.
@@ -103,8 +125,17 @@ public class LoginController {
 	/**
 	 * This method handles Access-Denied redirect.
 	 */
-	@RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
+	@RequestMapping(value = "/accessdenied", method = RequestMethod.POST)
 	public String accessDeniedPage(ModelMap model) {
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "accessdenied";
+	}
+	
+	/**
+	 * This method handles Access-Denied redirect.
+	 */
+	@RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
+	public String accessDeniedGet(ModelMap model) {
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "accessdenied";
 	}
@@ -129,9 +160,6 @@ public class LoginController {
 	 */
 	private boolean isCurrentAuthenticationAnonymous() {
 		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		logger.debug("loginController : isCurrentAuthenticationAnonymous credential="+authentication.getCredentials());
-		
 		return authenticationTrustResolver.isAnonymous(authentication);
 	}
 }
-

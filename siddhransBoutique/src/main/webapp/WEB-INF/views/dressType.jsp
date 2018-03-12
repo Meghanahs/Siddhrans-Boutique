@@ -29,7 +29,7 @@ function editDressType(){
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-					<form:form modelAttribute="dressType" id="submitForm" method="POST">
+					<form:form modelAttribute="adddressType" id="submitForm" method="POST">
 						<table class="table table-hover">
 							<thead id="thcolor">
 								<tr>
@@ -73,7 +73,7 @@ function editDressType(){
 			<header class="agileits-box-header clearfix">				
 				<h3>Dress Type</h3>
 				<h5 style="color: red;">${message}</h5>
-				<form:form method="POST" modelAttribute="dressType"
+				<form:form method="POST" modelAttribute="dressType" action="adddressType"
 					class="form-horizontal">
 
 					<div class="col-md-12">

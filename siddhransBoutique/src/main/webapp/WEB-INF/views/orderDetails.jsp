@@ -72,7 +72,7 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-						<form method="POST" id="submitForm" action="saveOrderDetails">
+						<form:form method="POST" id="submitForm" action="saveOrderDetails">
 						<input type="hidden" id="customerId" name="customerId"
 										value="${customerId}">
 							<table class="table table-hover">
@@ -99,7 +99,7 @@
 							</table>
 							<input type="submit" value="Create Order"> <input
 								type="button" onclick="billing()" value="Quotation Billing">
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</header>

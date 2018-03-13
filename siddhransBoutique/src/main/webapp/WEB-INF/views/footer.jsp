@@ -36,7 +36,7 @@
 	<div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
 	<div class="menu">
 		<ul id="menu">
-			<li><a href="index.html"><a href="home"
+			<li><a href="home"
 					style="padding: 9px 20px;"><i class="fa fa-home"></i> <span>Home</span>
 						<div class="clearfix"></div></a></li>
 			<li id="menu-academico"><a href="registerUser"

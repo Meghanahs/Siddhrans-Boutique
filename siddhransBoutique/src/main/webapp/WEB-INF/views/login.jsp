@@ -26,12 +26,12 @@
 				<h3>Username:</h3>
 				<c:if test="${param.error != null}">
 					<div class="alert alert-danger">
-						<p>Invalid username and password.</p>
+						<p style="color:#ffffff;">Invalid username and password.</p>
 					</div>
 				</c:if>
 				<c:if test="${param.logout != null}">
 					<div class="alert alert-success">
-						<p>You have been logged out successfully.</p>
+						<p style="color:#ffffff;">You have been logged out successfully.</p>
 					</div>
 				</c:if>
 				<input type="text" id="userName" name="userName" placeholder="Username" /><br>

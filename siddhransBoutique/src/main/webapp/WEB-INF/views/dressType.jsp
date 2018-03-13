@@ -7,10 +7,10 @@ function enableButtons(){
 	document.getElementById("deleteDress").disabled=false;
 	document.getElementById("editDress").disabled=false;
 }
-function deleteDressType(){
+/* function deleteDressType(){
 		document.getElementById("submitForm").action="deleteDressType";
 		document.getElementById("submitForm").submit();	
-}
+} */
 function editDressType(){
 	document.getElementById("submitForm").action="editDressType";
 	document.getElementById("submitForm").submit();		
@@ -29,7 +29,7 @@ function editDressType(){
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-					<form:form modelAttribute="adddressType" id="submitForm" method="POST">
+					<form:form modelAttribute="adddressType" id="submitForm" method="POST" action="adddressType">
 						<table class="table table-hover">
 							<thead id="thcolor">
 								<tr>
@@ -53,7 +53,7 @@ function editDressType(){
 					</div>
 				</div>
 			</header>
-			<input type="button" value="Delete" id="deleteDress" disabled="disabled" onclick="deleteDressType()"  /> 
+			 <input type="hidden" value="Delete" id="deleteDress" disabled="disabled" onclick="deleteDressType()"  /> 
 			<input type="button" value="Edit" id="editDress" disabled="disabled" onclick="editDressType()"  /> 
 			<div class="agileits-box-body clearfix"></div>
 		</div>

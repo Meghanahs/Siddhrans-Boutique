@@ -51,8 +51,6 @@ public class OrderController {
 
 	@RequestMapping(value={"/orderDetails"}, method = RequestMethod.POST)
 	public String orderDetails(Model model) throws Exception {
-
-		/*model.addAttribute("orderDetails",new OrderDetails());*/
 		String customerId=request.getParameter("customerId");
 		model.addAttribute("customerId", customerId);
 		List<DressType> dressTypeList =dressTypeService.findAllDressTypes();

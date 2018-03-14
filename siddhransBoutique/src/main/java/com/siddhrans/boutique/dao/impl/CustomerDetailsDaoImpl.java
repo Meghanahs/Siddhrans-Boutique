@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.siddhrans.boutique.dao.AbstractDao;
 import com.siddhrans.boutique.dao.CustomerDetailsDao;
 import com.siddhrans.boutique.model.CustomerDetails;
+import com.siddhrans.boutique.model.MeasurementDetails;
 
 @Repository("customerDetails")
 @Transactional
@@ -46,8 +47,7 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 	@Override
 	public CustomerDetails findByName(String customerName) {
 		CustomerDetails byName = getByKey(Integer.parseInt(customerName));
-		return byName;
-		
+		return byName;	
 	}
 
 	@Override
@@ -70,6 +70,15 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
 		List<CustomerDetails> customerDetailsList = (List<CustomerDetails>) criteria.list();
 		return customerDetailsList.size();
+	}
+
+	@Override
+	public List<CustomerDetails> fetchAllEmail(String email) {
+		Criteria criteria = createEntityCriteria();
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+		/*criteria.add(Restrictions.eq("email", email));*/
+		List<CustomerDetails> customerDetails = (List<CustomerDetails>) criteria.list();
+		return customerDetails;
 	}
 
 }

@@ -13,4 +13,5 @@ public interface CustomerDetailsDao {
 	public CustomerDetails findByName(String CustomerName);
 	CustomerDetails findByPhoneNo(String customerPhoneNo);
 	Integer customersCount();
+	List<CustomerDetails> fetchAllEmail(String email);
 }

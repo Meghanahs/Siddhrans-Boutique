@@ -36,9 +36,9 @@
 	<div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
 	<div class="menu">
 		<ul id="menu">
-			<li><a href="home"
-					style="padding: 9px 20px;"><i class="fa fa-home"></i> <span>Home</span>
-						<div class="clearfix"></div></a></li>
+			<li><a href="home" style="padding: 9px 20px;"><i
+					class="fa fa-home"></i> <span>Home</span>
+					<div class="clearfix"></div></a></li>
 			<li id="menu-academico"><a href="registerUser"
 				style="padding: 9px 20px;"><i class="	fa fa-user-plus"></i><span>Register
 						User</span>
@@ -79,9 +79,14 @@
 					<li id="menu-academico-avaliacoes"><a href="deliveryUnit"
 						style="padding: 9px 20px;">Delivery</a></li>
 				</ul></li>
-				<li id="menu-academico"><a href="OrdersHistory"><i class="fa fa-cogs"
-					aria-hidden="true"></i><span>Orders History</span>
+			<li id="menu-academico"><a href="OrdersHistory"><i
+					class="fa fa-cogs" aria-hidden="true"></i><span>Orders
+						History</span>
 					<div class="clearfix"></div></a></li>
+			<li id="menu-academico"><a href="sendEmail"><i
+					class="fa fa-cogs" aria-hidden="true"></i><span>Send Mail</span>
+					<div class="clearfix"></div></a></li>
+
 
 
 

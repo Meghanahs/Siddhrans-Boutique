@@ -13,5 +13,6 @@ public interface CustomerDetailsService {
 	CustomerDetails findByPhoneNo(String customerPhoneNo); 
 	boolean iscustomerPhoneNoUnique(Integer id, String customerPhoneNo);
 	Integer customersCount();
+	List<CustomerDetails> fetchAllEmail(String email);
 	
 }

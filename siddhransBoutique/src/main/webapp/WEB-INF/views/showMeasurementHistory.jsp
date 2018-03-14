@@ -32,7 +32,7 @@
 
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer"  style="overflow-x:auto;">
-						<form:form method="POST" id="submitForm">
+						<form:form method="GET" id="submitForm">
 							<table class="table table-hover">
 								<thead id="thcolor">
 									<tr>

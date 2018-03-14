@@ -57,4 +57,12 @@ public class CustomerDetailsImpl implements CustomerDetailsService {
 	public Integer customersCount() {
 		return customerDetailsDao.customersCount();
 	}
+
+	@Override
+	public List<CustomerDetails> fetchAllEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

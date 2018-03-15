@@ -83,9 +83,9 @@
 					class="fa fa-cogs" aria-hidden="true"></i><span>Orders
 						History</span>
 					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="sendEmail"><i
+			<!-- <li id="menu-academico"><a href="sendEmail"><i
 					class="fa fa-cogs" aria-hidden="true"></i><span>Send Mail</span>
-					<div class="clearfix"></div></a></li>
+					<div class="clearfix"></div></a></li> -->
 
 
 

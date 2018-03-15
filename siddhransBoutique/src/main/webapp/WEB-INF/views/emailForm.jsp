@@ -17,10 +17,10 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-				<center>
+				
 					<form id="sendEmailForm" method="post" action="sendEmail"
-						enctype="multipart/form-data">
-						<table id="emailFormBeanTable" border="0" width="80%">
+						>
+						<table id="emailFormBeanTable" border="0" width="80%" height="60%">
 							<tr>
 								<td>Email To:</td>
 								<td><input id="receiverMail" type="text" name="mailTo"
@@ -33,21 +33,21 @@
 							</tr>
 							<tr>
 								<td>Message:</td>
-								<td><textarea id="mailMessage" cols="50" rows="10"
+								<td><textarea id="mailMessage" cols="50" rows="6"
 										name="message"></textarea></td>
 							</tr>
-							<tr>
+						<!-- 	<tr>
 								<td>Attachment:</td>
 								<td><input id="mailAttachment" type="file"
 									name="attachFileObj" size="60" /></td>
-							</tr>
+							</tr> -->
 							<tr>
 								<td colspan="2" align="center"><input id="sendEmailBtn"
 									type="submit" value="Send Email" /></td>
 							</tr>
 						</table>
 					</form>
-				</center>
+			
 
 			</header>
 			<div class="agileits-box-body clearfix"></div>

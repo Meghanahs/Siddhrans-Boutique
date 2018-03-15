@@ -17,6 +17,7 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
+			
 							<h2 style="text-align:center;">${message}</h2>
 							<a href="${url}" value="Go Back">
 						</header>

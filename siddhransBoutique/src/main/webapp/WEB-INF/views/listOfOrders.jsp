@@ -37,6 +37,7 @@
 										<th>Dress Type</th>
 										<th>Status</th>
 										<th>Amount</th>
+										<th>Emails</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -51,6 +52,8 @@
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
 											<td>${order.orderAmount}</td>
+										<td><button style="color:black;"><a href="sendEmail">send Mail</a></button></td>
+											
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -9,7 +9,7 @@ public class SMTPAuthenticator extends Authenticator {
 	private static String password;
 	
 	public PasswordAuthentication getPasswordAuthentication() {
-		System.out.println("..z is coming in this");
+		System.out.println("username and password authenticating");
 
 		username = "meghana.hs@siddhrans.com";
 		password = "Meghana@122122";

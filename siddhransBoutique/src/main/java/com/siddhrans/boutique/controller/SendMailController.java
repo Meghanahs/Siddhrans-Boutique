@@ -1,15 +1,9 @@
 package com.siddhrans.boutique.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
+
 import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
-
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +17,14 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.siddhrans.boutique.model.CustomerDetails;
+import com.siddhrans.boutique.model.Department;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.util.CommonMail;
 
@@ -57,7 +55,7 @@ public class SendMailController {
 
 	@RequestMapping(value = "sendEmail", method = RequestMethod.GET)
 	public String sendEmailToClient(
-			HttpServletRequest request/* , final @RequestParam CommonsMultipartFile attachFileObj */) throws Exception {
+			HttpServletRequest request,Model model/* , final @RequestParam CommonsMultipartFile attachFileObj */) throws Exception {
 		// Reading Email Form Input Parameters
         
 		emailSubject = "mail testing"; /* request.getParameter("subject"); */
@@ -69,10 +67,27 @@ public class SendMailController {
 		CommonMail sendCommonMail = new CommonMail();
 		sendCommonMail.mail( emailToRecipient,emailSubject,
 				emailMessage,environment.getProperty("email.senderEmailId"), "", environment.getProperty("smtp.host"));
+		model.addAttribute("message","mail sent Successfully");
 		return "result";
 
 	}
 	
+	@RequestMapping(value={"/getCustomerMails"}, method = RequestMethod.GET)
+	public String customerMails(Model model) {
+		List<CustomerDetails> customerDetailsList=customerDetailsService.fetchAllCustomerDetails();
+		model.addAttribute("customerDetailsList",customerDetailsList);
+		/*model.addAttribute("customerDetails",new CustomerDetails());*/
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "listOfMails";
+	}
+	
+	@RequestMapping(value={"/openMail"}, method = RequestMethod.GET)
+	public String composeMail(Model model) {
+		
+		/*model.addAttribute("customerDetails",new CustomerDetails());*/
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "emailForm";
+	}
 	
 
 	/**
@@ -81,7 +96,6 @@ public class SendMailController {
 	private String getPrincipal() {
 		String loggedinUser = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
 		if (principal instanceof UserDetails) {
 			loggedinUser = ((UserDetails) principal).getUsername();
 		} else {

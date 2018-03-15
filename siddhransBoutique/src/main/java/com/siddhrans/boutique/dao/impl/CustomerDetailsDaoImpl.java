@@ -72,13 +72,5 @@ public class CustomerDetailsDaoImpl extends AbstractDao<Integer, CustomerDetails
 		return customerDetailsList.size();
 	}
 
-	@Override
-	public List<CustomerDetails> fetchAllEmail(String email) {
-		Criteria criteria = createEntityCriteria();
-		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
-		/*criteria.add(Restrictions.eq("email", email));*/
-		List<CustomerDetails> customerDetails = (List<CustomerDetails>) criteria.list();
-		return customerDetails;
-	}
 
 }

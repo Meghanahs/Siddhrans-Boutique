@@ -12,6 +12,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 public class CommonMail {
 	
 
@@ -80,7 +83,17 @@ public class CommonMail {
 		   }
 	
 	
-	
+			private String getPrincipal() {
+				String loggedinUser = null;
+				Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				if (principal instanceof UserDetails) {
+					loggedinUser = ((UserDetails) principal).getUsername();
+				} else {
+					
+					loggedinUser = principal.toString();
+				}
+				return loggedinUser;
+			}
 	
 	
 	

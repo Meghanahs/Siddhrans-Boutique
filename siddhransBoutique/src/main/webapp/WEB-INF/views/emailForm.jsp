@@ -18,7 +18,7 @@
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 				
-					<form id="sendEmailForm" method="post" action="sendEmail"
+					<form:form id="sendEmailForm" method="POST" action="sendEmail"
 						>
 						<table id="emailFormBeanTable" border="0" width="80%" height="60%">
 							<tr>
@@ -46,7 +46,7 @@
 									type="submit" value="Send Email" /></td>
 							</tr>
 						</table>
-					</form>
+					</form:form>
 			
 
 			</header>

@@ -53,7 +53,7 @@ public class SendMailController {
 	static String emailToRecipient, emailSubject, emailMessage;
 
 
-	@RequestMapping(value = "sendEmail", method = RequestMethod.GET)
+	@RequestMapping(value = "sendEmail", method = RequestMethod.POST)
 	public String sendEmailToClient(
 			HttpServletRequest request,Model model/* , final @RequestParam CommonsMultipartFile attachFileObj */) throws Exception {
 		// Reading Email Form Input Parameters
@@ -67,7 +67,7 @@ public class SendMailController {
 		CommonMail sendCommonMail = new CommonMail();
 		sendCommonMail.mail( emailToRecipient,emailSubject,
 				emailMessage,environment.getProperty("email.senderEmailId"), "", environment.getProperty("smtp.host"));
-		/*model.addAttribute("message","mail sent Successfully");*/
+		model.addAttribute("message","Your message has been sent.");
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "result";
 	}
@@ -99,6 +99,7 @@ public class SendMailController {
 		if (principal instanceof UserDetails) {
 			loggedinUser = ((UserDetails) principal).getUsername();
 		} else {
+			
 			loggedinUser = principal.toString();
 		}
 		return loggedinUser;

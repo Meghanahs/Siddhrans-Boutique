@@ -58,18 +58,18 @@ public class SendMailController {
 			HttpServletRequest request,Model model/* , final @RequestParam CommonsMultipartFile attachFileObj */) throws Exception {
 		// Reading Email Form Input Parameters
         
-		emailSubject = "mail testing"; /* request.getParameter("subject"); */
+		emailSubject =  request.getParameter("subject"); 
 
-		emailMessage = "testing";/* request.getParameter("message"); */
+		emailMessage = request.getParameter("message"); 
 
-		emailToRecipient = "meghasrinivas122@gmail.com"; /* request.getParameter("mailTo"); */
+		emailToRecipient = request.getParameter("mailTo"); 
 		
 		CommonMail sendCommonMail = new CommonMail();
 		sendCommonMail.mail( emailToRecipient,emailSubject,
 				emailMessage,environment.getProperty("email.senderEmailId"), "", environment.getProperty("smtp.host"));
-		model.addAttribute("message","mail sent Successfully");
+		/*model.addAttribute("message","mail sent Successfully");*/
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "result";
-
 	}
 	
 	@RequestMapping(value={"/getCustomerMails"}, method = RequestMethod.GET)

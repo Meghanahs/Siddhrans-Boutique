@@ -22,7 +22,8 @@
 						<span>Dear <strong>${loggedinuser}</strong>,</br>You are not
 							authorized to access this page.
 						</span> <a href="<c:url value='/login' />">Go Back</a> <span
-							class="floatRight"><a href="<c:url value="/logout" />">Logout</a></span>
+							class="floatRight"><a href="<c:url value="/logout" />">Logout</a></span></br>
+							<img src="static/images/ad.gif" alt="">
 					</h3>
 				</div>
 			</header>

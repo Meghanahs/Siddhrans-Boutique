@@ -7,8 +7,7 @@
 	<%@include file="body.jsp"%>
 	<!--heder end here-->
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="accessdenied">Access
-				Denied</a> <i class="fa fa-angle-right"></i></li>
+		<li class="breadcrumb-item"><a href="accessdenied">Success</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
 	<!--four-grids here-->
 
@@ -18,8 +17,9 @@
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 			
-							<h2 style="text-align:center;">${message}</h2>
+							<h2 style="text-align:center;">${message}<span style="text-align:center;"><img src="static/images/success.gif" alt="" ></span></h2>
 							<a href="${url}" value="Go Back">
+						
 						</header>
 			<div class="agileits-box-body clearfix"></div>
 		</div>

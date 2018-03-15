@@ -67,7 +67,7 @@ public class SendMailController {
 		CommonMail sendCommonMail = new CommonMail();
 		sendCommonMail.mail( emailToRecipient,emailSubject,
 				emailMessage,environment.getProperty("email.senderEmailId"), "", environment.getProperty("smtp.host"));
-		model.addAttribute("message","Your message has been sent.");
+		model.addAttribute("message","Your message has been sent Successfully.");
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "result";
 	}

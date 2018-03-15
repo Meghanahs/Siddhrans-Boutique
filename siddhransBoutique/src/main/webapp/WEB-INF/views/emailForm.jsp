@@ -17,23 +17,23 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-				
+				<h3 style="text-align:center;color:#20B2AA;">Compose Mail</h3>
 					<form:form id="sendEmailForm" method="POST" action="sendEmail"
 						>
 						<table id="emailFormBeanTable" border="0" width="80%" height="60%">
 							<tr>
-								<td>Email To:</td>
+								<td><h5><b>Email To:</b></h5></td>
 								<td><input id="receiverMail" type="text" name="mailTo"
 									size="65" /></td>
 							</tr>
 							<tr>
-								<td>Subject:</td>
+								<td><h5><b>Subject:</b></h5></td>
 								<td><input id="mailSubject" type="text" name="subject"
 									size="65" /></td>
 							</tr>
 							<tr>
-								<td>Message:</td>
-								<td><textarea id="mailMessage" cols="50" rows="6"
+								<td><h5><b>Message:</b></h5></td>
+								<td><textarea id="mailMessage" cols="57" rows="6"
 										name="message"></textarea></td>
 							</tr>
 						<!-- 	<tr>

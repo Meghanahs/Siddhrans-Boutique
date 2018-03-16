@@ -3,6 +3,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +35,8 @@ public class MeasurementDetailsController {
 	DressTypeService dressTypeService;
 	@Autowired
 	CustomerDetailsService CustomerDetailsService;
+	@Autowired 
+	HttpServletRequest request;
 
 	
 	
@@ -58,12 +62,16 @@ public class MeasurementDetailsController {
 		return "measurementdetails";
 	}
 	
-	@RequestMapping(value={"/editMeasurementDetails"}, method = RequestMethod.POST)
+	@RequestMapping(value={"/editMeasurementDetails"}, method = RequestMethod.GET)
 	public String editMeasurements(@Valid MeasurementDetails measurementDetails, BindingResult result,ModelMap model) {
-		MeasurementDetails measurementDetailsdata = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
+		String measurementId = request.getParameter("measurementId");
+		MeasurementDetails measurementDetailsdata = measurementDetailsService.findByID(Integer.parseInt(measurementId));
+		model.addAttribute("measurementDetailsdata", measurementDetailsdata);	
+		
+		/*MeasurementDetails measurementDetailsdata = measurementDetailsService.findByID(measurementDetails.getMeasurementId());
        	model.addAttribute("measurementDetailsdata", measurementDetailsdata);
     	List<CustomerDetails> customerDetails= CustomerDetailsService.fetchAllCustomerDetails();
-        model.addAttribute("customerDetails",customerDetails);
+        model.addAttribute("customerDetails",customerDetails);*/
 /*      String customerId = request.getParameter("customerId");
        	CustomerDetails customerDetails= CustomerDetailsService.findByID(Integer.parseInt(customerId));*/
        /*	List<DressType> dressTypeList= dressTypeService.findAllDressTypes();
@@ -73,12 +81,12 @@ public class MeasurementDetailsController {
 	}
 			
 	@RequestMapping(value={"/UpdateMeasurementDetails"}, method = RequestMethod.POST)
-	public String updateMeasurements(@Valid MeasurementDetails measurementDetails, BindingResult result,
+	public String updateMeasurements(@Valid MeasurementDetails measurementDetailsdata, BindingResult result,
 			ModelMap model) {
-		measurementDetailsService.saveOrUpdateMeasurementDetails(measurementDetails);
+		measurementDetailsService.saveOrUpdateMeasurementDetails(measurementDetailsdata);
 		/*model.addAttribute("message","Updated Employee Sucessfully.");*/
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "redirect:/showOrder";
+		return "redirect:/customerdetails";
 	}
 	
 	/**

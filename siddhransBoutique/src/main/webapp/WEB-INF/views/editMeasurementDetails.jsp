@@ -16,7 +16,7 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-				<h3>Edit Measurement Details</h3>
+				<h3 style="margin-bottom: 71px;">Edit Measurement Details</h3>
 				<h5 style="color: red;">${message}</h5>
 				<form:form method="POST" modelAttribute="measurementDetailsdata"
 								class="form-horizontal" action="UpdateMeasurementDetails">

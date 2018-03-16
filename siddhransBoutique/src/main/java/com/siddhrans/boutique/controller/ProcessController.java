@@ -26,28 +26,120 @@ public class ProcessController {
 	OrderDetailsService orderDetailsService;
 
 	static final Logger logger = LoggerFactory.getLogger(ProcessController.class);
-
-	@RequestMapping(value={"/cuttingUnit"}, method = RequestMethod.GET)
-	public String cuttingProcess(Model model) {
-		List<OrderDetails> processingOrderList = orderDetailsService.findByStatus("PROCESSING");
-		model.addAttribute("processingOrderList", processingOrderList);
-		List<OrderDetails> cuttingFinishedMeasurementList = orderDetailsService.findByStatus("CUTTING FINISHED");
-		model.addAttribute("cuttingFinishedOrderList", cuttingFinishedMeasurementList);
-		List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
-		/*cuttingMeasurementList.addAll(cuttingFinishedMeasurementList);*/
-		model.addAttribute("cuttingOrderList", cuttingOrderList);	
-		model.addAttribute("loggedinuser", getPrincipal());
-		return "Cutting";
+	
+	@RequestMapping(value={"/embroidoryUnit"}, method = RequestMethod.GET)
+	public String embroidoryProcess1(Model model) {
+	List<OrderDetails> processingOrderList = orderDetailsService.findByStatus("PROCESSING");
+	model.addAttribute("processingOrderList", processingOrderList);	
+	List<OrderDetails> embroidoryNotrequiredList = orderDetailsService.findByStatus("NOT REQUIRED");
+	model.addAttribute("embroidoryNotrequiredList", embroidoryNotrequiredList);
+	List<OrderDetails> embroidoryOrderList = orderDetailsService.findByStatus("EMBROIDORY");
+	embroidoryOrderList.addAll(embroidoryNotrequiredList);
+	model.addAttribute("embroidoryOrderList", embroidoryOrderList);	
+	model.addAttribute("loggedinuser", getPrincipal());
+		return "Embroidory";
 	}
-
-	@RequestMapping(value={"/cuttingUnit"}, method = RequestMethod.POST)
-	public String cuttingProcess(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
+	
+	@RequestMapping(value={"/embroidoryUnit"}, method = RequestMethod.POST)
+	public String embroidoryProcess(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
 		if (result.hasErrors()) {
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
 			List<OrderDetails> processingOrderList = orderDetailsService.findByStatus("PROCESSING");
-			model.addAttribute("processingOrderList", processingOrderList);
+			model.addAttribute("processingOrderList", processingOrderList);	
+			List<OrderDetails> embroidoryNotrequiredList = orderDetailsService.findByStatus("NOT REQUIRED");
+			model.addAttribute("embroidoryNotrequiredList", embroidoryNotrequiredList);
+			List<OrderDetails> embroidoryOrderList = orderDetailsService.findByStatus("EMBROIDORY");
+			embroidoryOrderList.addAll(embroidoryNotrequiredList);
+			model.addAttribute("embroidoryOrderList", embroidoryOrderList);	
+			model.addAttribute("loggedinuser", getPrincipal());
+		}
+		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
+		orderDetailsbyId.setStatus("EMBROIDORY");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
+		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "redirect:embroidoryUnit";
+	}
+	
+	@RequestMapping(value={"/skipEmbroidoryUnit"}, method = RequestMethod.POST)
+	public String skipembroidoryProcess(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
+		logger.debug("skip Action Unit");
+		if (result.hasErrors()) {
+			logger.debug(""
+					+ ""
+					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
+			List<OrderDetails> processingOrderList = orderDetailsService.findByStatus("PROCESSING");
+			model.addAttribute("processingOrderList", processingOrderList);	
+			List<OrderDetails> embroidoryNotrequiredList = orderDetailsService.findByStatus("NOT REQUIRED");
+			model.addAttribute("embroidoryNotrequiredList", embroidoryNotrequiredList);
+			List<OrderDetails> embroidoryOrderList = orderDetailsService.findByStatus("EMBROIDORY");
+			embroidoryOrderList.addAll(embroidoryNotrequiredList);
+			model.addAttribute("embroidoryOrderList", embroidoryOrderList);	
+			model.addAttribute("loggedinuser", getPrincipal());
+			return "Embroidory";
+		}
+		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
+		orderDetailsbyId.setStatus("NOT REQUIRED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
+		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
+		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "redirect:embroidoryUnit";
+	}
+	
+	@RequestMapping(value={"/embroidoryFinished"}, method = RequestMethod.POST)
+	public String embroidoryFinished1(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
+		if (result.hasErrors()) {
+			logger.debug(""
+					+ ""
+					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
+			List<OrderDetails> processingOrderList = orderDetailsService.findByStatus("PROCESSING");		
+			model.addAttribute("processingOrderList", processingOrderList);	
+			List<OrderDetails> embroidoryOrderList = orderDetailsService.findByStatus("EMBROIDORY");
+			model.addAttribute("embroidoryOrderList", embroidoryOrderList);
+			model.addAttribute("loggedinuser", getPrincipal());
+		}
+		OrderDetails orderDetailsbyId = orderDetailsService.findById(orderDetails.getOrderId());
+		orderDetailsbyId.setStatus("EMBROIDORY FINISHED");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		orderDetailsbyId.setModifiedDate(date.toString());
+		orderDetailsService.saveOrUpdateOrderDetails(orderDetailsbyId);
+		model.addAttribute("orderDetails",new OrderDetails());
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "redirect:embroidoryUnit";
+	}
+	
+	@RequestMapping(value={"/cuttingUnit"}, method = RequestMethod.GET)
+	public String cuttingProcess(Model model) {
+		List<OrderDetails> embroidoryFinishedOrderList = orderDetailsService.findByStatus("EMBROIDORY FINISHED");
+		model.addAttribute("embroidoryFinishedOrderList", embroidoryFinishedOrderList);
+		/*List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
+		cuttingOrderList.addAll(cuttingOrderList);
+		model.addAttribute("cuttingMeasurementList", cuttingMeasurementList);*/
+		List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");		
+		model.addAttribute("cuttingOrderList", cuttingOrderList);
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "Cutting";
+	}
+	
+	@RequestMapping(value={"/cuttingUnit"}, method = RequestMethod.POST)
+	public String cuttingProcess1(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
+		if (result.hasErrors()) {
+			logger.debug(""
+					+ ""
+					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
+			List<OrderDetails> embroidoryFinishedOrderList = orderDetailsService.findByStatus("EMBROIDORY FINISHED");
+			model.addAttribute("embroidoryFinishedOrderList", embroidoryFinishedOrderList);
 			List<OrderDetails> cuttingFinishedOrderList = orderDetailsService.findByStatus("CUTTING FINISHED");
 			model.addAttribute("cuttingFinishedOrderList", cuttingFinishedOrderList);
 			List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
@@ -73,8 +165,8 @@ public class ProcessController {
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			List<OrderDetails> processingOrderList = orderDetailsService.findByStatus("PROCESSING");
-			model.addAttribute("processingOrderList", processingOrderList);
+			List<OrderDetails> embroidoryFinishedOrderList = orderDetailsService.findByStatus("EMBROIDORY FINISHED");
+			model.addAttribute("embroidoryFinishedOrderList", embroidoryFinishedOrderList);
 			List<OrderDetails> cuttingFinishedOrderList = orderDetailsService.findByStatus("CUTTING FINISHED");
 			model.addAttribute("cuttingFinishedOrderList", cuttingFinishedOrderList);
 			List<OrderDetails> cuttingOrderList = orderDetailsService.findByStatus("CUTTING");
@@ -161,7 +253,7 @@ public class ProcessController {
 	}
 
 
-	@RequestMapping(value={"/embroidoryUnit"}, method = RequestMethod.GET)
+	/*@RequestMapping(value={"/embroidoryUnit"}, method = RequestMethod.GET)
 	public String embroidoryProcess(Model model) {
 		List<OrderDetails> stichingFinishedOrderList = orderDetailsService.findByStatus("STICHING FINISHED");		
 		model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
@@ -172,7 +264,7 @@ public class ProcessController {
 	}
 
 	@RequestMapping(value={"/embroidoryUnit"}, method = RequestMethod.POST)
-	public String embroidoryProcess(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
+	public String embroidoryProcess1(@Valid OrderDetails orderDetails, BindingResult result,Model model) {
 
 		if (result.hasErrors()) {
 			List<OrderDetails> stichingFinishedOrderList = orderDetailsService.findByStatus("STICHING FINISHED");		
@@ -217,12 +309,12 @@ public class ProcessController {
 		model.addAttribute("orderDetails",new OrderDetails());
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "redirect:embroidoryUnit";
-	}
+	}*/
 
 	@RequestMapping(value={"/alterationUnit"}, method = RequestMethod.GET)
 	public String alterationProcess(Model model) {
-		List<OrderDetails> embroidoryFinishedOrderList = orderDetailsService.findByStatus("EMBROIDORY FINISHED");		
-		model.addAttribute("embroidoryFinishedOrderList", embroidoryFinishedOrderList);	
+		List<OrderDetails> stichingFinishedOrderList = orderDetailsService.findByStatus("STICHING FINISHED");		
+		model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
 		List<OrderDetails> alterationNotrequiredList = orderDetailsService.findByStatus("NOT REQUIRED");
 		model.addAttribute("alterationNotrequiredList", alterationNotrequiredList);	
 		List<OrderDetails> alterationOrderList = orderDetailsService.findByStatus("ALTERATION");
@@ -240,8 +332,8 @@ public class ProcessController {
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());
 
-			List<OrderDetails> embroidoryFinishedOrderList = orderDetailsService.findByStatus("EMBROIDORY FINISHED");		
-			model.addAttribute("embroidoryFinishedOrderList", embroidoryFinishedOrderList);	
+			List<OrderDetails> stichingFinishedOrderList = orderDetailsService.findByStatus("STICHING FINISHED");		
+			model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
 			List<OrderDetails> alterationNotrequiredList = orderDetailsService.findByStatus("NOT REQUIRED");
 			model.addAttribute("alterationNotrequiredList", alterationNotrequiredList);	
 			List<OrderDetails> alterationOrderList = orderDetailsService.findByStatus("ALTERATION");
@@ -275,8 +367,8 @@ public class ProcessController {
 			logger.debug(""
 					+ ""
 					+ "ERROR IS : "+result.getAllErrors()+" error count is "+result.getErrorCount());			
-			List<OrderDetails> embroidoryFinishedOrderList = orderDetailsService.findByStatus("EMBROIDORY FINISHED");		
-			model.addAttribute("embroidoryFinishedOrderList", embroidoryFinishedOrderList);	
+			List<OrderDetails> stichingFinishedOrderList = orderDetailsService.findByStatus("STICHING FINISHED");		
+			model.addAttribute("stichingFinishedOrderList", stichingFinishedOrderList);	
 			List<OrderDetails> alterationNotrequiredList = orderDetailsService.findByStatus("NOT REQUIRED");
 			model.addAttribute("alterationNotrequiredList", alterationNotrequiredList);	
 			List<OrderDetails> alterationOrderList = orderDetailsService.findByStatus("ALTERATION");

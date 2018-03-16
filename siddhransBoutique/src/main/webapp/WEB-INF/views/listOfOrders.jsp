@@ -7,8 +7,7 @@
 	<%@include file="body.jsp"%>
 	<!--heder end here-->
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="customerdetails">Customers
-				Details</a> <i class="fa fa-angle-right"></i></li>
+		<li class="breadcrumb-item"><a href="customerdetails">Orders History</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
 	<!--four-grids here-->
 
@@ -72,6 +71,7 @@
 	</div>
 
 	<%@include file="footer.jsp"%>
+	<script src="static/js/pagination.js"></script>
 	</div>
 </body>
 </html>

@@ -76,7 +76,7 @@ public class DressTypeController {
 		dressTypeService.updateDressType(dressTypeData);
 		/*model.addAttribute("message","Updated Employee Sucessfully.");*/
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "redirect:/adddressType";
+		return "redirect:/dressTypeList";
 	}
 	
 	/**

@@ -45,7 +45,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${processingOrderList}" var="orderDetails">
+									<c:forEach items="${embroidoryFinishedOrderList}" var="orderDetails">
 										<tr>
 											<td><input name="orderId" type="radio"
 												onclick="enableButtons()" id="orderId"

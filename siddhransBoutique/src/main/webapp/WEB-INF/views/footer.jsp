@@ -39,6 +39,12 @@
 			<li><a href="home" style="padding: 9px 20px;"><i
 					class="fa fa-home"></i> <span>Home</span>
 					<div class="clearfix"></div></a></li>
+			<li><a href="adddepartment" style="padding: 9px 20px;"><i
+					class="fa fa-cog" aria-hidden="true"></i><span>Department</span>
+					<div class="clearfix"></div></a></li>
+			<li id="menu-academico"><a href="listDesignation"
+				style="padding: 9px 20px;"><i class="fa fa-cogs"></i><span>Designation</span>
+					<div class="clearfix"></div></a></li>		
 			<li id="menu-academico"><a href="registerUser"
 				style="padding: 9px 20px;"><i class="	fa fa-user-plus"></i><span>Register
 						User</span>
@@ -47,12 +53,7 @@
 				style="padding: 9px 20px;"><i class="fa fa-group"></i><span>List
 						Of Users</span>
 					<div class="clearfix"></div></a></li>
-			<li><a href="adddepartment" style="padding: 9px 20px;"><i
-					class="fa fa-cog" aria-hidden="true"></i><span>Department</span>
-					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="listDesignation"
-				style="padding: 9px 20px;"><i class="fa fa-cogs"></i><span>Designation</span>
-					<div class="clearfix"></div></a></li>
+			
 			<li id="menu-academico"><a href="dressTypeList"
 				style="padding: 9px 20px;"><i class="fa fa-table"></i><span>DressType</span>
 					<div class="clearfix"></div></a></li>
@@ -66,12 +67,12 @@
 					class="fa fa-angle-right" style="float: right"></span>
 					<div class="clearfix"></div></a>
 				<ul id="menu-academico-sub">
+				<li id="menu-academico-avaliacoes"><a href="embroidoryUnit"
+						style="padding: 9px 20px;">Embroidory</a></li>
 					<li id="menu-academico-boletim"><a href="cuttingUnit"
 						style="padding: 9px 20px;">Cutting</a></li>
 					<li id="menu-academico-avaliacoes"><a href="stichingUnit"
-						style="padding: 9px 20px;">Stiching</a></li>
-					<li id="menu-academico-avaliacoes"><a href="embroidoryUnit"
-						style="padding: 9px 20px;">Embroidory</a></li>
+						style="padding: 9px 20px;">Stiching</a></li>					
 					<li id="menu-academico-avaliacoes"><a href="alterationUnit"
 						style="padding: 9px 20px;">Alteration</a></li>
 					<li id="menu-academico-avaliacoes"><a href="ironingUnit"

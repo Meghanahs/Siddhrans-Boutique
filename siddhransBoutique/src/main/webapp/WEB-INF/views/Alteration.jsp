@@ -46,7 +46,7 @@ function skipAction() {
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${embroidoryFinishedOrderList}" var="order">
+									<c:forEach items="${stichingFinishedOrderList}" var="order">
 										<tr>
 											<td><input name="orderId" type="radio"
 												onclick="enableButtons()" id="orderId"

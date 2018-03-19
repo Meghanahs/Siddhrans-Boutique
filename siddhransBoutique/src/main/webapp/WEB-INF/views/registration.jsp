@@ -18,7 +18,7 @@
 		<form:form method="POST" modelAttribute="employee" class="sky-form"
 			style="width:500px;margin-top: 170px;">
 
-			<header style="background-color: #2da5da;">New User
+			<header style="background-color: #2da5da;">New Employee
 				Registration</header>
 
 			<fieldset>

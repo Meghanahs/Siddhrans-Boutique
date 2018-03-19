@@ -204,7 +204,8 @@
 								<div class="form-group col-md-12">
 
 									<label class="col-md-2 control-lable" for="phoneno">Customer
-										GST No</label>
+										GST No (Only For B-B)</label>
+										
 									<div class="col-md-3">
 										<form:input type="text" path="gstNo" id="gstNo"
 											class="form-control input-sm" placeholder="Customer GST NO" />

@@ -7,6 +7,10 @@
 		document.getElementById("submitForm").action = "generateQuotation";
 		document.getElementById("submitForm").submit();
 	}
+	function placedOrderbilling() {
+		document.getElementById("submitForm").action = "placedOrder";
+		document.getElementById("submitForm").submit();
+	}
 </script>
 </head>
 <body>
@@ -49,6 +53,7 @@
 
 							</tbody>
 						</table>
+						<input type="button" onclick="placedOrderbilling()" value="Placed Order Bill">
 					</div>
 
 				</div>

@@ -18,7 +18,7 @@ function skipAction() {
 	<%@include file="body.jsp"%>
 	<!--heder end here-->
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="embroidoryUnit">Alteration
+		<li class="breadcrumb-item"><a href="embroidoryUnit">Embroidory
 				Orders</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
 	<!--four-grids here-->
@@ -74,7 +74,7 @@ function skipAction() {
 
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="stichingUnit">On-processing
-				Alteration Items</a> <i class="fa fa-angle-right"></i></li>
+				Embroidory Items</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
 	<div class="agileinfo-grap">
 		<div class="agileits-box">

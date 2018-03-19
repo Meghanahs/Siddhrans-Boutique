@@ -1,5 +1,5 @@
 package com.siddhrans.boutique.controller;
-
+/*
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,7 +45,7 @@ import com.siddhrans.boutique.service.OrderDetailsService;
 
 
 @Controller
-public class GenerateBillController {
+public class OrderPlacedBillController {
 
 	@Autowired
 	OrderDetailsService orderDetailsService;
@@ -58,7 +58,7 @@ public class GenerateBillController {
 	@Autowired
 	InvoiceService invoiceService;
 
-	@RequestMapping(value={"/generateBill"}, method = RequestMethod.POST, produces = "application/pdf")
+	@RequestMapping(value={"/placedOrder"}, method = RequestMethod.POST, produces = "application/pdf")
 	public String orderDetails(Model model, HttpServletResponse response) throws Exception {	
 		String[] orders = request.getParameterValues("orderId");
 		Integer discount = new Integer(0);
@@ -299,7 +299,7 @@ public class GenerateBillController {
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
 						
-			p  = new Paragraph("Net Amount = "+(netAmount - (netAmount*(discount/100.0f))), headerFont);
+			p  = new Paragraph("Net Amount = "+(netAmount - (netAmount*(discount/100.0f))+(cgst+sgst)), headerFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
 
@@ -333,7 +333,7 @@ public class GenerateBillController {
 	}
 
 	@RequestMapping(value = { "/download-Invoice-{invoiceId}" }, method = RequestMethod.GET)
-	public String downloadInvoice(@PathVariable String invoiceId, ModelMap model, HttpServletResponse response) throws IOException {
+	public String placedOrderDetails(@PathVariable String invoiceId, ModelMap model, HttpServletResponse response) throws IOException {
 		if(invoiceId == null || invoiceId.equals("")) {
 			model.addAttribute("url", "customerdetails");
 			model.addAttribute("message", "No Invoices Found. Please Genarate Invoice and then try.");
@@ -347,10 +347,9 @@ public class GenerateBillController {
 		FileCopyUtils.copy(invoice.getInvoicePdf(), response.getOutputStream());
 		return "result";
 	}
-	
-	/**
+	*//**
 	 * This method returns the principal[user-name] of logged-in user.
-	 */
+	 *//*
 	private String getPrincipal(){
 		String loggedinUser = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -362,5 +361,5 @@ public class GenerateBillController {
 		}
 		return loggedinUser;
 	}
-}
+}*/
 

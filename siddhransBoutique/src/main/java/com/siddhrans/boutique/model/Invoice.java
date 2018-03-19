@@ -32,6 +32,7 @@ public class Invoice {
 	@Column(name="INVOICE_PDF")
 	byte[] invoicePdf;
 	
+	
 	String discount;
 	String cgst;
 	String sgst;

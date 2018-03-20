@@ -35,15 +35,17 @@
 					<div class="tablecontainer" style="overflow-x: auto;">
 						<form:form modelAttribute="employee" id="submitForm" method="POST">
 							<div class="col-md-6">
-								<input type="button" value="Delete" id="deleteUser"
-									disabled="disabled" onclick="deleteEmployee()" /> <input
-									type="button" value="Edit" id="editUser" disabled="disabled"
-									onclick="editEmployee()" />
-								<%-- <button onclick="editEmployee()"><a href="<c:url value='/edit-${employee.userName}' />"
+								<sec:authorize access="hasRole('ADMIN')">
+									<input type="button" value="Delete" id="deleteUser"
+										disabled="disabled" onclick="deleteEmployee()" />
+									<input type="button" value="Edit" id="editUser"
+										disabled="disabled" onclick="editEmployee()" />
+									<%-- <button onclick="editEmployee()"><a href="<c:url value='/edit-${employee.userName}' />"
 													class="btn btn-success custom-width">edit</a></button> --%>
-								<button style="text-align: center;">
-									<a href="<c:url value='/registerUser' />">Add New User</a>
-								</button>
+									<button style="text-align: center;">
+										<a href="<c:url value='/registerUser' />">Add New User</a>
+									</button>
+								</sec:authorize>
 							</div>
 							<div class="col-md-6">
 								<input type="search" id="search" class="light-table-filter"
@@ -53,7 +55,9 @@
 							<table class="table table-hover order-table table" id="myTable">
 								<thead id="thcolor1">
 									<tr>
-										<th>Selector</th>
+										<sec:authorize access="hasRole('ADMIN')">
+											<th>Selector</th>
+										</sec:authorize>
 										<th>ID.</th>
 										<th>First Name</th>
 										<th>Last Name</th>
@@ -70,9 +74,11 @@
 								<tbody>
 									<c:forEach items="${employeeList}" var="employee">
 										<tr>
-											<td><input name="employeeId" type="radio"
-												id="employeeId" value="${employee.employeeId}"
-												onclick="enableButtons()"></td>
+											<sec:authorize access="hasRole('ADMIN')">
+												<td><input name="employeeId" type="radio"
+													id="employeeId" value="${employee.employeeId}"
+													onclick="enableButtons()"></td>
+											</sec:authorize>
 											<td>${employee.employeeId}</td>
 											<td>${employee.employeeFirstname}</td>
 											<td>${employee.employeeLastname}</td>
@@ -87,7 +93,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
-								<div class='pagination-container'>
+							<div class='pagination-container'>
 								<nav>
 									<ul class="pagination" style="margin-left: 500px;">
 										<!-- 	Here the JS Function Will Add the Rows -->

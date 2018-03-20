@@ -1,3 +1,4 @@
+<%@include file="includeLibs.jsp"%>
 <script>
 	$(document).ready(function() {
 		var navoffeset = $(".header-main").offset().top;
@@ -34,79 +35,86 @@
 		</a>
 	</header>
 	<div style="border-top: 1px ridge rgba(255, 255, 255, 0.15)"></div>
-	<div class="menu">
-		<ul id="menu">
-			<li><a href="home" style="padding: 9px 20px;"><i
-					class="fa fa-home"></i> <span>Home</span>
-					<div class="clearfix"></div></a></li>
-			<li><a href="adddepartment" style="padding: 9px 20px;"><i
-					class="fa fa-cog" aria-hidden="true"></i><span>Department</span>
-					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="listDesignation"
-				style="padding: 9px 20px;"><i class="fa fa-cogs"></i><span>Designation</span>
-					<div class="clearfix"></div></a></li>		
-			<li id="menu-academico"><a href="registerUser"
-				style="padding: 9px 20px;"><i class="	fa fa-user-plus"></i><span>Register
-						User</span>
-					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="Users"
-				style="padding: 9px 20px;"><i class="fa fa-group"></i><span>List
-						Of Users</span>
-					<div class="clearfix"></div></a></li>
-			
-			<li id="menu-academico"><a href="dressTypeList"
-				style="padding: 9px 20px;"><i class="fa fa-table"></i><span>DressType</span>
-					<div class="clearfix"></div></a></li>
+	<sec:authorize access="hasRole('ADMIN') or hasRole('EMPLOYEE')">
+		<div class="menu">
+			<ul id="menu">
+				<sec:authorize access="hasRole('ADMIN') or hasRole('EMPLOYEE')">
+					<li><a href="home" style="padding: 9px 20px;"><i
+							class="fa fa-home"></i> <span>Home</span> </a></li>
+							<li><a href="myProfile" style="padding: 9px 20px;"><i
+					class="fa fa-adjust" aria-hidden="true"></i><span>My Profile</span>
+					<div class="clearfix"></div></a></li>	
+				</sec:authorize>
+				<sec:authorize access="hasRole('ADMIN') ">
+					<li><a href="adddepartment" style="padding: 9px 20px;"><i
+							class="fa fa-cog" aria-hidden="true"></i><span>Department</span>
+					</a></li>
+				</sec:authorize>
+				<li id="menu-academico"><a href="listDesignation"
+					style="padding: 9px 20px;"><i class="fa fa-cogs"></i><span>Designation</span>
+				</a></li>
+				<sec:authorize access="hasRole('ADMIN') ">
+					<li id="menu-academico"><a href="registerUser"
+						style="padding: 9px 20px;"><i class="	fa fa-user-plus"></i><span>Register
+								User</span> </a></li>
+				</sec:authorize>
+				<li id="menu-academico"><a href="Users"
+					style="padding: 9px 20px;"><i class="fa fa-group"></i><span>List
+							Of Users</span> </a></li>
 
-			<li id="menu-academico"><a href="customerdetails"
-				style="padding: 9px 20px;"><i class="fa fa-newspaper-o"></i><span>Customers
-						Detail</span>
-					<div class="clearfix"></div></a></li>
-			<li id="menu-academico"><a href="#" style="padding: 9px 20px;"><i
-					class="fa fa-file-text-o"></i> <span>Process</span> <span
-					class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
-				<ul id="menu-academico-sub">
-				<li id="menu-academico-avaliacoes"><a href="embroidoryUnit"
-						style="padding: 9px 20px;">Embroidory</a></li>
-					<li id="menu-academico-boletim"><a href="cuttingUnit"
-						style="padding: 9px 20px;">Cutting</a></li>
-					<li id="menu-academico-avaliacoes"><a href="stichingUnit"
-						style="padding: 9px 20px;">Stiching</a></li>					
-					<li id="menu-academico-avaliacoes"><a href="alterationUnit"
-						style="padding: 9px 20px;">Alteration</a></li>
-					<li id="menu-academico-avaliacoes"><a href="ironingUnit"
-						style="padding: 9px 20px;">Ironing</a></li>
-					<li id="menu-academico-avaliacoes"><a href="deliveryUnit"
-						style="padding: 9px 20px;">Delivery</a></li>
-				</ul></li>
-			<li id="menu-academico"><a href="OrdersHistory"><i
-					class="fa fa-cogs" aria-hidden="true"></i><span>Orders
-						History</span>
-					<div class="clearfix"></div></a></li>
-			<!-- <li id="menu-academico"><a href="openMail"><i
+				<li id="menu-academico"><a href="dressTypeList"
+					style="padding: 9px 20px;"><i class="fa fa-table"></i><span>DressType</span>
+				</a></li>
+				<sec:authorize access="hasRole('ADMIN') ">
+					<li id="menu-academico"><a href="customerdetails"
+						style="padding: 9px 20px;"><i class="fa fa-newspaper-o"></i><span>Customers
+								Detail</span> </a></li>
+				</sec:authorize>
+				<li id="menu-academico"><a href="#" style="padding: 9px 20px;"><i
+						class="fa fa-file-text-o"></i> <span>Process</span> <span
+						class="fa fa-angle-right" style="float: right"></span> </a>
+					<ul id="menu-academico-sub">
+						<li id="menu-academico-avaliacoes"><a href="embroidoryUnit"
+							style="padding: 9px 20px;">Embroidory</a></li>
+						<li id="menu-academico-boletim"><a href="cuttingUnit"
+							style="padding: 9px 20px;">Cutting</a></li>
+						<li id="menu-academico-avaliacoes"><a href="stichingUnit"
+							style="padding: 9px 20px;">Stiching</a></li>
+						<li id="menu-academico-avaliacoes"><a href="alterationUnit"
+							style="padding: 9px 20px;">Alteration</a></li>
+						<li id="menu-academico-avaliacoes"><a href="ironingUnit"
+							style="padding: 9px 20px;">Ironing</a></li>
+						<li id="menu-academico-avaliacoes"><a href="deliveryUnit"
+							style="padding: 9px 20px;">Delivery</a></li>
+					</ul></li>
+				<sec:authorize access="hasRole('ADMIN') ">
+					<li id="menu-academico"><a href="OrdersHistory"><i
+							class="fa fa-tasks" aria-hidden="true"></i><span>Orders
+								History</span> </a></li>
+				</sec:authorize>
+				<!-- <li id="menu-academico"><a href="openMail"><i
 					class="fa fa-cogs" aria-hidden="true"></i><span>Send Mail</span>
-					<div class="clearfix"></div></a></li> 
+					</a></li> 
  -->
 
 
 
-			<!--		<li id="menu-academico"><a href="#"><i
+				<!--		<li id="menu-academico"><a href="#"><i
 					class="fa fa-exclamation-triangle" aria-hidden="true"></i><span>Measurement
 						Details</span>
-					<div class="clearfix"></div></a></li>
+					</a></li>
  			<li id="menu-academico"><a href="#"><i class="fa fa-cogs"
 					aria-hidden="true"></i><span>Show Order Details</span>
-					<div class="clearfix"></div></a></li>
+					</a></li>
 			<li><a href="tabels.html"><i class="fa fa-table"></i> <span>Tables</span>
-					<div class="clearfix"></div></a></li>
+					</a></li>
 			<li><a href="maps.html"><i class="fa fa-map-marker"
 					aria-hidden="true"></i> <span>Maps</span>
-					<div class="clearfix"></div></a></li>
+					</a></li>
 			<li id="menu-academico"><a href="#"><i
 					class="fa fa-file-text-o"></i> <span>Pages</span> <span
 					class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
+					</a>
 				<ul id="menu-academico-sub">
 					<li id="menu-academico-boletim"><a href="calendar.html">Calendar</a></li>
 					<li id="menu-academico-avaliacoes"><a href="signin.html">Sign
@@ -118,15 +126,16 @@
 				</ul></li>
 			<li><a href="#"><i class="fa fa-check-square-o nav_icon"></i><span>Forms</span>
 					<span class="fa fa-angle-right" style="float: right"></span>
-					<div class="clearfix"></div></a>
+					</a>
 				<ul>
 					<li><a href="input.html"> Input</a></li>
 					<li><a href="validation.html">Validation</a></li>
 				</ul></li> -->
-		</ul>
-	</div>
+			</ul>
+		</div>
+	</sec:authorize>
 </div>
-<div class="clearfix"></div>
+
 </div>
 <script>
 	var toggle = true;

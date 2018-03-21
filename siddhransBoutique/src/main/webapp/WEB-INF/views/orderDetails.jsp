@@ -16,11 +16,11 @@
 <body>
 	<%@include file="body.jsp"%>
 
-	<ol class="breadcrumb">
+<%--	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="customerdetails">Order
 				Details</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
-	<div class="agileinfo-grap">
+	 <div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 
@@ -53,6 +53,12 @@
 
 							</tbody>
 						</table>
+						CGST:<input name="cgst" type="text" onclick="enableButtons()"
+								id="cgst" /> 
+							SGST:<input name="sgst" type="text" onclick="enableButtons()"
+								id="sgst" />
+							DISCOUNT %:<input name="discount" type="text" onclick="enableButtons()"
+								id="CGST" />  
 						<input type="button" onclick="placedOrderbilling()" value="Placed Order Bill">
 					</div>
 
@@ -60,7 +66,7 @@
 			</header>
 			<div class="agileits-box-body clearfix"></div>
 		</div>
-	</div>
+	</div> --%>
 
 
 	<!--heder end here-->

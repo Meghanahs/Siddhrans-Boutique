@@ -5084,7 +5084,7 @@ ul.bs-glyphicons-list {
 /*---//signin-----*/
 .breadcrumb {
     padding: 8px 15px ! important;
-    margin: 20px 0 ! important;
+    margin: 6px 0 ! important;
     background-color: #ffffff ! important;
     border-radius: 0 ! important;
 }
@@ -6446,10 +6446,10 @@ ul.dropdown-menu {
     background-position: 10px 10px;
     background-repeat: no-repeat;
     width: 20%;
-    height: 51px;
+    height: 35px;
     margin-left: 8px;
     font-size: 16px;
-    padding: 7px 20px 12px 40px;
+    padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;
     margin-bottom: 14px;
     margin-top: 10px;

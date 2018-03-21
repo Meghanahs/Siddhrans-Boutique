@@ -65,8 +65,15 @@ public class GenerateBillController {
 		if(request.getParameter("discount") != "" || request.getParameter("discount") != null || request.getParameter("discount") != "0") {
 			discount = Integer.parseInt(request.getParameter("discount"));
 		}
-		String cgst = request.getParameter("cgst");
-		String sgst = request.getParameter("sgst");
+		Float cgst = Integer.parseInt(request.getParameter("cgst"))/100.0f;
+		Float sgst = Integer.parseInt(request.getParameter("sgst"))/100.0f;
+		Integer advancepayment = new Integer(0);
+		if(request.getParameter("advancepayment") != "" || request.getParameter("advancepayment") != null || request.getParameter("advancepayment") != "0") {
+			advancepayment = Integer.parseInt(request.getParameter("advancepayment"));
+		}
+		String dueDate = request.getParameter("dueDate");
+		
+		
 
 		try{
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
@@ -223,8 +230,6 @@ public class GenerateBillController {
 			// t.setSpacing(4);
 			// t.setBorderWidth(1);
 
-
-
 			c1 = new PdfPCell(new Phrase("Order ID",headerFont));
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c1.setBackgroundColor( new BaseColor (211,211,211));
@@ -255,11 +260,11 @@ public class GenerateBillController {
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c1.setBackgroundColor( new BaseColor (211,211,211));
 			table.addCell(c1);
-
+			
 			table.setHeaderRows(1);
 
 			float netAmount=0.0f;
-
+            
 			for(int i=0; i<orders.length;i++) {
 				Integer order = Integer.parseInt(orders[i]);
 				ordersDetails = orderDetailsService.findById(order);
@@ -284,6 +289,10 @@ public class GenerateBillController {
 				table.addCell(c1);	
 				netAmount = netAmount+ordersDetails.getOrderAmount();
 			}
+			
+			
+			float discountAmount = (netAmount*(discount/100.0f));
+			Float amount = ((netAmount+cgst+sgst)-discountAmount);
 
 			document.add(table);
 			p  = new Paragraph("Total Amount = "+ netAmount, headerFont);
@@ -298,8 +307,20 @@ public class GenerateBillController {
 			p  = new Paragraph("Discount% = "+ discount, normalFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-						
-			p  = new Paragraph("Net Amount = "+(netAmount - (netAmount*(discount/100.0f))), headerFont);
+			p  = new Paragraph("After Discount = "+ amount, normalFont);
+			p.setAlignment(Element.ALIGN_RIGHT);
+			document.add(p);
+			
+			p  = new Paragraph("AdvancePayment = "+ advancepayment, normalFont);
+			p.setAlignment(Element.ALIGN_RIGHT);
+			document.add(p);
+			
+			p  = new Paragraph("Due Date = "+ dueDate, normalFont);
+			p.setAlignment(Element.ALIGN_RIGHT);
+			document.add(p);
+								
+			p  = new Paragraph("Amount After Discount = "+amount, headerFont);
+			p  = new Paragraph("Remaining Amount = "+(amount-advancepayment), headerFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
 

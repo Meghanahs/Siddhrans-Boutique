@@ -110,8 +110,8 @@
 											<td>${orderDetails.orderId}</td>
 											<td>${orderDetails.dressType.dressName}</td>
 											<td>${orderDetails.status}</td>
-											<td>${order.orderDate}</td>
-											<td>${order.modifiedDate}</td>
+											<td>${orderDetails.orderDate}</td>
+											<td>${orderDetails.modifiedDate}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

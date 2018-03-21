@@ -54,6 +54,8 @@ function skipAction() {
 											<td>${order.orderId}</td>
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
+											<td>${order.orderDate}</td>
+											<td>${order.modifiedDate}</td>
 											<%-- <td>${orderDetails.orderDetails.orderDate}</td>  --%>
 										</tr>
 									</c:forEach>

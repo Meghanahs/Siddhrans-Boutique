@@ -74,15 +74,37 @@
 									</c:forEach>
 								</tbody>
 							</table>
-							CGST:<input name="cgst" type="text" onclick="enableButtons()"
-								id="cgst" /> 
-							SGST:<input name="sgst" type="text" onclick="enableButtons()"
-								id="sgst" />
-							DISCOUNT %:<input name="discount" type="text" onclick="enableButtons()"
-								id="CGST" />  
-								<input type="submit" id="bill"
-								value="Billing" disabled="disabled" onclick="billing()">
-
+							<div class="col-md-12">
+								<div class="col-md-4">
+									CGST %:</br><input name="cgst" type="text" onclick="enableButtons()"
+										id="cgst" />
+								</div>
+								<div class="col-md-4">
+									SGST %:</br><input name="sgst" type="text" onclick="enableButtons()"
+										id="sgst" />
+								</div>
+								<div class="col-md-4">
+									DISCOUNT %:</br><input name="discount" type="text"
+										onclick="enableButtons()" id="CGST" />
+								</div>
+							</div>
+							</br>
+							<div class="col-md-12">
+								<div class="col-md-4">
+									Advance Payment :</br>
+									<input name="advancepayment" type="text"
+										onclick="enableButtons()" id="advancepayment" />
+								</div>
+								<div class="col-md-4">
+									Due Date :</br>
+									<input name="dueDate" type="date"
+										onclick="enableButtons()" id="dueDate" />
+								</div></br>
+								<div class="col-md-4">
+									<input type="submit" id="bill" value="Placed Order Details"
+										disabled="disabled" onclick="billing()">
+								</div></br>
+							</div>
 						</form:form>
 					</div>
 

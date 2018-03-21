@@ -35,17 +35,9 @@
 								<input type="search" id="search" class="light-table-filter"
 									data-table="order-table" placeholder="Search here"
 									style="width: 52%; margin-top: 0px;">
-							</div>
-							CGST:<input name="cgst" type="text" onclick="enableButtons()"
-								id="cgst" /> 
-							SGST:<input name="sgst" type="text" onclick="enableButtons()"
-								id="sgst" />
-							DISCOUNT %:<input name="discount" type="text" onclick="enableButtons()"
-								id="CGST" />  
-								<input type="submit" id="bill"
-								value="Billing" disabled="disabled" onclick="billing()">
+							</div>		
 							
-							<table class="table table-hover order-table table" id="myTable">
+							<table class="table table-hover order-table table" id="myTable" style="margin-top: 18px;">
 								<thead id="thcolor1">
 									<tr>
 									    <th>Selector</th>

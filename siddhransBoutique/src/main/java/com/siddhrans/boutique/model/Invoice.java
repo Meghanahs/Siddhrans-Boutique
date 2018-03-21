@@ -36,6 +36,35 @@ public class Invoice {
 	String discount;
 	String cgst;
 	String sgst;
+	String dueDate;
+	String advancepayment;
+	String remainingAmount;
+	
+
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	
+	public String getAdvancepayment() {
+		return advancepayment;
+	}
+
+	public void setAdvancepayment(String advancepayment) {
+		this.advancepayment = advancepayment;
+	}
+
+	public String getRemainingAmount() {
+		return remainingAmount;
+	}
+
+	public void setRemainingAmount(String remainingAmount) {
+		this.remainingAmount = remainingAmount;
+	}
 
 	public String getDiscount() {
 		return discount;

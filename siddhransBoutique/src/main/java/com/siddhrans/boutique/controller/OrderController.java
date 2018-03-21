@@ -127,6 +127,12 @@ public class OrderController {
 		return "showOrderHistory";
 	}
 	
+	@RequestMapping(value={"/placedOrderDetails"}, method = RequestMethod.POST)
+	public String placedOrders(Model model) {	 
+		
+		return "placedOrderDetails";
+	}
+	
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */

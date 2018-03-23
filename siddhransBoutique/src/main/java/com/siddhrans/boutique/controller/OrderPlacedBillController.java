@@ -1,5 +1,5 @@
 package com.siddhrans.boutique.controller;
-/*
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -46,6 +46,7 @@ import com.siddhrans.boutique.service.OrderDetailsService;
 
 @Controller
 public class OrderPlacedBillController {
+/*
 
 	@Autowired
 	OrderDetailsService orderDetailsService;
@@ -361,5 +362,6 @@ public class OrderPlacedBillController {
 		}
 		return loggedinUser;
 	}
-}*/
+*/
+}
 

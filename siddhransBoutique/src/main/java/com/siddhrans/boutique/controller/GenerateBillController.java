@@ -105,6 +105,8 @@ public class GenerateBillController {
 			PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(filePath));
 			Font headerFont =FontFactory.getFont(FontFactory.TIMES_ROMAN, 14.0f , Font.BOLD, new BaseColor(0,0,255)  ); //new Font(Font.FontFamily.TIMES_ROMAN, Font.NORMAL, 24 );
 			Font normalFont = FontFactory.getFont(FontFactory.COURIER, 10.0f , Font.NORMAL, new BaseColor(0, 0, 0));
+			Font customFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10.0f , Font.ITALIC, new BaseColor(72, 190, 196));
+			Font customFont1 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12.0f , Font.ITALIC, new BaseColor(198, 43, 51));
 			document.open();
 			
 			//GenerateBillController.HeaderTable event = new GenerateBillController.HeaderTable();
@@ -114,21 +116,58 @@ public class GenerateBillController {
 			p.setAlignment(Element.ALIGN_CENTER);
 			document.add(p);
 
-			String companyAddress = new String();
+		/*	String companyAddress = new String();
 			companyAddress = "Srushti Boutique\n"
 					+ "482, 15th Main Rd, \n"
 					+ "UVCE Layout, Manjunath Nagar, \n"
 					+ "Basaveshwar Nagar, Bengaluru,\n"
 					+ "Karnataka 560079\n"
-					+ "Ph No: 095133 50033";
-			p =new Paragraph(companyAddress, normalFont );
+					+ "Ph No: 095133 50033";*/
+			PdfPTable table2 = new PdfPTable(1);
+			table2.setSpacingBefore(12);
+			table2.setSpacingAfter(12);
+			table2.setTotalWidth(PageSize.A4.getWidth()-10);
+			table2.setLockedWidth(true);
+			
+			PdfPCell c2 = new PdfPCell(new Phrase("Srushti Boutique",customFont1));
+			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+			c2.setBackgroundColor( new BaseColor (211,211,211));
+			table2.addCell(c2);
+			
+			c2 = new PdfPCell(new Phrase("482, 15th Main Rd,",customFont));
+			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+			c2.setBackgroundColor( new BaseColor (211,211,211));
+			table2.addCell(c2);
+			
+			c2 = new PdfPCell(new Phrase("UVCE Layout, Manjunath Nagar,",customFont));
+			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+			c2.setBackgroundColor( new BaseColor (211,211,211));
+			table2.addCell(c2);
+			
+			c2 = new PdfPCell(new Phrase("Basaveshwar Nagar, Bengaluru,",customFont));
+			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+			c2.setBackgroundColor( new BaseColor (211,211,211));
+			table2.addCell(c2);
+			
+			c2 = new PdfPCell(new Phrase("Karnataka 560079,",customFont));
+			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+			c2.setBackgroundColor( new BaseColor (211,211,211));
+			table2.addCell(c2);
+			
+			c2 = new PdfPCell(new Phrase("Ph No: 095133 50033",customFont));
+			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+			c2.setBackgroundColor( new BaseColor (211,211,211));
+			table2.addCell(c2);
+			document.add(table2);
+			
+			/*p =new Paragraph(companyAddress, customFont );
 			p.setAlignment(Element.ALIGN_CENTER);
 			//p.setAlignment(Element.ALIGN_JUSTIFIED);
-			document.add(p);
+			document.add(p);*/
 			PdfPTable table1 = new PdfPTable(6);
 
-			table1.setSpacingBefore(5);
-			table1.setSpacingAfter(5);
+			table1.setSpacingBefore(12);
+			table1.setSpacingAfter(12);
 			// table.setWidthPercentage(888 / 5.23f);
 			table1.setWidths(new float[]{ (float) 0.8,(float) 0.1, (float) 1.8,(float) 0.8 , (float) 0.1,(float) 1.8} );
 
@@ -209,13 +248,7 @@ public class GenerateBillController {
 			table1.addCell(c1);
 
 			document.add(table1);
-			Chunk glue = new Chunk(new VerticalPositionMark());
-
-			document.add(new Chunk(glue));
-			document.add(new Paragraph("Customer Id : "+  customerDetails.getCustemerId().toString(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.BOLD, new BaseColor(0, 0, 255)) ));
-			document.add(new Paragraph("Customer Name : "+ customerDetails.getCustomerName(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.BOLD, new BaseColor(0, 0, 255))));
-			document.add(new Paragraph("Phone Number : "+ customerDetails.getCustomerPhoneNo(), FontFactory.getFont(FontFactory.COURIER, 8.0f , Font.BOLD, new BaseColor(0, 0, 255))));
-			 
+				
 			PdfPTable table = new PdfPTable(6);
 
 			table.setSpacingBefore(5);
@@ -292,16 +325,18 @@ public class GenerateBillController {
 			
 			
 			float discountAmount = (netAmount*(discount/100.0f));
-			Float amount = ((netAmount+cgst+sgst)-discountAmount);
+			float afterCgst = netAmount*cgst;
+			float afterSgst = netAmount*sgst;
+			Float amount = ((netAmount+afterCgst+afterSgst)-discountAmount);
 
 			document.add(table);
 			p  = new Paragraph("Total Amount = "+ netAmount, headerFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-			p  = new Paragraph("CGST = "+ cgst, normalFont);
+			p  = new Paragraph("CGST("+request.getParameter("cgst") +"%) = "+ afterCgst, normalFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-			p  = new Paragraph("SGST = "+ sgst, normalFont);
+			p  = new Paragraph("SGST("+ request.getParameter("sgst")+"%) = "+ afterSgst, normalFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
 			p  = new Paragraph("Discount% = "+ discount, normalFont);
@@ -335,7 +370,6 @@ public class GenerateBillController {
 				invoiceService.saveOrUpdateInvoice(invoice);
 				orderDetailsService.saveOrUpdateOrderDetails(orderDetails);
 			}
-
 			//ClassPathResource pdfFile = new ClassPathResource("C:/Srushti/reportPdf/" + fileName);
 			response.setContentType("application/pdf");
 			response.setContentLength(invoice.getInvoicePdf().length);

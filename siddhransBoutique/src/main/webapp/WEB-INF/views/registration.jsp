@@ -75,7 +75,7 @@
 				</section>
 
 				<section>
-					<label class="input"> <i class="icon-append icon-lock"></i>
+					<label class="input"> <i class="icon-append icon-phone"></i>
 						<form:input type="password" path="confirmPassword"
 							id="confirmPassword" placeholder="Confirm password" /> <b
 						class="tooltip tooltip-bottom-right">Confirm Password</b>
@@ -83,9 +83,9 @@
 				</section>
 
 				<section>
-					<label class="input"> <i class="icon-append icon-lock"></i>
+					<label class="input"> <i class="icon-append icon-ok"></i>
 						<form:input type="number" path="aadhaarNo" id="aadhaarNo"
-							placeholder="aadhaar No " /> <b
+							placeholder="xxxx xxxx xxxx aadhaar No " required="required" /> <b
 						class="tooltip tooltip-bottom-right">Enter Aadhaar Number </b>
 					</label>
 					<div class="has-error">
@@ -96,8 +96,9 @@
 				<section>
 					<label class="input"> <i class="icon-append icon-lock"></i>
 						<form:input type="text" path="phoneNo" id="phoneNo"
-							placeholder="phone No " /> <b
-						class="tooltip tooltip-bottom-right">Phone Number</b>
+							placeholder="10 Digit Phone No" pattern="[1-9]{1}[0-9]{9}"
+							required="required" /> <b class="tooltip tooltip-bottom-right">Phone
+							Number</b>
 					</label>
 					<div class="has-error">
 						<form:errors path="phoneNo" class="help-inline" />
@@ -111,24 +112,29 @@
 					</label>
 				</section>
 				<section>
-					Designation<label class="select"><form:select
-							path="designation" items="${designations}" multiple="false"
-							itemValue="designationId" itemLabel="designationName"
-							class="form-control input-sm" id="designation" /></label>
+					Designation<label class="select"><i
+						class="
+glyphicon glyphicon-menu-down"></i>
+					<form:select path="designation" items="${designations}"
+							multiple="false" itemValue="designationId"
+							itemLabel="designationName" class="form-control input-sm"
+							id="designation" /></label>
 					<div class="has-error">
 						<form:errors path="designation" class="help-inline" />
 					</div>
 				</section>
 				<section>
-					UserProfile<label class="select"><form:select
-							path="userProfile" items="${userProfiles}" multiple="false"
-							itemValue="id" itemLabel="type"
+					UserProfile<label class="select"><i
+						class="
+glyphicon glyphicon-menu-down"></i>
+					<form:select path="userProfile" items="${userProfiles}"
+							multiple="false" itemValue="id" itemLabel="type"
 							class="form-control input-sm" id="userProfile" /></label>
 					<div class="has-error">
 						<form:errors path="userProfile" class="help-inline" />
 					</div>
 				</section>
-				
+
 			</fieldset>
 			<footer>
 				<button type="submit" class="button">Submit</button>

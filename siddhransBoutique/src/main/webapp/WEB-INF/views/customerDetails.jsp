@@ -192,7 +192,7 @@
 									<div class="col-md-3">
 										<form:input type="text" path="customerPhoneNo"
 											id="customerPhoneNo" class="form-control input-sm"
-											placeholder="Phone No" />
+											placeholder="10 Digit Phone No" pattern="[1-9]{1}[0-9]{9}" required="required" />
 									</div>
 									</br>
 									<div class="has-error" style="color: red;">

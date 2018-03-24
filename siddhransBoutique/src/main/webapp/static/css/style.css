@@ -6475,7 +6475,7 @@ table {
   border: none;
   opacity:0.6;
  
-}  
+} 
 
 tr:hover:not(th) {background-color: rgba(237,28,64,.1);}
 

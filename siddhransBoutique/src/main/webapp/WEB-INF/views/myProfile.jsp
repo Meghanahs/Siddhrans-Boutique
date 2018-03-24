@@ -36,10 +36,9 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;
 					</label><label>${profile.employeeId}</label><br> <label>User
 						Name &nbsp;&nbsp;: &nbsp;</label><label>${profile.userName}</label><br>
-					<%-- <label>DL No: </label><label>${profile.dlNo}</label><br> --%>
 					<%-- <a href="<c:url value='editProfile-${profile.userName}' />"
 													class="btn btn-success custom-width">Edit</a>  --%>
-					<form:form method="POST" id="submitForm" action="editProfile" >
+					<form:form method="POST" id="submitForm" action="editProfile" modelAttribute="profileData">
 					<input type="hidden" name="employeeId" value="${employeeId}">
 						<input type="button"  value="EDIT" >
 					</form:form>

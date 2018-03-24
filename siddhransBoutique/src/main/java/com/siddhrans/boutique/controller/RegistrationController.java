@@ -96,6 +96,8 @@ public class RegistrationController {
 		registrationService.saveEmployeeDetails(employee);
 		model.addAttribute("employee",new Employee());
 		model.addAttribute("message","Registered user Sucessfully.");
+		Employee profile = registrationService.findByUserName(getPrincipal());
+		model.addAttribute("profile", profile);
 		model.addAttribute("loggedinuser", getPrincipal());
         return "registration";
     }

@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.DressType;
+import com.siddhrans.boutique.model.Invoice;
 import com.siddhrans.boutique.model.OrderDetails;
 import com.siddhrans.boutique.service.CustomerDetailsService;
 import com.siddhrans.boutique.service.DressTypeService;
+import com.siddhrans.boutique.service.InvoiceService;
 import com.siddhrans.boutique.service.OrderDetailsService;
 import com.siddhrans.boutique.service.RegistrationService;
 
@@ -34,6 +36,8 @@ public class OrderController {
 	CustomerDetailsService customerDetailsService;
 	@Autowired
 	RegistrationService registrationService;
+	@Autowired
+	InvoiceService invoiceService; 
 
 	static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
@@ -127,10 +131,21 @@ public class OrderController {
 		return "showOrderHistory";
 	}
 	
-	@RequestMapping(value={"/placedOrderDetails"}, method = RequestMethod.POST)
-	public String placedOrders(Model model) {	 
+	@RequestMapping(value={"/paymentDetails"}, method = RequestMethod.POST)
+	public String placedOrders(Model model) {
+		String[] orderIds =request.getParameterValues("orderId");
+		List<OrderDetails> orderList = new ArrayList<OrderDetails>();
 		
-		return "placedOrderDetails";
+		for(int i=0;i<orderIds.length;i++) {
+			OrderDetails ordersDetails = orderDetailsService.findById(Integer.parseInt(orderIds[i]));	
+			orderList.add(ordersDetails);
+		}
+		Invoice invoice = invoiceService.findById((orderList.get(0)).getInvoiceId());
+		logger.debug("inside paymentetails  is "+orderList.size());
+		logger.debug("inside paymentetails invoice  is "+invoice);
+		model.addAttribute("orderList", orderList);
+		model.addAttribute("invoice", invoice);
+		return "paymentDetails";
 	}
 	
 	/**

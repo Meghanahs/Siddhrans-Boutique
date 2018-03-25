@@ -32,14 +32,21 @@ public class Invoice {
 	@Column(name="INVOICE_PDF")
 	byte[] invoicePdf;
 	
-	
 	String discount;
 	String cgst;
 	String sgst;
 	String dueDate;
 	String advancepayment;
 	String remainingAmount;
-	
+	float totalAmount;
+
+	public float getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(float totalAmount) {
+		this.totalAmount = totalAmount;
+	}
 
 	public String getDueDate() {
 		return dueDate;
@@ -113,5 +120,10 @@ public class Invoice {
 	public void setInvoicePdf(byte[] invoicePdf) {
 		this.invoicePdf = invoicePdf;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Invoice Data [id=" + invoiceId + ",CGST=" + cgst + ", SGST="
+				+ sgst + ", remainingAmount=" + remainingAmount + ", discount=" + discount+"]";
+	}
 }

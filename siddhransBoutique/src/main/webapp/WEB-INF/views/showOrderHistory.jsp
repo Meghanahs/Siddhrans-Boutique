@@ -6,9 +6,14 @@
 <script type="text/javascript">
 	function enableButtons() {
 		document.getElementById("bill").disabled = false;
+		document.getElementById("invoice").disabled = false;
 	}
 	function billing() {
-		document.getElementById("submitForm").action = "generateBill";
+		document.getElementById("submitForm").action = "generateBill-initial";
+		document.getElementById("submitForm").submit();
+	}
+	function getPayment() {
+		document.getElementById("submitForm").action = "paymentDetails";
 		document.getElementById("submitForm").submit();
 	}
 </script>
@@ -85,7 +90,7 @@
 								</div>
 								<div class="col-md-4">
 									DISCOUNT %:</br><input name="discount" type="text"
-										onclick="enableButtons()" id="CGST" />
+										onclick="enableButtons()" id="discount" />
 								</div>
 							</div>
 							</br>
@@ -101,8 +106,12 @@
 										onclick="enableButtons()" id="dueDate" />
 								</div></br>
 								<div class="col-md-4">
-									<input type="submit" id="bill" value="Placed Order Details"
+									<input type="button" id="bill" value="Placed Order Details"
 										disabled="disabled" onclick="billing()">
+								</div></br>
+								<div class="col-md-4">
+									<input type="button" id="invoice" value="View Invoice"
+										disabled="disabled" onclick="getPayment()">
 								</div></br>
 							</div>
 						</form:form>

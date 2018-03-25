@@ -55,10 +55,11 @@ public class InvoiceDaoImpl extends AbstractDao<Integer, Invoice> implements Inv
 	}
 
 	@Override
-	public void saveOrUpdateInvoice(Invoice invoice) {
-		saveOrUpdate(invoice);
+	public void updateInvoice(Invoice invoice) {
+		update(invoice);
 		
 	}
+
 
 	
 }

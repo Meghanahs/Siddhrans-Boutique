@@ -4,12 +4,13 @@
 <%@include file="header.jsp"%>
 <script type="text/javascript">
 	function enableButtons() {
-		document.getElementById("bill").disabled = false;
+		document.getElementById("finalInvoice").disabled = false;
 	}
-	function billing() {
-		document.getElementById("submitForm").action = "generateBill";
+	function finalInvoice(){
+		document.getElementById("submitForm").action = "paymentDetails";
 		document.getElementById("submitForm").submit();
 	}
+	
 </script>
 </head>
 <body>
@@ -82,7 +83,9 @@
 									
 								</tbody>
 							</table>
-							
+							<input type="button" id="finalInvoice"
+								value="Invoice" disabled="disabled"
+								onclick="finalInvoice()"> 
 
 						</form:form>
 					</div>

@@ -40,8 +40,14 @@ public class InvoiceServiceImpl implements InvoiceService {
 	}
 
 	@Override
+	public void updateInvoice(Invoice invoice) {
+		invoiceDao.updateInvoice(invoice);
+		
+	}
+
+	@Override
 	public void saveOrUpdateInvoice(Invoice invoice) {
-		invoiceDao.saveOrUpdateInvoice(invoice);
+		// TODO Auto-generated method stub
 		
 	}
 

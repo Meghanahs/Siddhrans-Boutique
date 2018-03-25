@@ -165,10 +165,7 @@ public class RegistrationController {
 		model.addAttribute("profileData", profileData);
 		Employee profile = registrationService.findByUserName(getPrincipal());
 		model.addAttribute("profile", profile);
-		model.addAttribute("loggedinuser", getPrincipal());
-/*		model.addAttribute("edit", true);*/
-		/*Employee emp = registrationService.findByUserName(userName);
-		model.addAttribute("employeeList",emp);*/		
+		model.addAttribute("loggedinuser", getPrincipal());		
 		return "editProfile";
 	}
 	

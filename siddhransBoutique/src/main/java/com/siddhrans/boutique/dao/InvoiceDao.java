@@ -10,6 +10,6 @@ public interface InvoiceDao {
 	 public void saveInvoice(Invoice invoice);
 	 public List<Invoice> findAllInvoice();
 	 public List<Invoice> findByOrder(OrderDetails orderDetails);
-	 public void saveOrUpdateInvoice(Invoice invoice);
+	 public void updateInvoice(Invoice invoice);
 	 
 }

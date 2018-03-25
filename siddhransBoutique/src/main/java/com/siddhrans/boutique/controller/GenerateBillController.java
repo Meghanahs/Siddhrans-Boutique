@@ -9,6 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,6 +37,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.VerticalPositionMark;
+import com.siddhrans.boutique.convertor.DeptStrToDeptConverter;
 import com.siddhrans.boutique.model.CustomerDetails;
 import com.siddhrans.boutique.model.DressType;
 import com.siddhrans.boutique.model.Invoice;
@@ -58,22 +62,26 @@ public class GenerateBillController {
 	@Autowired
 	InvoiceService invoiceService;
 
-	@RequestMapping(value={"/generateBill"}, method = RequestMethod.POST, produces = "application/pdf")
-	public String orderDetails(Model model, HttpServletResponse response) throws Exception {	
+	static final Logger logger = LoggerFactory.getLogger(GenerateBillController.class);
+
+	@RequestMapping(value={"/generateBill-{action}"}, method = RequestMethod.POST, produces = "application/pdf")
+	public String orderDetails(@PathVariable String action,Model model, HttpServletResponse response) throws Exception {	
 		String[] orders = request.getParameterValues("orderId");
+
 		Integer discount = new Integer(0);
 		if(request.getParameter("discount") != "" || request.getParameter("discount") != null || request.getParameter("discount") != "0") {
 			discount = Integer.parseInt(request.getParameter("discount"));
 		}
 		Float cgst = Integer.parseInt(request.getParameter("cgst"))/100.0f;
 		Float sgst = Integer.parseInt(request.getParameter("sgst"))/100.0f;
-		Integer advancepayment = new Integer(0);
+		Float advancepayment = new Float(0);
+
 		if(request.getParameter("advancepayment") != "" || request.getParameter("advancepayment") != null || request.getParameter("advancepayment") != "0") {
-			advancepayment = Integer.parseInt(request.getParameter("advancepayment"));
+			advancepayment = Float.parseFloat(request.getParameter("advancepayment"));
 		}
 		String dueDate = request.getParameter("dueDate");
-		
-		
+
+
 
 		try{
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
@@ -108,15 +116,15 @@ public class GenerateBillController {
 			Font customFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10.0f , Font.ITALIC, new BaseColor(72, 190, 196));
 			Font customFont1 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12.0f , Font.ITALIC, new BaseColor(198, 43, 51));
 			document.open();
-			
+
 			//GenerateBillController.HeaderTable event = new GenerateBillController.HeaderTable();
 			//writer.setPageEvent(event);
-			
+
 			Paragraph p =new Paragraph("INVOICE\n\n", headerFont );
 			p.setAlignment(Element.ALIGN_CENTER);
 			document.add(p);
 
-		/*	String companyAddress = new String();
+			/*	String companyAddress = new String();
 			companyAddress = "Srushti Boutique\n"
 					+ "482, 15th Main Rd, \n"
 					+ "UVCE Layout, Manjunath Nagar, \n"
@@ -128,38 +136,38 @@ public class GenerateBillController {
 			table2.setSpacingAfter(12);
 			table2.setTotalWidth(PageSize.A4.getWidth()-10);
 			table2.setLockedWidth(true);
-			
+
 			PdfPCell c2 = new PdfPCell(new Phrase("Srushti Boutique",customFont1));
 			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c2.setBackgroundColor( new BaseColor (211,211,211));
 			table2.addCell(c2);
-			
+
 			c2 = new PdfPCell(new Phrase("482, 15th Main Rd,",customFont));
 			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c2.setBackgroundColor( new BaseColor (211,211,211));
 			table2.addCell(c2);
-			
+
 			c2 = new PdfPCell(new Phrase("UVCE Layout, Manjunath Nagar,",customFont));
 			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c2.setBackgroundColor( new BaseColor (211,211,211));
 			table2.addCell(c2);
-			
+
 			c2 = new PdfPCell(new Phrase("Basaveshwar Nagar, Bengaluru,",customFont));
 			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c2.setBackgroundColor( new BaseColor (211,211,211));
 			table2.addCell(c2);
-			
+
 			c2 = new PdfPCell(new Phrase("Karnataka 560079,",customFont));
 			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c2.setBackgroundColor( new BaseColor (211,211,211));
 			table2.addCell(c2);
-			
+
 			c2 = new PdfPCell(new Phrase("Ph No: 095133 50033",customFont));
 			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c2.setBackgroundColor( new BaseColor (211,211,211));
 			table2.addCell(c2);
 			document.add(table2);
-			
+
 			/*p =new Paragraph(companyAddress, customFont );
 			p.setAlignment(Element.ALIGN_CENTER);
 			//p.setAlignment(Element.ALIGN_JUSTIFIED);
@@ -191,6 +199,7 @@ public class GenerateBillController {
 					":\n"+
 					":\n"+
 					":\n";
+
 			p =new Paragraph(customerData, normalFont );
 			p.setAlignment(Element.ALIGN_LEFT);
 			c1 = new PdfPCell(p);
@@ -234,12 +243,24 @@ public class GenerateBillController {
 			c1.setVerticalAlignment(Element.ALIGN_BOTTOM);
 			table1.addCell(c1);
 
-			Invoice invoice = new Invoice();
-			invoice.setFileName(fileName);
-			invoiceService.saveInvoice(invoice);
-			invioiceData = invoice.getInvoiceId()+"\n"
-					+"12345\n"
-					+ new Date(System.currentTimeMillis());
+			Integer invoiceId = new Integer(0);
+			Invoice invoice = null;
+			if(action.equals("intial")) {
+				invoice = new Invoice();
+				invoiceService.saveInvoice(invoice);
+				invoiceId = invoice.getInvoiceId();
+				invioiceData = invoice.getInvoiceId()+"\n"
+						+"12345\n"
+						+ new Date(System.currentTimeMillis());
+			} else if(action.equals("final"))  {
+				invoiceId = Integer.parseInt(request.getParameter("invoiceId"));
+				invioiceData = invoiceId+"\n"
+						+"12345\n"
+						+ new Date(System.currentTimeMillis());
+			}
+			
+			logger.debug("Anith.. Invoice Id is===?"+invoiceId);
+			
 			p =new Paragraph(invioiceData, normalFont );
 			p.setAlignment(Element.ALIGN_LEFT);
 			c1 = new PdfPCell(p);
@@ -248,7 +269,7 @@ public class GenerateBillController {
 			table1.addCell(c1);
 
 			document.add(table1);
-				
+
 			PdfPTable table = new PdfPTable(6);
 
 			table.setSpacingBefore(5);
@@ -293,11 +314,11 @@ public class GenerateBillController {
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c1.setBackgroundColor( new BaseColor (211,211,211));
 			table.addCell(c1);
-			
+
 			table.setHeaderRows(1);
 
 			float netAmount=0.0f;
-            
+
 			for(int i=0; i<orders.length;i++) {
 				Integer order = Integer.parseInt(orders[i]);
 				ordersDetails = orderDetailsService.findById(order);
@@ -322,12 +343,31 @@ public class GenerateBillController {
 				table.addCell(c1);	
 				netAmount = netAmount+ordersDetails.getOrderAmount();
 			}
+			logger.debug("Anith.. Invoice Id sasais===?"+invoiceId);
+			Invoice invoiceNew = new Invoice();
+			invoiceNew.setFileName(fileName);
+			invoiceNew.setInvoiceId(invoiceId);
+			/*invoiceNew.setInvoiceId(invoiceId);*/
+			Float amount = new Float(0.0f);
+			Float remainingBalance = 0.0f;
+			Float discountAmount = (netAmount*(discount/100.0f));
+			invoiceNew.setDiscount(discountAmount+"");
+			Float afterCgst = netAmount*cgst;
+			invoiceNew.setCgst(afterCgst+"");
+			Float afterSgst = netAmount*sgst;
+			invoiceNew.setSgst(afterSgst+"");
+			Float amountPaid = 0.0f;
+			if(action.equals("initial")) {
+				amount = ((netAmount+afterCgst+afterSgst)-discountAmount);
+				amountPaid = advancepayment;
+				remainingBalance = amount-advancepayment;
+			} else if(action.equals("final")) {
+				amount = Float.parseFloat(request.getParameter("totalAmount"));
+				amountPaid = advancepayment + Float.parseFloat(request.getParameter("remainingBalance"));
+				remainingBalance =  0.0f;
+			}
 			
-			
-			float discountAmount = (netAmount*(discount/100.0f));
-			float afterCgst = netAmount*cgst;
-			float afterSgst = netAmount*sgst;
-			Float amount = ((netAmount+afterCgst+afterSgst)-discountAmount);
+
 
 			document.add(table);
 			p  = new Paragraph("Total Amount = "+ netAmount, headerFont);
@@ -345,38 +385,48 @@ public class GenerateBillController {
 			p  = new Paragraph("After Discount = "+ amount, normalFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-			
-			p  = new Paragraph("AdvancePayment = "+ advancepayment, normalFont);
+
+			p  = new Paragraph("Advance Payment = "+ advancepayment, normalFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-			
+
 			p  = new Paragraph("Due Date = "+ dueDate, normalFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-								
-			p  = new Paragraph("Amount After Discount = "+amount, headerFont);
-			p  = new Paragraph("Remaining Amount = "+(amount-advancepayment), headerFont);
+
+			p  = new Paragraph("Amount Paid = "+amountPaid, headerFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-
+			
+			p  = new Paragraph("Remaining Amount = "+remainingBalance, headerFont);
+			p.setAlignment(Element.ALIGN_RIGHT);
+			document.add(p);
+			
 			document.close();
+			
+			invoiceNew.setRemainingAmount(remainingBalance+"");
+			invoiceNew.setAdvancepayment(advancepayment+"");
+			invoiceNew.setTotalAmount(amount);
+			invoiceNew.setDueDate(dueDate);
+
 			byte[] bFile = Files.readAllBytes(new File(filePath).toPath());
 
 			for(int i=0; i<orders.length;i++) {
-				invoice.setInvoicePdf(bFile);
+				invoiceNew.setInvoicePdf(bFile);
 				Integer order = Integer.parseInt(orders[i]);
 				OrderDetails	orderDetails = orderDetailsService.findById(order);
-				orderDetails.setInvoiceId(invoice.getInvoiceId());
-				invoiceService.saveOrUpdateInvoice(invoice);
+				orderDetails.setInvoiceId(invoiceNew.getInvoiceId());
+
 				orderDetailsService.saveOrUpdateOrderDetails(orderDetails);
 			}
+			invoiceService.updateInvoice(invoiceNew);
 			//ClassPathResource pdfFile = new ClassPathResource("C:/Srushti/reportPdf/" + fileName);
 			response.setContentType("application/pdf");
-			response.setContentLength(invoice.getInvoicePdf().length);
-			response.setHeader("Content-Disposition","inline; filename=\"" + invoice.getFileName() +"\"");
-			
-			FileCopyUtils.copy(invoice.getInvoicePdf(), response.getOutputStream());
-			
+			response.setContentLength(invoiceNew.getInvoicePdf().length);
+			response.setHeader("Content-Disposition","inline; filename=\"" + invoiceNew.getFileName() +"\"");
+
+			FileCopyUtils.copy(invoiceNew.getInvoicePdf(), response.getOutputStream());
+
 		}
 		catch(Exception e)
 		{
@@ -398,11 +448,11 @@ public class GenerateBillController {
 		response.setContentType("application/pdf");
 		response.setContentLength(invoice.getInvoicePdf().length);
 		response.setHeader("Content-Disposition","inline; attachment; filename=\"" + invoice.getFileName() +"\"");
-		
+
 		FileCopyUtils.copy(invoice.getInvoicePdf(), response.getOutputStream());
 		return "result";
 	}
-	
+
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */

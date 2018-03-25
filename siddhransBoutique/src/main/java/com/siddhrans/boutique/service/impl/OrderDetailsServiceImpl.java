@@ -41,7 +41,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 
 	@Override
 	public void saveOrUpdateOrderDetails(OrderDetails orderDetails) {
-	 orderDetailsdao.saveOrder(orderDetails);		
+	 orderDetailsdao.saveOrUpdateOrderDetails(orderDetails);		
 	}
 
 	@Override

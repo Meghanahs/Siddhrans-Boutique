@@ -21,7 +21,8 @@
 	<h5 style="color: red;">${message}</h5>
 	<!--//four-grids here-->
 	<!--agileinfo-grap-->
-	<div class="agileinfo-grap" style="width: 360px; margin-left: 33%;">
+	<div class="agileinfo-grap" style="width: 400px
+	; margin-left: 33%;">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
 				<div class="col-md-12">
@@ -40,7 +41,7 @@
 													class="btn btn-success custom-width">Edit</a>  --%>
 					<form:form method="POST" id="submitForm" action="editProfile" modelAttribute="profileData">
 					<input type="hidden" name="employeeId" value="${employeeId}">
-						<input type="button"  value="EDIT" >
+						<input type="submit"  value="EDIT" >
 					</form:form>
 				</div>
 

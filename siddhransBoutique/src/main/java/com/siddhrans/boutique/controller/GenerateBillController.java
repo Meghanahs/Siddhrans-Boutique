@@ -68,20 +68,26 @@ public class GenerateBillController {
 	public String orderDetails(@PathVariable String action,Model model, HttpServletResponse response) throws Exception {	
 		String[] orders = request.getParameterValues("orderId");
 
-		Integer discount = new Integer(0);
+		Float discount = new Float(0.0f);
 		if(request.getParameter("discount") != "" || request.getParameter("discount") != null || request.getParameter("discount") != "0") {
-			discount = Integer.parseInt(request.getParameter("discount"));
+			discount = Float.parseFloat(request.getParameter("discount"));
 		}
-		Float cgst = Integer.parseInt(request.getParameter("cgst"))/100.0f;
-		Float sgst = Integer.parseInt(request.getParameter("sgst"))/100.0f;
+		Float cgst = 0.0f;
+		Float sgst = 0.0f;
+		if(action.equals("initial")) {
+			cgst = Float.parseFloat(request.getParameter("cgst"))/100.0f;
+			sgst = Float.parseFloat(request.getParameter("sgst"))/100.0f;
+		} else if(action.equals("final")) {
+			cgst = Float.parseFloat(request.getParameter("cgst"));
+			sgst = Float.parseFloat(request.getParameter("sgst"));
+		}
+		
 		Float advancepayment = new Float(0);
 
 		if(request.getParameter("advancepayment") != "" || request.getParameter("advancepayment") != null || request.getParameter("advancepayment") != "0") {
 			advancepayment = Float.parseFloat(request.getParameter("advancepayment"));
 		}
 		String dueDate = request.getParameter("dueDate");
-
-
 
 		try{
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
@@ -245,7 +251,7 @@ public class GenerateBillController {
 
 			Integer invoiceId = new Integer(0);
 			Invoice invoice = null;
-			if(action.equals("intial")) {
+			if(action.equals("initial")) {
 				invoice = new Invoice();
 				invoiceService.saveInvoice(invoice);
 				invoiceId = invoice.getInvoiceId();
@@ -258,9 +264,9 @@ public class GenerateBillController {
 						+"12345\n"
 						+ new Date(System.currentTimeMillis());
 			}
-			
+
 			logger.debug("Anith.. Invoice Id is===?"+invoiceId);
-			
+
 			p =new Paragraph(invioiceData, normalFont );
 			p.setAlignment(Element.ALIGN_LEFT);
 			c1 = new PdfPCell(p);
@@ -348,13 +354,22 @@ public class GenerateBillController {
 			invoiceNew.setFileName(fileName);
 			invoiceNew.setInvoiceId(invoiceId);
 			/*invoiceNew.setInvoiceId(invoiceId);*/
+
 			Float amount = new Float(0.0f);
 			Float remainingBalance = 0.0f;
 			Float discountAmount = (netAmount*(discount/100.0f));
 			invoiceNew.setDiscount(discountAmount+"");
-			Float afterCgst = netAmount*cgst;
+			Float afterCgst = 0.0f;
+			Float afterSgst = 0.0f;
+			if(action.equals("initial")) {
+				afterCgst = netAmount*cgst;
+				afterSgst = netAmount*sgst;
+			} else if(action.equals("final")) {
+				afterCgst = cgst;
+				afterSgst = sgst;
+			}
+
 			invoiceNew.setCgst(afterCgst+"");
-			Float afterSgst = netAmount*sgst;
 			invoiceNew.setSgst(afterSgst+"");
 			Float amountPaid = 0.0f;
 			if(action.equals("initial")) {
@@ -363,10 +378,10 @@ public class GenerateBillController {
 				remainingBalance = amount-advancepayment;
 			} else if(action.equals("final")) {
 				amount = Float.parseFloat(request.getParameter("totalAmount"));
-				amountPaid = advancepayment + Float.parseFloat(request.getParameter("remainingBalance"));
+				amountPaid = advancepayment + Float.parseFloat(request.getParameter("remainingAmount"));
 				remainingBalance =  0.0f;
 			}
-			
+
 
 
 			document.add(table);
@@ -397,13 +412,13 @@ public class GenerateBillController {
 			p  = new Paragraph("Amount Paid = "+amountPaid, headerFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-			
+
 			p  = new Paragraph("Remaining Amount = "+remainingBalance, headerFont);
 			p.setAlignment(Element.ALIGN_RIGHT);
 			document.add(p);
-			
+
 			document.close();
-			
+
 			invoiceNew.setRemainingAmount(remainingBalance+"");
 			invoiceNew.setAdvancepayment(advancepayment+"");
 			invoiceNew.setTotalAmount(amount);
@@ -437,7 +452,7 @@ public class GenerateBillController {
 		return "result";
 	}
 
-	@RequestMapping(value = { "/download-Invoice-{invoiceId}" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/download-Invoice-{invoiceId}" }, method = RequestMethod.POST)
 	public String downloadInvoice(@PathVariable String invoiceId, ModelMap model, HttpServletResponse response) throws IOException {
 		if(invoiceId == null || invoiceId.equals("")) {
 			model.addAttribute("url", "customerdetails");
@@ -447,7 +462,7 @@ public class GenerateBillController {
 		Invoice invoice = invoiceService.findById(Integer.parseInt(invoiceId));
 		response.setContentType("application/pdf");
 		response.setContentLength(invoice.getInvoicePdf().length);
-		response.setHeader("Content-Disposition","inline; attachment; filename=\"" + invoice.getFileName() +"\"");
+		response.setHeader("Content-Disposition","attachment; filename=\"" + invoice.getFileName() +"\"");
 
 		FileCopyUtils.copy(invoice.getInvoicePdf(), response.getOutputStream());
 		return "result";

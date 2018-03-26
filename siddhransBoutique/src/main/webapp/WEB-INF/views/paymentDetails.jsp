@@ -18,7 +18,7 @@
 	<!--heder end here-->
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="customerdetails">Orders
-				History</a> <i class="fa fa-angle-right"></i></li>
+				Details</a> <i class="fa fa-angle-right"></i></li>
 	</ol>
 	<!--four-grids here-->
 
@@ -29,7 +29,6 @@
 			<header class="agileits-box-header clearfix">
 				<div class="col-md-12 agile-info-stat height">
 					<div class="tablecontainer">
-					<div> Order Details</div>
 						<form:form method="POST" id="submitForm">
 
 							<table class="table table-hover order-table table" 
@@ -60,7 +59,9 @@
 
 								</tbody>
 							</table>
-							<div> Invoice Details</div>
+							<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="customerdetails">Invoice Details</a> <i class="fa fa-angle-right"></i></li>
+	</ol>
 							<table class="table table-hover order-table table"
 								style="margin-top: 18px;">
 								<tr>

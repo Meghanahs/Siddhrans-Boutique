@@ -80,8 +80,9 @@
 	<div class="agileinfo-grap">
 		<div class="agileits-box">
 			<header class="agileits-box-header clearfix">
-
+            <h2>${message}</h2>
 				<div class="col-md-12 agile-info-stat height">
+				
 					<div class="tablecontainer">
 						<form:form method="POST" id="submitForm" action="saveOrderDetails">
 						<input type="hidden" id="customerId" name="customerId"

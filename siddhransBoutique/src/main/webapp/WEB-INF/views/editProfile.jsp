@@ -31,7 +31,7 @@
 				<section>First Name :
 					<label class="input"><i class="icon-append icon-user"></i>
 						<form:input type="text" path="employeeFirstname"
-							id="employeeFirstname" placeholder="First Name " /> <b
+							id="employeeFirstname" placeholder="First Name " readonly="true" /> <b
 						class="tooltip tooltip-bottom-right">First name without
 							Special Character</b> </label>
 				</section>
@@ -39,8 +39,8 @@
 				<section>Last Name :
 					<label class="input"><i class="icon-append icon-user"></i>
 						<form:input type="text" path="employeeLastname"
-							id="employeeLastname" placeholder="Last Name " /> <b
-						class="tooltip tooltip-bottom-right">Last name without Special
+							id="employeeLastname" placeholder="Last Name " readonly="true" /> <b
+						class="tooltip tooltip-bottom-right" readonly="true">Last name without Special
 							Character</b> </label>
 				</section>
 

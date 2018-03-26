@@ -145,6 +145,7 @@ public class OrderController {
 		logger.debug("inside paymentetails invoice  is "+invoice);
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("invoice", invoice);
+		model.addAttribute("loggedinuser", getPrincipal());
 		return "paymentDetails";
 	}
 	

@@ -156,12 +156,8 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(value={"/editProfile"}, method = RequestMethod.POST)
-	public String editProfile(Model model) {
-		/*Employee employee = registrationService.findById();*/
-		Integer employeeId = Integer.parseInt(request.getParameter("employeeId"));
-		Employee profileData = registrationService.findById(employeeId);
-		/*List<Designation> designations = designationService.findAllDesignations();
-		model.addAttribute("designations", designations);*/
+	public String editProfile(@Valid Employee employee, BindingResult result,Model model) {
+		Employee profileData = registrationService.findById(employee.getEmployeeId());
 		model.addAttribute("profileData", profileData);
 		Employee profile = registrationService.findByUserName(getPrincipal());
 		model.addAttribute("profile", profile);

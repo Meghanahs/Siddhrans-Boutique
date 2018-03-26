@@ -6,10 +6,10 @@
 	function enableButtons() {
 		document.getElementById("finalInvoice").disabled = false;
 	}
-	function finalInvoice(){
+	/* function finalInvoice(){
 		document.getElementById("submitForm").action = "paymentDetails";
 		document.getElementById("submitForm").submit();
-	}
+	} */
 	
 </script>
 </head>
@@ -74,18 +74,18 @@
 											<td><button style="color: black;">
 													<a href="openMail">send Mail</a>
 												</button></td>
-                                            <td><a href="<c:url value='/download-Invoice-${order.invoiceId}' />"
-												class="btn btn-success custom-width">Download</a>  <%--   </c:if>  --%>
-											</td>
+                                            <%-- <td><a href="<c:url value='/download-Invoice-${order.invoiceId}' />"
+												class="btn btn-success custom-width">Download</a>    </c:if> 
+											</td> --%>
 
 										</tr>
 									</c:forEach>
 									
 								</tbody>
 							</table>
-							<input type="button" id="finalInvoice"
+							<!-- <input type="button" id="finalInvoice"
 								value="Invoice" disabled="disabled"
-								onclick="finalInvoice()"> 
+								onclick="finalInvoice()">  -->
 
 						</form:form>
 					</div>

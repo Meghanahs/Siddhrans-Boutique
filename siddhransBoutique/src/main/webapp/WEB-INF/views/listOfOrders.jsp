@@ -51,6 +51,7 @@
 										<th>Status</th>
 										<th>Amount</th>
 										<th>Emails</th>
+										<th>Invoice ID</th>
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -71,6 +72,7 @@
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
 											<td>${order.orderAmount}</td>
+											<td>${order.invoiceId}</td>
 											<td><button style="color: black;">
 													<a href="openMail">send Mail</a>
 												</button></td>

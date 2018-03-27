@@ -44,7 +44,8 @@
 										<th>Dress Type</th>
 										<th>Status</th>
 										<th>Amount</th>
-										<th>Invoice</th>
+										<th>Invoice ID</th>
+										<th></th>
 										<th width="100"></th>
 									</tr>
 								</thead>
@@ -68,6 +69,7 @@
 											<td>${order.dressType.dressName}</td>
 											<td>${order.status}</td>
 											<td>${order.orderAmount}</td>
+											<td>${order.invoiceId}</td>
 											<td>
 												<%--  <c:if test="${order.invoiceId != null && (order.invoiceId != 0 || order.invoiceId == '')} ">   --%>
 												<a

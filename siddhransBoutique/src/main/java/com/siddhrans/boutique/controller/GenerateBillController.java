@@ -216,8 +216,7 @@ public class GenerateBillController {
 			customerData = customerDetails.getCustemerId().toString()+"\n"
 					+ customerDetails.getCustomerName()+"\n"
 					+ customerDetails.getCustomerPhoneNo()+"\n"
-					+ customerDetails.getEmail()+"\n"
-					+ customerDetails.getGstNo();
+					+ customerDetails.getEmail();
 			p =new Paragraph(customerData, normalFont );
 			p.setAlignment(Element.ALIGN_LEFT);
 			c1 = new PdfPCell(p);
@@ -256,7 +255,7 @@ public class GenerateBillController {
 				invoiceService.saveInvoice(invoice);
 				invoiceId = invoice.getInvoiceId();
 				invioiceData = invoice.getInvoiceId()+"\n"
-						+"12345\n"
+						+ customerDetails.getGstNo()+"\n"
 						+ new Date(System.currentTimeMillis());
 			} else if(action.equals("final"))  {
 				invoiceId = Integer.parseInt(request.getParameter("invoiceId"));
@@ -357,17 +356,19 @@ public class GenerateBillController {
 
 			Float amount = new Float(0.0f);
 			Float remainingBalance = 0.0f;
-			Float discountAmount = (netAmount*(discount/100.0f));
-			invoiceNew.setDiscount(discountAmount+"");
 			Float afterCgst = 0.0f;
 			Float afterSgst = 0.0f;
+			Float discountAmount = 0.0f;
 			if(action.equals("initial")) {
+				discountAmount = (netAmount*(discount/100.0f));
 				afterCgst = netAmount*cgst;
 				afterSgst = netAmount*sgst;
 			} else if(action.equals("final")) {
+				discountAmount = discount;
 				afterCgst = cgst;
 				afterSgst = sgst;
 			}
+			invoiceNew.setDiscount(discountAmount+"");
 
 			invoiceNew.setCgst(afterCgst+"");
 			invoiceNew.setSgst(afterSgst+"");
@@ -381,8 +382,6 @@ public class GenerateBillController {
 				amountPaid = advancepayment + Float.parseFloat(request.getParameter("remainingAmount"));
 				remainingBalance =  0.0f;
 			}
-
-
 
 			document.add(table);
 			p  = new Paragraph("Total Amount = "+ netAmount, headerFont);

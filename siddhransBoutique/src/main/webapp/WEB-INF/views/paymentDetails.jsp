@@ -79,12 +79,17 @@
 									<th>Due Date</th>
 								</tr>
 								<tr>
-									<td>${invoice.invoiceId}</td>
-									<td>${invoice.totalAmount}</td>
-									<td>${invoice.discount}</td>
-									<td>${invoice.advancepayment}</td>
-									<td>${invoice.remainingAmount}</td>
-									<td>${invoice.dueDate}</td>
+									<c:if test="${invoice != null}">
+										<td>${invoice.invoiceId}</td>
+										<td>${invoice.totalAmount}</td>
+										<td>${invoice.discount}</td>
+										<td>${invoice.advancepayment}</td>
+										<td>${invoice.remainingAmount}</td>
+										<td>${invoice.dueDate}</td>
+									</c:if>
+								</tr>
+								<tr>
+									<td colspan="5">${error }</td>
 								</tr>
 							</table>
 							<input name="cgst" type="hidden" value="${invoice.cgst}" />
@@ -100,13 +105,16 @@
 								value="${invoice.remainingAmount}" id="remainingAmount" />
 							<input name="totalAmount" type="hidden"
 								value="${invoice.totalAmount}" id="totalAmount" />
-							<c:if test="${invoice.remainingAmount != '0.0'}">
-								<input type="button" id="finalInvoice" value="Generate Invoice"
-									onclick="generateInvoice();">
-							</c:if>
-							<c:if test="${invoice.remainingAmount == '0.0'}">
-								<input type="button" id="download" value="Download Invoice"
-									onclick="downloadInvoice();">
+							<c:if test="${invoice != null}">
+								<c:if test="${invoice.remainingAmount != '0.0'}">
+									<input type="button" id="finalInvoice" value="Generate Invoice"
+										onclick="generateInvoice();">
+								</c:if>
+
+								<c:if test="${invoice.remainingAmount == '0.0'}">
+									<input type="button" id="download" value="Download Invoice"
+										onclick="downloadInvoice();">
+								</c:if>
 							</c:if>
 						</form:form>
 					</div>

@@ -130,25 +130,29 @@ public class OrderController {
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "showOrderHistory";
 	}
-	
+
 	@RequestMapping(value={"/paymentDetails"}, method = RequestMethod.POST)
 	public String placedOrders(Model model) {
 		String[] orderIds =request.getParameterValues("orderId");
 		List<OrderDetails> orderList = new ArrayList<OrderDetails>();
-		
+
 		for(int i=0;i<orderIds.length;i++) {
 			OrderDetails ordersDetails = orderDetailsService.findById(Integer.parseInt(orderIds[i]));	
 			orderList.add(ordersDetails);
 		}
-		Invoice invoice = invoiceService.findById((orderList.get(0)).getInvoiceId());
-		logger.debug("inside paymentetails  is "+orderList.size());
-		logger.debug("inside paymentetails invoice  is "+invoice);
+		Integer invoiceId = (orderList.get(0)).getInvoiceId();
+		Invoice invoice = null;
+		if(invoiceId != 0 ) {
+			invoice = invoiceService.findById(invoiceId);
+			model.addAttribute("invoice", invoice);
+		} else {
+			model.addAttribute("error", "No Invoice Found for Selected Order.");
+		}
 		model.addAttribute("orderList", orderList);
-		model.addAttribute("invoice", invoice);
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "paymentDetails";
 	}
-	
+
 	/**
 	 * This method returns the principal[user-name] of logged-in user.
 	 */
